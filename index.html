@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Dossier noir de la Belgique — Chronique des crises et des scandales</title>
+<meta name="description" content="Une chronologie commentée et sourcée des crises, scandales et zones d'ombre de l'histoire de la Belgique, de la révolution brabançonne de 1789 au Qatargate. Niveau accessible, sources en regard de chaque fiche.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LE DOSSIER NOIR — feuille de style
+   Palette : tricolore belge vieilli en teinte d'archive
+   noir d'encre · or de laiton · oxblood (rouge séché)
+   ============================================================ */
+:root{
+  --ink:        #15110c;   /* fond, encre chaude presque noire */
+  --ink-2:      #1d1812;   /* panneaux / fiches */
+  --ink-3:      #261f16;   /* survol / relief */
+  --line:       rgba(236,227,210,.12);
+  --line-soft:  rgba(236,227,210,.07);
+
+  --paper:      #ece3d2;   /* texte principal, parchemin */
+  --paper-dim:  #b9ae98;   /* secondaire */
+  --paper-faint:#8a8069;   /* méta, légendes */
+
+  --gold:       #c8a24a;   /* accent primaire (le jaune du drapeau, vieilli) */
+  --gold-soft:  rgba(200,162,74,.30);
+  --gold-line:  rgba(200,162,74,.45);
+  --gold-text:  #d9b65f;
+
+  --oxblood:    #a8392f;   /* accent grave (le rouge, séché) */
+  --oxblood-tx: #d2695d;   /* rouge lisible sur fond sombre */
+  --oxblood-ln: rgba(168,57,47,.55);
+
+  --serif-d: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --serif-t: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --mono:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --rail: 116px;
+  --maxw: 1080px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+section[id]{ scroll-margin-top:64px; }
+
+body{
+  margin:0;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #211a12 0%, rgba(33,26,18,0) 60%),
+    var(--ink);
+  color:var(--paper);
+  font-family:var(--serif-t);
+  font-size:1.0625rem;
+  line-height:1.72;
+  font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+::selection{ background:var(--gold); color:#1a140c; }
+
+a{ color:var(--gold-text); text-decoration:none; }
+a:hover{ color:#ecd089; }
+
+:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:2px; }
+
+.wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(1.1rem,4vw,2.5rem); }
+.reading{ max-width:64ch; }
+
+.skip{
+  position:absolute; left:-999px; top:0; z-index:200;
+  background:var(--gold); color:#1a140c; padding:.6rem 1rem;
+  font-family:var(--mono); font-size:.8rem; border-radius:0 0 4px 0;
+}
+.skip:focus{ left:0; }
+
+/* ---------- bandeau tricolore + barre de progression + en-tête ---------- */
+.flagbar{
+  position:fixed; inset:0 0 auto 0; height:4px; z-index:120;
+  background:linear-gradient(90deg,
+    #2a2620 0 33.33%, var(--gold) 33.33% 66.66%, var(--oxblood) 66.66% 100%);
+}
+.progress{
+  position:fixed; top:4px; left:0; height:2px; width:0%; z-index:120;
+  background:var(--gold); box-shadow:0 0 8px rgba(200,162,74,.6);
+}
+.topbar{
+  position:fixed; inset:6px 0 auto 0; z-index:110;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; padding:.55rem clamp(1.1rem,4vw,2.5rem);
+  background:rgba(18,14,9,.72); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line-soft);
+  transform:translateY(-120%); transition:transform .35s ease;
+}
+.topbar.show{ transform:translateY(0); }
+.topbar__t{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--paper-dim);
+}
+.topbar__t b{ color:var(--gold); font-weight:600; }
+.topbar__nav{ font-family:var(--mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; }
+
+/* ---------- masthead ---------- */
+.mast{
+  position:relative;
+  padding:clamp(5rem,16vh,9rem) 0 clamp(2.4rem,7vh,4rem);
+  border-bottom:1px solid var(--line);
+}
+.mast__eyebrow{
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.34em;
+  text-transform:uppercase; color:var(--gold);
+  display:flex; align-items:center; gap:.9rem; flex-wrap:wrap;
+}
+.mast__eyebrow::before{ content:""; width:34px; height:1px; background:var(--gold-line); display:inline-block; }
+.mast__title{
+  font-family:var(--serif-d); font-weight:600;
+  font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0;
+  font-size:clamp(2.7rem,8.4vw,6rem); line-height:.96;
+  letter-spacing:-.015em; margin:1.6rem 0 0; color:var(--paper);
+}
+.mast__title .red{ color:var(--oxblood-tx); font-style:italic; font-variation-settings:"opsz" 144,"WONK" 1; }
+.mast__stand{
+  font-family:var(--serif-t); font-size:clamp(1.12rem,2vw,1.4rem);
+  line-height:1.55; color:var(--paper-dim); max-width:40ch;
+  margin:1.9rem 0 0;
+}
+.mast__stand em{ color:var(--paper); font-style:italic; }
+.mast__meta{
+  margin-top:2.4rem; padding-top:1.3rem; border-top:1px solid var(--line);
+  font-family:var(--mono); font-size:.76rem; letter-spacing:.08em;
+  color:var(--paper-faint); text-transform:uppercase;
+  display:flex; gap:.6rem 1.6rem; flex-wrap:wrap;
+}
+.mast__meta span{ white-space:nowrap; }
+.mast__meta b{ color:var(--gold); font-weight:500; }
+
+/* ---------- éditorial + légende ---------- */
+.lead{ padding:clamp(2.6rem,7vh,4.4rem) 0; border-bottom:1px solid var(--line); }
+.kicker{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--gold); margin:0 0 1.4rem;
+}
+.lead p{ margin:0 0 1.15rem; }
+.lead p.big{
+  font-family:var(--serif-d); font-variation-settings:"opsz" 40;
+  font-size:clamp(1.3rem,2.6vw,1.7rem); line-height:1.45;
+  color:var(--paper); font-weight:400; margin-bottom:1.6rem;
+}
+.lead .drop::first-letter{
+  font-family:var(--serif-d); font-weight:600; font-variation-settings:"opsz" 144;
+  float:left; font-size:3.9rem; line-height:.78; padding:.32rem .55rem 0 0; color:var(--gold);
+}
+
+.legend{
+  margin-top:2.6rem; border:1px solid var(--line);
+  background:linear-gradient(var(--ink-2),var(--ink-2)) padding-box;
+  border-radius:4px; padding:1.5rem 1.6rem;
+}
+.legend__h{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--paper-faint); margin:0 0 1.1rem;
+}
+.legend__grid{ display:grid; gap:1rem 1.8rem; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); }
+.legend__row{ display:flex; gap:.8rem; align-items:flex-start; }
+.legend__row .swatch{ flex:none; margin-top:.2rem; }
+.legend__row p{ margin:0; font-size:.92rem; color:var(--paper-dim); line-height:1.5; }
+.swatch{ width:13px; height:13px; border-radius:50%; background:var(--ink); border:2px solid var(--gold); box-shadow:0 0 0 3px var(--ink-2); }
+.swatch.grave{ border-color:var(--oxblood); background:var(--oxblood); }
+
+/* ---------- sommaire ---------- */
+.toc{ padding:clamp(2.8rem,7vh,4.4rem) 0; border-bottom:1px solid var(--line); }
+.toc h2{
+  font-family:var(--mono); font-weight:500; font-size:.8rem; letter-spacing:.24em;
+  text-transform:uppercase; color:var(--gold); margin:0 0 2rem;
+}
+.toc ol{ list-style:none; margin:0; padding:0; counter-reset:none; }
+.toc li{ border-top:1px solid var(--line); }
+.toc li:last-child{ border-bottom:1px solid var(--line); }
+.toc a{
+  display:grid; grid-template-columns:2.6rem 1fr auto; align-items:baseline; gap:1rem;
+  padding:1.05rem .2rem; color:var(--paper);
+}
+.toc a:hover{ background:var(--ink-2); }
+.toc a:hover .toc__title{ color:var(--gold-text); }
+.toc__num{ font-family:var(--serif-d); font-variation-settings:"opsz" 72; font-size:1.5rem; color:var(--gold); line-height:1; }
+.toc__title{ font-family:var(--serif-d); font-variation-settings:"opsz" 40; font-size:clamp(1.18rem,2.3vw,1.55rem); font-weight:500; letter-spacing:-.01em; transition:color .2s; }
+.toc__title small{ display:block; font-family:var(--serif-t); font-size:.9rem; font-weight:400; color:var(--paper-faint); letter-spacing:0; margin-top:.25rem; }
+.toc__span{ font-family:var(--mono); font-size:.78rem; letter-spacing:.06em; color:var(--paper-faint); white-space:nowrap; }
+
+/* ---------- époques ---------- */
+.era{ padding:clamp(3rem,8vh,5.5rem) 0 1rem; }
+.era + .era{ border-top:1px solid var(--line-soft); }
+.era__head{ max-width:64ch; margin-bottom:clamp(2.4rem,5vh,3.6rem); opacity:0; transform:translateY(18px); transition:opacity .7s ease,transform .7s ease; }
+.era__head.in{ opacity:1; transform:none; }
+.era__kick{ display:flex; align-items:center; gap:1rem; margin-bottom:1.3rem; }
+.era__num{ font-family:var(--serif-d); font-variation-settings:"opsz" 144,"WONK" 1; font-size:clamp(2.6rem,7vw,4.2rem); line-height:.8; color:var(--gold); }
+.era__span{ font-family:var(--mono); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--paper-faint); border:1px solid var(--line); padding:.35rem .7rem; border-radius:2px; }
+.era__title{ font-family:var(--serif-d); font-variation-settings:"opsz" 72; font-weight:500; font-size:clamp(1.7rem,4vw,2.7rem); line-height:1.08; letter-spacing:-.015em; margin:0 0 1rem; color:var(--paper); }
+.era__intro{ color:var(--paper-dim); font-size:1.075rem; margin:0; }
+.era__back{ display:inline-block; margin-top:1.2rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--paper-faint); }
+.era__back:hover{ color:var(--gold); }
+
+/* ---------- fiche ---------- */
+.fiche{
+  position:relative; display:grid; grid-template-columns:var(--rail) minmax(0,1fr);
+  column-gap:2rem; padding:0 0 clamp(2.6rem,5vh,3.6rem);
+  opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease;
+}
+.fiche.in{ opacity:1; transform:none; }
+.fiche::before{ /* arête / colonne vertébrale */
+  content:""; position:absolute; left:var(--rail); top:.55rem; bottom:0; width:2px;
+  background:linear-gradient(var(--gold-line),var(--gold-soft) 60%, var(--line));
+  transform:translateX(-1px);
+}
+.fiche:last-child::before{ bottom:1.4rem; }
+.fiche::after{ /* nœud */
+  content:""; position:absolute; left:var(--rail); top:.5rem; width:13px; height:13px;
+  border-radius:50%; background:var(--ink); border:2px solid var(--gold);
+  transform:translate(-50%,0); box-shadow:0 0 0 4px var(--ink);
+}
+.fiche[data-grave]::after{ border-color:var(--oxblood); background:var(--oxblood); box-shadow:0 0 0 4px var(--ink),0 0 12px rgba(168,57,47,.5); }
+
+.fiche__rail{ text-align:right; padding-top:.15rem; }
+.fiche__year{ font-family:var(--serif-d); font-variation-settings:"opsz" 90,"WONK" 1; font-weight:500; font-size:clamp(1.5rem,3.4vw,2.2rem); line-height:1; color:var(--gold); letter-spacing:-.01em; }
+.fiche[data-grave] .fiche__year{ color:var(--oxblood-tx); }
+.fiche__cote{ margin-top:.55rem; font-family:var(--mono); font-size:.66rem; letter-spacing:.1em; color:var(--paper-faint); text-transform:uppercase; }
+
+.fiche__body{ min-width:0; }
+.fiche__tags{ display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:.95rem; }
+.tag{
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--paper-dim); border:1px solid var(--line); padding:.28rem .55rem; border-radius:2px;
+  white-space:nowrap;
+}
+.tag--grave{ color:var(--oxblood-tx); border-color:var(--oxblood-ln); background:rgba(168,57,47,.07); }
+.tag--gold{ color:var(--gold-text); border-color:var(--gold-line); }
+
+.fiche__title{ font-family:var(--serif-d); font-variation-settings:"opsz" 60; font-weight:600; font-size:clamp(1.45rem,3vw,2rem); line-height:1.1; letter-spacing:-.015em; margin:0 0 .7rem; color:var(--paper); }
+.fiche__dek{ font-family:var(--serif-t); font-style:italic; font-size:1.14rem; line-height:1.5; color:var(--paper-dim); margin:0 0 1.2rem; max-width:62ch; }
+
+.toll{
+  display:flex; gap:.85rem; align-items:baseline; margin:0 0 1.3rem; padding:.85rem 1rem;
+  border-left:2px solid var(--oxblood); background:rgba(168,57,47,.06); border-radius:0 3px 3px 0;
+  max-width:62ch;
+}
+.toll__l{ font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--oxblood-tx); flex:none; padding-top:.15rem; }
+.toll__v{ font-size:.98rem; color:var(--paper); line-height:1.45; }
+.toll--gold{ border-left-color:var(--gold); background:rgba(200,162,74,.06); }
+.toll--gold .toll__l{ color:var(--gold-text); }
+
+.fiche__text{ max-width:64ch; }
+.fiche__text p{ margin:0 0 1.05rem; }
+.fiche__text p:last-child{ margin-bottom:0; }
+.fiche__text strong{ color:var(--paper); font-weight:600; }
+.fiche__text em{ font-style:italic; }
+.fiche__text .nl{ font-style:italic; color:var(--paper-dim); }
+
+.src{
+  margin-top:1.5rem; padding-top:.95rem; border-top:1px solid var(--line-soft);
+  font-family:var(--mono); font-size:.72rem; line-height:1.65; letter-spacing:.01em;
+  color:var(--paper-faint); max-width:64ch;
+}
+.src b{ color:var(--paper-dim); font-weight:500; letter-spacing:.12em; text-transform:uppercase; font-size:.66rem; }
+
+/* ---------- coda ---------- */
+.coda{ padding:clamp(3rem,8vh,5rem) 0; border-top:1px solid var(--line); }
+.coda .reading p{ margin:0 0 1.1rem; }
+.coda .reading p.big{ font-family:var(--serif-d); font-variation-settings:"opsz" 40; font-size:clamp(1.25rem,2.5vw,1.6rem); line-height:1.45; color:var(--paper); }
+
+/* ---------- bibliographie / note ---------- */
+.notes{ padding:clamp(2.8rem,7vh,4.4rem) 0; border-top:1px solid var(--line); background:linear-gradient(var(--ink-2),var(--ink-2)); }
+.notes h2{ font-family:var(--serif-d); font-variation-settings:"opsz" 72; font-weight:500; font-size:clamp(1.5rem,3.4vw,2.2rem); margin:0 0 1.6rem; color:var(--paper); }
+.notes h3{ font-family:var(--mono); font-weight:500; font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin:2.2rem 0 1rem; }
+.notes p{ color:var(--paper-dim); max-width:66ch; margin:0 0 1.05rem; font-size:1.0125rem; }
+.notes ul{ margin:0; padding:0; list-style:none; max-width:70ch; }
+.notes li{ padding:.7rem 0 .7rem 1.4rem; border-bottom:1px solid var(--line-soft); position:relative; color:var(--paper-dim); font-size:.96rem; }
+.notes li::before{ content:"—"; position:absolute; left:0; color:var(--gold); }
+.notes li b{ color:var(--paper); font-weight:600; }
+
+/* ---------- pied de page ---------- */
+.foot{ padding:clamp(2.6rem,6vh,4rem) 0 4rem; border-top:1px solid var(--line); }
+.foot__top{ font-family:var(--serif-d); font-variation-settings:"opsz" 90; font-weight:500; font-size:clamp(1.4rem,3.4vw,2.1rem); color:var(--paper); margin:0 0 1.2rem; max-width:24ch; line-height:1.1; }
+.foot__top .red{ color:var(--oxblood-tx); font-style:italic; }
+.foot p{ color:var(--paper-faint); font-family:var(--mono); font-size:.74rem; line-height:1.8; letter-spacing:.04em; max-width:62ch; margin:0 0 .5rem; }
+.foot a{ color:var(--paper-dim); }
+.foot a:hover{ color:var(--gold); }
+
+/* ---------- responsive ---------- */
+@media (max-width:760px){
+  :root{ --rail:0px; }
+  .fiche{ grid-template-columns:1fr; padding-left:1.35rem; }
+  .fiche::before{ left:0; }
+  .fiche::after{ left:0; top:.35rem; }
+  .fiche__rail{ text-align:left; display:flex; align-items:baseline; gap:.9rem; margin-bottom:.7rem; padding-top:0; }
+  .fiche__cote{ margin-top:0; }
+  .toc a{ grid-template-columns:1.9rem 1fr; }
+  .toc__span{ grid-column:2; margin-top:.35rem; }
+  .lead .drop::first-letter{ font-size:3.2rem; }
+}
+@media (max-width:460px){
+  body{ font-size:1.02rem; }
+  .mast__meta{ gap:.4rem 1rem; }
+}
+
+/* ---------- mouvement réduit ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *{ transition:none !important; animation:none !important; }
+  .fiche,.era__head{ opacity:1 !important; transform:none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#chrono">Aller à la chronologie</a>
+<div class="flagbar" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar" aria-hidden="true">
+  <div class="topbar__t"><b>Le Dossier noir</b> — crises &amp; scandales belges</div>
+  <a class="topbar__nav" href="#sommaire">↑ Sommaire</a>
+</header>
+
+<!-- ===================== MASTHEAD ===================== -->
+<section class="mast">
+  <div class="wrap">
+    <p class="mast__eyebrow">Chronique — Crises · Scandales · Zones d'ombre</p>
+    <h1 class="mast__title">Le Dossier <span class="red">noir</span><br>de la Belgique</h1>
+    <p class="mast__stand">Une chronologie commentée des crises, des scandales et des drames qui ont façonné — et parfois fracturé — le royaume. <em>Un petit pays prospère et paisible, dit-on. Son histoire raconte autre chose.</em></p>
+    <div class="mast__meta">
+      <span><b>22</b> affaires</span>
+      <span><b>6</b> époques</span>
+      <span><b>1789</b> → <b>2022</b></span>
+      <span>sources en regard de chaque fiche</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÉDITORIAL ===================== -->
+<section class="lead">
+  <div class="wrap reading">
+    <p class="kicker">Note liminaire</p>
+    <p class="big">La Belgique aime se présenter en pays du compromis et de la mesure, patrie du surréalisme et de l'autodérision. Son histoire contemporaine est pourtant jalonnée d'une atrocité coloniale, d'assassinats politiques, de tueries jamais élucidées, d'effondrements judiciaires, de records d'immobilisme et de corruption au cœur même de l'Europe.</p>
+    <p class="drop">Ce dossier rassemble, dans l'ordre du temps, une vingtaine de ces épisodes : ce qui s'est passé, pourquoi cela a compté, et ce qu'en disent les sources. Chaque fiche peut se lire seule. Ensemble, elles dessinent une autre histoire belge — non pas celle des cathédrales et des prix Nobel, mais celle des fractures.</p>
+    <p>Le parti pris est celui de la rigueur accessible. Les faits avérés sont distingués des hypothèses. Les bilans contestés — au premier rang desquels celui du Congo de Léopold&nbsp;II — sont donnés sous forme de fourchettes, et présentés comme débattus. Les questions communautaires, qui traversent tout le récit, sont exposées en tenant compte des perspectives flamande et francophone. Il ne s'agit ni d'une recherche originale ni d'un travail exhaustif, mais d'une synthèse honnête appuyée sur la presse de référence, les rapports parlementaires et l'historiographie.</p>
+
+    <div class="legend">
+      <p class="legend__h">Comment lire ce dossier</p>
+      <div class="legend__grid">
+        <div class="legend__row"><span class="swatch" aria-hidden="true"></span><p>Nœud <strong style="color:var(--gold-text)">or</strong> : crise, scandale ou rupture institutionnelle.</p></div>
+        <div class="legend__row"><span class="swatch grave" aria-hidden="true"></span><p>Nœud <strong style="color:var(--oxblood-tx)">oxblood</strong> : drame humain, atrocité, ou affaire restée sans réponse.</p></div>
+        <div class="legend__row"><span class="swatch" style="border-radius:2px;border-color:var(--line);background:transparent" aria-hidden="true"></span><p>La <strong>cote</strong> sous l'année est un repère de classement propre à ce dossier.</p></div>
+        <div class="legend__row"><span class="swatch" style="border-radius:2px;border-color:var(--oxblood-ln);background:transparent" aria-hidden="true"></span><p>Le <strong>bilan</strong> encadré signale le coût humain ou matériel, lorsqu'il est documenté.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOMMAIRE ===================== -->
+<nav class="toc" id="sommaire" aria-label="Sommaire du dossier">
+  <div class="wrap">
+    <h2>Sommaire du dossier</h2>
+    <ol>
+      <li><a href="#era-1"><span class="toc__num">I</span><span class="toc__title">Aux origines : naissance et fractures d'un État<small>De la révolution brabançonne à l'atrocité congolaise</small></span><span class="toc__span">1789 – 1908</span></a></li>
+      <li><a href="#era-2"><span class="toc__num">II</span><span class="toc__title">Guerres, occupations et la question du Roi<small>Invasion, collaboration, Shoah, abdication</small></span><span class="toc__span">1914 – 1951</span></a></li>
+      <li><a href="#era-3"><span class="toc__num">III</span><span class="toc__title">Décolonisation et déchirure communautaire<small>Lumumba, « Walen buiten », fédéralisation</small></span><span class="toc__span">1960 – 1980</span></a></li>
+      <li><a href="#era-4"><span class="toc__num">IV</span><span class="toc__title">Les années de plomb et de sang<small>Tueries, Heysel, Cools-Agusta, Dutroux</small></span><span class="toc__span">1982 – 1996</span></a></li>
+      <li><a href="#era-5"><span class="toc__num">V</span><span class="toc__title">État défaillant, État réformé<small>Dioxine, Sabena, Fortis, 541 jours, attentats</small></span><span class="toc__span">1998 – 2016</span></a></li>
+      <li><a href="#era-6"><span class="toc__num">VI</span><span class="toc__title">Le miroir contemporain<small>Sanda Dia, Qatargate, paralysies en série</small></span><span class="toc__span">2018 – 2022</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ===================== CHRONOLOGIE ===================== -->
+<main id="chrono" class="wrap">
+<!-- ===== ÉPOQUE I ===== -->
+<section class="era" id="era-1">
+  <header class="era__head">
+    <div class="era__kick"><span class="era__num">I</span><span class="era__span">1789 – 1908</span></div>
+    <h2 class="era__title">Aux origines : naissance et fractures d'un État</h2>
+    <p class="era__intro">La Belgique se constitue par soustraction — contre Vienne, contre La Haye — plus que par un projet commun. Dès le départ, deux failles s'y logent : celle de la langue, et celle d'un rapport au monde qui culminera dans l'une des plus grandes catastrophes coloniales de l'histoire.</p>
+  </header>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1789</div><div class="fiche__cote">Brab · 01</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Insurrection</span><span class="tag">Ancien Régime</span></div>
+      <h3 class="fiche__title">La révolution brabançonne</h3>
+      <p class="fiche__dek">Avant la Belgique, une première révolution — et déjà une querelle sur ce que ce pays devait être.</p>
+      <div class="fiche__text">
+        <p>Aux Pays-Bas autrichiens, les réformes centralisatrices et anticléricales de l'empereur Joseph&nbsp;II déclenchent en 1789 une révolte. Une coalition hétéroclite s'y oppose&nbsp;: les «&nbsp;statistes&nbsp;» conservateurs de Van der Noot, attachés aux anciens privilèges, et les «&nbsp;vonckistes&nbsp;» progressistes, inspirés des Lumières. Ensemble, ils chassent l'Autriche et proclament, en janvier 1790, les éphémères <strong>États belgiques unis</strong>.</p>
+        <p>L'union se fracture presque aussitôt entre ses deux ailes&nbsp;; l'Autriche reconquiert le territoire dès la fin de 1790, avant que la Révolution française ne balaie le tout (annexion en 1795). L'épisode importe parce qu'il annonce une constante&nbsp;: une entité définie davantage par ce qu'elle refuse que par une vision partagée, déjà clivée entre conservateurs et progressistes. Et c'est là que le mot «&nbsp;Belgique&nbsp;» entre dans le vocabulaire politique.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Historiographie de l'Ancien Régime aux Pays-Bas autrichiens ; notices « États belgiques unis » et « Révolution brabançonne ».</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1830</div><div class="fiche__cote">Rév · 1830</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Révolution</span><span class="tag">Fondation</span><span class="tag tag--gold">Question linguistique</span></div>
+      <h3 class="fiche__title">La révolution belge et le péché originel</h3>
+      <p class="fiche__dek">Un opéra, une émeute, un royaume — et, dès le berceau, une langue qui divise.</p>
+      <div class="fiche__text">
+        <p>Le 25 août 1830, à la sortie d'une représentation de l'opéra <em>La Muette de Portici</em> au Théâtre de la Monnaie, des émeutes éclatent à Bruxelles contre Guillaume&nbsp;I<sup>er</sup> d'Orange et le Royaume uni des Pays-Bas, cette union du Nord et du Sud imposée en 1815. Le soulèvement gagne&nbsp;; après les journées de septembre, un gouvernement provisoire proclame l'indépendance le 4 octobre 1830. Un Congrès national adopte l'une des constitutions les plus libérales de l'époque (7 février 1831), et Léopold de Saxe-Cobourg devient le premier roi des Belges le 21 juillet 1831. Le traité de Londres (1839) consacre l'indépendance et la neutralité perpétuelle du pays.</p>
+        <p>Mais le nouvel État est bâti par et pour une élite francophone, alors même que la majorité de la population, au nord, parle des dialectes flamands. Le français est la langue du droit, de l'administration, de l'armée et de l'ascension sociale. De cette asymétrie fondatrice naîtra le <strong>Mouvement flamand</strong>, et avec lui la question communautaire qui structurera, plus que tout scandale, les deux siècles suivants.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Histoire de la révolution belge de 1830 ; Connaître la Wallonie ; historiographie du Mouvement flamand.</p>
+    </div>
+  </article>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1885</div><div class="fiche__cote">EIC · 1885</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Atrocité coloniale</span><span class="tag">Léopold II</span><span class="tag">Colonie privée</span></div>
+      <h3 class="fiche__title">L'État indépendant du Congo</h3>
+      <p class="fiche__dek">Une colonie qui n'appartenait pas à la Belgique, mais à un seul homme — et qui devint l'un des grands crimes du siècle.</p>
+      <div class="toll"><span class="toll__l">Bilan humain</span><span class="toll__v">Surmortalité estimée de <strong>2 à 10 millions</strong> de personnes (1885-1908). Aucun recensement&nbsp;: ordre de grandeur très débattu.</span></div>
+      <div class="fiche__text">
+        <p>À la conférence de Berlin (1884-1885), les puissances reconnaissent une entité singulière&nbsp;: l'<strong>État indépendant du Congo</strong>, propriété personnelle non de la Belgique, mais du roi Léopold&nbsp;II lui-même, proclamé souverain le 1<sup>er</sup> juillet 1885. Derrière une rhétorique humanitaire et «&nbsp;civilisatrice&nbsp;», le monarque organise l'extraction brutale de l'ivoire puis, surtout, du caoutchouc.</p>
+        <p>La <em>Force publique</em> impose les quotas par la terreur&nbsp;: prises d'otages, villages incendiés, la chicotte, et la mutilation des mains — y compris sur des vivants et des enfants — que les soldats rapportaient pour «&nbsp;justifier&nbsp;» leurs cartouches. Travail forcé, abandon des cultures vivrières, famines et maladies importées provoquent une catastrophe démographique dont l'ampleur exacte restera indéterminable&nbsp;: les estimations vont de deux à dix millions de morts, et demeurent disputées entre historiens.</p>
+        <p>Dès 1890, une campagne internationale menée par Edmund Dene Morel et le diplomate britannique Roger Casement — dont le rapport de 1904 documente les exactions — finit par contraindre le roi. En 1908, sous la pression, Léopold&nbsp;II cède sa colonie à l'État belge, qui la lui rachète&nbsp;: c'est le Congo belge. La mémoire reste à vif&nbsp;: best-seller controversé de Hochschild (1998), statues du roi déboulonnées ou vandalisées en 2020, travaux parlementaires sur le passé colonial ouverts — puis rabotés — au début des années 2020.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Notices « État indépendant du Congo » et « Exactions… » ; A. Hochschild, <em>Les Fantômes du roi Léopold</em> (1998) ; travaux de Jules Marchal et Jan Vansina ; rapport Casement (1904).</p>
+    </div>
+  </article>
+</section>
+
+<!-- ===== ÉPOQUE II ===== -->
+<section class="era" id="era-2">
+  <header class="era__head">
+    <div class="era__kick"><span class="era__num">II</span><span class="era__span">1914 – 1951</span></div>
+    <h2 class="era__title">Guerres, occupations et la question du Roi</h2>
+    <p class="era__intro">Deux invasions, deux occupations, un génocide perpétré sur le sol belge, et un roi dont les choix de 1940 déchireront le pays jusqu'en 1951. La parenthèse des guerres approfondit chacune des failles d'origine.</p>
+  </header>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1914</div><div class="fiche__cote">WWI · 1914</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Crimes de guerre</span><span class="tag">Invasion</span><span class="tag">Neutralité violée</span></div>
+      <h3 class="fiche__title">L'invasion et le « viol de la Belgique »</h3>
+      <p class="fiche__dek">Pour atteindre la France, l'Allemagne piétine un pays neutre — et inaugure le siècle des massacres de civils.</p>
+      <div class="toll"><span class="toll__l">Bilan</span><span class="toll__v">Dinant&nbsp;: ~674 civils fusillés (23 août 1914). Louvain&nbsp;: ville et bibliothèque universitaire incendiées, des centaines de morts.</span></div>
+      <div class="fiche__text">
+        <p>Le 4 août 1914, l'armée allemande envahit la Belgique, dont la neutralité était garantie depuis 1839, afin de contourner la France (plan Schlieffen). Le roi <strong>Albert&nbsp;I<sup>er</sup></strong>, le «&nbsp;Roi-Chevalier&nbsp;», refuse le passage et organise la résistance derrière le front de l'Yser.</p>
+        <p>L'invasion s'accompagne de violences délibérées contre les civils, justifiées par le mythe paranoïaque des «&nbsp;francs-tireurs&nbsp;». À Dinant, le 23 août 1914, environ 674 habitants — enfants compris — sont fusillés. À Louvain, la vieille cité universitaire est mise à sac et brûlée&nbsp;; la bibliothèque et quelque 300&nbsp;000 ouvrages partent en fumée. Ces atrocités, le «&nbsp;viol de la Belgique&nbsp;», bouleversent l'opinion mondiale et nourrissent la propagande alliée&nbsp;; longtemps minimisées, elles ont été confirmées comme bien réelles par les historiens.</p>
+        <p>L'occupation, longue de quatre ans, rouvre aussi une faille communautaire&nbsp;: la <span class="nl">Flamenpolitik</span> allemande tente d'exploiter les griefs flamands — une minorité «&nbsp;activiste&nbsp;» collabore, tandis que le <span class="nl">Frontbeweging</span> prend forme parmi les soldats flamands du front —, attisant des tensions qui resurgiront tout au long du siècle.</p>
+      </div>
+      <p class="src"><b>Sources</b> — belgiumwwii.be ; J. Horne &amp; A. Kramer, <em>1914, les atrocités allemandes</em> ; historiographie de la Grande Guerre en Belgique.</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1936</div><div class="fiche__cote">Rex · 1936</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Extrême droite</span><span class="tag">Crise démocratique</span></div>
+      <h3 class="fiche__title">La tentation rexiste</h3>
+      <p class="fiche__dek">Un tribun catholique fait trembler la démocratie belge — avant de finir en uniforme SS.</p>
+      <div class="fiche__text">
+        <p>Dans les années 1930 traversées par la crise, la Belgique n'échappe pas à la tentation autoritaire. <strong>Léon Degrelle</strong> lance le mouvement <em>Rex</em> (1935), nationaliste, antiparlementaire et corporatiste, qui perce aux élections de 1936 (21 sièges) en surfant sur le dégoût des scandales financiers et des partis établis. Degrelle vise le pouvoir.</p>
+        <p>Le système tient. Lors d'une élection partielle à Bruxelles, en 1937, transformée en référendum, le Premier ministre Paul Van Zeeland l'écrase&nbsp;: Degrelle ne recueille que ~19&nbsp;% des voix. En Flandre, le VNV (<span class="nl">Vlaams Nationaal Verbond</span>, fondé en 1933 par Staf De Clercq) rassemble un nationalisme flamand autoritaire. Les deux basculeront dans la pleine collaboration sous l'Occupation — Degrelle fondant la Légion Wallonie de la Waffen-SS et finissant ses jours en fugitif impénitent dans l'Espagne de Franco. Rappel utile&nbsp;: la démocratie belge de l'entre-deux-guerres fut plus fragile que son image ultérieure ne le laisse croire.</p>
+      </div>
+      <p class="src"><b>Sources</b> — belgiumwwii.be ; histoire politique de l'entre-deux-guerres ; notices « Rex » et « VNV ».</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1940</div><div class="fiche__cote">WWII · 1940</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Occupation</span><span class="tag">Collaboration</span><span class="tag tag--gold">Origine de la Question royale</span></div>
+      <h3 class="fiche__title">La capitulation et la collaboration</h3>
+      <p class="fiche__dek">En dix-huit jours, l'armée capitule et le Roi reste — un choix qui empoisonnera l'après-guerre.</p>
+      <div class="fiche__text">
+        <p>Le 10 mai 1940, l'Allemagne envahit de nouveau. Après dix-huit jours, le 28 mai 1940, le roi <strong>Léopold&nbsp;III</strong>, commandant en chef, capitule avec son armée. Surtout, contre l'avis de son gouvernement — qui choisit l'exil pour poursuivre le combat aux côtés des Alliés —, le roi décide de rester en Belgique occupée, prisonnier. La rupture du château de Wynendaele, le 25 mai, où il se dissocie de ses ministres, est l'origine véritable de la future «&nbsp;Question royale&nbsp;».</p>
+        <p>L'Occupation (1940-1944) voit une collaboration importante, des deux côtés de la frontière linguistique&nbsp;: le VNV flamand et Rex wallon fournissent administrateurs et volontaires Waffen-SS (Légion flamande, Légion Wallonie). Mais il y eut aussi, tôt et largement, une résistance, des réseaux, une presse clandestine et des actes de courage civique — y compris des magistrats et des élus locaux refusant de servir l'occupant. La Belgique sort libérée en septembre 1944, mais moralement divisée&nbsp;: la scène est dressée pour une répression brutale et pour la Question royale.</p>
+      </div>
+      <p class="src"><b>Sources</b> — belgiumwwii.be ; CegeSoma ; J. Gotovitch &amp; J. Aron (dir.), <em>Dictionnaire de la Seconde Guerre mondiale en Belgique</em>.</p>
+    </div>
+  </article>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1942</div><div class="fiche__cote">Shoah · 42</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Génocide</span><span class="tag">Déportation</span><span class="tag">Caserne Dossin</span></div>
+      <h3 class="fiche__title">La Shoah : la caserne Dossin</h3>
+      <p class="fiche__dek">À mi-chemin entre Anvers et Bruxelles, une caserne devient l'antichambre belge d'Auschwitz.</p>
+      <div class="toll"><span class="toll__l">Bilan humain</span><span class="toll__v">Plus de <strong>25 500 Juifs</strong> et ~350 Roms déportés via Malines (1942-1944). Environ <strong>5 %</strong> de survivants.</span></div>
+      <div class="fiche__text">
+        <p>À la veille de la guerre, 55&nbsp;000 à 66&nbsp;000 Juifs vivent en Belgique, en grande majorité des immigrés récents d'Europe centrale et orientale. Dès l'été 1942, la SS transforme la <strong>caserne Dossin</strong>, à Malines (Mechelen) — nœud ferroviaire entre Anvers et Bruxelles —, en camp de rassemblement. L'étoile jaune est imposée le 27 mai 1942&nbsp;; le premier convoi part pour Auschwitz-Birkenau le 4 août 1942 (999 personnes). Au fil de 28 grands convois, plus de 25&nbsp;500 Juifs et quelque 350 Roms sont déportés&nbsp;; environ 5&nbsp;% reviendront.</p>
+        <p>Le bilan belge est contrasté — et la mémoire l'assume comme tel. L'Association des Juifs en Belgique, un Judenrat créé sous la contrainte, transmit les funestes «&nbsp;convocations à Malines&nbsp;». Pourtant, le taux de survie en Belgique (plus de la moitié) fut nettement supérieur à celui des Pays-Bas&nbsp;: résistance, faible enregistrement, et refus de coopérer. Les bourgmestres de Bruxelles refusèrent de distribuer l'étoile et de prêter main-forte à la rafle de septembre 1942, quand la police d'Anvers, elle, participa aux arrestations.</p>
+        <p>Le 19 avril 1943, trois jeunes résistants stoppèrent le 20<sup>e</sup> convoi près de Boortmeerbeek et permirent à plus de 200 déportés de s'évader — un geste unique dans l'Europe occupée. En 2012, le Premier ministre Elio Di Rupo présenta les excuses officielles de la Belgique pour le rôle de certaines autorités.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Kazerne Dossin (Malines) ; notice « Shoah en Belgique » ; Encyclopédie de l'USHMM ; belgiumwwii.be.</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1950</div><div class="fiche__cote">Roi · 1950</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Crise institutionnelle</span><span class="tag tag--gold">Fracture Flandre / Wallonie</span></div>
+      <h3 class="fiche__title">La Question royale</h3>
+      <p class="fiche__dek">Le seul référendum de l'histoire belge — et il faillit emporter la monarchie.</p>
+      <div class="toll"><span class="toll__l">Drame</span><span class="toll__v">Grâce-Berleur, 30 juillet 1950&nbsp;: <strong>quatre militants tués</strong> par la gendarmerie.</span></div>
+      <div class="fiche__text">
+        <p>Léopold&nbsp;III doit-il remonter sur le trône&nbsp;? La question — née de la capitulation de 1940, de sa conduite sous l'Occupation et de son remariage — déchire le pays cinq années durant. Le 12 mars 1950, se tient la seule <strong>consultation populaire</strong> (le seul «&nbsp;référendum&nbsp;») de l'histoire belge. Résultat&nbsp;: 57,7&nbsp;% pour le retour du roi — mais le chiffre masque une fracture régionale profonde. La Flandre vote oui à ~72&nbsp;%&nbsp;; la Wallonie non (autour de 58&nbsp;%)&nbsp;; Bruxelles est coupée en deux. Le «&nbsp;oui&nbsp;» national est donc un oui flamand, refusé par la Wallonie.</p>
+        <p>Quand le gouvernement social-chrétien homogène organise son retour, la Wallonie se soulève&nbsp;: grèves générales, manifestations, climat insurrectionnel. Le 30 juillet 1950, la gendarmerie tue quatre manifestants à Grâce-Berleur, près de Liège&nbsp;; une «&nbsp;marche sur Bruxelles&nbsp;» est annoncée. Pour sauver la couronne, Léopold&nbsp;III délègue ses pouvoirs à son fils Baudouin (août 1950), puis abdique formellement le 16 juillet 1951. Baudouin devient le cinquième roi des Belges dès le lendemain.</p>
+        <p>La cicatrice est durable. Plus encore que la guerre scolaire, l'épisode révèle comment deux majorités démocratiques — l'une flamande, l'autre wallonne — peuvent s'annuler. La question fédérale est, en germe, déjà là.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Notice « Question royale » ; Connaître la Wallonie ; CegeSoma (« Il y a 75 ans… ») ; RTBF.</p>
+    </div>
+  </article>
+</section>
+
+<section class="era" id="era-3">
+  <header class="era__head">
+    <div class="era__kick"><span class="era__num">III</span><span class="era__span">1960 – 1980</span></div>
+    <h2 class="era__title">Décolonisation et déchirure communautaire</h2>
+    <p class="era__intro">En l'espace de huit ans, la Belgique perd brutalement son empire — dans le sang d'un Premier ministre congolais qu'elle a contribué à éliminer — et manque de se briser elle-même sur une querelle d'université. Deux héritages du «&nbsp;péché originel&nbsp;» de 1830 arrivent à maturité.</p>
+  </header>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1961</div><div class="fiche__cote">Congo · 60-61</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Assassinat politique</span><span class="tag">Décolonisation</span><span class="tag tag--gold">Responsabilité reconnue</span></div>
+      <h3 class="fiche__title">L'indépendance du Congo et l'assassinat de Lumumba</h3>
+      <p class="fiche__dek">Une décolonisation bâclée, une sécession téléguidée, et l'élimination du premier chef de gouvernement élu — un demi-siècle avant les aveux.</p>
+      <div class="toll"><span class="toll__l">Bilan</span><span class="toll__v"><strong>Patrice Lumumba</strong>, premier Premier ministre du Congo, exécuté le 17 janvier 1961 avec Maurice Mpolo et Joseph Okito&nbsp;; corps dissous dans l'acide.</span></div>
+      <div class="fiche__text">
+        <p>Le 30 juin 1960, le Congo accède à l'indépendance après quatre-vingts ans de domination belge. Mal préparée, la transition tourne au chaos en quelques jours&nbsp;: mutinerie de la Force publique, panique des colons, puis, le 11 juillet, la sécession de la province minière du <strong>Katanga</strong>, menée par Moïse Tshombe avec le soutien de Bruxelles, de l'Union minière du Haut-Katanga et de mercenaires. Le jeune Premier ministre nationaliste <strong>Patrice Lumumba</strong>, qui réclame l'aide soviétique faute de soutien occidental, devient la cible des grandes puissances en pleine Guerre froide.</p>
+        <p>Écarté le 14 septembre 1960 lors du coup de force de Joseph-Désiré Mobutu, arrêté, Lumumba est livré à ses ennemis katangais et exécuté le 17 janvier 1961, en présence d'officiers et de policiers belges&nbsp;; son corps est ensuite dépecé et dissous dans l'acide pour ne laisser aucune trace. Pendant des décennies, la Belgique nie toute implication.</p>
+        <p>L'historien <strong>Ludo De Witte</strong> rouvre le dossier en 1999 (<em>De moord op Lumumba</em>). Une commission d'enquête parlementaire conclut en 2001 à une «&nbsp;responsabilité morale&nbsp;» de la Belgique, et le gouvernement présente ses excuses en 2002. En juin 2022, la Belgique restitue à la famille la seule relique du martyr&nbsp;: une dent, conservée comme trophée par un policier belge. La CIA américaine fut également partie prenante des projets d'élimination.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Ludo De Witte, <em>L'Assassinat de Lumumba</em> (1999) ; rapport de la commission d'enquête parlementaire, Chambre des représentants (2001) ; RTBF, Le Soir (restitution 2022).</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1968</div><div class="fiche__cote">Leuven · 68</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Crise communautaire</span><span class="tag tag--gold">Naissance du fédéralisme</span><span class="tag">Chute de gouvernement</span></div>
+      <h3 class="fiche__title">« Walen buiten » : la scission de Louvain</h3>
+      <p class="fiche__dek">Une université coupée en deux fait tomber un gouvernement, scinde les grands partis et lance la Belgique sur la voie fédérale.</p>
+      <div class="toll toll--gold"><span class="toll__l">Onde de choc</span><span class="toll__v">Chute du gouvernement Vanden Boeynants (7 février 1968)&nbsp;; éclatement des trois partis nationaux selon la frontière linguistique.</span></div>
+      <div class="fiche__text">
+        <p>En 1962, les lois Gilson fixent une frontière linguistique intangible&nbsp;: la commune de Louvain (Leuven) se retrouve en territoire flamand, mais y abrite une prestigieuse université catholique bilingue. Pour le mouvement flamand, la présence de la section francophone est une anomalie. Le mot d'ordre claque&nbsp;: «&nbsp;<span class="nl">Walen buiten</span>&nbsp;» — «&nbsp;les Wallons dehors&nbsp;».</p>
+        <p>La crise couve depuis 1966, quand un «&nbsp;mandement&nbsp;» des évêques, voulant maintenir l'université «&nbsp;une et indivisible&nbsp;», met le feu aux poudres au lieu de l'éteindre. À l'hiver 1967-1968, les manifestations étudiantes flamandes embrasent la ville. Le gouvernement social-chrétien–libéral de <strong>Paul Vanden Boeynants</strong> ne survit pas&nbsp;: il tombe le 7 février 1968.</p>
+        <p>L'issue est radicale&nbsp;: la section francophone est expulsée et l'on bâtit pour elle une ville neuve en Brabant wallon, <strong>Louvain-la-Neuve</strong> (première pierre en 1971, premiers cours en 1972). Surtout, l'affaire fait éclater les trois grandes familles politiques nationales (sociale-chrétienne, libérale, socialiste) en ailes flamande et francophone distinctes — fracture jamais refermée. La première réforme de l'État (1970) en découle directement&nbsp;: la Belgique unitaire commence à se défaire.</p>
+      </div>
+      <p class="src"><b>Sources</b> — KU Leuven &amp; UCLouvain (historiques institutionnels) ; CRISP, <em>Courrier hebdomadaire</em> ; lois linguistiques de 1962-1963 ; RTBF.</p>
+    </div>
+  </article>
+</section>
+
+<section class="era" id="era-4">
+  <header class="era__head">
+    <div class="era__kick"><span class="era__num">IV</span><span class="era__span">1982 – 1996</span></div>
+    <h2 class="era__title">Les années de plomb et de sang</h2>
+    <p class="era__intro">Une décennie qui ébranle la confiance des Belges dans leurs institutions&nbsp;: des tueries jamais élucidées, une catastrophe de stade retransmise en mondovision, une corruption d'État au sommet, et une affaire criminelle si monstrueuse qu'elle jette 300&nbsp;000 personnes dans la rue. En toile de fond, une «&nbsp;guerre des polices&nbsp;» qui paralyse l'enquête.</p>
+  </header>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1985</div><div class="fiche__cote">Brabant · 82-85</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Tueries non élucidées</span><span class="tag">Cold case</span><span class="tag">Soupçons d'État</span></div>
+      <h3 class="fiche__title">Les Tueries du Brabant</h3>
+      <p class="fiche__dek">Vingt-huit morts pour quelques milliers de francs&nbsp;: la plus grande énigme criminelle belge, toujours ouverte.</p>
+      <div class="toll"><span class="toll__l">Bilan</span><span class="toll__v"><strong>28 morts</strong> et une quarantaine de blessés (1982-1985)&nbsp;; aucun coupable identifié à ce jour.</span></div>
+      <div class="fiche__text">
+        <p>Entre 1982 et 1985, un commando d'une violence inouïe ensanglante le Brabant, frappant surtout des supermarchés Delhaize. Le mode opératoire déconcerte&nbsp;: butin dérisoire, mais tirs gratuits sur les clients, enfants compris. Les journées les plus meurtrières sont le 27 septembre 1985 (Braine-l'Alleud et Overijse, huit morts) et le 9 novembre 1985 (Alost). Puis, brutalement, plus rien.</p>
+        <p>Quarante ans plus tard, les «&nbsp;tueurs du Brabant&nbsp;» restent introuvables. Les pistes s'entrechoquent&nbsp;: grand banditisme, déstabilisation d'extrême droite façon «&nbsp;stratégie de la tension&nbsp;» (l'hypothèse d'un lien avec des réseaux para-militaires de type <em>Gladio</em> et d'anciens gendarmes a longtemps été explorée), règlements de comptes. L'enquête, plombée par la rivalité entre polices, a multiplié les ratés. Le parquet fédéral a annoncé la clôture du dossier en 2024, avant une réouverture partielle. Cette plaie ouverte nourrit une défiance durable envers l'État et ses services.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Commissions d'enquête parlementaires « Tueurs du Brabant » (1988-1990, 1996-1997) ; archives RTBF et Le Soir ; communiqués du parquet fédéral (2024).</p>
+    </div>
+  </article>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1985</div><div class="fiche__cote">Heysel · 85</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Catastrophe</span><span class="tag">Hooliganisme</span><span class="tag">Défaillance organisationnelle</span></div>
+      <h3 class="fiche__title">Le drame du Heysel</h3>
+      <p class="fiche__dek">Trente-neuf morts en direct, avant le coup d'envoi d'une finale qu'on a quand même jouée.</p>
+      <div class="toll"><span class="toll__l">Bilan</span><span class="toll__v"><strong>39 morts</strong> (en majorité des supporters italiens) et près de 600 blessés, le 29 mai 1985.</span></div>
+      <div class="fiche__text">
+        <p>Le 29 mai 1985, le stade du Heysel à Bruxelles accueille la finale de la Coupe d'Europe des clubs champions entre Liverpool et la Juventus. Avant le match, des supporters anglais chargent la tribune voisine&nbsp;; dans la panique, un mur vétuste s'effondre. Trente-neuf personnes meurent écrasées ou asphyxiées, près de 600 sont blessées. Les causes&nbsp;: hooliganisme, stade délabré, séparation des supporters défaillante, encadrement insuffisant.</p>
+        <p>Décision controversée&nbsp;: la rencontre est maintenue «&nbsp;pour éviter d'autres violences&nbsp;», et la Juventus l'emporte 1-0. Au procès (1989), des supporters britanniques sont condamnés, de même qu'un responsable de la fédération belge et un capitaine de gendarmerie&nbsp;; les clubs anglais sont bannis d'Europe pour cinq ans. La catastrophe provoque aussi une crise gouvernementale à Bruxelles. Le stade, rénové, est rebaptisé stade Roi-Baudouin.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Jugement du tribunal correctionnel de Bruxelles (1989) ; UEFA ; archives de presse (RTBF, Le Soir, presse internationale).</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1991</div><div class="fiche__cote">Agusta · 91-98</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Corruption d'État</span><span class="tag tag--grave">Assassinat politique</span><span class="tag tag--gold">Démissions en cascade</span></div>
+      <h3 class="fiche__title">L'affaire Cools et le scandale Agusta-Dassault</h3>
+      <p class="fiche__dek">Le meurtre d'un baron socialiste dévoile des pots-de-vin qui feront tomber des ministres et un secrétaire général de l'OTAN.</p>
+      <div class="toll"><span class="toll__l">Bilan</span><span class="toll__v"><strong>André Cools</strong> (PS) abattu le 18 juillet 1991 à Liège&nbsp;; l'enquête met au jour une corruption massive dans des marchés d'armement.</span></div>
+      <div class="fiche__text">
+        <p>Le 18 juillet 1991, <strong>André Cools</strong>, figure du Parti socialiste et ancien vice-Premier ministre, est assassiné devant son domicile à Liège. L'enquête sur ce meurtre déterre un autre scandale&nbsp;: pour décrocher des contrats militaires belges (hélicoptères Agusta, modernisation de F-16 par Dassault), les firmes italienne et française ont versé des pots-de-vin — quelque 160&nbsp;millions de francs — aux partis socialistes flamand et francophone à la fin des années 1980.</p>
+        <p>Les conséquences politiques sont retentissantes. Plusieurs dirigeants socialistes démissionnent en 1994&nbsp;; surtout, <strong>Willy Claes</strong>, alors secrétaire général de l'OTAN, doit quitter ses fonctions en octobre 1995. La Cour de cassation prononce des condamnations en décembre 1998 (peines de prison avec sursis, amendes, déchéances de droits civiques). Quant au meurtre de Cools, il vaudra des condamnations à de lourdes peines en 2004&nbsp;; le lien direct avec l'affaire Agusta, lui, n'a jamais été formellement établi. Le dossier devient le symbole d'une «&nbsp;particratie&nbsp;» et d'un financement occulte des partis — qui débouchera sur une législation stricte.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Arrêt de la Cour de cassation (23 décembre 1998) ; procès d'assises de Liège (affaire Cools, 2004) ; CRISP ; archives Le Soir / RTBF.</p>
+    </div>
+  </article>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1996</div><div class="fiche__cote">Dutroux · 96</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Crimes contre des enfants</span><span class="tag">Faillite judiciaire</span><span class="tag tag--gold">Marche blanche</span></div>
+      <h3 class="fiche__title">L'affaire Dutroux</h3>
+      <p class="fiche__dek">Le traumatisme fondateur de la Belgique moderne&nbsp;: l'horreur d'un prédateur, doublée de la faillite d'un État.</p>
+      <div class="toll"><span class="toll__l">Bilan humain</span><span class="toll__v">Quatre fillettes et adolescentes mortes (Julie, Mélissa, An, Eefje)&nbsp;; deux survivantes. <strong>300&nbsp;000 personnes</strong> à la Marche blanche.</span></div>
+      <div class="fiche__text">
+        <p>En 1996, l'arrestation de <strong>Marc Dutroux</strong> révèle une suite de séquestrations, de viols et de meurtres d'enfants. Deux fillettes de huit ans, Julie Lejeune et Mélissa Russo, enlevées en 1995, sont mortes de faim dans une cave pendant que Dutroux — déjà connu de la justice — était brièvement incarcéré pour une autre affaire. Deux adolescentes, An Marchal et Eefje Lambrecks, sont également tuées&nbsp;; deux autres jeunes filles, Sabine Dardenne et Laetitia Delhez, sont sauvées vivantes le 13 août 1996.</p>
+        <p>Au choc des crimes s'ajoute celui des dysfonctionnements&nbsp;: pistes négligées, rivalités entre gendarmerie et police judiciaire (la fameuse «&nbsp;guerre des polices&nbsp;»), occasions manquées de sauver les enfants. Lorsque le juge Connerotte, très populaire, est dessaisi pour avoir participé à un dîner de soutien aux familles, la colère populaire explose&nbsp;: le 20 octobre 1996, la <strong>Marche blanche</strong> rassemble quelque 300&nbsp;000 personnes à Bruxelles.</p>
+        <p>La déflagration force des réformes profondes&nbsp;: réorganisation des polices en une structure intégrée à deux niveaux (accords «&nbsp;Octopus&nbsp;»), suppression de la gendarmerie (2001), création d'un parquet fédéral, d'un Conseil supérieur de la Justice et de tribunaux d'application des peines, naissance de Child Focus. Condamné à perpétuité en 2004, Dutroux reste, dans l'imaginaire collectif, le nom d'une double faillite&nbsp;: humaine et institutionnelle.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Commission d'enquête parlementaire « Dutroux » (rapport Verwilghen, 1997) ; accords Octopus (1998) ; arrêt de la cour d'assises d'Arlon (2004) ; Child Focus.</p>
+    </div>
+  </article>
+</section>
+
+<section class="era" id="era-5">
+  <header class="era__head">
+    <div class="era__kick"><span class="era__num">V</span><span class="era__span">1998 – 2016</span></div>
+    <h2 class="era__title">État défaillant, État réformé</h2>
+    <p class="era__intro">Après le séisme Dutroux, la Belgique se réforme sans cesse — sécurité alimentaire, justice, asile — tout en encaissant de nouveaux chocs&nbsp;: une crise sanitaire qui fait tomber un gouvernement, la faillite de sa compagnie nationale, la déroute de ses banques, un record mondial de paralysie politique, et le terrorisme de masse. Un État qui ne cesse de se rebâtir entre deux secousses.</p>
+  </header>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">1998</div><div class="fiche__cote">Adamu · 98</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Mort en expulsion</span><span class="tag">Politique d'asile</span></div>
+      <h3 class="fiche__title">La mort de Semira Adamu</h3>
+      <p class="fiche__dek">Une demandeuse d'asile tuée lors de son expulsion forcée&nbsp;: la politique migratoire belge sur le banc des accusés.</p>
+      <div class="fiche__text">
+        <p>En septembre 1998, <strong>Semira Adamu</strong>, jeune Nigériane de vingt ans déboutée du droit d'asile, meurt étouffée par des gendarmes lors d'une tentative d'expulsion par la force, la technique dite «&nbsp;du coussin&nbsp;» appliquée pour étouffer ses cris. Le scandale provoque la démission du ministre de l'Intérieur, une révision des procédures d'éloignement et un débat durable sur la dignité et la violence des renvois forcés.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Procès de Bruxelles (suites judiciaires) ; rapports d'ONG (Ligue des droits humains) ; archives RTBF / Le Soir.</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">1999</div><div class="fiche__cote">Dioxine · 99</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Crise sanitaire</span><span class="tag">Soupçon de dissimulation</span><span class="tag tag--gold">Bouleversement électoral</span></div>
+      <h3 class="fiche__title">La crise de la dioxine</h3>
+      <p class="fiche__dek">Du poison dans la chaîne alimentaire, un silence de plusieurs mois — et la chute historique d'un parti qui régnait depuis quarante ans.</p>
+      <div class="toll toll--gold"><span class="toll__l">Onde de choc</span><span class="toll__v">Embargo international, millions de bêtes abattues, deux ministres démissionnaires et la première défaite du CVP en Flandre depuis 1958.</span></div>
+      <div class="fiche__text">
+        <p>Au printemps 1999, on découvre que des graisses contaminées par des PCB et de la dioxine — issues d'un recyclage frauduleux — ont été incorporées à des aliments pour bétail. Volailles, œufs, porcs&nbsp;: la chaîne alimentaire est touchée. Or les autorités, informées dès le début de l'année, n'alertent le public qu'en mai. L'accusation de dissimulation est dévastatrice. S'ensuivent un embargo international, l'abattage de millions d'animaux et la démission de deux ministres (Santé et Agriculture).</p>
+        <p>Le verdict tombe dans les urnes le 13 juin 1999&nbsp;: le CVP social-chrétien, hégémonique en Flandre depuis l'après-guerre, subit une défaite historique. Le libéral <strong>Guy Verhofstadt</strong> forme une coalition «&nbsp;arc-en-ciel&nbsp;» (libéraux, socialistes, écologistes) — la première participation des Verts à un gouvernement fédéral. La crise accouche d'une institution durable&nbsp;: l'Agence fédérale pour la sécurité de la chaîne alimentaire (AFSCA), créée en 2000.</p>
+      </div>
+      <p class="src"><b>Sources</b> — AFSCA (historique) ; Commission d'enquête « dioxine » (1999) ; résultats électoraux de 1999 ; archives Le Soir / RTBF.</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">2001</div><div class="fiche__cote">Sabena · 01</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Faillite</span><span class="tag">Symbole national</span></div>
+      <h3 class="fiche__title">La faillite de la Sabena</h3>
+      <p class="fiche__dek">La compagnie aérienne nationale s'effondre&nbsp;: 7&nbsp;000 emplois et un morceau de fierté belge avec elle.</p>
+      <div class="fiche__text">
+        <p>En novembre 2001, la <strong>Sabena</strong>, compagnie aérienne nationale fondée en 1923, est déclarée en faillite — l'une des plus grandes de l'histoire du pays. En cause&nbsp;: des années de gestion difficile, un partenariat ruineux avec Swissair (elle-même au bord du gouffre) et le choc du secteur aérien après le 11-Septembre. Quelque 7&nbsp;000 personnes perdent leur emploi. De ses cendres renaîtra une compagnie plus modeste, SN Brussels Airlines.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Jugement du tribunal de commerce de Bruxelles (2001) ; archives économiques (L'Echo, De Tijd) ; RTBF.</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">2008</div><div class="fiche__cote">Fortis · 08</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Crise financière</span><span class="tag tag--gold">Crise institutionnelle</span><span class="tag">Séparation des pouvoirs</span></div>
+      <h3 class="fiche__title">Le démantèlement de Fortis et le « Fortisgate »</h3>
+      <p class="fiche__dek">La crise de 2008 emporte le premier bancassureur du pays — et une suspicion d'ingérence fait tomber un gouvernement.</p>
+      <div class="fiche__text">
+        <p>Pendant la crise financière de 2008, <strong>Fortis</strong>, premier groupe bancaire et d'assurance belge, vacille puis est démantelé&nbsp;; ses activités bancaires belges passent sous le contrôle de BNP Paribas. Au-delà du choc économique, l'affaire prend un tour institutionnel&nbsp;: des soupçons d'ingérence de l'exécutif dans la procédure judiciaire relative à la vente (le «&nbsp;Fortisgate&nbsp;») entraînent, fin 2008, la démission du gouvernement d'Yves Leterme, au nom de la séparation des pouvoirs.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Rapports de la Chambre et avis de la Cour de cassation (2008) ; archives L'Echo / De Tijd ; RTBF.</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">2011</div><div class="fiche__cote">541 j · 10-11</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Crise politique</span><span class="tag tag--gold">Record mondial</span><span class="tag">Réforme de l'État</span></div>
+      <h3 class="fiche__title">541 jours sans gouvernement</h3>
+      <p class="fiche__dek">Le pays bat le record du monde de la plus longue absence de gouvernement — et tient quand même.</p>
+      <div class="toll toll--gold"><span class="toll__l">Record</span><span class="toll__v"><strong>541 jours</strong> sans gouvernement de plein exercice (élections du 13 juin 2010 → gouvernement Di Rupo I, 6 décembre 2011).</span></div>
+      <div class="fiche__text">
+        <p>Aux élections du 13 juin 2010, la N-VA de <strong>Bart De Wever</strong>, nationaliste flamande, arrive en tête en Flandre, tandis que le PS d'<strong>Elio Di Rupo</strong> domine en Wallonie. Tout les oppose&nbsp;: avenir institutionnel, sort de l'arrondissement bilingue de Bruxelles-Hal-Vilvorde (BHV), réformes socio-économiques. Les négociations s'enlisent. Médiateurs et «&nbsp;formateurs&nbsp;» se succèdent sous l'autorité du roi Albert&nbsp;II&nbsp;; le pays vit sur un gouvernement en affaires courantes.</p>
+        <p>Il faudra <strong>541 jours</strong> pour qu'un gouvernement de plein exercice voie le jour, le 6 décembre 2011 — un record mondial, qui dépasse les précédents de l'Irak ou du Cambodge. Elio Di Rupo devient le premier francophone à diriger le pays depuis 1974, et le premier Premier ministre socialiste depuis longtemps. L'accord scinde enfin BHV et lance la sixième réforme de l'État. Paradoxe souvent relevé&nbsp;: privée d'exécutif, la Belgique a continué de fonctionner — preuve, selon les uns, de la solidité de ses administrations&nbsp;; symptôme, selon les autres, d'un pays à deux démocraties.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Chronologie de la formation gouvernementale 2010-2011 (CRISP) ; sixième réforme de l'État ; archives RTBF / Le Soir / De Standaard.</p>
+    </div>
+  </article>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">2016</div><div class="fiche__cote">22-03 · 16</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Attentats terroristes</span><span class="tag">Daech</span><span class="tag">Sécurité</span></div>
+      <h3 class="fiche__title">Les attentats du 22 mars 2016</h3>
+      <p class="fiche__dek">L'attaque la plus meurtrière de l'histoire belge frappe l'aéroport et le métro, au cœur du quartier européen.</p>
+      <div class="toll"><span class="toll__l">Bilan</span><span class="toll__v"><strong>32 morts</strong> et plus de 340 blessés, en plus des trois kamikazes, le 22 mars 2016.</span></div>
+      <div class="fiche__text">
+        <p>Le 22 mars 2016, trois attentats-suicides revendiqués par l'organisation État islamique frappent Bruxelles&nbsp;: deux explosions à l'aéroport de Zaventem (7h58), une troisième dans le métro à la station Maelbeek (9h11), en plein quartier des institutions européennes. Bilan&nbsp;: trente-deux morts et plus de trois cent quarante blessés. C'est l'attaque la plus meurtrière jamais commise sur le sol belge.</p>
+        <p>Les attentats sont directement liés à ceux de Paris du 13 novembre 2015&nbsp;: la même cellule jihadiste, en partie basée à Molenbeek, passe à l'acte précipitamment après l'arrestation, le 18 mars 2016, de Salah Abdeslam. Mohamed Abrini, «&nbsp;l'homme au chapeau&nbsp;» filmé à l'aéroport, prend la fuite avant d'être arrêté en avril. Le drame met crûment en lumière les failles du renseignement et de la coordination policière, et débouche sur un vaste renforcement de l'appareil sécuritaire. Le procès, le plus grand de l'histoire judiciaire belge, s'ouvre en octobre 2022 dans l'ancien siège de l'OTAN.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Commission d'enquête parlementaire « attentats du 22 mars » ; procès devant la cour d'assises de Bruxelles (2022-2023) ; OCAM ; archives RTBF / Le Soir.</p>
+    </div>
+  </article>
+</section>
+
+<section class="era" id="era-6">
+  <header class="era__head">
+    <div class="era__kick"><span class="era__num">VI</span><span class="era__span">2018 – 2022</span></div>
+    <h2 class="era__title">Le miroir contemporain</h2>
+    <p class="era__intro">Les dernières affaires renvoient à la Belgique l'image de ses fractures persistantes&nbsp;: l'inégalité devant la justice et le poids des origines sociales d'un côté&nbsp;; la corruption au cœur même des institutions européennes qu'elle héberge de l'autre. Le passé n'a pas dit son dernier mot.</p>
+  </header>
+
+  <article class="fiche" data-grave>
+    <div class="fiche__rail"><div class="fiche__year">2018</div><div class="fiche__cote">S. Dia · 18</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag tag--grave">Mort lors d'un bizutage</span><span class="tag">Justice de classe</span><span class="tag">Cercle étudiant</span></div>
+      <h3 class="fiche__title">La mort de Sanda Dia</h3>
+      <p class="fiche__dek">Un étudiant meurt d'un baptême estudiantin&nbsp;; les peines symboliques infligées à l'élite déchaînent un débat sur la «&nbsp;justice de classe&nbsp;».</p>
+      <div class="toll"><span class="toll__l">Bilan</span><span class="toll__v"><strong>Sanda Dia</strong>, 20 ans, mort le 7 décembre 2018 des suites d'un baptême du cercle <span class="nl">Reuzegom</span>.</span></div>
+      <div class="fiche__text">
+        <p>En décembre 2018, <strong>Sanda Dia</strong>, étudiant ingénieur de vingt ans à la KU Leuven, issu d'un milieu modeste, meurt lors du baptême d'un cercle estudiantin huppé, le <span class="nl">Reuzegom</span>. Le rituel a tourné au supplice&nbsp;: ingestion forcée d'alcool et d'huile de poisson, exposition prolongée au froid dans une fosse d'eau glacée, humiliations. Il succombe à une défaillance multiple liée à l'hypothermie et à une intoxication.</p>
+        <p>Le procès, en 2023, provoque une onde de choc. Les dix-huit membres poursuivis sont condamnés à des peines de travail d'intérêt général et à des amendes, sans inscription au casier judiciaire, et acquittés des qualifications les plus lourdes. L'écart entre la gravité des faits et la légèreté des sanctions — dans un dossier où les prévenus appartiennent à des familles flamandes aisées et bénéficient de l'anonymat — nourrit une intense polémique sur la «&nbsp;justice de classe&nbsp;» et sur les inégalités sociales et ethniques devant les tribunaux. L'affaire devient un cas d'école de la fracture entre élites et reste de la société.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Jugements du tribunal de Hasselt et de la cour d'appel d'Anvers (2023) ; couverture De Standaard, Knack, Le Soir ; RTBF.</p>
+    </div>
+  </article>
+
+  <article class="fiche">
+    <div class="fiche__rail"><div class="fiche__year">2022</div><div class="fiche__cote">Qatargate · 22</div></div>
+    <div class="fiche__body">
+      <div class="fiche__tags"><span class="tag">Corruption</span><span class="tag tag--gold">Institutions européennes</span><span class="tag">Influence étrangère</span></div>
+      <h3 class="fiche__title">Le Qatargate</h3>
+      <p class="fiche__dek">Des valises de billets au Parlement européen&nbsp;: le plus grand scandale de corruption de l'histoire de l'institution éclate à Bruxelles.</p>
+      <div class="toll toll--gold"><span class="toll__l">Saisie</span><span class="toll__v">Environ <strong>1,5&nbsp;million d'euros</strong> en liquide saisis lors des perquisitions de décembre 2022.</span></div>
+      <div class="fiche__text">
+        <p>En décembre 2022, la police belge mène une série de perquisitions à Bruxelles et saisit environ 1,5&nbsp;million d'euros en espèces. Au cœur du scandale&nbsp;: <strong>Eva Kaili</strong>, vice-présidente grecque du Parlement européen, son compagnon Francesco Giorgi, et l'ancien eurodéputé italien <strong>Pier Antonio Panzeri</strong>, présenté comme le cerveau du réseau. Le Qatar et le Maroc sont soupçonnés d'avoir acheté de l'influence au sein de l'institution, via notamment une ONG-écran, «&nbsp;Fight Impunity&nbsp;».</p>
+        <p>Eva Kaili est destituée de sa vice-présidence dès le lendemain des révélations, faites par <em>Le Soir</em> et <em>Knack</em>. L'affaire éclabousse plusieurs élus, dont des Belges, et révèle la porosité de la «&nbsp;bulle&nbsp;» bruxelloise aux ingérences étrangères. L'instruction connaîtra des turbulences — le juge belge en charge devra se déporter pour conflit d'intérêts —, mais le Parlement européen, commotionné, durcit son code de conduite et ses règles de transparence. Pour la Belgique, c'est un rappel&nbsp;: héberger la capitale de l'Europe, c'est aussi en héberger les scandales.</p>
+      </div>
+      <p class="src"><b>Sources</b> — Révélations <em>Le Soir</em> / <em>Knack</em> (décembre 2022) ; communiqués du parquet fédéral belge ; résolutions et réforme déontologique du Parlement européen (2023).</p>
+    </div>
+  </article>
+</section>
+
+</main>
+
+<!-- ===================== CODA ===================== -->
+<section class="coda">
+  <div class="wrap">
+    <div class="reading">
+      <p class="big">Que raconte, mise bout à bout, cette collection de drames&nbsp;? Non pas qu'un pays serait «&nbsp;maudit&nbsp;» — aucun ne l'est —, mais qu'un État jeune, né d'un compromis et traversé d'une faille linguistique, a passé deux siècles à négocier sa propre survie.</p>
+      <p>Trois fils courent d'un bout à l'autre du dossier. Le premier est <strong>communautaire</strong>&nbsp;: de la langue refusée aux francophones en 1830 jusqu'aux 541 jours sans gouvernement, la même question revient — comment faire tenir ensemble deux majorités démocratiques qui ne se recouvrent pas&nbsp;? La réponse belge, à chaque secousse, fut le fédéralisme&nbsp;: non un projet, mais une succession de pansements posés sur la plaie de 1968.</p>
+      <p>Le deuxième fil est <strong>colonial</strong>. De l'État indépendant du Congo, propriété privée d'un roi, à l'acide qui dissout le corps de Lumumba, la Belgique a longtemps regardé ailleurs&nbsp;; la restitution d'une dent en 2022 et les débats sur la mémoire disent un travail entamé, et inachevé.</p>
+      <p>Le troisième est celui de la <strong>défaillance de l'État</strong> et de sa capacité de réforme&nbsp;: les tueries jamais élucidées, la «&nbsp;guerre des polices&nbsp;» qui a coûté des vies dans l'affaire Dutroux, la dioxine dissimulée. Mais à chaque effondrement, la Belgique a aussi su se rebâtir — police intégrée, AFSCA, parquet fédéral, Conseil supérieur de la Justice. C'est l'autre versant de l'histoire&nbsp;: une démocratie qui encaisse, enquête, s'excuse parfois, et se réforme.</p>
+      <p>L'histoire continue de s'écrire. La crise politique de 2019-2020 a frôlé un nouveau record d'immobilisme&nbsp;; les questions de justice sociale (Sanda Dia), d'intégrité publique (Qatargate) et d'environnement (la pollution aux PFAS) restent ouvertes. Connaître ce «&nbsp;dossier noir&nbsp;», ce n'est pas accabler un pays&nbsp;: c'est comprendre comment une démocratie complexe a tenu — et à quel prix.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NOTE & SOURCES ===================== -->
+<section class="notes">
+  <div class="wrap">
+    <h2>Note méthodologique &amp; sources</h2>
+    <p>Cette chronologie est une synthèse de vulgarisation. Les dates, bilans et qualifications juridiques proviennent de sources publiques recoupées&nbsp;: rapports des commissions d'enquête parlementaires de la Chambre des représentants, presse belge de référence (RTBF, VRT, Le Soir, La Libre, De Standaard, Knack), institutions de mémoire et de recherche (CegeSoma/Archives de l'État, Kazerne Dossin, Connaître la Wallonie), et travaux d'historiens. Les notices de Wikipédia (versions française, néerlandaise et anglaise) ont servi de point d'entrée et de recoupement, jamais de source unique.</p>
+
+    <h3>Sur les chiffres débattus</h3>
+    <p>Le bilan humain de l'État indépendant du Congo (1885-1908) ne repose sur aucun recensement&nbsp;: les estimations de surmortalité s'échelonnent, selon les historiens et les méthodes, de deux à dix millions de victimes — certains avançant davantage. Le rapport Casement (1904) parlait de trois millions. Adam Hochschild a popularisé l'ordre de grandeur de dix millions&nbsp;; Jan Vansina, Jules Marchal et d'autres ont affiné l'analyse régionale, distinguant la part des violences directes de celle des famines et des maladies. Ce dossier retient une fourchette large et la présente comme contestée.</p>
+
+    <h3>Repères bibliographiques</h3>
+    <ul>
+      <li><b>Adam Hochschild</b>, <em>Les Fantômes du roi Léopold</em> (1998) — sur le Congo de Léopold&nbsp;II.</li>
+      <li><b>Ludo De Witte</b>, <em>L'Assassinat de Lumumba</em> (1999) — à l'origine de la commission d'enquête de 2000-2001.</li>
+      <li><b>Commission d'enquête « Lumumba »</b>, rapport de la Chambre (16 novembre 2001).</li>
+      <li><b>Commission d'enquête « Dutroux-Nihoul »</b> (rapports Verwilghen, 1997).</li>
+      <li><b>Kazerne Dossin</b> (Malines) — mémorial, musée et centre de documentation sur la Shoah en Belgique.</li>
+      <li><b>CegeSoma</b> — Centre d'études et de documentation Guerre et sociétés contemporaines.</li>
+    </ul>
+
+    <h3>Avertissement</h3>
+    <p>Plusieurs affaires évoquées ici demeurent ouvertes, en appel, ou contestées par les personnes concernées. Les qualifications retenues sont celles établies par la justice ou les commissions parlementaires à la date de rédaction. Toute correction documentée est la bienvenue.</p>
+  </div>
+</section>
+
+<!-- ===================== PIED DE PAGE ===================== -->
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__top">« On n'a pas le pays qu'on mérite, mais celui dont on hérite. »<br><span class="red">— et l'on hérite aussi de ses dossiers.</span></p>
+    <p>Le Dossier noir de la Belgique — chronique des crises et des scandales, 1789-2022.</p>
+    <p>Document de synthèse à vocation pédagogique. Sources citées en regard de chaque fiche et dans la note méthodologique. Dernière révision&nbsp;: 2026.</p>
+    <p><a href="#sommaire">↑ Revenir au sommaire</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog = document.getElementById('progress');
+  var topbar = document.getElementById('topbar');
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      if(prog) prog.style.width = p + '%';
+      if(topbar){ if(h.scrollTop > 640){ topbar.classList.add('show'); } else { topbar.classList.remove('show'); } }
+      ticking = false;
+    });
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    var watch = document.querySelectorAll('.fiche, .era__head');
+    watch.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.fiche, .era__head').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
