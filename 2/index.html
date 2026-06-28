@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Faire tenir la Belgique — l'État belge, de sa Constitution à nos jours</title>
+<meta name="description" content="Un essai réflexif sur la construction de l'État belge : la Constitution libérale de 1831, l'élargissement du peuple, et la mutation en État fédéral à travers six réformes — jusqu'au débat actuel sur le confédéralisme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   FAIRE TENIR LA BELGIQUE
+   Concept : « bureau de dessin / texte constitutionnel ».
+   Pierre calcaire + encre + un seul accent rouge rubrique.
+   Bricolage Grotesque (display) · Spectral (lecture) · IBM Plex Mono (apparat).
+   Signature : la ligne de faille linguistique qui traverse la page.
+   ============================================================ */
+
+:root{
+  --lime:    #e6e5de;   /* fond, pierre calcaire (froid, non crème) */
+  --lime-2:  #dedcd2;   /* panneau légèrement creusé */
+  --panel:   #eceae2;   /* panneau en relief */
+  --ink:     #17171b;   /* encre, texte principal */
+  --ink-2:   #3a3a41;   /* texte secondaire fort */
+  --soft:    #5c5c64;   /* texte secondaire */
+  --faint:   #84837b;   /* méta, légendes */
+  --rule:    rgba(23,23,27,.15);
+  --rule-2:  rgba(23,23,27,.32);
+  --rubric:  #b23a2a;   /* rouge rubrique : faille, numéros d'articles, accents rares */
+  --rubric-d:#8c2b1d;
+  --blue:    #33485c;   /* encre bleue : réservée à la coupe (schéma) */
+  --blue-2:  #5d7488;   /* encre bleue claire (schéma) */
+
+  --serif:   "Spectral", Georgia, "Times New Roman", serif;
+  --disp:    "Bricolage Grotesque", "Spectral", Georgia, serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --measure: 40rem;     /* largeur de la colonne de lecture */
+}
+
+*{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+section[id], .mvt[id]{ scroll-margin-top:64px; }
+
+body{
+  margin:0;
+  background:var(--lime);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(1.02rem,.62rem + .62vw,1.18rem);
+  line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+::selection{ background:var(--ink); color:var(--lime); }
+a{ color:var(--rubric-d); text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover{ color:var(--rubric); }
+:focus-visible{ outline:2px solid var(--rubric); outline-offset:3px; border-radius:2px; }
+
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--ink); color:var(--lime); padding:.6rem 1rem;
+  font-family:var(--mono); font-size:.8rem;
+}
+.skip:focus{ left:8px; top:8px; }
+
+/* ---------- progression + bandeau ---------- */
+.prog{
+  position:fixed; top:0; left:0; height:2px; width:0;
+  background:var(--rubric); z-index:130; transition:width .12s linear;
+}
+.rail-top{
+  position:fixed; top:0; left:0; right:0; z-index:120;
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:1rem; padding:.5rem clamp(1rem,4vw,2.4rem);
+  background:color-mix(in srgb, var(--lime) 86%, transparent);
+  backdrop-filter:blur(7px) saturate(1.1);
+  border-bottom:1px solid var(--rule);
+  transform:translateY(-110%); transition:transform .34s ease;
+}
+.rail-top.show{ transform:translateY(0); }
+.rail-top__t{ font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); }
+.rail-top__t b{ color:var(--ink); font-weight:600; }
+.rail-top__n{ font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }
+
+/* ---------- gabarit ---------- */
+.wrap{ width:min(72rem, 92vw); margin-inline:auto; }
+.col{ width:min(var(--measure), 92vw); margin-inline:auto; }
+
+/* ---------- masthead ---------- */
+.mast{ padding:clamp(4.5rem,15vh,8.5rem) 0 clamp(2rem,6vh,3.4rem); }
+.mast__eyebrow{
+  font-family:var(--mono); font-size:.76rem; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--rubric-d); margin:0 0 1.6rem;
+  display:flex; align-items:center; gap:.85rem;
+}
+.mast__eyebrow::before{ content:""; width:2.4rem; height:1px; background:var(--rubric); }
+.mast__title{
+  font-family:var(--disp);
+  font-weight:700; font-optical-sizing:auto;
+  font-size:clamp(2.9rem,1.4rem + 6.6vw,6.6rem);
+  line-height:.97; letter-spacing:-.022em;
+  margin:0; color:var(--ink);
+}
+.mast__title em{ font-style:normal; color:var(--rubric); }
+.mast__stand{
+  font-family:var(--serif); font-size:clamp(1.12rem,.9rem + .7vw,1.42rem);
+  line-height:1.5; color:var(--ink-2); max-width:46ch;
+  margin:1.7rem 0 0; font-weight:400;
+}
+.mast__stand em{ color:var(--rubric-d); font-style:italic; }
+
+/* la faille : ligne qui se dédouble */
+.fault{ margin:clamp(2.4rem,6vh,3.6rem) 0 0; }
+.fault svg{ display:block; width:100%; height:34px; overflow:visible; }
+.fault__lab{ font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; fill:var(--faint); }
+
+.mast__meta{
+  margin:clamp(1.8rem,5vh,2.6rem) 0 0; padding-top:1.1rem;
+  border-top:1px solid var(--rule);
+  display:flex; flex-wrap:wrap; gap:.5rem 2.2rem;
+  font-family:var(--mono); font-size:.78rem; letter-spacing:.02em; color:var(--soft);
+}
+.mast__meta b{ color:var(--ink); font-weight:600; }
+.mast__meta span{ white-space:nowrap; }
+
+/* ---------- ouverture (thèse) ---------- */
+.ouv{ padding:clamp(1.4rem,4vh,2.4rem) 0 clamp(2.6rem,7vh,4rem); }
+.ouv .col > p{ margin:0 0 1.25rem; }
+.ouv .lead{
+  font-family:var(--disp); font-weight:500;
+  font-size:clamp(1.4rem,1rem + 1.5vw,2rem); line-height:1.32;
+  letter-spacing:-.012em; color:var(--ink); margin:0 0 1.6rem;
+}
+.ouv .lead em{ color:var(--rubric); font-style:normal; }
+
+/* ---------- plan ---------- */
+.plan{ padding:clamp(1.6rem,5vh,2.6rem) 0; border-block:1px solid var(--rule); }
+.plan__k{ font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--rubric-d); margin:0 0 1.3rem; }
+.plan ol{ list-style:none; margin:0; padding:0; display:grid; gap:.2rem; }
+.plan li a{
+  display:grid; grid-template-columns:2.6rem 1fr auto; align-items:baseline; gap:1rem;
+  padding:.7rem 0; border-top:1px solid var(--rule); color:var(--ink); text-decoration:none;
+  transition:background .18s, padding-inline .18s;
+}
+.plan li:first-child a{ border-top:0; }
+.plan li a:hover{ background:var(--panel); padding-inline:.8rem; }
+.plan__n{ font-family:var(--mono); font-size:.82rem; color:var(--rubric); letter-spacing:.04em; }
+.plan__t{ font-family:var(--disp); font-weight:600; font-size:1.08rem; letter-spacing:-.01em; }
+.plan__t small{ display:block; font-family:var(--serif); font-weight:400; font-size:.92rem; color:var(--soft); letter-spacing:0; margin-top:.1rem; }
+.plan__y{ font-family:var(--mono); font-size:.76rem; color:var(--faint); }
+
+/* ---------- mouvement ---------- */
+.mvt{ padding:clamp(3rem,8vh,5.5rem) 0 0; }
+.mvt__head{ width:min(58rem,92vw); margin-inline:auto; margin-bottom:clamp(1.8rem,5vh,3rem); }
+.kicker{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--rubric-d); margin:0 0 1rem; display:flex; align-items:center; gap:.8rem;
+}
+.kicker::before{ content:""; width:1.6rem; height:1px; background:var(--rubric); }
+.mvt__title{
+  font-family:var(--disp); font-weight:700; font-optical-sizing:auto;
+  font-size:clamp(2rem,1.2rem + 3vw,3.4rem); line-height:1.03; letter-spacing:-.018em;
+  margin:0; color:var(--ink);
+}
+.mvt__lede{
+  font-family:var(--serif); font-style:italic; color:var(--soft);
+  font-size:clamp(1.04rem,.9rem + .5vw,1.22rem); line-height:1.5;
+  max-width:52ch; margin:1.1rem 0 0;
+}
+
+/* feuille : marge d'apparat + colonne de lecture */
+.leaf{
+  width:min(64rem,92vw); margin-inline:auto;
+  display:grid; grid-template-columns:minmax(0,15rem) minmax(0,var(--measure));
+  gap:clamp(1.6rem,4vw,3.4rem); align-items:start;
+}
+.rail{ display:grid; gap:1.4rem; position:sticky; top:74px; }
+.repere{ border-top:2px solid var(--ink); padding-top:.7rem; }
+.repere__k{ display:block; font-family:var(--mono); font-weight:600; font-size:.86rem; letter-spacing:.04em; color:var(--rubric); margin-bottom:.35rem; }
+.repere__v{ display:block; font-family:var(--serif); font-size:.94rem; line-height:1.45; color:var(--soft); }
+.rail .gloss{ font-family:var(--mono); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; color:var(--faint); border-top:1px solid var(--rule); padding-top:.7rem; }
+
+.prose{ min-width:0; }
+.prose > p{ margin:0 0 1.2rem; }
+.prose > p:first-child{ margin-top:-.2rem; }
+.prose strong{ font-weight:600; color:var(--ink); }
+.prose em.nl{ font-style:italic; color:var(--ink-2); }
+.prose h3{
+  font-family:var(--mono); font-weight:600; font-size:.78rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--rubric-d);
+  margin:2rem 0 .9rem; padding-top:.9rem; border-top:1px solid var(--rule);
+}
+.prose .lettrine::first-letter{
+  font-family:var(--disp); font-weight:700; float:left; line-height:.78;
+  font-size:3.5em; padding:.06em .12em 0 0; color:var(--rubric);
+}
+
+/* plaque d'article constitutionnel */
+.article{
+  margin:1.6rem 0; padding:1.15rem 1.3rem 1.2rem;
+  background:var(--panel); border:1px solid var(--rule-2);
+  border-left:3px solid var(--rubric); position:relative;
+}
+.article__no{ font-family:var(--mono); font-weight:600; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rubric-d); margin:0 0 .5rem; }
+.article__t{ font-family:var(--disp); font-weight:500; font-size:clamp(1.08rem,.95rem + .5vw,1.32rem); line-height:1.32; letter-spacing:-.01em; color:var(--ink); margin:0; }
+.article__t em{ font-style:italic; }
+.article__src{ font-family:var(--mono); font-size:.68rem; letter-spacing:.04em; color:var(--faint); margin:.7rem 0 0; }
+
+/* citation réflexive */
+.pull{
+  width:min(56rem,92vw); margin:clamp(2.4rem,6vh,3.6rem) auto;
+  font-family:var(--disp); font-weight:500; font-size:clamp(1.5rem,1.1rem + 1.8vw,2.4rem);
+  line-height:1.26; letter-spacing:-.014em; color:var(--ink); text-align:left;
+}
+.pull em{ color:var(--rubric); font-style:normal; }
+.pull .by{ display:block; margin-top:1rem; font-family:var(--mono); font-size:.76rem; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); font-weight:400; }
+
+/* coupe : figure pleine largeur (schéma SVG) */
+.coupe{ width:min(68rem,94vw); margin:clamp(2.6rem,7vh,4rem) auto clamp(1.4rem,4vh,2.2rem); }
+.coupe__fig{ background:var(--panel); border:1px solid var(--rule-2); padding:clamp(1.2rem,3vw,2rem); }
+.coupe svg{ display:block; width:100%; height:auto; }
+.coupe__cap{ font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; color:var(--faint); margin:.9rem 0 0; line-height:1.5; }
+.coupe__cap b{ color:var(--soft); font-weight:600; }
+
+/* strates : les six réformes empilées */
+.strates{ width:min(60rem,92vw); margin:clamp(2rem,5vh,3rem) auto; }
+.strates__k{ font-family:var(--mono); font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rubric-d); margin:0 0 1.2rem; }
+.strate{
+  display:grid; grid-template-columns:7.5rem 1fr; gap:1.2rem; align-items:start;
+  padding:1.1rem 0; border-top:1px solid var(--rule-2);
+}
+.strate:last-child{ border-bottom:1px solid var(--rule-2); }
+.strate__yr{ font-family:var(--mono); font-weight:600; font-size:.96rem; color:var(--rubric); letter-spacing:.02em; }
+.strate__yr small{ display:block; font-weight:400; font-size:.72rem; color:var(--faint); letter-spacing:.06em; text-transform:uppercase; margin-top:.25rem; }
+.strate__b h4{ font-family:var(--disp); font-weight:600; font-size:1.06rem; letter-spacing:-.01em; margin:0 0 .35rem; color:var(--ink); }
+.strate__b p{ margin:0; font-size:.97rem; line-height:1.5; color:var(--soft); }
+.strate__b p strong{ color:var(--ink-2); font-weight:600; }
+
+/* ---------- note & sources ---------- */
+.notes{ margin-top:clamp(3.5rem,9vh,6rem); padding:clamp(2.8rem,7vh,4.4rem) 0; background:var(--lime-2); border-top:1px solid var(--rule-2); }
+.notes h2{ font-family:var(--disp); font-weight:700; font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem); letter-spacing:-.012em; margin:0 0 1.5rem; color:var(--ink); }
+.notes h3{ font-family:var(--mono); font-weight:500; font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rubric-d); margin:2.2rem 0 1rem; }
+.notes p{ color:var(--soft); max-width:64ch; margin:0 0 1.05rem; font-size:1rem; }
+.notes ul{ margin:0; padding:0; list-style:none; max-width:66ch; }
+.notes li{ padding:.7rem 0 .7rem 1.5rem; border-top:1px solid var(--rule); position:relative; color:var(--soft); font-size:.95rem; line-height:1.5; }
+.notes li::before{ content:"§"; position:absolute; left:0; color:var(--rubric); font-family:var(--mono); }
+.notes li b{ color:var(--ink); font-weight:600; }
+.notes li em{ font-style:italic; color:var(--ink-2); }
+
+/* ---------- pied ---------- */
+.foot{ padding:clamp(2.4rem,6vh,3.6rem) 0; background:var(--ink); color:var(--lime); }
+.foot .wrap{ display:flex; flex-wrap:wrap; gap:1.4rem 2.4rem; align-items:baseline; justify-content:space-between; }
+.foot__t{ font-family:var(--disp); font-weight:600; font-size:1.15rem; letter-spacing:-.01em; }
+.foot__t em{ color:#e08a7c; font-style:normal; }
+.foot p{ margin:.5rem 0 0; font-family:var(--mono); font-size:.74rem; letter-spacing:.04em; color:#b9b6ad; max-width:52ch; line-height:1.6; }
+
+/* ---------- révélation ---------- */
+.rise{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+.rise.in{ opacity:1; transform:none; }
+.draw{ stroke-dasharray:1; stroke-dashoffset:1; }
+
+/* ---------- responsive ---------- */
+@media (max-width:880px){
+  .leaf{ grid-template-columns:1fr; gap:1.5rem; }
+  .rail{ position:static; display:flex; flex-wrap:wrap; gap:1rem 1.6rem; }
+  .repere{ flex:1 1 12rem; }
+  .strate{ grid-template-columns:1fr; gap:.4rem; }
+  .strate__yr{ display:flex; align-items:baseline; gap:.8rem; }
+  .strate__yr small{ margin-top:0; }
+}
+@media (max-width:560px){
+  .plan li a{ grid-template-columns:2rem 1fr; }
+  .plan__y{ grid-column:2; margin-top:.2rem; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *{ transition:none !important; animation:none !important; }
+  .rise{ opacity:1; transform:none; }
+  .draw{ stroke-dashoffset:0; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#essai">Aller à l'essai</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<header class="rail-top" id="railtop" aria-hidden="true">
+  <span class="rail-top__t"><b>Faire tenir la Belgique</b> — l'État, de 1831 à nos jours</span>
+  <a class="rail-top__n" href="#plan">↑ Plan</a>
+</header>
+
+<main>
+
+<!-- ===================== MASTHEAD ===================== -->
+<section class="mast">
+  <div class="wrap">
+    <p class="mast__eyebrow">Essai — L'État belge, de sa Constitution à nos jours</p>
+    <h1 class="mast__title">Faire <em>tenir</em><br>la Belgique</h1>
+    <p class="mast__stand">Comment bâtit-on, et comment garde-t-on debout, un État qui abrite deux majorités qui ne coïncident jamais&nbsp;? <em>L'histoire institutionnelle belge est celle d'une réponse sans cesse réécrite.</em></p>
+
+    <div class="fault" aria-hidden="true">
+      <svg viewBox="0 0 1000 34" preserveAspectRatio="none" role="img">
+        <line x1="0" y1="17" x2="430" y2="17" stroke="var(--ink)" stroke-width="1.4"/>
+        <path d="M430,17 L500,5" stroke="var(--rubric)" stroke-width="1.4" fill="none"/>
+        <path d="M430,17 L500,29" stroke="var(--ink)" stroke-width="1.4" fill="none"/>
+        <line x1="500" y1="5" x2="570" y2="5" stroke="var(--rubric)" stroke-width="1.4"/>
+        <line x1="500" y1="29" x2="570" y2="29" stroke="var(--ink)" stroke-width="1.4"/>
+        <path d="M570,5 L640,17" stroke="var(--rubric)" stroke-width="1.4" fill="none"/>
+        <path d="M570,29 L640,17" stroke="var(--ink)" stroke-width="1.4" fill="none"/>
+        <line x1="640" y1="17" x2="1000" y2="17" stroke="var(--ink)" stroke-width="1.4"/>
+        <circle cx="430" cy="17" r="2.6" fill="var(--ink)"/>
+        <circle cx="640" cy="17" r="2.6" fill="var(--ink)"/>
+        <text x="0" y="33" class="fault__lab">1831 · un seul peuple présumé</text>
+        <text x="1000" y="33" text-anchor="end" class="fault__lab">aujourd'hui · une union à recoudre</text>
+      </svg>
+    </div>
+
+    <div class="mast__meta">
+      <span><b>1831</b> Constitution</span>
+      <span><b>6</b> réformes de l'État</span>
+      <span><b>1970 → 2014</b> fédéralisation</span>
+      <span>sources en fin d'essai</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OUVERTURE ===================== -->
+<section class="ouv" id="essai">
+  <div class="col">
+    <p class="lead">La Belgique passe pour un pays sans qualités&nbsp;: prospère, modéré, un peu gris. C'est précisément ce qui la rend fascinante. Car ce petit royaume a réussi une chose rare&nbsp;: <em>se transformer de fond en comble sans jamais se rompre.</em></p>
+    <p>En moins de deux siècles, l'État belge est passé d'une monarchie unitaire et centralisée — l'une des plus libérales d'Europe en 1831 — à un État fédéral d'une complexité presque sans équivalent, fait de communautés et de régions qui se chevauchent, de parlements superposés et de majorités qui s'annulent. Il l'a fait par étapes, par compromis, par révisions successives d'un même texte fondateur. Et il continue.</p>
+    <p>Cet essai ne raconte pas les drames de la Belgique — c'est l'objet d'un autre dossier. Il s'intéresse à sa charpente&nbsp;: comment elle fut dressée, pourquoi elle a dû être reprise six fois, et ce qui, aujourd'hui encore, la fait tenir. C'est l'histoire d'une construction permanente — et d'un pays qui a fait de l'inachèvement une méthode de survie.</p>
+  </div>
+</section>
+
+<!-- ===================== PLAN ===================== -->
+<nav class="plan" id="plan" aria-label="Plan de l'essai">
+  <div class="wrap">
+    <p class="plan__k">Plan de l'essai — six mouvements</p>
+    <ol>
+      <li><a href="#mvt-1"><span class="plan__n">I</span><span class="plan__t">L'acte fondateur<small>Une Constitution libérale, une monarchie, un peuple présumé</small></span><span class="plan__y">1830 – 1831</span></a></li>
+      <li><a href="#mvt-2"><span class="plan__n">II</span><span class="plan__t">Élargir le peuple<small>Du suffrage censitaire à l'État de partis et de piliers</small></span><span class="plan__y">1893 – 1948</span></a></li>
+      <li><a href="#mvt-3"><span class="plan__n">III</span><span class="plan__t">La conscience des deux peuples<small>La frontière linguistique et la fin de l'État unitaire</small></span><span class="plan__y">1932 – 1968</span></a></li>
+      <li><a href="#mvt-4"><span class="plan__n">IV</span><span class="plan__t">La grande mue fédérale<small>Six réformes, un article premier, une architecture asymétrique</small></span><span class="plan__y">1970 – 2014</span></a></li>
+      <li><a href="#mvt-5"><span class="plan__n">V</span><span class="plan__t">La machine et ses paradoxes<small>Démocratie de compromis, rôle du Roi, le nœud bruxellois</small></span><span class="plan__y">1970 – 2020</span></a></li>
+      <li><a href="#mvt-6"><span class="plan__n">VI</span><span class="plan__t">À l'horizon<small>Confédéralisme, quatre régions, ou l'indétermination féconde</small></span><span class="plan__y">2024 – …</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ========== MOUVEMENT I ========== -->
+<section class="mvt" id="mvt-1">
+  <div class="mvt__head rise">
+    <p class="kicker">Mouvement I · 1830 – 1831</p>
+    <h2 class="mvt__title">L'acte fondateur</h2>
+    <p class="mvt__lede">Comment improviser, en quelques mois, un État neuf — et y inscrire, sans le voir, la faille qui le travaillera deux siècles durant.</p>
+  </div>
+  <div class="leaf">
+    <aside class="rail">
+      <div class="repere"><span class="repere__k">1830</span><span class="repere__v">Révolution de septembre&nbsp;; la Belgique se sépare du royaume des Pays-Bas de Guillaume&nbsp;I<sup>er</sup>.</span></div>
+      <div class="repere"><span class="repere__k">1831</span><span class="repere__v">Le Congrès national adopte une Constitution parmi les plus libérales d'Europe.</span></div>
+      <div class="repere"><span class="repere__k">21 juill. 1831</span><span class="repere__v">Léopold de Saxe-Cobourg prête serment&nbsp;: premier roi des Belges.</span></div>
+      <p class="gloss">Monarchie · parlementaire · unitaire</p>
+    </aside>
+    <div class="prose rise">
+      <p class="lettrine">La Belgique ne naît pas d'un projet, mais d'une rupture. À l'été 1830, une insurrection chasse de Bruxelles l'administration hollandaise&nbsp;; une coalition improbable de catholiques et de libéraux — l'«&nbsp;unionisme&nbsp;» — proclame l'indépendance. Les grandes puissances, réunies à Londres, finissent par l'accepter, à une condition&nbsp;: que ce nouvel État reste neutre, tampon utile entre la France et la Prusse. La Belgique commence ainsi comme une convenance diplomatique autant que comme une volonté nationale.</p>
+      <p>Reste à lui donner une forme. En quelques mois, le Congrès national accouche d'une Constitution remarquablement audacieuse pour 1831&nbsp;: libertés de la presse, d'association, des cultes et de l'enseignement&nbsp;; responsabilité des ministres&nbsp;; une monarchie strictement encadrée, où le Roi «&nbsp;règne mais ne gouverne pas&nbsp;» — principe qui se solidifiera avec l'usage. C'est un texte de juristes éclairés, qui inspirera d'autres pays. Mais c'est aussi le texte d'une classe&nbsp;: le droit de vote est censitaire, réservé aux hommes assez fortunés pour payer l'impôt requis. Le «&nbsp;peuple&nbsp;» souverain, en pratique, c'est environ un pour cent des habitants.</p>
+      <div class="article">
+        <p class="article__no">Article 33 · Constitution de 1831</p>
+        <p class="article__t">«&nbsp;Tous les pouvoirs émanent de la Nation. Ils sont exercés de la manière établie par la Constitution.&nbsp;»</p>
+        <p class="article__src">Le principe matriciel — la souveraineté nationale — sur lequel tout l'édifice se reconstruira.</p>
+      </div>
+      <p>Et puis il y a ce que la Constitution ne dit pas. Le nouvel État se pense un et se gouverne en français&nbsp;: langue du droit, de l'administration, de la justice, de la promotion sociale — au Nord comme au Sud. Or la majorité de la population du Nord parle des dialectes flamands. Le texte proclame bien la «&nbsp;liberté des langues&nbsp;», mais dans les faits le français règne. Le peuple que l'on présume un est, linguistiquement, déjà deux. Nul n'y voit alors un problème&nbsp;: la ligne de langue se confond avec la ligne de classe, et c'est la seconde qui occupe les esprits. La faille est là, pourtant, sous la charpente neuve — patiente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MOUVEMENT II ========== -->
+<section class="mvt" id="mvt-2">
+  <div class="mvt__head rise">
+    <p class="kicker">Mouvement II · 1893 – 1948</p>
+    <h2 class="mvt__title">Élargir le peuple</h2>
+    <p class="mvt__lede">Pendant un demi-siècle, la Belgique se débat avec une seule question — qui a le droit de voter&nbsp;? — et invente au passage une société de piliers.</p>
+  </div>
+  <div class="leaf">
+    <aside class="rail">
+      <div class="repere"><span class="repere__k">1893</span><span class="repere__v">Suffrage universel masculin, tempéré par le vote plural&nbsp;; le vote devient obligatoire.</span></div>
+      <div class="repere"><span class="repere__k">1919</span><span class="repere__v">Un homme, une voix&nbsp;: fin du vote plural, au sortir de la guerre.</span></div>
+      <div class="repere"><span class="repere__k">1948</span><span class="repere__v">Les femmes obtiennent le droit de vote aux élections nationales.</span></div>
+      <p class="gloss">Catholiques · libéraux · socialistes</p>
+    </aside>
+    <div class="prose rise">
+      <p class="lettrine">L'État de 1831 est une démocratie pour quelques-uns. Tout le long XIX<sup>e</sup> siècle, la grande pression intérieure sera la demande d'élargissement du suffrage, portée par la montée du monde ouvrier — le Parti ouvrier belge naît en 1885 — et par les grèves générales. En 1893, une réforme arrachée sous la menace instaure le suffrage universel masculin&nbsp;; mais on le «&nbsp;tempère&nbsp;» aussitôt par le vote plural, qui octroie des voix supplémentaires aux propriétaires, aux diplômés, aux pères de famille&nbsp;: un garde-fou bourgeois. La même réforme rend le vote obligatoire — il l'est toujours. Il faudra la saignée de 1914-1918 pour imposer, en 1919, le principe «&nbsp;un homme, une voix&nbsp;». Les femmes, elles, devront attendre 1948 pour voter au niveau national.</p>
+      <p>À mesure que le corps électoral s'élargit, le paysage se cristallise en trois familles — catholique, libérale, socialiste — et la société belge se range en «&nbsp;piliers&nbsp;»&nbsp;: chaque famille avec ses syndicats, ses mutuelles, ses écoles, sa presse, jusqu'à ses clubs sportifs. L'État devient un équilibre négocié entre ces sous-cultures qui s'ignorent et se partagent le pouvoir. C'est là, bien avant la question linguistique, que la Belgique apprend son art politique fondamental&nbsp;: gouverner non par la victoire d'un camp, mais par le compromis entre des minorités organisées.</p>
+      <p>L'autre grande bataille oppose l'Église et l'État, et se livre sur le terrain des écoles&nbsp;: ce sont les deux «&nbsp;guerres scolaires&nbsp;» (1879-1884, puis 1950-1958), closes par un Pacte scolaire qui ne tranche pas — il fige le conflit. La leçon que la Belgique retient et ne cessera de réappliquer&nbsp;: les clivages profonds ne se résolvent pas, ils se neutralisent par des pactes. Au milieu du siècle, le peuple de 1831 est enfin devenu tout le monde. Et c'est précisément à l'apogée de l'État unitaire qu'une faille longtemps masquée par la question sociale s'apprête à remonter à la surface.</p>
+    </div>
+  </div>
+</section>
+
+<div class="pull rise">
+  «&nbsp;La Belgique n'a jamais vraiment résolu ses conflits&nbsp;: elle les a <em>gelés</em> dans des pactes.&nbsp;»
+  <span class="by">Un trait de génie — et une fragilité</span>
+</div>
+
+<!-- ========== MOUVEMENT III ========== -->
+<section class="mvt" id="mvt-3">
+  <div class="mvt__head rise">
+    <p class="kicker">Mouvement III · 1932 – 1968</p>
+    <h2 class="mvt__title">La conscience des deux peuples</h2>
+    <p class="mvt__lede">Le jour où la langue cesse d'être une affaire de classe pour devenir une affaire de territoire, l'État unitaire est condamné. Il ne le sait pas encore.</p>
+  </div>
+  <div class="leaf">
+    <aside class="rail">
+      <div class="repere"><span class="repere__k">1898</span><span class="repere__v">Loi d'égalité&nbsp;: le néerlandais devient langue officielle à côté du français.</span></div>
+      <div class="repere"><span class="repere__k">1932</span><span class="repere__v">Grandes lois linguistiques&nbsp;: l'administration et l'école suivent la langue de la région.</span></div>
+      <div class="repere"><span class="repere__k">1962-1963</span><span class="repere__v">La frontière linguistique est fixée&nbsp;; quatre régions linguistiques sont dessinées.</span></div>
+      <div class="repere"><span class="repere__k">1968</span><span class="repere__v">«&nbsp;Walen buiten&nbsp;»&nbsp;: la scission de Louvain fait tomber le gouvernement.</span></div>
+      <p class="gloss">Le principe de territorialité</p>
+    </aside>
+    <div class="prose rise">
+      <p class="lettrine">Pendant un siècle, la langue avait suivi la classe&nbsp;: la bourgeoisie parlait français partout, le flamand restait l'idiome des pauvres du Nord. Le Mouvement flamand transforme lentement cette inégalité en revendication d'égalité, puis en revendication de territoire. Le néerlandais entre à la justice (1873), devient langue officielle (1898), puis l'université de Gand est «&nbsp;flamandisée&nbsp;» (1930). Chaque pas est une bataille&nbsp;; chaque victoire, un déplacement.</p>
+      <p>Le tournant décisif est l'adoption du principe de <strong>territorialité</strong>. Les lois de 1932 font dépendre la langue de l'administration et de l'enseignement, non plus du choix de l'individu, mais de la région où il se trouve. En 1962-1963, les lois Gilson fixent une bonne fois la <strong>frontière linguistique</strong> — un trait tiré en travers du pays — et découpent quatre régions linguistiques. Une ligne sur la carte accomplit désormais ce qu'une ligne de classe faisait autrefois&nbsp;: la faille est devenue géographie.</p>
+      <div class="article">
+        <p class="article__no">Article 4 · inscrit dans la Constitution en 1970</p>
+        <p class="article__t">«&nbsp;La Belgique comprend quatre régions linguistiques&nbsp;: la région de langue française, la région de langue néerlandaise, la région bilingue de Bruxelles-Capitale et la région de langue allemande.&nbsp;»</p>
+        <p class="article__src">Article «&nbsp;verrouillé&nbsp;»&nbsp;: il ne peut être modifié qu'à une majorité spéciale. La frontière est, depuis, quasi intangible.</p>
+      </div>
+      <p>Puis vient la rupture qui démontre que l'État unitaire est fini. À <strong>Louvain, en 1968</strong>, une université catholique bilingue se trouve en territoire flamand&nbsp;; le mot d'ordre «&nbsp;<em class="nl">Walen buiten</em>&nbsp;» — les Wallons dehors — embrase la ville. La section francophone est expulsée&nbsp;; on lui bâtira une ville neuve, Louvain-la-Neuve. La crise renverse le gouvernement et, surtout, fait éclater les trois grands partis nationaux, chacun se scindant en une aile flamande et une aile francophone&nbsp;: fracture jamais refermée. Le Premier ministre Gaston Eyskens en tire la conclusion à voix haute&nbsp;— l'État unitaire, dépassé par les événements, appartient au passé. La scène est dressée pour la fédéralisation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MOUVEMENT IV ========== -->
+<section class="mvt" id="mvt-4">
+  <div class="mvt__head rise">
+    <p class="kicker">Mouvement IV · 1970 – 2014</p>
+    <h2 class="mvt__title">La grande mue fédérale</h2>
+    <p class="mvt__lede">Pour ne pas se rompre, l'État unitaire choisit de se défaire — méthodiquement, par compromis, en six actes. Ici, fédéraliser ne veut pas dire rassembler&nbsp;: cela veut dire organiser la vie séparée sous un même toit.</p>
+  </div>
+  <div class="leaf">
+    <aside class="rail">
+      <div class="repere"><span class="repere__k">1970</span><span class="repere__v">Première réforme&nbsp;: la Constitution reconnaît des communautés culturelles et pose le principe des régions.</span></div>
+      <div class="repere"><span class="repere__k">1980</span><span class="repere__v">La Wallonie et la Flandre reçoivent parlement et gouvernement&nbsp;; les communautés s'étoffent.</span></div>
+      <div class="repere"><span class="repere__k">1989</span><span class="repere__v">Naissance de la Région de Bruxelles-Capitale&nbsp;; l'enseignement passe aux communautés.</span></div>
+      <div class="repere"><span class="repere__k">1993</span><span class="repere__v">Accords de la Saint-Michel&nbsp;: la Belgique devient officiellement un État fédéral.</span></div>
+      <p class="gloss">Fédéralisme par dissociation</p>
+    </aside>
+    <div class="prose rise">
+      <p class="lettrine">La plupart des fédérations naissent par addition&nbsp;: des entités d'abord séparées choisissent de s'unir et délèguent vers le haut une part de leur souveraineté — ainsi des États-Unis, de la Suisse, de l'Allemagne. La Belgique a fait l'inverse. État unitaire menacé par sa faille intérieure, elle a, pour survivre, dévolu le pouvoir vers le bas, étage par étage. Les politologues parlent de fédéralisme «&nbsp;par dissociation&nbsp;», ou centrifuge&nbsp;; la Belgique en est le cas le plus pur au monde. Le paradoxe est inscrit dans la méthode&nbsp;: voici une architecture fédérale dressée non pour rapprocher deux peuples, mais pour leur permettre de vivre à part.</p>
+      <p>Cette transformation n'a pas été pensée d'un bloc&nbsp;: elle s'est faite en six réformes successives, étalées sur quarante-quatre ans, chacune négociée dans la crise, aucune issue d'un plan d'ensemble. On a repris six fois le même texte fondateur, comme on consolide un bâtiment sans jamais en arrêter les plans.</p>
+    </div>
+  </div>
+
+  <div class="strates rise">
+        <p class="strates__k">Les six réformes de l'État — et la septième</p>
+        <div class="strate"><div class="strate__yr">1970<small>Iʳᵉ</small></div><div class="strate__b"><h4>Le principe</h4><p>Sous Gaston Eyskens, qui déclare l'État unitaire «&nbsp;dépassé par les faits&nbsp;», la Constitution reconnaît <strong>trois communautés culturelles</strong> et pose le principe de <strong>trois régions</strong>. Rien n'est encore vraiment construit&nbsp;; la porte est ouverte.</p></div></div>
+        <div class="strate"><div class="strate__yr">1980<small>IIᵉ</small></div><div class="strate__b"><h4>Les institutions</h4><p>La Région wallonne et la Communauté/Région flamande reçoivent un <strong>exécutif et un conseil</strong>. Les communautés héritent de la culture et des «&nbsp;matières personnalisables&nbsp;» (santé, aide aux personnes). Bruxelles, elle, reste en suspens.</p></div></div>
+        <div class="strate"><div class="strate__yr">1988-89<small>IIIᵉ</small></div><div class="strate__b"><h4>Bruxelles &amp; l'école</h4><p>Création de la <strong>Région de Bruxelles-Capitale</strong> (1989), dotée de son propre parlement. L'<strong>enseignement</strong> — enjeu des guerres scolaires — est transféré aux communautés. La carte à trois régions est désormais complète.</p></div></div>
+        <div class="strate"><div class="strate__yr">1993<small>IVᵉ</small></div><div class="strate__b"><h4>L'État fédéral</h4><p>Les <strong>accords de la Saint-Michel</strong> franchissent le seuil symbolique&nbsp;: l'article premier proclame que la Belgique <strong>est un État fédéral</strong>. Les parlements régionaux seront désormais élus directement. Le Sénat est réformé une première fois.</p></div></div>
+        <div class="strate"><div class="strate__yr">2001<small>Vᵉ</small></div><div class="strate__b"><h4>L'argent &amp; les communes</h4><p>Accords du <strong>Lambermont</strong> et du <strong>Lombard</strong>&nbsp;: élargissement de l'<strong>autonomie fiscale</strong>, transfert de l'agriculture, du commerce extérieur et de la tutelle sur les communes. Les entités fédérées cessent d'être de simples administrations.</p></div></div>
+        <div class="strate"><div class="strate__yr">2011-14<small>VIᵉ</small></div><div class="strate__b"><h4>La plus vaste</h4><p>La réforme dite «&nbsp;<strong>Papillon</strong>&nbsp;», née des 541 jours de crise&nbsp;: scission de l'arrondissement de <strong>Bruxelles-Hal-Vilvorde</strong>, transfert des allocations familiales et de larges pans de l'emploi et de la santé, nouvelle réforme du Sénat. Près de 20&nbsp;milliards d'euros de compétences basculent.</p></div></div>
+        <div class="strate"><div class="strate__yr">2025 –<small>VIIᵉ · en chantier</small></div><div class="strate__b"><h4>La suivante</h4><p>Une <strong>septième réforme</strong> est mise à l'étude sous le gouvernement De Wever. Sa forme reste ouverte — mais sa simple annonce dit l'essentiel&nbsp;: en Belgique, la révision de l'État n'est jamais close. Le chantier ne ferme pas&nbsp;; il change d'équipe.</p></div></div>
+      </div>
+
+  <div class="col"><div class="prose rise">
+      <p>Au cœur de l'édifice, une phrase. En 1993, l'article premier de la Constitution — celui qui ouvre tout texte fondateur — est entièrement réécrit pour acter la métamorphose.</p>
+      <div class="article">
+        <p class="article__no">Article 1<sup>er</sup> · révisé en 1993</p>
+        <p class="article__t">«&nbsp;La Belgique est un État fédéral qui se compose des communautés et des régions.&nbsp;»</p>
+        <p class="article__src">La première phrase de la Constitution&nbsp;: l'État unitaire de 1831 s'y déclare lui-même dissous dans ses parties.</p>
+      </div>
+      <p>Reste la singularité qui fait à la fois le génie et le casse-tête du système&nbsp;: la <strong>double structure</strong>. Là où d'autres fédérations connaissent un seul type d'entité fédérée, la Belgique en a créé deux, nées de deux demandes opposées. Le Nord flamand voulait des <strong>communautés</strong> — la langue, la culture, l'école, l'humain&nbsp;; le Sud wallon, frappé par le déclin industriel, voulait des <strong>régions</strong> — le territoire, l'économie, le sol. Plutôt que de trancher, on a tout accordé&nbsp;: trois Communautés (flamande, française, germanophone) <em>et</em> trois Régions (flamande, wallonne, bruxelloise), aux frontières qui ne se recouvrent pas. Puis on les a rendues <strong>asymétriques</strong>&nbsp;: au Nord, Communauté et Région ont fusionné en un seul parlement&nbsp;; au Sud, elles sont restées distinctes&nbsp;; et Bruxelles n'appartient en propre à aucune communauté, tout en relevant des deux.</p>
+  </div></div>
+
+  <div class="coupe rise">
+        <div class="coupe__fig">
+          <svg viewBox="0 0 1000 430" role="img" aria-label="Coupe de l'architecture fédérale belge : un État fédéral au sommet ; au milieu, la Communauté flamande couvrant la Flandre et Bruxelles, et la Communauté française couvrant Bruxelles et la Wallonie ; en bas, trois Régions, Bruxelles formant le nœud où les deux communautés se rejoignent.">
+            <text x="14" y="52" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing=".08em" fill="var(--faint)">FÉDÉRAL</text>
+            <text x="14" y="170" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing=".08em" fill="var(--faint)">LANGUE</text>
+            <text x="14" y="330" font-family="'IBM Plex Mono',monospace" font-size="11" letter-spacing=".08em" fill="var(--faint)">SOL</text>
+
+            <rect x="120" y="24" width="820" height="58" fill="rgba(51,72,92,.05)" stroke="var(--blue)" stroke-width="1.3"/>
+            <text x="530" y="50" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="15" font-weight="600" letter-spacing=".14em" fill="var(--ink)">ÉTAT FÉDÉRAL</text>
+            <text x="530" y="70" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing=".03em" fill="var(--soft)">défense · diplomatie · justice · sécurité sociale · dette</text>
+
+            <path d="M150,150 L150,134 L560,134 L560,150" fill="none" stroke="var(--blue)" stroke-width="1.3"/>
+            <line x1="220" y1="134" x2="220" y2="300" stroke="var(--blue)" stroke-width="1.3"/>
+            <line x1="478" y1="134" x2="478" y2="300" stroke="var(--rubric)" stroke-width="1.4"/>
+            <text x="300" y="124" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12.5" font-weight="600" letter-spacing=".05em" fill="var(--blue)">COMMUNAUTÉ FLAMANDE</text>
+
+            <path d="M440,214 L440,198 L905,198 L905,214" fill="none" stroke="var(--blue)" stroke-width="1.3"/>
+            <line x1="522" y1="198" x2="522" y2="300" stroke="var(--rubric)" stroke-width="1.4"/>
+            <line x1="820" y1="198" x2="820" y2="300" stroke="var(--blue)" stroke-width="1.3"/>
+            <text x="672" y="188" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12.5" font-weight="600" letter-spacing=".05em" fill="var(--blue)">COMMUNAUTÉ FRANÇAISE</text>
+            <text x="672" y="246" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" letter-spacing=".04em" fill="var(--soft)">— Fédération Wallonie-Bruxelles —</text>
+
+            <rect x="110" y="300" width="250" height="104" fill="rgba(51,72,92,.05)" stroke="var(--blue)" stroke-width="1.3"/>
+            <text x="235" y="338" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12.5" font-weight="600" letter-spacing=".06em" fill="var(--ink)">RÉGION FLAMANDE</text>
+            <text x="235" y="360" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--soft)">= Communauté flamande</text>
+            <text x="235" y="376" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--faint)">(fusionnées : un parlement)</text>
+
+            <rect x="400" y="300" width="200" height="104" fill="rgba(178,58,42,.055)" stroke="var(--rubric)" stroke-width="1.7"/>
+            <text x="500" y="334" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11.5" font-weight="600" letter-spacing=".04em" fill="var(--rubric-d)">BRUXELLES-</text>
+            <text x="500" y="349" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="11.5" font-weight="600" letter-spacing=".04em" fill="var(--rubric-d)">CAPITALE</text>
+            <text x="500" y="370" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--rubric)">des deux Communautés,</text>
+            <text x="500" y="383" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="var(--rubric)">d'aucune en propre</text>
+
+            <rect x="640" y="300" width="300" height="104" fill="rgba(51,72,92,.05)" stroke="var(--blue)" stroke-width="1.3"/>
+            <text x="775" y="338" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12.5" font-weight="600" letter-spacing=".06em" fill="var(--ink)">RÉGION WALLONNE</text>
+            <text x="762" y="360" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="var(--soft)">Communauté française</text>
+            <rect x="852" y="350" width="74" height="44" fill="none" stroke="var(--blue-2)" stroke-width="1.1"/>
+            <text x="889" y="368" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--blue-2)">C. germ.</text>
+            <text x="889" y="381" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="var(--blue-2)">(9 comm.)</text>
+          </svg>
+        </div>
+        <p class="coupe__cap"><b>Coupe de l'État fédéral.</b> Au sommet, le fédéral, qui couvre tout le territoire. Au milieu, les Communautés, qui suivent la <b>langue</b>&nbsp;: la flamande couvre la Flandre <em>et</em> Bruxelles, la française couvre Bruxelles <em>et</em> la Wallonie. En bas, les Régions, qui suivent le <b>sol</b>. Les deux logiques ne coïncident pas — et se rejoignent sur Bruxelles, le nœud, en rouge.</p>
+      </div>
+
+  <div class="col"><div class="prose rise">
+      <p>Le résultat est un bâtiment dont nulle pièce ne ressemble tout à fait à une autre — et qui n'a pas d'escalier central. C'est illisible, disent les uns&nbsp;; c'est vivant, répondent les autres. C'est, surtout, parfaitement logique&nbsp;: à une société qui refusait de choisir entre deux principes, on a donné les deux.</p>
+  </div></div>
+</section>
+
+<div class="pull rise">
+  «&nbsp;Ailleurs, le fédéralisme unit des entités séparées. En Belgique, il <em>sépare</em> une entité unie.&nbsp;»
+  <span class="by">La logique inversée</span>
+</div>
+
+<!-- ========== MOUVEMENT V ========== -->
+<section class="mvt" id="mvt-5">
+  <div class="mvt__head rise">
+    <p class="kicker">Mouvement V · 1970 – 2020</p>
+    <h2 class="mvt__title">La machine et ses paradoxes</h2>
+    <p class="mvt__lede">La charpente posée, reste à la faire fonctionner. La Belgique y parvient par une méthode ancienne — le compromis entre minorités — et selon des règles si singulières qu'elles confinent au paradoxe.</p>
+  </div>
+  <div class="leaf">
+    <aside class="rail">
+      <div class="repere"><span class="repere__k">Équipollence</span><span class="repere__v">Lois fédérales et fédérées ont la même valeur&nbsp;: il n'existe pas de hiérarchie des normes.</span></div>
+      <div class="repere"><span class="repere__k">Parité</span><span class="repere__v">Au Conseil des ministres, autant de néerlandophones que de francophones, quel que soit le scrutin.</span></div>
+      <div class="repere"><span class="repere__k">Aucun parti national</span><span class="repere__v">Depuis 1968, les partis sont scindés&nbsp;: nul électeur ne vote pour les mêmes que de l'autre côté de la frontière.</span></div>
+      <div class="repere"><span class="repere__k">541 jours</span><span class="repere__v">Record du monde de formation d'un gouvernement (2010-2011), le pays continuant de fonctionner.</span></div>
+      <p class="gloss">Démocratie consociative</p>
+    </aside>
+    <div class="prose rise">
+      <p class="lettrine">Comment gouverner un pays qui n'a pas de peuple unique&nbsp;? La réponse belge, que le politologue Arend Lijphart théorisa précisément à partir des cas néerlandais et belge, porte un nom&nbsp;: la <strong>démocratie consociative</strong>. Quand une société est trop divisée pour la règle de la majorité, on gouverne par un cartel d'élites — grandes coalitions, répartition proportionnelle de toutes les charges, droit de veto réciproque, large autonomie de chaque segment. Non plus la victoire d'un camp, mais la négociation permanente entre minorités organisées. La Belgique en est le modèle d'école&nbsp;; elle s'y exerce, on l'a vu, depuis l'âge des piliers.</p>
+      <p>Les règles en portent la marque, jusqu'au baroque. Le Conseil des ministres doit compter autant de ministres néerlandophones que francophones — la <strong>parité</strong> — sans égard au résultat des urnes. Lois fédérales et lois des entités fédérées ont rang égal — l'<strong>équipollence des normes</strong> — de sorte que les Régions ne sont pas «&nbsp;sous&nbsp;» l'État fédéral, mais à côté de lui, souveraines dans leurs matières. Et il n'existe pas de circonscription nationale&nbsp;: les partis se sont scindés en 1968 le long de la ligne de langue et ne se sont jamais réunis. Un électeur flamand et un électeur wallon ne choisissent jamais parmi les mêmes partis. À la lettre, il n'y a ni parti belge, ni élection belge&nbsp;: seulement deux électorats qui se rencontrent, après le vote, pour négocier.</p>
+      <p>De là le grand paradoxe de gouvernabilité — et les fameux <strong>541 jours</strong>. Après les élections de 2010, il fallut un an et demi pour former un gouvernement, record mondial&nbsp;; et pourtant le pays tourna — impôts levés, trains roulant, écoles ouvertes — car les administrations et les gouvernements régionaux, eux, continuaient. Preuve d'un État résilient, disaient les uns&nbsp;; symptôme d'un centre devenu creux, répondaient les autres. Les deux ont raison. La difficulté de fond est structurelle&nbsp;: le scrutin produit régulièrement une Flandre qui penche à droite et vers le nationalisme, et une Wallonie qui penche à gauche — deux majorités condamnées à gouverner ensemble. C'est l'arithmétique de la frustration.</p>
+
+      <h3>Le nœud bruxellois</h3>
+      <p>Et puis il y a Bruxelles — le nœud que nul ne peut trancher. Officiellement bilingue, en fait francophone à plus de 80&nbsp;%, la ville est enclavée en territoire flamand&nbsp;; elle est la capitale de la Belgique, de la Flandre <em>et</em> de l'Union européenne. La Flandre ne renoncera pas à sa capitale historique et économique&nbsp;; la Wallonie ne peut être reliée à une Flandre séparée sans elle&nbsp;; et la ville elle-même relève des deux communautés et d'aucune. Tout scénario de séparation se brise sur le même écueil. Bruxelles est peut-être la raison la plus forte de la persistance belge&nbsp;: non l'amour de l'union, mais l'impossibilité de partager le joyau.</p>
+
+      <h3>Le dernier lien</h3>
+      <p>Une institution, pourtant, appartient encore à tous&nbsp;: la Couronne. Dépouillé, par un long usage et par les révisions successives de la Constitution, de presque tout pouvoir réel, le Roi règne et ne gouverne pas — mais dans un pays sans parti national, sans circonscription nationale et sans média commun, il demeure l'une des seules figures qui procèdent du tout et en répondent. À chaque crise, il devient le chef d'orchestre discret&nbsp;: il nomme informateurs et formateurs, tient le cadre pendant que les partis marchandent. Du règne très personnel de Léopold&nbsp;II à la présidence symbolique d'aujourd'hui, la monarchie a perdu sa puissance et gardé sa fonction&nbsp;: rappeler, quand peu de choses le font, qu'il y a encore une Belgique à gouverner. L'abdication d'Albert&nbsp;II, en 2013, en faveur de son fils Philippe, passa presque comme une formalité — mesure du chemin parcouru&nbsp;: le trône est devenu une clef de voûte de pierre, non plus de volonté.</p>
+    </div>
+  </div>
+</section>
+
+<div class="pull rise">
+  «&nbsp;Privée de gouvernement pendant 541 jours, la Belgique a continué de tourner. C'est sa force&nbsp;; c'est aussi <em>la question</em> qu'elle se pose.&nbsp;»
+  <span class="by">L'État qui tient sans tête</span>
+</div>
+
+<!-- ========== MOUVEMENT VI ========== -->
+<section class="mvt" id="mvt-6">
+  <div class="mvt__head rise">
+    <p class="kicker">Mouvement VI · 2024 – …</p>
+    <h2 class="mvt__title">À l'horizon</h2>
+    <p class="mvt__lede">Deux siècles après sa Constitution, l'État belge se confie à un homme qui rêva longtemps de le défaire — et met en chantier une septième révision de lui-même. L'inachèvement, ici, n'est pas une panne&nbsp;: c'est un régime.</p>
+  </div>
+  <div class="leaf">
+    <aside class="rail">
+      <div class="repere"><span class="repere__k">9 juin 2024</span><span class="repere__v">La N-VA, nationaliste flamande, reste le premier parti du pays&nbsp;; le MR devance le PS au Sud.</span></div>
+      <div class="repere"><span class="repere__k">3 févr. 2025</span><span class="repere__v">Bart De Wever, Premier ministre&nbsp;: un nationaliste flamand à la tête de l'État fédéral, fait inédit.</span></div>
+      <div class="repere"><span class="repere__k">2025 –</span><span class="repere__v">Une septième réforme de l'État est mise en chantier, sous la conduite du Premier ministre.</span></div>
+      <div class="repere"><span class="repere__k">2030</span><span class="repere__v">La Belgique fêtera son bicentenaire.</span></div>
+      <p class="gloss">L'indétermination féconde</p>
+    </aside>
+    <div class="prose rise">
+      <p class="lettrine">L'ironie est presque trop belle. En février 2025, au terme de 239 jours de tractations, l'homme qui a bâti toute sa carrière sur l'annonce de la fin de la Belgique en est devenu le Premier ministre fédéral. Bart De Wever — historien, bourgmestre d'Anvers, président de la N-VA, dont l'horizon reste une Flandre autonome — gouverne désormais l'État même qu'il a passé une carrière à vouloir dépasser. C'est le genre de paradoxe dont la Belgique a le secret&nbsp;: la force centrifuge, parvenue au pouvoir, doit à présent tenir le centre.</p>
+      <p>Sa coalition — dite «&nbsp;Arizona&nbsp;», du nom des couleurs d'un drapeau — promet la rigueur budgétaire et, en petits caractères, une <strong>septième réforme de l'État</strong>, préparée sous l'autorité du Premier ministre lui-même. Le travail de révision continue donc, comme il continue depuis 1970. La seule question ouverte est sa direction.</p>
+
+      <h3>Trois avenirs en débat</h3>
+      <p>Trois futurs s'affrontent, sans qu'aucun l'ait encore emporté. Le <strong>confédéralisme</strong>, projet de la N-VA, propose d'inverser la logique&nbsp;: faire des entités fédérées le niveau premier, et ne déléguer vers le haut que ce qu'elles consentent à mettre en commun. Ses adversaires y voient une séparation par acomptes&nbsp;; ses partisans, une clarté enfin assumée. Le <strong>modèle à quatre régions</strong>, défendu par des penseurs comme Philippe Van Parijs, propose au contraire de simplifier le labyrinthe&nbsp;: dissoudre les communautés dans quatre régions — Flandre, Wallonie, Bruxelles et l'Est germanophone — en donnant enfin à Bruxelles un statut plein. Une fédération qui admettrait sa propre géographie. Reste le <strong>statu quo négocié</strong>&nbsp;: avancer à tâtons, réformer à la marge, faire durer la machine à compromis. Peu enthousiasmant&nbsp;; historiquement, le plus probable.</p>
+      <p>Sur les trois plane la même ombre, et la même lumière&nbsp;: Bruxelles et l'Europe. Bruxelles reste le nœud&nbsp;; et l'Union européenne, qui y siège, est en un sens la Belgique en plus grand — une union de peuples sans peuple unique, gouvernant la diversité par la négociation permanente. On a parfois dit la Belgique «&nbsp;laboratoire de l'Europe&nbsp;»&nbsp;: si l'on peut tenir un pays par la procédure plutôt que par la passion, c'est ici qu'on en fait l'épreuve. Certains annoncent l'«&nbsp;évaporation&nbsp;» de la Belgique — diluée vers le haut dans l'Europe, vers le bas dans les régions, jusqu'à ce qu'il ne reste presque rien entre les deux. D'autres observent que cette nécrologie est écrite, et démentie, depuis cent cinquante ans.</p>
+      <p>En 2030, le royaume aura deux cents ans. Il arrivera à cet anniversaire comme il a vécu&nbsp;: inachevé, contesté, improbable — et toujours debout. C'est la leçon de l'État belge, et sa discrète originalité. Il n'a jamais réglé la question de savoir ce qu'il est&nbsp;; il a rendu l'interrogation permanente, et bâti un pays autour de la négociation. Là où d'autres voient un État au bord perpétuel de la rupture, on peut voir quelque chose de plus rare&nbsp;: une communauté politique qui a fait de l'impermanence sa forme stable, et de l'absence de réponse définitive une manière de vivre ensemble. <em>Faire tenir la Belgique</em> n'a jamais consisté à achever le bâtiment. Mais à garder tout le monde, vaille que vaille, sous le même toit inachevé.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===================== NOTE & SOURCES ===================== -->
+<section class="notes">
+  <div class="wrap">
+    <h2>Note &amp; sources</h2>
+    <p>Cet essai est une synthèse réflexive à visée de vulgarisation. Il s'appuie sur le texte de la Constitution belge et les grandes lois de réforme institutionnelle, sur les travaux du Centre de recherche et d'information socio-politiques (CRISP) et de la doctrine de droit public, ainsi que sur la presse de référence pour l'actualité la plus récente. Les analyses et les jugements de valeur, lorsqu'il y en a, sont signalés comme tels&nbsp;; les questions communautaires y sont abordées de façon équilibrée, en exposant les positions du Nord comme du Sud.</p>
+
+    <h3>Sur un point sensible</h3>
+    <p>L'avenir institutionnel de la Belgique — confédéralisme, refédéralisation, modèle à quatre régions, statu quo — fait l'objet d'un débat ouvert et légitime, où s'affrontent des projets et des intérêts contradictoires. Cet essai s'efforce de décrire ces options sans en épouser aucune. Les chiffres et les dates relèvent du domaine public&nbsp;; les interprétations engagent leurs auteurs, jamais la neutralité de l'exposé.</p>
+
+    <h3>Repères &amp; lectures</h3>
+    <ul>
+      <li><b>La Constitution belge</b> (1831, coordonnée en 1994) — texte fondateur et ses révisions successives, notamment l'<em>article premier</em> (1993) et l'<em>article 195</em> (procédure de révision).</li>
+      <li><b>Les six réformes de l'État</b> (1970, 1980, 1988-1989, 1993, 2001, 2011-2014) — lois ordinaires et lois spéciales&nbsp;; accords de la Saint-Michel (1993), du Lambermont et du Lombard (2001), «&nbsp;Papillon&nbsp;» (2011-2014).</li>
+      <li><b>CRISP</b> — <em>Courrier hebdomadaire</em> et analyses en ligne sur le fédéralisme belge, la formation des gouvernements et les réformes institutionnelles.</li>
+      <li><b>Arend Lijphart</b>, <em>The Politics of Accommodation</em> — la Belgique comme cas d'école de la «&nbsp;démocratie consociative&nbsp;».</li>
+      <li><b>Philippe Van Parijs</b>, <em>Belgium. Une utopie pour notre temps</em> (2018) — plaidoyer pour un fédéralisme à quatre régions.</li>
+      <li><b>Presse</b> — Le Soir, La Libre, De Standaard, RTBF, VRT NWS (gouvernement De Wever, 2025&nbsp;; débat sur la septième réforme).</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <div class="foot__t">Faire tenir la <em>Belgique</em></div>
+      <p>Essai réflexif sur la construction de l'État belge, de la Constitution de 1831 au gouvernement fédéral de 2025. Page autonome, sans suivi ni dépendance.</p>
+    </div>
+    <p>Composé en Bricolage&nbsp;Grotesque, Spectral &amp; IBM&nbsp;Plex&nbsp;Mono.<br>Dernière mise à jour des données&nbsp;: 2025.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog = document.getElementById('prog');
+  var top = document.getElementById('railtop');
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      if(prog) prog.style.width = p + '%';
+      if(top){ if(h.scrollTop > 620){ top.classList.add('show'); } else { top.classList.remove('show'); } }
+      ticking = false;
+    });
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    document.querySelectorAll('.rise').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.rise').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
