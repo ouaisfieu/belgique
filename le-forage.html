@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Le Forage — sous les scandales belges, la machine</title>
+<meta name="description" content="La suite du Dossier noir. Une carotte prélevée d'un seul trait à travers l'État belge : neuf strates, neuf mécanismes de la particratie, neuf chiffres. Les scandales ne sont pas des accidents, ce sont des sédiments. Sources en regard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0C0D11;
+    --ink-2:#13151B;
+    --ink-3:#181B22;
+    --bone:#ECE7DA;
+    --bone-dim:#B4B0A6;
+    --slate:#6F737D;
+    --line:#262932;
+    --line-2:#333744;
+    --steel:#7CA0B8;     /* froid — surface */
+    --oxblood:#BE4630;   /* chaud — le fond, le sang */
+    --rust:#C97A3D;      /* transition */
+    --maxw:760px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  /* full-page vertical gradient that the drill "reveals" */
+  .bh-grad{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(1100px 700px at 78% -8%, rgba(124,160,184,.10), transparent 60%),
+      radial-gradient(1000px 900px at 12% 112%, rgba(190,70,48,.12), transparent 58%);
+  }
+
+  /* ---- top bar ---- */
+  .bar{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; padding:.7rem clamp(1rem,4vw,2rem);
+    font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--slate);
+    background:rgba(12,13,17,.72); backdrop-filter:blur(9px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar a{color:var(--bone-dim); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .2s,color .2s}
+  .bar a:hover{color:var(--bone); border-color:var(--steel)}
+  .bar .tag{color:var(--slate)}
+
+  /* ---- drill apparatus: a fixed gauge on the left ---- */
+  .gauge{
+    position:fixed; top:0; bottom:0; left:max(.55rem,calc((100vw - var(--maxw))/2 - 2.4rem));
+    width:3px; z-index:20; pointer-events:none;
+    background:linear-gradient(var(--line),var(--line));
+    border-radius:3px;
+  }
+  .gauge .fill{
+    position:absolute; top:0; left:0; width:100%; height:0;
+    background:linear-gradient(180deg,var(--steel) 0%, var(--rust) 52%, var(--oxblood) 100%);
+    background-repeat:no-repeat;
+    box-shadow:0 0 14px rgba(190,70,48,.25);
+    transition:height .12s linear;
+  }
+  .gauge .bit{
+    position:absolute; left:50%; width:11px; height:11px; transform:translate(-50%,-50%);
+    border-radius:50%; background:var(--oxblood); top:0;
+    box-shadow:0 0 0 4px rgba(190,70,48,.18), 0 0 16px rgba(190,70,48,.5);
+    transition:top .12s linear;
+  }
+  @media (max-width:980px){ .gauge{left:.45rem} }
+
+  /* depth readout chip */
+  .readout{
+    position:fixed; left:max(1rem,calc((100vw - var(--maxw))/2 - 2.4rem)); bottom:1.1rem; z-index:30;
+    font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--bone-dim); background:rgba(19,21,27,.85); border:1px solid var(--line-2);
+    padding:.42rem .6rem; border-radius:7px; backdrop-filter:blur(6px);
+    transform:translateY(8px); opacity:0; transition:opacity .35s, transform .35s, color .3s;
+    white-space:nowrap;
+  }
+  .readout.show{opacity:1; transform:none}
+  .readout b{color:var(--bone); font-weight:600}
+  @media (max-width:620px){ .readout{display:none} }
+
+  /* ---- shell ---- */
+  .shell{position:relative; z-index:1; max-width:var(--maxw); margin:0 auto; padding:0 clamp(1.1rem,5vw,1.6rem)}
+
+  /* ---- hero ---- */
+  .hero{padding:clamp(4rem,12vh,8rem) 0 clamp(3rem,8vh,5rem)}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--steel); margin:0 0 1.4rem; display:flex; align-items:center; gap:.6rem; flex-wrap:wrap;
+  }
+  .eyebrow .dash{width:34px; height:1px; background:var(--steel); display:inline-block}
+  .hero h1{
+    font-family:"Fraunces",serif; font-weight:900; font-optical-sizing:auto;
+    font-size:clamp(3.6rem,16vw,8.5rem); line-height:.86; letter-spacing:-.02em;
+    margin:0; color:var(--bone);
+  }
+  .hero h1 .light{color:var(--slate); font-weight:400; font-style:italic}
+  .lede-xl{
+    font-family:"Fraunces",serif; font-weight:400; font-style:italic; font-size:clamp(1.35rem,4.6vw,2rem);
+    line-height:1.28; color:var(--bone); margin:1.8rem 0 0; max-width:30ch;
+  }
+  .lede{color:var(--bone-dim); margin:1.7rem 0 0; max-width:62ch}
+  .lede strong{color:var(--bone); font-weight:600}
+  .meta-row{
+    margin-top:2.4rem; padding-top:1.3rem; border-top:1px solid var(--line);
+    display:flex; flex-wrap:wrap; gap:1.4rem 2.2rem;
+    font-family:"IBM Plex Mono",monospace; font-size:.74rem; letter-spacing:.04em; color:var(--slate);
+  }
+  .meta-row b{color:var(--bone); font-weight:600; display:block; font-size:1.05rem; letter-spacing:0; margin-bottom:.15rem}
+  .scrollcue{
+    margin-top:3rem; font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--slate); display:flex; align-items:center; gap:.7rem;
+  }
+  .scrollcue .arr{display:inline-block; animation:bob 2.2s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  @media (prefers-reduced-motion: reduce){ .scrollcue .arr{animation:none} }
+
+  /* ---- strata ---- */
+  .stratum{
+    padding:clamp(3.2rem,9vh,5.5rem) 0;
+    border-top:1px solid var(--line);
+    opacity:0; transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1);
+  }
+  .stratum.in{opacity:1; transform:none}
+  .stratum .head{display:flex; align-items:baseline; gap:.9rem; flex-wrap:wrap; margin-bottom:.2rem}
+  .depth{
+    font-family:"IBM Plex Mono",monospace; font-weight:600; font-size:.82rem; letter-spacing:.05em;
+    color:var(--ac,var(--steel)); padding:.22rem .5rem; border:1px solid var(--ac,var(--steel)); border-radius:5px;
+    opacity:.9;
+  }
+  .zone{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--slate);
+  }
+  .stratum h2{
+    font-family:"Fraunces",serif; font-weight:600; font-optical-sizing:auto;
+    font-size:clamp(1.9rem,6.2vw,3rem); line-height:1.04; letter-spacing:-.015em;
+    margin:.5rem 0 0; color:var(--bone); max-width:18ch;
+  }
+  .stratum p{color:var(--bone-dim); margin:1.15rem 0 0; max-width:64ch}
+  .stratum p strong{color:var(--bone); font-weight:600}
+  .stratum p .ac{color:var(--ac,var(--steel)); font-weight:600}
+
+  /* the core sample — signature element */
+  .core{
+    --r:34px;
+    margin:1.9rem 0 .4rem; position:relative;
+    display:flex; align-items:center; gap:1.3rem;
+    padding:1.5rem 1.6rem; border-radius:var(--r);
+    background:
+      repeating-linear-gradient(180deg, rgba(255,255,255,.022) 0 7px, rgba(0,0,0,0) 7px 15px),
+      linear-gradient(135deg, var(--ink-3), var(--ink-2));
+    border:1px solid var(--line-2);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .core:hover{transform:translateY(-3px); border-color:var(--ac,var(--steel)); box-shadow:0 14px 40px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04)}
+  .core::before{ /* the extracted-core edge */
+    content:""; position:absolute; left:0; top:8px; bottom:8px; width:6px; border-radius:6px;
+    background:linear-gradient(180deg, var(--ac,var(--steel)), transparent);
+    opacity:.9;
+  }
+  .core .num{
+    font-family:"Fraunces",serif; font-weight:900; font-optical-sizing:auto;
+    font-size:clamp(2.7rem,11vw,4.3rem); line-height:.9; letter-spacing:-.02em;
+    color:var(--bone); white-space:nowrap;
+  }
+  .core .num small{font-size:.42em; font-weight:600; color:var(--ac,var(--steel)); letter-spacing:0}
+  .core .cap{
+    font-size:.95rem; line-height:1.4; color:var(--bone-dim); border-left:1px solid var(--line-2); padding-left:1.2rem;
+  }
+  .core .cap b{color:var(--bone); font-weight:600}
+  @media (max-width:560px){
+    .core{flex-direction:column; align-items:flex-start; gap:.8rem; --r:24px}
+    .core .cap{border-left:0; border-top:1px solid var(--line-2); padding-left:0; padding-top:.8rem}
+  }
+
+  /* instrument readings — small data chips */
+  .readings{
+    margin:1.6rem 0 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  .readings .r{background:var(--ink-2); padding:1rem 1.1rem}
+  .readings .r .v{font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--bone); line-height:1.05}
+  .readings .r .v em{font-style:normal; color:var(--ac,var(--steel))}
+  .readings .r .k{font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.04em; color:var(--slate); margin-top:.35rem; line-height:1.35}
+
+  /* sources line per stratum */
+  .src{
+    margin-top:1.5rem; font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.03em;
+    color:var(--slate); line-height:1.7;
+  }
+  .src::before{content:"⌖ "; color:var(--ac,var(--steel))}
+
+  .pull{
+    font-family:"Fraunces",serif; font-style:italic; font-weight:500; color:var(--bone);
+    font-size:clamp(1.2rem,4vw,1.55rem); line-height:1.32; margin:1.7rem 0 0; max-width:30ch;
+    border-left:2px solid var(--ac,var(--steel)); padding-left:1.1rem;
+  }
+
+  /* ---- coda ---- */
+  .coda{
+    padding:clamp(4rem,11vh,7rem) 0 2rem; border-top:1px solid var(--oxblood);
+    opacity:0; transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1);
+  }
+  .coda.in{opacity:1; transform:none}
+  .coda .zone{color:var(--oxblood)}
+  .coda h2{
+    font-family:"Fraunces",serif; font-weight:900; font-size:clamp(2.2rem,8vw,3.6rem); line-height:.98;
+    letter-spacing:-.02em; margin:.6rem 0 0; color:var(--bone); max-width:16ch;
+  }
+  .coda p{color:var(--bone-dim); margin:1.3rem 0 0; max-width:64ch}
+  .coda p strong{color:var(--bone)}
+  .coda .names{
+    margin-top:1.6rem; font-family:"IBM Plex Mono",monospace; font-size:.78rem; letter-spacing:.02em;
+    color:var(--slate); line-height:1.9;
+  }
+  .coda .names span{color:var(--rust)}
+  .back{
+    display:inline-flex; align-items:center; gap:.6rem; margin-top:2.4rem;
+    font-family:"IBM Plex Mono",monospace; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--bone); text-decoration:none; border:1px solid var(--line-2); padding:.7rem 1rem; border-radius:8px;
+    transition:border-color .25s, background .25s;
+  }
+  .back:hover{border-color:var(--steel); background:var(--ink-2)}
+
+  /* ---- method footer ---- */
+  .method{
+    margin-top:3rem; padding:2.4rem 0 4rem; border-top:1px solid var(--line);
+    font-size:.92rem; color:var(--bone-dim);
+  }
+  .method h3{
+    font-family:"IBM Plex Mono",monospace; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--slate); font-weight:600; margin:0 0 1rem;
+  }
+  .method p{margin:0 0 1rem; max-width:66ch}
+  .method strong{color:var(--bone); font-weight:600}
+  .method .fine{font-size:.78rem; color:var(--slate); border-top:1px solid var(--line); padding-top:1.3rem; margin-top:1.6rem}
+  .method a{color:var(--bone-dim); text-decoration:underline; text-underline-offset:2px; text-decoration-color:var(--line-2)}
+  .method a:hover{color:var(--bone)}
+
+  ::selection{background:rgba(190,70,48,.35); color:#fff}
+  :focus-visible{outline:2px solid var(--steel); outline-offset:3px; border-radius:3px}
+</style>
+</head>
+<body>
+<div class="bh-grad" aria-hidden="true"></div>
+
+<div class="bar">
+  <span><a href="https://ouaisfieu.github.io/belgique/">↑ Le Dossier noir</a> <span class="tag">/ la suite</span></span>
+  <span class="tag">Forage · carotte d'État</span>
+</div>
+
+<div class="gauge" aria-hidden="true">
+  <div class="fill"></div>
+  <div class="bit"></div>
+</div>
+<div class="readout" id="readout">Profondeur <b>−00</b></div>
+
+<div class="shell">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="eyebrow"><span class="dash"></span> Le Dossier noir, lu en profondeur</p>
+    <h1>Le&nbsp;Forage<span class="light">.</span></h1>
+    <p class="lede-xl">Les scandales sont en surface. La cause est en profondeur.</p>
+    <p class="lede">Le Dossier noir lit l'histoire belge <strong>en longueur</strong> : deux siècles d'éruptions visibles, du Congo à Qatargate. Ce document la lit <strong>en profondeur</strong>. On prélève une carotte d'un seul trait à travers l'État — de la surface où l'on vote jusqu'au socle où l'on souffre — et on lit les strates. La découverte tient en une phrase : <strong>les scandales ne sont pas des accidents, ce sont des sédiments.</strong> À chaque strate, un mécanisme ; à chaque mécanisme, un chiffre.</p>
+    <div class="meta-row">
+      <span><b>9</b>strates</span>
+      <span><b>1</b>carottage</span>
+      <span><b>2024–26</b>fenêtre</span>
+      <span><b>en regard</b>sources</span>
+    </div>
+    <p class="scrollcue"><span class="arr">↓</span> on descend</p>
+  </header>
+
+  <!-- −00 SURFACE -->
+  <section class="stratum" data-depth="−00" data-zone="Surface" style="--ac:var(--steel)">
+    <div class="head">
+      <span class="depth">−00 m</span><span class="zone">Surface · le théâtre</span>
+    </div>
+    <h2>Le Parlement qui n'en est plus un</h2>
+    <p>Au sommet, la lumière : l'hémicycle, les votes, la séance publique. Mais on n'y décide presque rien. Sous le gouvernement Wilmès II, la discipline de vote au sein de la majorité a atteint <span class="ac">99,73 %</span> — une unanimité arithmétique sur des centaines de textes complexes, statistiquement impossible si elle naissait du libre arbitre de dizaines de personnes. L'article 42 de la Constitution garantit pourtant à chaque élu un mandat libre et interdit le mandat impératif. Dans les faits, ce principe est devenu une <strong>« fiction juridique »</strong>.</p>
+    <div class="core">
+      <span class="num">99,73&nbsp;<small>%</small></span>
+      <span class="cap">de votes alignés dans la majorité <b>(Wilmès II)</b>. Le taux de dissidence global tombe sous 1 %. Au PTB, <b>zéro</b> vote dissident documenté en séance plénière depuis l'entrée du parti au Parlement.</span>
+    </div>
+    <p>La séance plénière garde une fonction : publicité légale, légitimation. Mais la décision, elle, s'est prise ailleurs — en réunion de groupe, en conclave de présidents. Le vote n'enregistre que ce qui fut tranché hors caméra. <strong>La Belgique présente l'un des plus hauts degrés de cohésion partisane d'Europe occidentale.</strong></p>
+    <p class="src">Verleden (CRISP) ; Depauw ; « Engagement sur l'Honneur » ; doctrine art. 42 (Alen, Uyttendaele, Verdussen, Behrendt).</p>
+  </section>
+
+  <!-- −01 PARTICRATIE -->
+  <section class="stratum" data-depth="−01" data-zone="La machine" style="--ac:#8FA9B6">
+    <div class="head">
+      <span class="depth">−01 m</span><span class="zone">La machine · la particratie</span>
+    </div>
+    <h2>Les architectes que la Constitution ne connaît pas</h2>
+    <p>Sous le théâtre, la salle des machines. Les centres de décision se sont déplacés des enceintes publiques vers les états-majors privés des partis. Les présidents de parti négocient les accords de gouvernement, désignent les ministres, fixent les lignes rouges législatives — sans aucune fonction exécutive reconnue par la Constitution. Ils règnent depuis le « Kern » et les conférences de présidents, là où aucun procès-verbal public n'existe.</p>
+    <div class="core">
+      <span class="num">0</span>
+      <span class="cap">le nombre de fois où un <b>président de parti</b> apparaît dans la Constitution belge. Contrairement à l'Allemagne (art. 21) ou à la France (art. 4), les partis y sont des <b>associations de fait</b> sans personnalité juridique. L'acteur le plus puissant du pays est, en droit, invisible.</span>
+    </div>
+    <p>Le politologue Wilfried Dewachter résume la « mythe de la démocratie parlementaire » : l'assemblée ne joue « guère de rôle dans la prise de décision » et ne fait que consacrer rituellement ce qui se décide dans les <em>kernkabinetten</em>. Le levier de la contrainte ? La liste électorale : le président contrôle l'ordre des candidats, et l'effet de la case de tête fait le reste.</p>
+    <p class="src">Dewachter, <em>De mythe van de parlementaire democratie</em> ; Verleden, <em>Aux sources de la particratie</em> (CRISP) ; De Winter &amp; Dumont.</p>
+  </section>
+
+  <!-- −02 LA RENTE -->
+  <section class="stratum" data-depth="−02" data-zone="L'argent" style="--ac:#A98F66">
+    <div class="head">
+      <span class="depth">−02 m</span><span class="zone">L'argent · la rente</span>
+    </div>
+    <h2>Le carburant : de l'argent public, contrôlé par ceux qui le reçoivent</h2>
+    <p>Plus bas, la nappe financière. Née pour assainir les mœurs après le scandale Agusta, la loi du 4 juillet 1989 a remplacé les fonds occultes par des dotations publiques massives. Aujourd'hui, près de <strong>80 % des revenus des partis</strong> proviennent de l'argent public. Et l'organe qui audite ces comptes — la Commission de contrôle de la Chambre — est composé… des parlementaires des partis qu'il contrôle. La doctrine appelle cela <strong>« financement par les partis, contrôlé par les partis »</strong>.</p>
+    <div class="core">
+      <span class="num">162&nbsp;<small>M€</small></span>
+      <span class="cap">le patrimoine net cumulé des partis fin 2022 — <b>près du triple</b> d'il y a vingt ans. Des dotations censées financer le fonctionnement démocratique se sont muées en fonds d'investissement : 26 % en immobilier, 68 % en placements.</span>
+    </div>
+    <div class="readings">
+      <div class="r"><div class="v">×<em>4</em></div><div class="k">par électeur, vs les partis néerlandais — ×2 vs l'Allemagne</div></div>
+      <div class="r"><div class="v">15,08&nbsp;<em>M€</em></div><div class="k">de pub Meta + Google payée par les partis en 2024 (record)</div></div>
+      <div class="r"><div class="v">&gt;43&nbsp;<em>M€</em></div><div class="k">le seul patrimoine de la N-VA, qui domine le paysage</div></div>
+    </div>
+    <p>La manne crée une barrière à l'entrée quasi infranchissable : sans dotation, pas de campagne ; sans siège acquis, pas de dotation. Le système se verrouille de l'intérieur et la dotation publique finance, selon Bart Maddens, une « campagne permanente » — un transfert de subvention publique vers <strong>la fabrique du consentement</strong>.</p>
+    <p class="src">KU Leuven (Maddens, Smulders, Vanden Eynde), comptes 2024 ; CRISP (Faniel) ; rapport Adlens 2024 ; <em>La Libre</em>.</p>
+  </section>
+
+  <!-- −03 LA LAISSE -->
+  <section class="stratum" data-depth="−03" data-zone="La dépendance" style="--ac:#BE8A52">
+    <div class="head">
+      <span class="depth">−03 m</span><span class="zone">La dépendance · la laisse</span>
+    </div>
+    <h2>L'indépendance de l'élu, rachetée au mois</h2>
+    <p>L'indemnité parlementaire a une raison d'être constitutionnelle unique : garantir l'<strong>indépendance</strong> de l'élu. La pratique de la rétrocession la retourne. Avant l'investiture, les candidats signent des engagements à reverser une part de leur traitement au parti. La rémunération publique de la fonction devient ainsi la contrepartie économique de la loyauté — une laisse financière nouée à l'argent du contribuable.</p>
+    <div class="core">
+      <span class="num">60–70&nbsp;<small>%</small></span>
+      <span class="cap">la part du revenu net qu'un élu PTB reverse à son parti : il en conserve environ <b>1 700 € par mois</b>. Écolo ≈ 40 %, Groen 25 %, Vlaams Belang 15 %, PS &amp; Vooruit 10 %, N-VA 7,5–10 %.</span>
+    </div>
+    <p>« Plus un parti est à gauche, plus la part que l'élu doit lui reverser est importante », observe Jean Faniel (CRISP). Quelle qu'en soit la couleur, le mécanisme est le même : un lien de dépendance financière structurel entre l'élu et l'appareil. L'argent destiné à libérer le représentant sert à le tenir.</p>
+    <p class="src">CRISP (Faniel) ; Delwit (ULB) ; comptes déposés à la Commission de contrôle.</p>
+  </section>
+
+  <!-- −04 ADMIN PARALLELE -->
+  <section class="stratum" data-depth="−04" data-zone="L'administration" style="--ac:#C97A3D">
+    <div class="head">
+      <span class="depth">−04 m</span><span class="zone">L'administration parallèle · les cabinets</span>
+    </div>
+    <h2>L'État dans l'État : trois mille collaborateurs hors barème</h2>
+    <p>Encore plus profond, une administration fantôme. Là où le Danemark et les Pays-Bas n'ont <strong>aucun cabinet ministériel</strong> — leurs ministres travaillent directement avec l'administration de carrière — la Belgique entretient des cabinets pléthoriques, recrutés <em>intuitu personae</em>, qui drainent la substance intellectuelle des services publics vers les états-majors. Historiquement, jusqu'à 100 collaborateurs par ministre.</p>
+    <div class="core">
+      <span class="num">≈&nbsp;3&nbsp;000</span>
+      <span class="cap">collaborateurs cumulés dans les cabinets belges. Coût annuel &gt; <b>200 M€</b>, dont près de <b>la moitié reste invisible</b> dans les budgets : fonctionnaires détachés « à titre gratuit », jamais refacturés (14,8 M€ pour la seule Wallonie en 2021).</span>
+    </div>
+    <p>La France a plafonné ses cabinets à 10 conseillers par ministre dès 2017. La Belgique, avec l'Italie historique, reste l'un des derniers grands pays d'Europe à entretenir ce système — qui prolonge la main des partis jusqu'au cœur de l'appareil d'État, en fusionnant l'administration censée être neutre avec l'intérêt partisan. Les réformes annoncées en 2024–25 restent marginales au regard de l'architecture.</p>
+    <p class="src">Cour des comptes (2011–2023) ; OECD/SIGMA ; Commission fédérale de déontologie (2023).</p>
+  </section>
+
+  <!-- −05 LE VERROU -->
+  <section class="stratum" data-depth="−05" data-zone="Le verrou" style="--ac:#C76A38">
+    <div class="head">
+      <span class="depth">−05 m</span><span class="zone">Le verrou · l'absence de juge</span>
+    </div>
+    <h2>L'arbitre est un ancien joueur</h2>
+    <p>Pourquoi rien de tout cela n'est-il jamais contesté ? Parce que les portes du droit sont closes. La discipline de vote est une pratique factuelle d'associations privées : la Cour constitutionnelle ne contrôle que des lois. L'article 42 loge dans le Titre III de la Constitution, hors de son périmètre de contrôle direct. Le Conseil d'État ne juge que des actes d'autorités administratives — or les partis n'en sont pas. Et les partis, dépourvus de personnalité juridique, sont presque insaisissables.</p>
+    <div class="core">
+      <span class="num">6&nbsp;<small>/ 12</small></span>
+      <span class="cap">des juges de la Cour constitutionnelle sont d'<b>anciens parlementaires</b>, nommés à la majorité des deux tiers — c'est-à-dire par les partis. Le gardien du verrou en détient aussi les clés.</span>
+    </div>
+    <p class="pull">Aucun recours en justice contre la discipline de vote n'a jamais été introduit en Belgique. Jamais.</p>
+    <p>Ce vide n'est pas un oubli, c'est une architecture. La doctrine est unanime : la tension entre la particratie et l'article 42 est réelle — mais qualifiée de <strong>non justiciable</strong>, la sanction partisane étant extra-juridique. Ceux qui contrôlent le système contrôlent aussi les clés de sa réforme.</p>
+    <p class="src">Bourgaux (ULB) ; De Prins ; Verdussen ; CEDH <em>G.K. c. Belgique</em> (2019), <em>Mugemangango c. Belgique</em> (2020).</p>
+  </section>
+
+  <!-- −06 LE REGARD EXTERIEUR -->
+  <section class="stratum" data-depth="−06" data-zone="Le regard extérieur" style="--ac:#C45A33">
+    <div class="head">
+      <span class="depth">−06 m</span><span class="zone">Le regard extérieur · la honte</span>
+    </div>
+    <h2>Le pays qui héberge l'Europe, vu d'Europe</h2>
+    <p>À cette profondeur, une couche de honte internationale, dûment datée. Le GRECO du Conseil de l'Europe — que la Belgique a contribué à fonder — n'a vu mettre en œuvre que <strong>8 de ses 22 recommandations</strong> du 5ᵉ cycle. En novembre 2025, il a déclenché la procédure de non-conformité (Règle 32) et invité le Secrétaire général à écrire au ministre belge des Affaires étrangères. Le stade suivant — la déclaration publique de non-conformité — n'a jamais frappé qu'un seul pays : la Biélorussie.</p>
+    <div class="core">
+      <span class="num">122<small>ᵉ / 139</small></span>
+      <span class="cap">le rang de la Belgique pour le <b>droit d'accès à l'information</b>. Déclarations de patrimoine sous pli scellé, ouvrables seulement en enquête pénale. Registre des lobbyistes non contraignant, géré par une seule personne, ne couvrant pas le gouvernement.</span>
+    </div>
+    <div class="readings">
+      <div class="r"><div class="v">77 → <em>69</em></div><div class="k">indice de perception de la corruption depuis 2016 (rang 15ᵉ → 22ᵉ)</div></div>
+      <div class="r"><div class="v"><em>« systemic</em> failure »</div><div class="k">CEDH, <em>Camara c. Belgique</em> (2023) — 10 000+ condamnations depuis 2021</div></div>
+    </div>
+    <p>Transparency International classe la Belgique parmi les <em>significant decliners</em>. La Commission européenne, dans son rapport État de droit 2025, épingle des efforts « insuffisants » sur la corruption, le lobbying et la transparence. Le miroir extérieur renvoie une image que le miroir intérieur refuse de voir.</p>
+    <p class="src">GRECO, 4ᵉ &amp; 5ᵉ cycles (Règle 32) ; Transparency International (CPI 2024–25) ; Commission européenne, Rapport État de droit 2025 ; CEDH.</p>
+  </section>
+
+  <!-- −07 LE COUT HUMAIN -->
+  <section class="stratum" data-depth="−07" data-zone="Le fond" style="--ac:#BE4F30">
+    <div class="head">
+      <span class="depth">−07 m</span><span class="zone">Le fond · le coût humain</span>
+    </div>
+    <h2>Tout en bas, ceux qui paient</h2>
+    <p>Au socle, ce que toute cette mécanique produit vraiment. Un État dont les élus ne répondent plus devant les citoyens mais devant des appareils finit par mal voir ceux qu'il administre. Pendant que le débat public est saturé par la « fraude sociale », des dispositifs vitaux n'atteignent jamais ceux qui y ont droit. C'est une violence administrative silencieuse — et un milliardaire d'économies cyniques pour l'État.</p>
+    <div class="core">
+      <span class="num">77&nbsp;<small>%</small></span>
+      <span class="cap">des plus de 65 ans éligibles à l'<b>allocation de chauffage</b> ne la perçoivent pas. Revenu d'intégration : 37 à 51 % de non-recours. GRAPA (minimum vieillesse) : la moitié. Aide d'urgence étudiante (ULB) : 82 %.</span>
+    </div>
+    <div class="readings">
+      <div class="r"><div class="v">0,3&nbsp;<em>%</em></div><div class="k">ce que pèse la fraude sociale détectée dans le budget de la sécu — la cible de tous les contrôles</div></div>
+      <div class="r"><div class="v">+44&nbsp;<em>%</em></div><div class="k">d'invalidités longue durée pour burn-out / dépression en 5 ans · femmes ≈ 70 %</div></div>
+      <div class="r"><div class="v">17&nbsp;<em>000</em></div><div class="k">décisions d'accueil non exécutées par l'État fin 2025 · 650 arrêts CEDH ignorés</div></div>
+    </div>
+    <p>On traque 0,3 % de fraude avec un arsenal technologique ; on laisse 77 % des plus pauvres sans leur dû, et l'on n'exécute pas ses propres décisions de justice. En 2026, l'arrêt <em>M.V. e.a. c. Belgique</em> a constaté le franchissement du seuil de l'article 3 — le traitement inhumain. <strong>Le déficit démocratique du sommet a un prix, et il se paie en bas.</strong></p>
+    <p class="src">Projets TAKE &amp; BELMOD (BELSPO) ; Service de lutte contre la pauvreté ; Statbel ; INAMI ; CEDH <em>M.V. c. Belgique</em> (2026).</p>
+  </section>
+
+  <!-- −08 LA SORTIE -->
+  <section class="stratum" data-depth="−08" data-zone="Le socle" style="--ac:#BE4630">
+    <div class="head">
+      <span class="depth">−08 m</span><span class="zone">Le socle · la sécession civique</span>
+    </div>
+    <h2>Quand le socle se dérobe : les citoyens partent</h2>
+    <p>Et au plancher de la carotte, la rupture. Face à un système perçu comme verrouillé, une part croissante de la population fait sécession — sans déclaration ni frontière. Une sécession « négative » d'abord : on déserte les urnes. En juin 2024, malgré le vote obligatoire, l'abstention a battu son record depuis 1981 ; cumulés aux blancs et nuls, les abstentionnistes forment virtuellement le <strong>deuxième parti du pays</strong>.</p>
+    <div class="core">
+      <span class="num">8&nbsp;<small>%</small></span>
+      <span class="cap">la confiance des Belges dans les <b>partis politiques</b> — un étiage historique. C'est le chiffre du fond : le lien de représentation, déjà fictif au sommet, a cédé à la base.</span>
+    </div>
+    <div class="readings">
+      <div class="r"><div class="v">12,5&nbsp;<em>%</em></div><div class="k">d'abstention au fédéral (9 juin 2024), record malgré l'obligation de voter</div></div>
+      <div class="r"><div class="v">35–40&nbsp;<em>%</em></div><div class="k">VB + PTB cumulés dans les sondages de 2026 — le vote de rupture, des deux bords</div></div>
+      <div class="r"><div class="v">209&nbsp;<em>000</em></div><div class="k">bénéficiaires/mois des banques alimentaires · 120 000 coopérateurs énergétiques</div></div>
+    </div>
+    <p>Puis une sécession « positive » : la société civile s'auto-organise pour assurer ce que l'État a cessé d'assurer — énergie, alimentation, accueil (422 078 nuitées BelRefugees en 2024). Une démocratie à deux étages se dessine : en haut, un système électif en décrochage de légitimité ; en bas, une société-de-substitution qui assume des fonctions régaliennes. La carotte est remontée. Reste à lire ce qu'elle dit.</p>
+    <p class="src">SPF Intérieur ; CRISP ; IWEPS ; Pilet/Close/Jacobs ; <em>La sécession civique en Belgique</em> (2024–26).</p>
+  </section>
+
+  <!-- CODA -->
+  <section class="coda">
+    <span class="zone">Remontée · retour à la surface</span>
+    <h2>Ce ne sont pas des accidents. Ce sont des sédiments.</h2>
+    <p>Le Dossier noir aligne les éruptions — celles qu'on voit crever la surface et qui font les unes. Ce forage descend dans la chambre magmatique qui les nourrit. Agusta n'était pas une dérive isolée : c'était la strate du financement qui remontait. Publifin, le Samusocial, le Kazakhgate, Qatargate — autant de fumerolles d'une même machine, signalée jusqu'au plus profond par un chiffre qui ne ment pas.</p>
+    <p><strong>La question n'est plus « comment cet État a-t-il pu déraper ? » mais « pourquoi dérape-t-il toujours au même endroit ? »</strong> La réponse est dans la carotte : une particratie qui a déplacé le pouvoir hors de portée du vote, de l'argent, du juge et du citoyen — et qui détient seule les clés de sa propre réforme.</p>
+    <p class="names">Agusta&nbsp;<span>·</span>&nbsp;1991 &nbsp;&nbsp; Publifin&nbsp;<span>·</span>&nbsp;2017 &nbsp;&nbsp; Samusocial&nbsp;<span>·</span>&nbsp;2017 &nbsp;&nbsp; Kazakhgate &nbsp;&nbsp; Qatargate&nbsp;<span>·</span>&nbsp;2022 &nbsp;&nbsp; <span>→</span>&nbsp;la même strate</p>
+    <a class="back" href="https://ouaisfieu.github.io/belgique/">↑ Revenir aux éruptions — Le Dossier noir</a>
+  </section>
+
+  <!-- METHOD -->
+  <footer class="method">
+    <h3>Note de méthode &amp; contre-lecture</h3>
+    <p>Ce forage est une synthèse de vulgarisation, bâtie sur un corpus de recherche citoyenne recoupant des sources publiques : travaux de la <strong>KU Leuven</strong> (Maddens, Smulders, Vanden Eynde) sur le financement, du <strong>CRISP</strong>, de la <strong>Cour des comptes</strong>, du <strong>GRECO</strong> et de la Commission européenne, de <strong>Transparency International</strong>, des projets <strong>TAKE</strong> et <strong>BELMOD</strong> sur le non-recours, de la jurisprudence de la <strong>CEDH</strong>, et des données du <strong>SPF Intérieur</strong> et de <strong>Statbel</strong>. Plusieurs montants varient selon les années et les méthodes (la dotation publique directe est estimée entre 75 et 84 M€/an selon les exercices) ; ils sont donnés en ordre de grandeur et datés.</p>
+    <p>L'honnêteté impose la contre-lecture. <strong>Formellement</strong>, la particratie ne viole pas l'article 42 : le siège reste personnel, aucune sanction juridique ne déchoit un élu dissident, les lettres de démission en blanc sont nulles. Une <strong>forte cohésion partisane</strong> n'est pas une singularité belge : le Danemark, le Royaume-Uni et la France de la Vᵉ République atteignent des indices comparables. La singularité belge ne tient pas au chiffre, mais à ce qui le produit — le pouvoir des présidents <em>hors</em> hémicycle, la pénétration partisane de l'administration, le scrutin de listes. Et la Belgique figure aussi en bonne place sur certains indices (V-Dem ≈ 0,787 ; confiance OCDE ≈ 47 %) : le diagnostic porte sur une <strong>érosion</strong> et une <strong>asymétrie</strong>, non sur un effondrement.</p>
+    <p class="fine">Plusieurs affaires citées demeurent ouvertes, en appel ou contestées. Les qualifications retenues sont celles établies par la justice, les commissions ou les organismes internationaux à la date de rédaction. Toute correction documentée est la bienvenue. — Le Forage, complément au <a href="https://ouaisfieu.github.io/belgique/">Dossier noir de la Belgique</a>. Révision 2026.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fill = document.querySelector('.gauge .fill');
+  var bit  = document.querySelector('.gauge .bit');
+  var readout = document.getElementById('readout');
+  var readoutB = readout ? readout.querySelector('b') : null;
+  var strata = Array.prototype.slice.call(document.querySelectorAll('.stratum, .coda'));
+
+  // Reveal on scroll
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+    }, {threshold:0.16, rootMargin:'0px 0px -8% 0px'});
+    strata.forEach(function(s){ io.observe(s); });
+  } else {
+    strata.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  // Current-depth readout (pick most-visible stratum)
+  if ('IntersectionObserver' in window && readoutB){
+    var ratios = new WeakMap();
+    var dio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ ratios.set(e.target, e.isIntersecting ? e.intersectionRatio : 0); });
+      var best=null, bestR=0;
+      strata.forEach(function(s){
+        var r = ratios.get(s) || 0;
+        if (r > bestR && s.dataset.depth){ bestR = r; best = s; }
+      });
+      if (best){
+        readoutB.textContent = best.dataset.depth;
+        readout.classList.add('show');
+      }
+    }, {threshold:[0,0.25,0.5,0.75,1]});
+    document.querySelectorAll('.stratum').forEach(function(s){ dio.observe(s); });
+  }
+
+  // Drill gauge progress
+  var ticking=false;
+  function update(){
+    var doc=document.documentElement;
+    var max=(doc.scrollHeight - window.innerHeight);
+    var p = max>0 ? Math.min(1, Math.max(0, window.scrollY/max)) : 0;
+    var h = (p*100);
+    if(fill) fill.style.height = h + '%';
+    if(bit)  bit.style.top = h + '%';
+    ticking=false;
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
