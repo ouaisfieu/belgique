@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>Le Peuple c. la Particratie — réquisitoire jamais déposé</title>
+<meta name="description" content="Un réquisitoire citoyen contre la particratie belge, monté comme un dossier judiciaire : cinq chefs d'accusation, dix pièces à conviction, les voies de droit réelles (question préjudicielle, responsabilité de l'État-législateur, leviers CEDH) — et le verrou qui explique pourquoi ce procès n'a jamais eu lieu. Complément au Dossier noir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Zilla+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14130E;
+    --bg-2:#1A1813;
+    --panel:#1E1B15;
+    --panel-2:#23201A;
+    --ink:#E9E2D2;
+    --ink-dim:#A39B89;
+    --faint:#6C6655;
+    --rule:#322E25;
+    --rule-2:#403A2E;
+    --stamp:#CC3A2C;       /* rouge de tampon */
+    --stamp-deep:#9A2B20;
+    --pen:#6E86A6;         /* encre bleue — annotations */
+    --maxw:740px;
+    --serif:"Zilla Slab",Georgia,serif;
+    --mono:"Courier Prime",ui-monospace,"Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--mono); font-size:16px; line-height:1.66;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  /* paper grain / lamp vignette */
+  .grain{position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(1200px 760px at 50% -10%, rgba(204,58,44,.05), transparent 60%),
+      radial-gradient(900px 1200px at 110% 60%, rgba(0,0,0,.5), transparent 55%),
+      radial-gradient(900px 1200px at -10% 40%, rgba(0,0,0,.5), transparent 55%);
+  }
+  .grain::after{content:""; position:absolute; inset:0; opacity:.5;
+    background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);}
+
+  /* case spine top bar */
+  .spine{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    padding:.6rem clamp(1rem,4vw,2rem);
+    font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--faint);
+    background:rgba(20,19,14,.82); backdrop-filter:blur(8px); border-bottom:1px solid var(--rule);
+  }
+  .spine a{color:var(--ink-dim); text-decoration:none; border-bottom:1px solid transparent; transition:.2s}
+  .spine a:hover{color:var(--ink); border-color:var(--stamp)}
+  .spine .no{color:var(--stamp)}
+  .spine .st{display:inline-flex; align-items:center; gap:.4rem}
+  .spine .st::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--stamp); box-shadow:0 0 8px var(--stamp)}
+
+  .wrap{position:relative; z-index:1; max-width:var(--maxw); margin:0 auto; padding:0 clamp(1.1rem,5vw,1.6rem)}
+
+  /* ---------- caption / hero ---------- */
+  .caption{position:relative; padding:clamp(3rem,8vh,5rem) 0 clamp(2rem,5vh,3rem)}
+  .court{
+    font-family:var(--mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-dim);
+    border:1px solid var(--rule-2); border-radius:3px; padding:.7rem .9rem; display:inline-block; line-height:1.7;
+    background:linear-gradient(var(--panel),var(--bg-2));
+  }
+  .court b{color:var(--ink); font-weight:700}
+  .parties{
+    margin:1.8rem 0 0; font-family:var(--serif); line-height:1.18;
+  }
+  .parties .v-plain{display:block; font-weight:700; font-size:clamp(1.5rem,5.5vw,2.3rem); color:var(--ink)}
+  .parties .v-c{display:block; font-style:italic; color:var(--stamp); font-weight:600; font-size:clamp(1.1rem,3.5vw,1.4rem); margin:.15rem 0 .25rem; font-family:var(--mono); letter-spacing:.04em}
+  .parties .v-def{display:block; font-weight:700; font-size:clamp(1.5rem,5.5vw,2.3rem); color:var(--ink)}
+  .roles{margin-top:.6rem; font-family:var(--mono); font-size:.72rem; color:var(--faint); letter-spacing:.04em; line-height:1.7}
+
+  .title-row{margin-top:2.6rem; position:relative}
+  .title-row h1{
+    font-family:var(--serif); font-weight:700; font-size:clamp(3rem,15vw,7rem); line-height:.92; letter-spacing:.01em;
+    margin:0; color:var(--ink); text-transform:uppercase;
+  }
+  .title-row .sub{
+    font-family:var(--mono); font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim); margin:.7rem 0 0;
+  }
+
+  /* THE STAMP — signature element */
+  .stamp{
+    position:absolute; top:-6px; right:-4px; z-index:5;
+    font-family:var(--serif); font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--stamp); border:3px double var(--stamp); border-radius:8px;
+    padding:.35rem .8rem .4rem; font-size:clamp(.95rem,3.6vw,1.4rem); line-height:1;
+    transform:rotate(-4deg); opacity:.92;
+    box-shadow:inset 0 0 0 1px rgba(204,58,44,.25);
+    background:rgba(204,58,44,.05);
+  }
+  .stamp small{display:block; font-family:var(--mono); font-size:.5em; letter-spacing:.1em; opacity:.85; margin-top:.2rem; font-weight:400}
+  .stamp.anim{animation:press .9s cubic-bezier(.2,.8,.2,1) .35s both}
+  @keyframes press{
+    0%{opacity:0; transform:rotate(-13deg) scale(1.7)}
+    55%{opacity:.95; transform:rotate(-2deg) scale(.94)}
+    72%{transform:rotate(-6deg) scale(1.04)}
+    88%{transform:rotate(-3deg) scale(.99)}
+    100%{opacity:.92; transform:rotate(-4deg) scale(1)}
+  }
+  @media (prefers-reduced-motion: reduce){ .stamp.anim{animation:none} }
+
+  .thesis{
+    margin:2.4rem 0 0; font-family:var(--serif); font-size:clamp(1.2rem,4vw,1.55rem); line-height:1.4; color:var(--ink); max-width:34ch;
+  }
+  .thesis b{color:var(--stamp); font-weight:700}
+  .filed{
+    margin-top:1.8rem; padding-top:1.3rem; border-top:1px solid var(--rule);
+    font-family:var(--mono); font-size:.78rem; color:var(--faint); letter-spacing:.03em; line-height:1.8;
+  }
+  .filed b{color:var(--ink); display:block; font-size:.95rem; letter-spacing:0}
+
+  /* ---------- generic article section ---------- */
+  .art{padding:clamp(2.6rem,7vh,4rem) 0; border-top:1px solid var(--rule)}
+  .art-no{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--stamp); margin:0 0 .5rem;
+  }
+  .art h2{
+    font-family:var(--serif); font-weight:700; font-size:clamp(1.7rem,5.2vw,2.4rem); line-height:1.06; letter-spacing:.005em;
+    margin:0; color:var(--ink); text-transform:uppercase;
+  }
+  .art p{color:var(--ink-dim); margin:1.1rem 0 0; max-width:66ch}
+  .art p strong{color:var(--ink); font-weight:700}
+  .art p .red{color:var(--stamp); font-weight:700}
+  .lead-in{ color:var(--ink) !important; font-family:var(--serif); font-size:1.12rem; line-height:1.5 }
+
+  /* counts (chefs d'accusation) */
+  .count{
+    margin:1.6rem 0 0; padding:1.3rem 1.4rem; border:1px solid var(--rule-2); border-left:4px solid var(--stamp);
+    border-radius:4px; background:linear-gradient(180deg,var(--panel),var(--bg-2));
+  }
+  .count .h{display:flex; align-items:baseline; gap:.8rem; flex-wrap:wrap}
+  .count .cn{font-family:var(--serif); font-weight:700; font-size:1.5rem; color:var(--stamp)}
+  .count .ca{font-family:var(--mono); font-size:.78rem; letter-spacing:.05em; text-transform:uppercase; color:var(--ink); font-weight:700}
+  .statute{
+    margin:.9rem 0; padding:.7rem .9rem; border-left:2px solid var(--pen); background:rgba(110,134,166,.06);
+    font-family:var(--serif); font-style:italic; font-size:1.02rem; color:var(--ink); line-height:1.4;
+  }
+  .count .facts{margin:.6rem 0 0; color:var(--ink-dim); font-size:.95rem}
+  .count .facts b{color:var(--ink); font-weight:700}
+  .count .qual{
+    margin-top:.85rem; font-family:var(--mono); font-size:.76rem; letter-spacing:.02em; color:var(--ink); line-height:1.6;
+    border-top:1px dashed var(--rule-2); padding-top:.7rem;
+  }
+  .count .qual .k{color:var(--stamp); text-transform:uppercase; letter-spacing:.08em}
+
+  /* exhibits (pièces) */
+  .exhibit{
+    margin:1.1rem 0 0; padding:1.15rem 1.3rem 1.2rem; border:1px solid var(--rule-2); border-radius:4px;
+    background:var(--panel); position:relative; transition:transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .exhibit:hover{transform:translateY(-2px); border-color:var(--stamp); box-shadow:0 12px 30px rgba(0,0,0,.35)}
+  .exhibit .tag{
+    display:inline-block; font-family:var(--serif); font-weight:700; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--stamp); border:2px solid var(--stamp); border-radius:4px; padding:.18rem .5rem; transform:rotate(-1.5deg); margin-bottom:.7rem;
+  }
+  .exhibit .claim{font-family:var(--serif); font-size:1.14rem; color:var(--ink); line-height:1.32; font-weight:500}
+  .exhibit .claim b{color:var(--stamp); font-weight:700}
+  .exhibit .est{margin:.6rem 0 0; font-family:var(--mono); font-size:.82rem; color:var(--ink-dim); line-height:1.5}
+  .exhibit .est .lbl{color:var(--pen); text-transform:uppercase; letter-spacing:.06em; font-size:.72rem}
+  .exhibit .src{margin-top:.55rem; font-family:var(--mono); font-size:.68rem; letter-spacing:.02em; color:var(--faint)}
+  .exhibit .src::before{content:"⊢ "}
+
+  /* avenues (voies de droit) — numbered list w/ pen-ink margin refs */
+  .avenue{margin:1.3rem 0 0; padding-left:1.2rem; border-left:1px solid var(--rule-2)}
+  .avenue .an{font-family:var(--serif); font-weight:700; font-size:1.18rem; color:var(--ink)}
+  .avenue .an em{color:var(--stamp); font-style:normal; font-family:var(--mono); font-size:.85rem; margin-right:.5rem}
+  .avenue p{margin:.45rem 0 0; max-width:64ch; font-size:.95rem}
+  .ref{color:var(--pen); font-style:italic}
+
+  .qpre{
+    margin:1.2rem 0 0; padding:1.1rem 1.2rem; border:1px dashed var(--pen); border-radius:4px; background:rgba(110,134,166,.05);
+    font-family:var(--serif); font-style:italic; font-size:1.04rem; line-height:1.45; color:var(--ink);
+  }
+  .qpre .q-lbl{display:block; font-family:var(--mono); font-style:normal; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--pen); margin-bottom:.5rem}
+
+  /* redaction motif */
+  .redactblock{margin:1.4rem 0 0; padding:1.2rem 1.3rem; border:1px solid var(--rule-2); border-radius:4px; background:var(--bg-2)}
+  .redactblock .rl{font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin:0 0 .9rem}
+  .ritem{display:flex; align-items:flex-start; gap:.8rem; margin:.7rem 0; font-size:.93rem; line-height:1.5}
+  .ritem .what{flex:1; color:var(--ink-dim)}
+  .redact{
+    display:inline-block; background:#000; color:transparent; border-radius:2px; padding:0 .15em; cursor:help;
+    box-shadow:inset 0 0 0 1px #000; transition:background .18s, color .18s; user-select:none; position:relative;
+    text-shadow:none;
+  }
+  .redact:hover,.redact:focus{background:transparent; color:var(--stamp); outline:none}
+  .redact:focus-visible{outline:2px solid var(--stamp); outline-offset:2px}
+  .ritem .reason{font-family:var(--mono); font-size:.74rem; color:var(--faint); display:block; margin-top:.25rem}
+  .hint{font-family:var(--mono); font-size:.68rem; color:var(--faint); margin-top:1rem; letter-spacing:.03em}
+  .hint .red{color:var(--stamp)}
+
+  .obstacle-list{margin:1.3rem 0 0; padding:0; list-style:none}
+  .obstacle-list li{position:relative; padding:.55rem 0 .55rem 1.7rem; border-bottom:1px solid var(--rule); color:var(--ink-dim); font-size:.95rem}
+  .obstacle-list li::before{content:"✕"; position:absolute; left:0; top:.55rem; color:var(--stamp); font-family:var(--mono)}
+  .obstacle-list li b{color:var(--ink); font-weight:700}
+
+  .pull{
+    font-family:var(--serif); font-weight:700; font-size:clamp(1.4rem,5vw,1.9rem); line-height:1.2; color:var(--ink);
+    margin:1.8rem 0 0; max-width:24ch; border-left:4px solid var(--stamp); padding-left:1.1rem;
+  }
+
+  /* dispositif */
+  .dispositif{padding:clamp(3rem,8vh,4.5rem) 0 1rem; border-top:2px solid var(--stamp)}
+  .dispositif .demands{margin:1.3rem 0 0; padding:0; list-style:none; counter-reset:d}
+  .dispositif .demands li{counter-increment:d; position:relative; padding:.6rem 0 .6rem 2.4rem; border-bottom:1px solid var(--rule); color:var(--ink); font-size:.97rem; line-height:1.5}
+  .dispositif .demands li::before{content:counter(d,upper-roman) "."; position:absolute; left:0; top:.55rem; font-family:var(--serif); font-weight:700; color:var(--stamp); font-size:.95rem}
+  .verdict{
+    margin:2.2rem 0 0; font-family:var(--serif); font-weight:700; font-size:clamp(1.5rem,5.5vw,2.1rem); line-height:1.18; color:var(--ink);
+  }
+  .verdict .red{color:var(--stamp)}
+  .signoff{margin:1.6rem 0 0; font-family:var(--mono); font-size:.82rem; color:var(--ink-dim); line-height:1.8}
+  .backlinks{margin-top:2rem; display:flex; gap:.8rem; flex-wrap:wrap}
+  .backlinks a{
+    font-family:var(--mono); font-size:.76rem; letter-spacing:.04em; text-transform:uppercase; color:var(--ink); text-decoration:none;
+    border:1px solid var(--rule-2); padding:.65rem .9rem; border-radius:4px; transition:.25s;
+  }
+  .backlinks a:hover{border-color:var(--stamp); background:var(--panel)}
+
+  /* method footer */
+  .method{margin-top:2.6rem; padding:2.2rem 0 4rem; border-top:1px solid var(--rule); font-size:.86rem; color:var(--ink-dim)}
+  .method h3{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin:0 0 1rem}
+  .method p{margin:0 0 1rem; max-width:68ch}
+  .method strong{color:var(--ink); font-weight:700}
+  .method .fine{font-size:.76rem; color:var(--faint); border-top:1px solid var(--rule); padding-top:1.2rem; margin-top:1.4rem}
+  .method a{color:var(--ink-dim); text-decoration:underline; text-underline-offset:2px; text-decoration-color:var(--rule-2)}
+  .method a:hover{color:var(--ink)}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1; transform:none}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none} }
+
+  ::selection{background:rgba(204,58,44,.35); color:#fff}
+  :focus-visible{outline:2px solid var(--pen); outline-offset:3px}
+
+  @media (max-width:560px){
+    .stamp{position:static; display:inline-block; margin:1.1rem 0 0; transform:rotate(-3deg)}
+    .title-row .stamp.anim{animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="spine">
+  <span>Dossier <span class="no">Nº 42/1831</span> · <a href="https://ouaisfieu.github.io/belgique/">Le Dossier noir</a></span>
+  <span class="st">Pendante — jamais introduite</span>
+</div>
+
+<div class="wrap">
+
+  <!-- CAPTION -->
+  <header class="caption">
+    <div class="court">
+      RÉQUISITOIRE CITOYEN — pièce versée au débat public<br>
+      <b>Le Peuple belge</b>, partie civile<br>
+      contre<br>
+      <b>La Particratie</b>, partie défenderesse
+    </div>
+
+    <div class="parties" aria-hidden="true">
+      <span class="v-plain">Le Peuple</span>
+      <span class="v-c">— contre —</span>
+      <span class="v-def">La Particratie</span>
+    </div>
+    <div class="roles">Objet : confiscation du mandat représentatif (art. 42 Const.) · Procédure : aucune · Dommage : documenté</div>
+
+    <div class="title-row">
+      <div class="stamp anim" id="stamp">Jamais déposé<small>aucun recours introduit</small></div>
+      <h1>Réquisitoire</h1>
+      <p class="sub">L'acte d'accusation que personne n'a porté</p>
+    </div>
+
+    <p class="thesis">Le dossier est complet. Toutes les pièces y sont. <b>La porte du tribunal est tenue fermée — de l'intérieur.</b></p>
+
+    <div class="filed">
+      <b>« Aucun recours en justice contre la discipline de vote n'a jamais été introduit en Belgique. Jamais. »</b>
+      Ce document rassemble ce qu'une telle accusation contiendrait : les chefs, les pièces, le préjudice, les voies de droit réelles — et l'obstacle qui les neutralise toutes.
+    </div>
+  </header>
+
+  <!-- EXPOSÉ -->
+  <section class="art reveal">
+    <p class="art-no">Exposé préliminaire</p>
+    <h2>Le prévenu n'est pas un homme. C'est un système.</h2>
+    <p class="lead-in">Le Dossier noir alignait les éruptions ; <em>Le Forage</em> en montrait la machine en coupe. Restait l'acte d'accusation.</p>
+    <p>On ne cite pas ici un ministre, un président de parti, un coupable nommé. On cite un <strong>mécanisme</strong> : la captation, par des appareils privés financés sur fonds publics, de la souveraineté que la Constitution confie aux représentants de la Nation. La difficulté n'est pas de prouver les faits — ils sont publics, chiffrés, datés. La difficulté est qu'il n'existe, en l'état, presque aucune juridiction pour les entendre. Ce réquisitoire est donc autant un acte d'accusation qu'un constat d'<span class="red">impunité organisée</span>.</p>
+  </section>
+
+  <!-- I. LES CHEFS -->
+  <section class="art reveal">
+    <p class="art-no">Titre I — Les chefs d'accusation</p>
+    <h2>Ce qui est reproché</h2>
+    <p>Cinq dispositions constitutionnelles ou légales, et la pratique particratique qui les vide. Le texte est cité ; la pratique, documentée ; la qualification, posée.</p>
+
+    <div class="count">
+      <div class="h"><span class="cn">I</span><span class="ca">Article 42 — le mandat libre</span></div>
+      <div class="statute">« Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus. »</div>
+      <p class="facts">Discipline de vote de <b>99,73 %</b> dans la majorité ; chartes de fidélité signées avant l'investiture ; rétrocession d'indemnités ; lettres de démission en blanc. Le siège reste juridiquement à l'élu — mais sa survie politique est rachetée au parti.</p>
+      <p class="qual"><span class="k">Qualification —</span> mandat impératif <em>de facto</em> ; contrainte illégale entravant l'exercice souverain d'un mandat public. L'article 42, réduit à une « fiction juridique ».</p>
+    </div>
+
+    <div class="count">
+      <div class="h"><span class="cn">II</span><span class="ca">Article 33 — la souveraineté nationale</span></div>
+      <div class="statute">« Tous les pouvoirs émanent de la Nation. Ils sont exercés de la manière établie par la Constitution. »</div>
+      <p class="facts">Les décisions stratégiques se prennent au <b>Kern</b> et en conférences de présidents — organes informels, sans procès-verbal public — par des présidents de parti dépourvus de toute fonction exécutive constitutionnelle.</p>
+      <p class="qual"><span class="k">Qualification —</span> usurpation de pouvoir ; fraude à la Constitution ; privatisation de la décision publique.</p>
+    </div>
+
+    <div class="count">
+      <div class="h"><span class="cn">III</span><span class="ca">Article 58 — l'immunité du vote</span></div>
+      <div class="statute">Aucun membre ne peut être poursuivi à l'occasion des opinions et votes émis dans l'exercice de ses fonctions.</div>
+      <p class="facts">Cette garantie d'ordre public est neutralisée non par l'État, mais par le parti : privation de temps de parole, éviction des commissions, exclusion du groupe, non-réinvestiture. La sanction est extra-juridique — donc invisible au droit.</p>
+      <p class="qual"><span class="k">Qualification —</span> neutralisation privée d'une garantie constitutionnelle d'ordre public.</p>
+    </div>
+
+    <div class="count">
+      <div class="h"><span class="cn">IV</span><span class="ca">Articles 96 à 101 — la responsabilité ministérielle</span></div>
+      <div class="statute">Le Roi nomme les ministres ; le gouvernement délibère collégialement et répond devant la Chambre.</div>
+      <p class="facts">Les ministres sont en réalité désignés par les présidents de parti ; la délibération réelle migre vers le Kern ; les ministres exclus du noyau contresignent par solidarité fictive.</p>
+      <p class="qual"><span class="k">Qualification —</span> contournement des règles de responsabilité ministérielle ; collégialité de façade.</p>
+    </div>
+
+    <div class="count">
+      <div class="h"><span class="cn">V</span><span class="ca">Loi du 4 juillet 1989, art. 15ter — la lacune</span></div>
+      <div class="statute">L'État prive de dotation tout parti « manifestant son hostilité » aux droits garantis par la CEDH — mais reste muet sur les partis qui anéantissent, en interne, le mandat libre.</div>
+      <p class="facts">L'État sanctionne l'hostilité aux droits fondamentaux des citoyens ; il finance massivement, et sans contrôle, des structures qui confisquent la souveraineté des élus. Le « glaive » existe pour l'ennemi externe, jamais pour le vice interne.</p>
+      <p class="qual"><span class="k">Qualification —</span> lacune inconstitutionnelle extrinsèque ; incompétence négative du législateur ; discrimination (art. 10 et 11 lus avec l'art. 42).</p>
+    </div>
+  </section>
+
+  <!-- II. LES PIÈCES -->
+  <section class="art reveal">
+    <p class="art-no">Titre II — Les pièces à conviction</p>
+    <h2>Ce qui le prouve</h2>
+    <p>Dix pièces. Aucune n'est secrète : toutes proviennent de comptes déposés, de rapports officiels, de la jurisprudence ou de la recherche académique.</p>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-1</span>
+      <div class="claim"><b>99,73 %</b> de votes alignés dans la majorité (gouvernement Wilmès II).</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> une unanimité statistiquement impossible si elle naissait du libre arbitre. La preuve chiffrée du mandat impératif <em>de facto</em>. Au PTB : zéro dissidence documentée en séance.</p>
+      <p class="src">Verleden (CRISP) ; « Engagement sur l'Honneur ».</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-2</span>
+      <div class="claim">Les <b>chartes de fidélité</b> et conventions de mandataires, signées avant l'investiture.</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> l'engagement contractuel écrit de soumission à la ligne du parti, base juridique de la rétrocession. Juridiquement : un dol, une violation frontale de l'article 42.</p>
+      <p class="src">Statuts de partis (PS, MR, N-VA, Les Engagés) ; doctrine.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-3</span>
+      <div class="claim">Les <b>lettres de démission en blanc</b> — non datées, signées d'avance.</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> la pièce la plus probante. Une démission pré-signée transforme le mandat représentatif en mandat révocable — exactement ce que l'article 42 interdit. (Une telle clause est, en droit, frappée de nullité absolue : encore faut-il un juge pour le dire.)</p>
+      <p class="src">Doctrine ; à produire en original — angle mort documentaire reconnu.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-4</span>
+      <div class="claim">La <b>rétrocession</b> : jusqu'à 60–70 % du net reversé au parti (PTB) ; l'élu garde ≈ 1 700 €/mois.</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> l'indemnité censée garantir l'indépendance de l'élu sert à le tenir. « Plus un parti est à gauche, plus la part que l'élu doit lui reverser est importante » (J. Faniel, CRISP).</p>
+      <p class="src">CRISP ; comptes déposés à la Commission de contrôle.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-5</span>
+      <div class="claim">La Commission de contrôle est composée <b>des parlementaires des partis qu'elle audite</b>.</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> « financement par les partis, contrôlé par les partis ». L'auto-contrôle érigé en système : le surveillant et le surveillé sont une seule personne.</p>
+      <p class="src">CRISP (Faniel) ; collectif We Need To Talk.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-6</span>
+      <div class="claim"><b>162 M€</b> de patrimoine partisan (triplé en 20 ans) ; <b>15 M€</b> de pub Meta + Google en 2024.</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> des dotations censées financer le fonctionnement démocratique muées en fonds d'investissement (≈ 80 % des revenus des partis sont publics ; ×4 vs les Pays-Bas), et l'argent public reversé à la fabrique du consentement.</p>
+      <p class="src">KU Leuven (Maddens, Smulders, Vanden Eynde) ; rapport Adlens 2024.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-7</span>
+      <div class="claim"><b>≈ 3 000</b> collaborateurs de cabinets ; <b>14,8 M€</b> de fonctionnaires détachés « à titre gratuit » jamais budgétés (Wallonie, 2021).</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> une administration parallèle qui fond le neutre dans le partisan, là où le Danemark et les Pays-Bas n'ont aucun cabinet ministériel. La moitié du coût reste invisible.</p>
+      <p class="src">Cour des comptes (2011–2023) ; OECD/SIGMA.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-8</span>
+      <div class="claim">La <b>lettre du Conseil de l'Europe</b> au ministre belge des Affaires étrangères (GRECO, Règle 32, nov. 2025).</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> 8 recommandations sur 22 mises en œuvre ; déclenchement de la procédure de non-conformité. Le stade ultime — la déclaration publique — n'a jamais frappé qu'un seul État : la Biélorussie.</p>
+      <p class="src">GRECO, 5ᵉ cycle ; Commission européenne, Rapport État de droit 2025.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-9</span>
+      <div class="claim"><b>77 %</b> de non-recours à l'allocation chauffage (65 ans+) ; contre <b>0,3 %</b> de fraude sociale traquée.</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> le dommage. RIS : 37–51 % de non-recours ; GRAPA : la moitié. On déploie un arsenal contre 0,3 % de fraude ; on laisse les plus pauvres sans leur dû — milliards d'« économies » cyniques.</p>
+      <p class="src">Projets TAKE &amp; BELMOD (BELSPO) ; Service de lutte contre la pauvreté.</p>
+    </div>
+
+    <div class="exhibit">
+      <span class="tag">Pièce P-10</span>
+      <div class="claim"><b>17 000</b> décisions d'accueil non exécutées par l'État ; <b>650</b> arrêts de la CEDH ignorés.</div>
+      <p class="est"><span class="lbl">Ce que la pièce établit —</span> un État qui n'exécute pas ses propres jugements. <em>Camara c. Belgique</em> (2023) : « systemic failure ». <em>M.V. e.a. c. Belgique</em> (2026) : franchissement du seuil de l'article 3 — le traitement inhumain.</p>
+      <p class="src">CEDH ; &gt; 6 M€ d'astreintes impayées.</p>
+    </div>
+  </section>
+
+  <!-- III. LE PRÉJUDICE -->
+  <section class="art reveal">
+    <p class="art-no">Titre III — Le préjudice</p>
+    <h2>Ce qu'il coûte — et qui peut agir</h2>
+    <p>Une action en justice exige un dommage et une qualité à agir. Les deux existent. Le <strong>requérant idéal</strong> est un ancien élu ayant rompu avec son parti : préjudice matériel (rétrocessions et pénalités exigées), moral (harcèlement institutionnel documenté — jusqu'aux séances de critique et d'autocritique), professionnel (sanctions pour vote de conscience, non-réinvestiture).</p>
+    <p>Le dommage est aussi <strong>collectif</strong> : près de <span class="red">4 milliards d'euros</span> de financement public direct captés entre 1989 et 2026, qui auraient pu pallier le sous-financement du logement social, des bourses d'études et des soins. Le coût humain de la pièce P-9 devient ici l'étalon de mesure : un État géré par des commis de partis, et non par des représentants libres, produit une violence administrative qui lèse les citoyens dans leurs droits subjectifs.</p>
+  </section>
+
+  <!-- IV. LES VOIES DE DROIT -->
+  <section class="art reveal">
+    <p class="art-no">Titre IV — Les voies de droit</p>
+    <h2>Comment on porterait l'accusation</h2>
+    <p>Le citoyen ne peut saisir directement la Cour constitutionnelle. Mais le corpus identifie un chemin réel, déjà balisé par la jurisprudence. La stratégie tient en un détour : entrer par le juge civil pour forcer la porte du juge constitutionnel.</p>
+
+    <div class="avenue">
+      <div class="an"><em>01</em>Assigner l'État-législateur en responsabilité civile</div>
+      <p>Sur le fondement de l'article 1382 (Livre 6 du nouveau Code civil). <span class="ref">L'immunité du législateur est tombée : arrêt Anca (Cass., 1991), puis arrêt Ferrara (Cass., 28 sept. 2006)</span> — l'État répond d'une faute législative, y compris d'une lacune inconstitutionnelle. Juridiction recommandée : le tribunal de première instance francophone de Bruxelles.</p>
+    </div>
+
+    <div class="avenue">
+      <div class="an"><em>02</em>Forcer la question préjudicielle</div>
+      <p>Le juge civil, saisi du litige, est tenu d'interroger la Cour constitutionnelle dès lors que la solution en dépend <span class="ref">(art. 26 de la loi spéciale du 6 janvier 1989)</span>. La question, formulée avec une rigueur létale :</p>
+      <div class="qpre"><span class="q-lbl">Question préjudicielle proposée</span>« L'article 15ter de la loi du 4 juillet 1989 viole-t-il les articles 10 et 11 de la Constitution, lus en combinaison avec l'article 42, en ce qu'il ne prévoit aucune privation de dotation pour un parti imposant un mandat impératif de facto à ses élus — anéantissant la liberté de la représentation nationale — alors qu'il la prévoit pour l'hostilité manifeste à la CEDH ? »</div>
+    </div>
+
+    <div class="avenue">
+      <div class="an"><em>03</em>Retourner la « Loi Quintin » (2025)</div>
+      <p>Si l'État se dote d'un glaive administratif pour bannir les organisations radicales, il ne peut brandir le bouclier de l'autonomie partisane pour continuer à financer des structures qui violent ouvertement l'article 42. <span class="ref">Le glaive contre l'ennemi externe rend indéfendable l'aveuglement sur le vice interne.</span></p>
+    </div>
+
+    <div class="avenue">
+      <div class="an"><em>04</em>Passer par l'accès à l'information</div>
+      <p>Demander la transparence (patrimoine, contacts lobbyistes, comptes) ; essuyer le refus fondé sur l'exception « stratégie politique » <span class="ref">(loi du 12 mai 2024)</span> ; attaquer ce refus devant le Conseil d'État et y poser une question préjudicielle sur sa conformité à l'article 32 (droit à l'information). Cette voie, contrairement à l'article 15ter, est <strong>directement accessible au citoyen</strong>.</p>
+    </div>
+
+    <div class="avenue">
+      <div class="an"><em>05</em>L'estocade fiscale — mais pas seule</div>
+      <p>Faire constater la nullité de la rétrocession pour <span class="ref">cause illicite (contraire à l'ordre public constitutionnel, art. 42)</span>, puis plaider que le parti agit en agence de placement de personnel public : requalification de l'IPM vers l'impôt des sociétés, avec redressements. Sans le jugement civil préalable, l'arme reste « sans percuteur ».</p>
+    </div>
+
+    <div class="avenue">
+      <div class="an"><em>06</em>Armer le tout par la CEDH</div>
+      <p><span class="ref">Mugemangango c. Belgique (2020)</span> : l'État doit offrir un recours indépendant pour le contentieux du statut de l'élu — il ne l'a pas fait. <span class="ref">G.K. c. Belgique</span> : la démission d'une élue provoquée par son parti. <span class="ref">Karácsony c. Hongrie</span> : toute sanction d'un parlementaire exige des garanties devant un organe impartial. Autant de boucliers conventionnels encore largement inexploités.</p>
+    </div>
+  </section>
+
+  <!-- V. L'OBSTACLE -->
+  <section class="art reveal">
+    <p class="art-no">Titre V — L'obstacle</p>
+    <h2>Pourquoi le dossier dort</h2>
+    <p>La voie est jugée viable. Elle n'a pourtant jamais été empruntée jusqu'au bout. Parce que le système qui est accusé est aussi celui qui tient les clés du prétoire.</p>
+
+    <p class="pull">L'arbitre est un ancien joueur.</p>
+
+    <ul class="obstacle-list">
+      <li><b>Recours direct fermé</b> — l'annulation devant la Cour constitutionnelle est forclose (6 mois), exige un intérêt « direct et personnel » qu'on refuse au citoyen, et ne peut viser une <em>omission</em>.</li>
+      <li><b>Incompétence ratione materiae</b> — la rétrocession figure dans des statuts d'ASBL privées, non dans une loi ; saisie directement, la Cour se déclare incompétente.</li>
+      <li><b>Une Cour juge et partie</b> — 6 des 12 juges de la Cour constitutionnelle sont d'anciens parlementaires, nommés à la majorité des deux tiers, c'est-à-dire par les partis.</li>
+      <li><b>De nouveaux verrous</b> — la loi du 12 mai 2024 (exception « stratégie politique ») et la « Loi Quintin » (2025) restreignent transparence et association à mesure que la menace contentieuse se précise.</li>
+      <li><b>L'auto-réforme, une vue de l'esprit</b> — espérer que les parlementaires, bénéficiaires du système, le démantèlent eux-mêmes : démenti par l'échec répété des commissions de renouveau.</li>
+    </ul>
+
+    <div class="redactblock">
+      <p class="rl">⬛ Ce que ce dossier n'a pas le droit de contenir</p>
+      <div class="ritem">
+        <span class="what">Le patrimoine réel des ministres et élus : <span class="redact" tabindex="0">consultable uniquement par le juge d'instruction</span><span class="reason">déclarations sous pli scellé — la Belgique, 122ᵉ sur 139 pour l'accès à l'information.</span></span>
+      </div>
+      <div class="ritem">
+        <span class="what">Les comptes rendus du Kern, où se décident les lois : <span class="redact" tabindex="0">il n'existe aucun procès-verbal public</span><span class="reason">l'organe le plus puissant du pays ne laisse aucune trace.</span></span>
+      </div>
+      <div class="ritem">
+        <span class="what">Le registre des contacts entre lobbyistes et gouvernement : <span class="redact" tabindex="0">aucun dispositif contraignant n'existe</span><span class="reason">le registre de la Chambre est non contraignant et géré par une seule personne.</span></span>
+      </div>
+      <p class="hint"><span class="red">▸</span> Passez le curseur (ou la tabulation) sur les bandeaux noirs : on caviarde ici ce que l'État caviarde.</p>
+    </div>
+  </section>
+
+  <!-- DISPOSITIF -->
+  <section class="dispositif reveal">
+    <p class="art-no">Par ces motifs</p>
+    <h2 style="font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,5.2vw,2.4rem);text-transform:uppercase;margin:0;color:var(--ink)">Le dispositif</h2>
+    <p style="color:var(--ink-dim);margin:1.1rem 0 0;max-width:66ch">Ce que la partie civile demanderait, si la porte s'ouvrait :</p>
+    <ul class="demands">
+      <li>Étendre l'article 15ter : priver de dotation tout parti qui détruit le mandat libre de ses élus.</li>
+      <li>Frapper de nullité les chartes de fidélité, lettres de démission en blanc et obligations de rétrocession.</li>
+      <li>Conditionner et réduire les dotations publiques ; sortir le contrôle des comptes des mains des partis contrôlés.</li>
+      <li>Rendre publics les patrimoines, les contacts lobbyistes et la composition réelle des cabinets.</li>
+      <li>Créer la juridiction indépendante du contentieux électoral exigée depuis l'arrêt Mugemangango.</li>
+    </ul>
+
+    <p class="verdict">Ce réquisitoire est complet. Il dort.<br><span class="red">Dans une démocratie, le ministère public, c'est le citoyen.</span></p>
+
+    <p class="signoff">Fait pour être lu, faute d'être plaidé.<br>— Le Peuple c. la Particratie, dossier Nº 42/1831.</p>
+
+    <div class="backlinks">
+      <a href="https://ouaisfieu.github.io/belgique/">↑ Le Dossier noir — les éruptions</a>
+      <a href="./le-forage.html">↓ Le Forage — la machine en coupe</a>
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <footer class="method">
+    <h3>Note de méthode &amp; contre-lecture</h3>
+    <p>Ceci est un <strong>réquisitoire citoyen</strong>, pas une décision de justice. Sa forme judiciaire est un parti pris d'écriture : aucun tribunal belge n'a jamais reconnu qu'un élément de la particratie violait l'article 42, et <strong>aucune juridiction n'a été saisie</strong> de l'accusation ici formulée. Les pièces et les voies de droit sont tirées d'un corpus de recherche citoyenne recoupant des sources publiques : KU Leuven (Maddens e.a.), CRISP, Cour des comptes, GRECO, Commission européenne, jurisprudence de la Cour de cassation et de la CEDH, projets TAKE et BELMOD.</p>
+    <p>L'honnêteté commande la contre-lecture. <strong>Formellement</strong>, la particratie ne viole pas l'article 42 : le siège reste personnel, aucune sanction juridique ne déchoit l'élu dissident, et les lettres de démission en blanc sont nulles. La qualification de « mandat impératif <em>de facto</em> » est défendable, mais <strong>inégalement</strong> selon le type de contrainte : la doctrine distingue la discipline naturelle, acquise, persuadée et imposée — seules les deux dernières posent la question constitutionnelle. Une forte cohésion partisane n'est pas, par ailleurs, une singularité belge. Le corpus juge la voie contentieuse « juridiquement viable » ; elle demeure, à ce jour, théorique.</p>
+    <p class="fine">Les noms de plaignants potentiels que documente le corpus ont été volontairement omis : nul n'est ici mis en cause à titre personnel. Plusieurs affaires citées demeurent ouvertes ou contestées. Toute correction documentée est la bienvenue. — Pièce versée au <a href="https://ouaisfieu.github.io/belgique/">Dossier noir de la Belgique</a>, en complément du <a href="./le-forage.html">Forage</a>. Révision 2026.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // reveal on scroll
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    items.forEach(function(s){ io.observe(s); });
+  } else {
+    items.forEach(function(s){ s.classList.add('in'); });
+  }
+
+  // stamp animates on load via the CSS .anim class already present in the markup.
+
+  // redaction: allow tap-to-toggle on touch devices
+  document.querySelectorAll('.redact').forEach(function(r){
+    r.addEventListener('click', function(){ r.classList.toggle('open'); });
+    r.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); r.classList.toggle('open'); }});
+  });
+})();
+</script>
+<style>
+  .redact.open{background:transparent; color:var(--stamp)}
+</style>
+</body>
+</html>
