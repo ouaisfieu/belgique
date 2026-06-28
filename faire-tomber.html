@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Faire tomber la Belgique — le réquisitoire</title>
+<meta name="description" content="Le contre-pied de « Faire tenir la Belgique » : un réquisitoire, la version la plus forte de l'argument pour la fin de l'État belge — suivie d'une défense et d'un verdict laissé au lecteur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   FAIRE TOMBER LA BELGIQUE — le réquisitoire
+   Le négatif de « Faire tenir » : même voix typographique,
+   canevas inversé (ardoise froide), accent ROUGE RUPTURE assertif.
+   Signature : la ligne qui se fracture et diverge ; la décomposition.
+   Bricolage Grotesque · Spectral · IBM Plex Mono
+   ============================================================ */
+
+:root{
+  --slate:   #14161a;   /* fond, ardoise froide (≠ le noir chaud du Dossier) */
+  --slate-2: #1b1e24;   /* panneau */
+  --slate-3: #242830;   /* relief / survol */
+  --chalk:   #e7e7e1;   /* texte principal, craie froide */
+  --chalk-2: #c3c4be;   /* secondaire fort */
+  --dim:     #9a9b95;   /* secondaire */
+  --faint:   #6f716b;   /* méta, légendes */
+  --line:    rgba(231,231,225,.13);
+  --line-2:  rgba(231,231,225,.26);
+
+  --rupture: #db4636;   /* rouge rupture : la coupe, les numéros, l'accent fort */
+  --rupture-2:#f06a5b;  /* rupture clair (texte sur fond) */
+  --rupture-d:#b5301f;
+
+  --steel:   #7e9fb2;   /* acier froid : fractures, schéma (accent secondaire) */
+  --steel-d: #46606f;
+
+  --serif:   "Spectral", Georgia, "Times New Roman", serif;
+  --disp:    "Bricolage Grotesque", "Spectral", Georgia, serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --measure: 40rem;
+}
+
+*{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+section[id], .chef[id]{ scroll-margin-top:64px; }
+
+body{
+  margin:0; background:var(--slate); color:var(--chalk);
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(1.02rem,.62rem + .62vw,1.18rem); line-height:1.66;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+::selection{ background:var(--rupture); color:#fff; }
+a{ color:var(--rupture-2); text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover{ color:#ff8b7d; }
+:focus-visible{ outline:2px solid var(--rupture); outline-offset:3px; border-radius:2px; }
+
+.skip{ position:absolute; left:-9999px; top:0; z-index:200; background:var(--rupture); color:#fff; padding:.6rem 1rem; font-family:var(--mono); font-size:.8rem; }
+.skip:focus{ left:8px; top:8px; }
+
+/* progression + bandeau */
+.prog{ position:fixed; top:0; left:0; height:2px; width:0; background:var(--rupture); z-index:130; transition:width .12s linear; }
+.rail-top{
+  position:fixed; top:0; left:0; right:0; z-index:120;
+  display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
+  padding:.5rem clamp(1rem,4vw,2.4rem);
+  background:color-mix(in srgb, var(--slate) 84%, transparent);
+  backdrop-filter:blur(8px) saturate(1.1); border-bottom:1px solid var(--line);
+  transform:translateY(-110%); transition:transform .34s ease;
+}
+.rail-top.show{ transform:translateY(0); }
+.rail-top__t{ font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--dim); }
+.rail-top__t b{ color:var(--chalk); font-weight:600; }
+.rail-top__n{ font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }
+
+/* gabarit */
+.wrap{ width:min(72rem,92vw); margin-inline:auto; }
+.col{ width:min(var(--measure),92vw); margin-inline:auto; }
+
+/* perforation : « découper ici » */
+.perf{ width:min(72rem,92vw); margin:clamp(2.6rem,7vh,4.2rem) auto; display:flex; align-items:center; gap:1rem; color:var(--faint); }
+.perf::before, .perf::after{ content:""; flex:1; height:0; border-top:1px dashed var(--line-2); }
+.perf span{ font-family:var(--mono); font-size:.64rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rupture-d); white-space:nowrap; }
+
+/* masthead */
+.mast{ padding:clamp(4.5rem,15vh,8.5rem) 0 clamp(2rem,6vh,3.4rem); }
+.mast__eyebrow{ font-family:var(--mono); font-size:.76rem; letter-spacing:.26em; text-transform:uppercase; color:var(--rupture-2); margin:0 0 1.6rem; display:flex; align-items:center; gap:.85rem; }
+.mast__eyebrow::before{ content:""; width:2.4rem; height:1px; background:var(--rupture); }
+.mast__title{ font-family:var(--disp); font-weight:700; font-optical-sizing:auto; font-size:clamp(2.9rem,1.4rem + 6.6vw,6.6rem); line-height:.97; letter-spacing:-.022em; margin:0; color:var(--chalk); }
+.mast__title em{ font-style:normal; color:var(--rupture); }
+.mast__stand{ font-family:var(--serif); font-size:clamp(1.12rem,.9rem + .7vw,1.42rem); line-height:1.5; color:var(--chalk-2); max-width:48ch; margin:1.7rem 0 0; }
+.mast__stand em{ color:var(--rupture-2); font-style:italic; }
+
+/* la faille qui se fracture et tombe */
+.fault{ margin:clamp(2.4rem,6vh,3.6rem) 0 0; }
+.fault svg{ display:block; width:100%; height:46px; overflow:visible; }
+.fault__lab{ font-family:var(--mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; fill:var(--faint); }
+
+.mast__meta{ margin:clamp(1.8rem,5vh,2.6rem) 0 0; padding-top:1.1rem; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:.5rem 2.2rem; font-family:var(--mono); font-size:.78rem; color:var(--dim); }
+.mast__meta b{ color:var(--chalk); font-weight:600; }
+.mast__meta span{ white-space:nowrap; }
+
+/* ouverture */
+.ouv{ padding:clamp(1.4rem,4vh,2.4rem) 0 clamp(1.6rem,5vh,2.6rem); }
+.ouv .col > p{ margin:0 0 1.25rem; }
+.ouv .lead{ font-family:var(--disp); font-weight:500; font-size:clamp(1.4rem,1rem + 1.5vw,2rem); line-height:1.32; letter-spacing:-.012em; color:var(--chalk); margin:0 0 1.6rem; }
+.ouv .lead em{ color:var(--rupture); font-style:normal; }
+.ouv strong{ color:var(--chalk); font-weight:600; }
+.ouv em.nl{ font-style:italic; color:var(--chalk-2); }
+
+/* bandeau « l'acte d'accusation » */
+.actband{ width:min(60rem,92vw); max-width:100%; margin:clamp(1.6rem,5vh,2.6rem) auto 0; }
+.actband__k{ font-family:var(--mono); font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--rupture-2); margin:0 0 .9rem; }
+.actband__t{ font-family:var(--disp); font-weight:600; font-size:clamp(1.3rem,1rem + 1.2vw,1.8rem); line-height:1.25; letter-spacing:-.01em; color:var(--chalk); margin:0; max-width:24ch; }
+
+/* chef d'accusation */
+.chef{ padding:clamp(2.6rem,7vh,4.2rem) 0 0; }
+.chef__grid{ width:min(64rem,92vw); margin-inline:auto; display:grid; grid-template-columns:minmax(0,7rem) minmax(0,var(--measure)); gap:clamp(1.4rem,4vw,3rem); align-items:start; }
+.chef__no{ font-family:var(--disp); font-weight:800; font-size:clamp(2.6rem,1.6rem + 3.4vw,4.4rem); line-height:.8; color:var(--rupture); letter-spacing:-.03em; position:sticky; top:72px; }
+.chef__no small{ display:block; font-family:var(--mono); font-weight:500; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); margin-top:.7rem; }
+.chef__body{ min-width:0; }
+.chef__kick{ font-family:var(--mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rupture-2); margin:0 0 .7rem; }
+.chef__title{ font-family:var(--disp); font-weight:700; font-size:clamp(1.7rem,1.2rem + 2vw,2.7rem); line-height:1.06; letter-spacing:-.016em; margin:0 0 1.1rem; color:var(--chalk); }
+.chef__title em{ color:var(--rupture); font-style:normal; }
+.chef__body > p{ margin:0 0 1.15rem; }
+.chef__body strong{ color:var(--chalk); font-weight:600; }
+.chef__body em.nl{ font-style:italic; color:var(--chalk-2); }
+
+/* pièce à conviction (stat) */
+.evid{ margin:1.5rem 0; padding:1.15rem 1.3rem; background:var(--slate-2); border:1px solid var(--line-2); border-left:3px solid var(--rupture); }
+.evid__k{ font-family:var(--mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rupture-2); margin:0 0 .5rem; }
+.evid__v{ font-family:var(--disp); font-weight:600; font-size:clamp(1.06rem,.9rem + .6vw,1.34rem); line-height:1.3; letter-spacing:-.01em; color:var(--chalk); margin:0; }
+.evid__v b{ color:var(--rupture-2); font-weight:700; }
+.evid__src{ font-family:var(--mono); font-size:.66rem; color:var(--faint); margin:.7rem 0 0; line-height:1.5; }
+
+/* citation tranchée */
+.pull{ width:min(56rem,92vw); margin:clamp(2.4rem,6vh,3.6rem) auto; font-family:var(--disp); font-weight:500; font-size:clamp(1.5rem,1.1rem + 1.8vw,2.4rem); line-height:1.26; letter-spacing:-.014em; color:var(--chalk); }
+.pull em{ color:var(--rupture); font-style:normal; }
+.pull .by{ display:block; margin-top:1rem; font-family:var(--mono); font-size:.76rem; letter-spacing:.12em; text-transform:uppercase; color:var(--faint); font-weight:400; }
+
+/* décomposition : le schéma de la chute */
+.decomp{ width:min(68rem,94vw); margin:clamp(2.6rem,7vh,4rem) auto; }
+.decomp__fig{ background:var(--slate-2); border:1px solid var(--line-2); padding:clamp(1.2rem,3vw,2rem); }
+.decomp svg{ display:block; width:100%; height:auto; }
+.decomp__cap{ font-family:var(--mono); font-size:.72rem; color:var(--faint); margin:.9rem 0 0; line-height:1.5; }
+.decomp__cap b{ color:var(--dim); font-weight:600; }
+
+/* section générique (nœud / verdict) */
+.movt{ padding:clamp(2.8rem,7vh,4.4rem) 0 0; }
+.movt__head{ width:min(58rem,92vw); margin-inline:auto; margin-bottom:clamp(1.6rem,4vh,2.4rem); }
+.kick{ font-family:var(--mono); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rupture-2); margin:0 0 .9rem; display:flex; align-items:center; gap:.8rem; }
+.kick::before{ content:""; width:1.6rem; height:1px; background:var(--rupture); }
+.movt__title{ font-family:var(--disp); font-weight:700; font-size:clamp(1.9rem,1.2rem + 2.6vw,3.2rem); line-height:1.04; letter-spacing:-.018em; margin:0; color:var(--chalk); }
+.movt__lede{ font-family:var(--serif); font-style:italic; color:var(--dim); font-size:clamp(1.04rem,.9rem + .5vw,1.22rem); line-height:1.5; max-width:54ch; margin:1.1rem 0 0; }
+.prose{ width:min(var(--measure),92vw); margin-inline:auto; min-width:0; }
+.prose > p{ margin:0 0 1.2rem; }
+.prose strong{ color:var(--chalk); font-weight:600; }
+.prose em.nl{ font-style:italic; color:var(--chalk-2); }
+.prose h3{ font-family:var(--mono); font-weight:600; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--rupture-2); margin:2rem 0 .9rem; padding-top:.9rem; border-top:1px solid var(--line); }
+
+/* la défense : l'autre bord, en acier */
+.defense{ margin-top:clamp(2.8rem,7vh,4.4rem); padding:clamp(2.6rem,7vh,4.2rem) 0; background:var(--slate-2); border-block:1px solid var(--line-2); position:relative; }
+.defense::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--steel); }
+.defense .kick{ color:var(--steel); }
+.defense .kick::before{ background:var(--steel); }
+.defense .movt__title em{ color:var(--steel); font-style:normal; }
+.defense .prose h3{ color:var(--steel); }
+.defense .prose strong{ color:var(--chalk); }
+.defense .evid{ border-left-color:var(--steel); }
+.defense .evid__k, .defense .evid__v b{ color:var(--steel); }
+
+/* verdict */
+.verdict{ padding:clamp(3rem,8vh,5rem) 0; }
+.verdict .col > p{ margin:0 0 1.3rem; }
+.verdict .big{ font-family:var(--disp); font-weight:500; font-size:clamp(1.5rem,1.1rem + 1.9vw,2.4rem); line-height:1.26; letter-spacing:-.014em; color:var(--chalk); margin:0 0 1.6rem; }
+.verdict .big em{ color:var(--rupture); font-style:normal; }
+.verdict strong{ color:var(--chalk); font-weight:600; }
+
+/* note & sources */
+.notes{ padding:clamp(2.8rem,7vh,4.4rem) 0; background:#101216; border-top:1px solid var(--line-2); }
+.notes h2{ font-family:var(--disp); font-weight:700; font-size:clamp(1.5rem,1.1rem + 1.6vw,2.2rem); letter-spacing:-.012em; margin:0 0 1.5rem; color:var(--chalk); }
+.notes h3{ font-family:var(--mono); font-weight:500; font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rupture-2); margin:2.2rem 0 1rem; }
+.notes p{ color:var(--dim); max-width:64ch; margin:0 0 1.05rem; font-size:1rem; }
+.notes ul{ margin:0; padding:0; list-style:none; max-width:66ch; }
+.notes li{ padding:.7rem 0 .7rem 1.5rem; border-top:1px solid var(--line); position:relative; color:var(--dim); font-size:.95rem; line-height:1.5; }
+.notes li::before{ content:"§"; position:absolute; left:0; color:var(--rupture); font-family:var(--mono); }
+.notes li b{ color:var(--chalk); font-weight:600; }
+.notes li em{ font-style:italic; color:var(--chalk-2); }
+
+/* pied */
+.foot{ padding:clamp(2.4rem,6vh,3.6rem) 0; background:#0c0e11; color:var(--chalk-2); }
+.foot .wrap{ display:flex; flex-wrap:wrap; gap:1.4rem 2.4rem; align-items:baseline; justify-content:space-between; }
+.foot__t{ font-family:var(--disp); font-weight:600; font-size:1.15rem; letter-spacing:-.01em; color:var(--chalk); }
+.foot__t em{ color:var(--rupture-2); font-style:normal; }
+.foot p{ margin:.5rem 0 0; font-family:var(--mono); font-size:.74rem; color:var(--faint); max-width:54ch; line-height:1.6; }
+.foot a{ color:var(--steel); }
+
+/* révélation */
+.rise{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+.rise.in{ opacity:1; transform:none; }
+
+/* responsive */
+@media (max-width:820px){
+  .chef__grid{ grid-template-columns:1fr; gap:.6rem; }
+  .chef__no{ position:static; display:flex; align-items:baseline; gap:1rem; }
+  .chef__no small{ margin-top:0; }
+}
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  *{ transition:none !important; animation:none !important; }
+  .rise{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#requisitoire">Aller au réquisitoire</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<header class="rail-top" id="railtop" aria-hidden="true">
+  <span class="rail-top__t"><b>Faire tomber la Belgique</b> — le réquisitoire</span>
+  <a class="rail-top__n" href="#requisitoire">↑ Charges</a>
+</header>
+
+<main>
+
+<!-- ===================== MASTHEAD ===================== -->
+<section class="mast">
+  <div class="wrap">
+    <p class="mast__eyebrow">Le contre-pied — réquisitoire pour la fin d'un État</p>
+    <h1 class="mast__title">Faire <em>tomber</em><br>la Belgique</h1>
+    <p class="mast__stand">Si « Faire tenir la Belgique » plaidait le maintien, cette page donne la parole à l'accusation. <em>Non pour conclure — pour instruire.</em> Voici la version la plus forte de l'argument que portent ceux qui veulent en finir avec l'État belge.</p>
+
+    <div class="fault" aria-hidden="true">
+      <svg viewBox="0 0 1000 46" preserveAspectRatio="none" role="img">
+        <!-- poutre qui se fend, se rompt, et dont un côté tombe -->
+        <line x1="0" y1="22" x2="430" y2="22" stroke="var(--chalk)" stroke-width="1.5"/>
+        <!-- fracture en zigzag -->
+        <path d="M430,22 L452,12 L470,30 L488,14 L500,24" stroke="var(--rupture)" stroke-width="1.7" fill="none"/>
+        <!-- le côté droit a glissé plus bas (il tombe) et diverge -->
+        <line x1="500" y1="24" x2="760" y2="33" stroke="var(--chalk)" stroke-width="1.5"/>
+        <line x1="760" y1="33" x2="1000" y2="40" stroke="var(--chalk)" stroke-width="1.5" opacity=".55"/>
+        <!-- une esquille qui chute -->
+        <line x1="540" y1="30" x2="560" y2="44" stroke="var(--steel)" stroke-width="1.3" opacity=".8"/>
+        <circle cx="430" cy="22" r="2.8" fill="var(--rupture)"/>
+        <text x="0" y="44" class="fault__lab">1830 · un assemblage</text>
+        <text x="1000" y="14" text-anchor="end" class="fault__lab">la ligne ne se recoud plus</text>
+      </svg>
+    </div>
+
+    <div class="mast__meta">
+      <span><b>6</b> chefs d'accusation</span>
+      <span><b>1</b> nœud</span>
+      <span><b>1</b> défense</span>
+      <span>verdict laissé ouvert</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OUVERTURE ===================== -->
+<section class="ouv" id="requisitoire">
+  <div class="col">
+    <p class="lead">Tout procès a deux plaidoiries. La première a été dite ailleurs&nbsp;: la Belgique tient, et c'est une prouesse. Voici la seconde. <em>Place à l'accusation.</em></p>
+    <p>Ce qui suit n'est pas l'opinion de l'auteur, mais un exercice&nbsp;: présenter, dans sa forme la plus solide, l'argumentaire de ceux qui veulent défaire l'État belge. La thèse n'a rien de marginal. Elle est portée par le <strong>premier parti du pays</strong>, la N-VA, sous la bannière du «&nbsp;confédéralisme&nbsp;»&nbsp;; plus loin encore par le Vlaams Belang, qui réclame l'indépendance pure et simple de la Flandre. Ensemble, ils pèsent une large part du Nord. L'idée d'une fin de la Belgique n'est donc pas une provocation&nbsp;: c'est une option politique majeure, défendue par des moyens démocratiques et constitutionnels.</p>
+    <p>Le point de départ de l'accusation tient en une phrase. <strong>La Belgique n'est pas une nation qui s'est donné un État&nbsp;; c'est un État de 1830 qui n'a jamais réussi à fabriquer la nation correspondante.</strong> Né d'un calcul des grandes puissances, soudé par une monarchie, une Église et une bourgeoisie de langue française qui se sont toutes effacées, ce pays aurait survécu à ses propres raisons d'être. L'accusation va le démontrer en six chefs. Puis — car un bon réquisitoire ne triche pas — elle affrontera le nœud qu'elle doit elle-même dénouer. Et la défense aura le dernier mot avant le vôtre.</p>
+
+    <div class="actband rise">
+      <p class="actband__k">L'acte d'accusation</p>
+      <p class="actband__t">Six raisons de penser que l'édifice doit tomber.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CHEF I ========== -->
+<section class="chef" id="chef-1">
+  <div class="chef__grid">
+    <div class="chef__no">I<small>premier chef</small></div>
+    <div class="chef__body rise">
+      <p class="chef__kick">Le démos introuvable</p>
+      <h2 class="chef__title">Il n'y a pas de <em>peuple</em> belge</h2>
+      <p>La démocratie suppose un démos&nbsp;: un peuple qui délibère ensemble, vote pour les mêmes partis, lit la même presse, se dispute sur la même place publique. La Belgique n'a rien de tout cela. Depuis la scission des partis en 1968, un Flamand et un Wallon ne choisissent jamais parmi les mêmes candidats. Les médias, les débats, les visages, la culture&nbsp;: tout est séparé. Il n'existe ni élection belge, ni opinion publique belge, ni «&nbsp;nous&nbsp;» belge.</p>
+      <div class="evid">
+        <p class="evid__k">Pièce à conviction</p>
+        <p class="evid__v">Depuis 1968, <b>zéro</b> parti se présente des deux côtés de la frontière linguistique. Deux électorats, jamais le même bulletin.</p>
+        <p class="evid__src">Scission des trois familles politiques nationales, 1968-1978. Aucune circonscription fédérale à ce jour.</p>
+      </div>
+      <p>Un État privé de démos, plaide l'accusation, n'est pas une nation&nbsp;: c'est une négociation permanente entre deux corps électoraux étrangers l'un à l'autre, conduite au-dessus de la tête des citoyens par des cartels de partis. La légitimité ne peut reposer sur un peuple qui n'existe pas. Là où il n'y a pas de volonté commune, il n'y a pas de raison commune d'être ensemble — seulement l'habitude, et la peur du divorce.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CHEF II ========== -->
+<section class="chef" id="chef-2">
+  <div class="chef__grid">
+    <div class="chef__no">II<small>deuxième chef</small></div>
+    <div class="chef__body rise">
+      <p class="chef__kick">La paralysie érigée en système</p>
+      <h2 class="chef__title">Un État qui ne sait plus <em>décider</em></h2>
+      <p>La machine belge est conçue pour empêcher les décisions. Parité linguistique, majorités spéciales, sonnette d'alarme, vétos réciproques&nbsp;: chaque garde-fou bâti pour protéger la minorité sert aussi à bloquer l'action. Le résultat se lit dans les records de formation. Le pays a passé des années entières sans gouvernement de plein exercice. Et quand un gouvernement existe, les compétences sont si morcelées qu'il a fallu <strong>neuf ministres de la Santé</strong> pour affronter une pandémie.</p>
+      <div class="evid">
+        <p class="evid__k">Pièce à conviction</p>
+        <p class="evid__v"><b>541</b> jours (2010-2011), <b>~493</b> (2018-2020), <b>239</b> (2024-2025) sans gouvernement fédéral. Et <b>9</b> ministres pour une seule épidémie.</p>
+        <p class="evid__src">Records de formation gouvernementale · éclatement des compétences de santé, crise du Covid-19.</p>
+      </div>
+      <p>Un État qui réclame un an et demi pour former un cabinet, et neuf ministres pour combattre un virus, a cessé d'être un État qui fonctionne pour devenir une procédure. Gouverner n'est plus sa finalité&nbsp;: survivre l'est. Or un pouvoir qui ne peut plus agir au moment où il le faut a déjà, en partie, abdiqué.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CHEF III ========== -->
+<section class="chef" id="chef-3">
+  <div class="chef__grid">
+    <div class="chef__no">III<small>troisième chef</small></div>
+    <div class="chef__body rise">
+      <p class="chef__kick">La solidarité sans les comptes</p>
+      <h2 class="chef__title">L'argent qui s'écoule sans le <em>consentement</em></h2>
+      <p>Année après année, des milliards s'écoulent de la Flandre — et de Bruxelles — vers la Wallonie, par la sécurité sociale et le budget fédéral. Le grief de l'accusation ne porte pas sur la solidarité en soi, mais sur son <strong>opacité</strong> et sur sa <strong>permanence</strong>&nbsp;: aucune comptabilité transparente, aucun terme, aucune convergence après des décennies. Un contribuable d'Anvers finance un système qu'il ne contrôle pas, géré par une classe politique qu'il n'élit pas, sans pouvoir jamais demander&nbsp;: «&nbsp;cela fonctionne-t-il&nbsp;?&nbsp;»</p>
+      <div class="evid">
+        <p class="evid__k">Pièce à conviction — contestée</p>
+        <p class="evid__v"><b>≈ 6 à 7 milliards €</b> par an&nbsp;: contribution nette estimée de la Flandre et de Bruxelles vers la Wallonie. Sans terme. Sans tableau de bord.</p>
+        <p class="evid__src">Banque nationale de Belgique, données 2019. Chiffre estimé et vivement disputé&nbsp;: la défense le réfute point par point.</p>
+      </div>
+      <p>Une solidarité fiscale sans responsabilité politique — un impôt prélevé par-delà une frontière que ceux qui le paient ne reconnaissent pas — finit, soutient l'accusation, par ronger le consentement. L'autonomie, elle, réaligne au moins celui qui paie sur celui qui décide. C'est l'argument le plus rentable du Nord&nbsp;; c'est aussi, on le verra, le plus fragile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CHEF IV ========== -->
+<section class="chef" id="chef-4">
+  <div class="chef__grid">
+    <div class="chef__no">IV<small>quatrième chef</small></div>
+    <div class="chef__body rise">
+      <p class="chef__kick">Le labyrinthe</p>
+      <h2 class="chef__title">Une architecture que personne ne <em>défend</em></h2>
+      <p>Des Communautés <em class="nl">et</em> des Régions qui ne se recouvrent pas&nbsp;; six niveaux de pouvoir empilés — fédéral, communauté, région, province, commune, sans compter les commissions bruxelloises&nbsp;; une asymétrie que nul n'aurait dessinée volontairement. Le plus accablant&nbsp;: même ceux qui veulent <strong>sauver</strong> la Belgique conviennent que la structure est malade. Les tenants du modèle «&nbsp;à quatre régions&nbsp;», comme le philosophe Philippe Van Parijs, réclament qu'on tranche l'enchevêtrement communautés/régions. Le fiasco des neuf ministres de la Santé est leur pièce à conviction à eux.</p>
+      <div class="evid">
+        <p class="evid__k">Pièce à conviction</p>
+        <p class="evid__v"><b>6</b> niveaux de pouvoir · <b>2</b> logiques qui ne coïncident pas · <b>1</b> constat partagé, du nationaliste au belgicain&nbsp;: c'est intenable.</p>
+        <p class="evid__src">Doctrine de droit public&nbsp;; débats sur la simplification institutionnelle (modèle à quatre régions).</p>
+      </div>
+      <p>Quand l'accusation et la défense s'accordent sur le fait que le bâtiment est bancal, le seul désaccord porte sur la suite&nbsp;: le rénover une septième fois, ou le faire tomber. Et l'on ne rénove pas une contradiction. La coupe la plus nette, dit l'accusation, est la plus simple&nbsp;: séparer les deux logiques en séparant les deux peuples.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CHEF V ========== -->
+<section class="chef" id="chef-5">
+  <div class="chef__grid">
+    <div class="chef__no">V<small>cinquième chef</small></div>
+    <div class="chef__body rise">
+      <p class="chef__kick">Le contenant est devenu inutile</p>
+      <h2 class="chef__title">L'Europe a rendu la Belgique <em>superflue</em></h2>
+      <p>La Belgique fut inventée comme un contenant&nbsp;: un État tampon offrant à ses habitants une monnaie, un marché, une armée, des frontières, un siège à la table des nations. Or chacune de ces fonctions est aujourd'hui fournie par l'Union européenne. Dans une Europe approfondie, la Flandre et la Wallonie pourraient être des régions — ou des États — membres à part entière, partageant l'euro, le marché unique, le parapluie de défense, la frontière extérieure, <strong>sans la couche belge redondante au milieu</strong>.</p>
+      <div class="evid">
+        <p class="evid__k">Pièce à conviction</p>
+        <p class="evid__v">Monnaie, marché, défense, frontière extérieure, siège&nbsp;: tout ce que la Belgique fournissait en <b>1830</b>, l'Union le fournit en <b>2025</b>.</p>
+        <p class="evid__src">Thèse de l'«&nbsp;évaporation&nbsp;» de la Belgique, dissoute vers le haut dans l'Europe et vers le bas dans ses régions.</p>
+      </div>
+      <p>Bruxelles resterait une capitale — celle de l'Europe — quoi qu'il arrive. Le vieux contenant du XIX<sup>e</sup> siècle aurait simplement été remplacé par un plus grand. À quoi bon, demande l'accusation, conserver l'emballage quand le colis a changé de boîte&nbsp;?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CHEF VI ========== -->
+<section class="chef" id="chef-6">
+  <div class="chef__grid">
+    <div class="chef__no">VI<small>sixième chef</small></div>
+    <div class="chef__body rise">
+      <p class="chef__kick">La preuve par la Tchécoslovaquie</p>
+      <h2 class="chef__title">La séparation peut être <em>pacifique</em></h2>
+      <p>L'objection la plus forte à la dissolution, c'est la peur&nbsp;: du chaos, du conflit, de la ruine. L'accusation y répond par un précédent. En 1993, la Tchécoslovaquie s'est scindée par un «&nbsp;divorce de velours&nbsp;» — négocié, pacifique, constitutionnel. Il en est sorti deux États prospères, la Tchéquie et la Slovaquie, tous deux membres de l'Union européenne, et dont aucun ne regrette le partage. Se séparer n'est pas forcément la Yougoslavie&nbsp;; cela peut être une réorganisation mûre entre adultes qui ne veulent plus partager le même toit.</p>
+      <div class="evid">
+        <p class="evid__k">Pièce à conviction</p>
+        <p class="evid__v"><b>1993</b> — Tchécoslovaquie&nbsp;: un divorce négocié et sans violence. Résultat&nbsp;: <b>deux</b> États prospères, <b>deux</b> membres de l'UE.</p>
+        <p class="evid__src">Précédent d'une séparation consensuelle au cœur de l'Europe (la défense en conteste la transposabilité).</p>
+      </div>
+      <p>Le chemin que propose l'accusation est graduel&nbsp;: le confédéralisme comme antichambre, puis une scission négociée, avec un statut taillé sur mesure pour Bruxelles. Non une rupture de colère, mais un divorce par consentement. La fin de la Belgique, dit-elle, pourrait être son acte le plus civilisé.</p>
+    </div>
+  </div>
+</section>
+
+<div class="pull rise">
+  «&nbsp;On ne rénove pas une contradiction. <em>On la quitte.</em>&nbsp;»
+  <span class="by">Le réquisitoire, en une phrase</span>
+</div>
+
+<figure class="decomp rise">
+  <div class="decomp__fig">
+    <svg viewBox="0 0 1000 462" role="img" aria-label="Schéma de la dissolution : la clef de voûte fédérale est retirée ; la Flandre s'écarte vers le nord, la Wallonie vers le sud ; au centre reste suspendu le fragment de Bruxelles, revendiqué par les deux et attribuable à aucun.">
+      <!-- clef de voûte fédérale retirée -->
+      <rect x="370" y="10" width="260" height="44" rx="2" style="fill:none;stroke:var(--steel);stroke-width:1.4;stroke-dasharray:5 4;opacity:.65"/>
+      <text x="500" y="33" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:12px;fill:var(--steel);opacity:.9" letter-spacing="1">ÉTAT FÉDÉRAL</text>
+      <text x="500" y="48" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:9px;fill:var(--faint)">— la clef de voûte retirée —</text>
+      <line x1="500" y1="120" x2="500" y2="62" style="stroke:var(--steel);stroke-width:1.2;stroke-dasharray:4 4;opacity:.6"/>
+      <path d="M500,60 L495,71 L505,71 Z" style="fill:var(--steel);opacity:.75"/>
+
+      <!-- FLANDRE s'écarte vers le nord-ouest -->
+      <rect x="64" y="150" width="300" height="120" rx="2" style="fill:var(--slate-3);stroke:var(--chalk);stroke-width:1.4"/>
+      <text x="214" y="200" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;fill:var(--chalk)" letter-spacing="1.2">FLANDRE</text>
+      <text x="214" y="224" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--dim)">≈ 6,8 millions d'habitants</text>
+      <text x="214" y="244" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:9px;fill:var(--faint)">Communauté + Région fusionnées</text>
+      <line x1="64" y1="150" x2="22" y2="114" style="stroke:var(--steel);stroke-width:1.3"/>
+      <path d="M22,114 L35,118 L28,130 Z" style="fill:var(--steel)"/>
+      <text x="40" y="104" style="font-family:'IBM Plex Mono',monospace;font-size:8px;fill:var(--steel)" letter-spacing="1">s'écarte</text>
+
+      <!-- WALLONIE s'écarte vers le sud-est -->
+      <rect x="636" y="208" width="300" height="120" rx="2" style="fill:var(--slate-3);stroke:var(--chalk);stroke-width:1.4"/>
+      <text x="786" y="258" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;fill:var(--chalk)" letter-spacing="1.2">WALLONIE</text>
+      <text x="786" y="282" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--dim)">≈ 3,7 millions d'habitants</text>
+      <text x="786" y="302" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:9px;fill:var(--faint)">+ Communauté française</text>
+      <line x1="936" y1="328" x2="980" y2="362" style="stroke:var(--steel);stroke-width:1.3"/>
+      <path d="M980,362 L967,358 L973,347 Z" style="fill:var(--steel)"/>
+      <text x="960" y="378" text-anchor="end" style="font-family:'IBM Plex Mono',monospace;font-size:8px;fill:var(--steel)" letter-spacing="1">s'écarte</text>
+
+      <!-- éclat germanophone -->
+      <rect x="902" y="150" width="62" height="36" rx="1" style="fill:none;stroke:var(--steel-d);stroke-width:1.1;stroke-dasharray:3 3"/>
+      <text x="933" y="167" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:8px;fill:var(--steel)">C. germ.</text>
+      <text x="933" y="179" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:7px;fill:var(--faint)">9 comm.</text>
+
+      <!-- la fracture rouge (en deux tronçons, autour de Bruxelles) -->
+      <path d="M500,126 L486,150 L514,176 L500,198" style="fill:none;stroke:var(--rupture);stroke-width:1.8"/>
+      <path d="M500,290 L488,320 L512,354 L498,386 L500,416" style="fill:none;stroke:var(--rupture);stroke-width:1.8"/>
+
+      <!-- liens : Bruxelles revendiquée des deux côtés -->
+      <line x1="438" y1="244" x2="364" y2="222" style="stroke:var(--rupture);stroke-width:1.1;stroke-dasharray:4 3;opacity:.7"/>
+      <line x1="562" y1="244" x2="636" y2="268" style="stroke:var(--rupture);stroke-width:1.1;stroke-dasharray:4 3;opacity:.7"/>
+
+      <!-- BRUXELLES, le fragment suspendu -->
+      <rect x="438" y="202" width="124" height="86" rx="2" style="fill:rgba(219,70,54,.10);stroke:var(--rupture);stroke-width:1.8"/>
+      <text x="500" y="232" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;fill:var(--rupture-2)" letter-spacing="1">BRUXELLES</text>
+      <text x="500" y="256" text-anchor="middle" style="font-family:'Spectral',Georgia,serif;font-style:italic;font-size:15px;fill:var(--rupture-2)">à qui&#8201;?</text>
+      <text x="500" y="277" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:8px;fill:var(--rupture)" letter-spacing="1.5">LE NŒUD</text>
+
+      <text x="500" y="444" text-anchor="middle" style="font-family:'IBM Plex Mono',monospace;font-size:8px;fill:var(--faint)" letter-spacing="3">LA LIGNE DE PARTAGE</text>
+    </svg>
+  </div>
+  <p class="decomp__cap"><b>La décomposition.</b> On retire la clef de voûte fédérale (en haut)&nbsp;; les deux blocs s'écartent, la Flandre vers le nord, la Wallonie vers le sud. Reste, suspendu au milieu, le fragment que personne ne sait attribuer&nbsp;: Bruxelles — francophone, enclavée en Flandre, revendiquée des deux côtés. C'est là, exactement, que tout divorce belge se grippe.</p>
+</figure>
+
+<div class="perf rise"><span>Mais — le réquisitoire ne triche pas</span></div>
+
+<!-- ========== LE NŒUD ========== -->
+<section class="movt" id="noeud">
+  <div class="movt__head rise">
+    <p class="kick">Le nœud</p>
+    <h2 class="movt__title">Ce que l'accusation doit elle-même trancher</h2>
+    <p class="movt__lede">Un réquisitoire honnête nomme ses propres impasses. La fin de la Belgique en compte au moins quatre — et la première est presque insoluble.</p>
+  </div>
+  <div class="prose rise">
+    <h3>Bruxelles, le fragment ingouvernable</h3>
+    <p>Un million deux cent mille habitants, officiellement bilingues mais francophones à plus de 80&nbsp;%, dans une ville enclavée en territoire flamand — et qui est la capitale de la Belgique, de la Flandre <em class="nl">et</em> de l'Union européenne. Une Flandre qui se sépare perd sa capitale historique&nbsp;; une Wallonie séparée ne peut atteindre Bruxelles sans traverser le sol flamand&nbsp;; et la ville n'appartient en propre à aucune des deux communautés. Il n'existe aucune ligne nette. Bruxelles est l'otage de tout divorce — ce qui rend le précédent tchécoslovaque, qui n'avait pas de Bruxelles, aussi flatteur que trompeur.</p>
+    <h3>La dette : six cents milliards à partager</h3>
+    <p>La Belgique traîne l'une des dettes publiques les plus lourdes de la zone euro — de l'ordre de 600&nbsp;milliards d'euros. La partager exige une clef&nbsp;: au prorata de la population&nbsp;? du PIB&nbsp;? de l'histoire&nbsp;? Chaque clef avantage un camp. Une négociation portant sur des centaines de milliards, dans une monnaie qu'aucune des deux parties ne contrôle, n'a rien de velouté par nature&nbsp;: c'est un bras de fer.</p>
+    <h3>La sécurité sociale, du jour au lendemain</h3>
+    <p>Pensions, soins de santé, chômage&nbsp;: ces prestations sont versées à des millions de personnes le lendemain de toute séparation. Les «&nbsp;transferts&nbsp;» ne sont pas une enveloppe à empocher&nbsp;; ils financent des droits réels, au Nord comme au Sud. Détricoter une sécurité sociale centenaire et profondément intégrée sans amputer la pension de quiconque est une tâche vertigineuse — et les premières victimes d'un partage bâclé seraient les plus fragiles, des deux côtés de la frontière.</p>
+    <h3>Les minorités que toute frontière recrée</h3>
+    <p>Chaque frontière tracée fabrique de nouvelles minorités. Les francophones de la périphérie flamande et des Fourons&nbsp;; les néerlandophones de Bruxelles et de son pourtour&nbsp;; la Communauté germanophone à l'est. Se séparer au nom du grief d'une minorité, c'est en manufacturer une dizaine d'autres — la plaie même qui avait ouvert la querelle.</p>
+    <p>L'accusation a des réponses&nbsp;: Bruxelles pourrait devenir un condominium, capitale européenne, ou une troisième entité&nbsp;; la dette se partagerait selon une clef négociée&nbsp;; la sécurité sociale serait garantie par traité durant une transition. Mais elle ne peut prétendre que ce sont là des détails. Si la chute vient, elle devra être taillée au scalpel — sinon elle cesse d'être de velours, et devient une déchirure.</p>
+  </div>
+</section>
+
+<div class="perf rise"><span>La défense a la parole</span></div>
+
+<!-- ========== LA DÉFENSE ========== -->
+<section class="defense" id="defense">
+  <div class="movt__head rise">
+    <p class="kick">La défense</p>
+    <h2 class="movt__title">Ce que répond <em>la Belgique</em></h2>
+    <p class="movt__lede">À chaque charge, une réponse. La défense ne nie pas les faits&nbsp;: elle en conteste le sens.</p>
+  </div>
+  <div class="prose rise">
+    <h3>Le démos existe — autrement</h3>
+    <p>Un pays n'a pas besoin d'être une nation ethnique unique pour être réel. La Belgique tient par des institutions partagées, une monarchie, un pacte de sécurité sociale, une capitale, un drapeau, des Diables rouges — et cent quatre-vingt-quinze ans de vie commune, y compris, ironie, un talent commun pour le compromis. La Suisse a quatre langues et nul démos unique&nbsp;; le Canada en a deux&nbsp;; ce sont des États solides. L'absence d'une nation unitaire n'est pas l'absence d'un pays. On peut appartenir à un État sans fondre en un seul peuple.</p>
+    <h3>La lenteur n'est pas l'échec</h3>
+    <p>Les 541 jours prouvent l'inverse de ce que l'accusation prétend&nbsp;: la Belgique a continué de tourner <strong>sans</strong> gouvernement — trains, impôts, et même une présidence de l'Union. C'est de la résilience, non un effondrement. La démocratie consociative est lente précisément parce qu'elle refuse qu'une majorité écrase une minorité&nbsp;; la sonnette d'alarme et la parité ne sont pas des défauts, mais le prix de la protection du plus petit. La vitesse n'est pas la seule vertu d'un État. Une démocratie qui prend le temps d'inclure tout le monde fait quelque chose de plus difficile que de décider vite.</p>
+    <h3>Les transferts, démontés</h3>
+    <p>C'est la charge la plus percutante de l'accusation, et la plus fragile. Trois réponses. D'abord, la solidarité est <strong>interpersonnelle</strong>, non régionale&nbsp;: elle va du riche au pauvre, et non de «&nbsp;la Flandre&nbsp;» à «&nbsp;la Wallonie&nbsp;». Des Wallons aisés cotisent — le Brabant wallon contribue, par habitant, davantage que le Flamand moyen — tandis que des Flamands modestes reçoivent&nbsp;: la Flandre occidentale et le Limbourg sont bénéficiaires nets. Bruxelles, elle, est <strong>contributrice nette</strong>. Ensuite, l'«&nbsp;enveloppe&nbsp;» est une fiction&nbsp;: si la Flandre se séparait, aucune somme de six milliards n'apparaîtrait&nbsp;; l'écart reflète la géographie économique — les pôles de richesse que sont Bruxelles et les ports flamands —, non la paresse wallonne. Enfin, le transfert est, par habitant, <strong>plus faible</strong> que celui de l'Allemagne de l'Ouest vers l'Est après la réunification, ou de la France vers ses départements du Nord. Personne ne dit la Bavière volée.</p>
+    <div class="evid">
+      <p class="evid__k">Contre-pièce</p>
+      <p class="evid__v">L'enveloppe régionale n'existe pas&nbsp;: solidarité <b>interpersonnelle</b> (riche→pauvre), Bruxelles <b>contributrice nette</b>, transfert plus faible que la réunification allemande.</p>
+      <p class="evid__src">Études de la Banque nationale et travaux académiques&nbsp;; déconstruction du «&nbsp;mythe&nbsp;» de l'enveloppe.</p>
+    </div>
+    <h3>On simplifie sans démolir</h3>
+    <p>Oui, la structure est baroque — alors simplifions-la. Passons à quatre régions, refédéralisons la santé et le climat. C'est de la rénovation, et rénover n'est pas démolir. La complexité est le prix de la protection de deux communautés&nbsp;; le remède est une meilleure ingénierie, non la fin du pays. On ne brûle pas la maison parce que le câblage est emmêlé&nbsp;: on refait le câblage.</p>
+    <h3>L'Europe ne remplace pas tout</h3>
+    <p>L'Union n'est pas un État. Elle n'a pas d'armée, pas de véritable union fiscale, pas d'État-providence, et des frontières extérieures contestées. «&nbsp;Se dissoudre dans l'Europe&nbsp;» suppose une Europe qui n'existe pas encore — et peut-être jamais. Pendant ce temps, deux petits États neufs auraient toujours besoin de Bruxelles, qu'ils ne savent pas partager proprement. La thèse de l'évaporation prend un espoir pour un fait.</p>
+    <h3>Le velours est l'exception</h3>
+    <p>La Tchécoslovaquie n'avait pas de Bruxelles, pas de dette commune de 600&nbsp;milliards, pas de sécurité sociale centenaire enchevêtrée, deux territoires nets, et n'était une fédération que depuis soixante-quatorze ans — non un État de cent quatre-vingt-quinze ans dont les deux camps revendiquent la capitale. Les divorces de velours sont l'exception&nbsp;; la plupart des séparations sont amères, ou pires. Et la nécrologie belge s'écrit, et se dément, depuis cent cinquante ans. Le pays qui devait s'effondrer s'obstine à ne pas s'effondrer.</p>
+    <p>La défense repose sur un paradoxe que l'accusation ne peut dissoudre. Ce qui rend la Belgique absurde — n'avoir aucun peuple unique — est aussi ce qui la rend précieuse&nbsp;: elle est la preuve quotidienne, et fonctionnelle, qu'une différence profonde peut se gouverner sans qu'un camp en conquière un autre. Sur un continent où le nationalisme remonte, ce n'est pas un échec à liquider. C'est une leçon à garder.</p>
+  </div>
+</section>
+
+<div class="perf rise"><span>Le verdict</span></div>
+
+<!-- ========== VERDICT ========== -->
+<section class="verdict" id="verdict">
+  <div class="movt__head rise">
+    <p class="kick">Verdict</p>
+    <h2 class="movt__title">Laissé <em>ouvert</em></h2>
+  </div>
+  <div class="col rise">
+    <p class="big">L'accusation est sérieuse. La défense aussi. C'est précisément pour cela qu'il n'y aura pas de sentence — seulement un <em>choix</em>.</p>
+    <p>Ce n'est pas une question technique appelant une bonne réponse&nbsp;: c'est un choix démocratique. Des gens sérieux — le premier parti du pays — plaident la fin&nbsp;; des gens tout aussi sérieux plaident le maintien. Chaque camp a raison sur quelque chose. L'accusation a raison&nbsp;: la Belgique n'a pas de peuple unique, elle gouverne lentement et parfois mal, son architecture est baroque, et l'Europe a changé la donne. La défense a raison&nbsp;: la solidarité est réelle et interpersonnelle, Bruxelles ne se découpe pas proprement, la maladresse même du pays est une réussite, et son acte de décès se révèle, chaque fois, prématuré.</p>
+    <p>Alors, pour l'heure, le verdict est celui que les Belges rendent sans cesse — non par référendum, mais jour après jour, par inertie autant que par conviction&nbsp;: <strong>ils restent</strong>. Ils réforment plutôt que de se séparer&nbsp;; ils rapiècent plutôt que de démolir&nbsp;; ils se disputent, sans fin, et maintiennent l'édifice debout le temps de la dispute.</p>
+    <p>Un pays assez solide pour héberger son propre procès — imprimer l'acte d'accusation, écouter les charges, et rester debout jusqu'aux plaidoiries finales — n'est pas, à l'évidence, un pays à son terme. Les deux pages que vous avez lues sont les deux voix par lesquelles la Belgique se parle à elle-même. Que la dispute continue — civile, constitutionnelle, irrésolue — est peut-être le signe le plus sûr que, pour l'instant, elle tient. <strong>Le verdict vous appartient.</strong></p>
+  </div>
+</section>
+</main>
+
+<!-- ===================== NOTE & SOURCES ===================== -->
+<section class="notes">
+  <div class="wrap">
+    <h2>Note &amp; sources</h2>
+    <p>Cette page est un <b>réquisitoire</b>&nbsp;: un exercice d'argumentation qui expose, sous sa forme la plus forte, la thèse de la fin de l'État belge — puis la confronte à ses propres difficultés et à la défense adverse. Elle ne reflète pas une position de l'auteur, mais restitue, aussi loyalement que possible, des arguments réellement défendus dans le débat public belge. La page jumelle, «&nbsp;Faire tenir la Belgique&nbsp;», développe le plaidoyer inverse&nbsp;: les deux se lisent ensemble.</p>
+
+    <h3>Sur les chiffres des transferts</h3>
+    <p>Les montants des transferts financiers entre Régions sont <em>estimés</em> et politiquement disputés. La Banque nationale de Belgique évalue (données 2019) la contribution nette de la Flandre à environ 6,2&nbsp;milliards d'euros et celle de Bruxelles à environ 0,9&nbsp;milliard — Bruxelles étant donc, elle aussi, contributrice nette —, la Wallonie percevant quelque 7,1&nbsp;milliards. D'autres études donnent des fourchettes de 5 à plus de 11&nbsp;milliards selon la méthode. Le quatrième chef d'accusation expose la lecture séparatiste de ces chiffres&nbsp;; la défense en donne la lecture contraire. Les deux figurent ici à dessein.</p>
+
+    <h3>Repères &amp; lectures</h3>
+    <ul>
+      <li><b>Banque nationale de Belgique</b>, <em>Interregional transfers via the federal government and social security</em> (Revue économique, 2021).</li>
+      <li><b>N-VA</b> — programme du «&nbsp;confédéralisme&nbsp;»&nbsp;; <b>Vlaams Belang</b> — programme d'indépendance flamande.</li>
+      <li><b>Philippe Van Parijs</b>, <em>Belgium. Une utopie pour notre temps</em> (2018) — sur le labyrinthe institutionnel et le modèle à quatre régions.</li>
+      <li><b>Le «&nbsp;divorce de velours&nbsp;»</b> tchéco-slovaque (1993) — précédent d'une séparation négociée et pacifique au sein de l'Europe.</li>
+      <li><b>Contre-arguments</b> — études et analyses (NBB&nbsp;; bplus.be&nbsp;; presse belge) sur le caractère <em>interpersonnel</em> de la solidarité et le «&nbsp;mythe&nbsp;» de l'enveloppe régionale.</li>
+      <li><b>Presse</b> — Le Soir, La Libre, De Standaard, RTBF, VRT NWS (gouvernement De Wever, 2025).</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <div class="foot__t">Faire <em>tomber</em> la Belgique</div>
+      <p>Réquisitoire — contre-pied de «&nbsp;Faire tenir la Belgique&nbsp;». Un exercice d'argumentation, défense et verdict compris. Page autonome, sans suivi.</p>
+    </div>
+    <p>Composé en Bricolage&nbsp;Grotesque, Spectral &amp; IBM&nbsp;Plex&nbsp;Mono.<br>À lire avec sa page jumelle, «&nbsp;Faire tenir&nbsp;».</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var prog = document.getElementById('prog');
+  var top = document.getElementById('railtop');
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return; ticking = true;
+    requestAnimationFrame(function(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      if(prog) prog.style.width = p + '%';
+      if(top){ if(h.scrollTop > 620){ top.classList.add('show'); } else { top.classList.remove('show'); } }
+      ticking = false;
+    });
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    document.querySelectorAll('.rise').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.rise').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
