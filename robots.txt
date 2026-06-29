@@ -1,0 +1,13 @@
+# robots.txt — Le Dossier noir de la Belgique
+# https://ouaisfieu.github.io/belgique/
+
+# Les versions dupliquées de « Faire tenir la Belgique »
+# (etat-belge.html, etat-belge-bis.html, /1/, /2/) ne sont PAS bloquées ici :
+# elles portent une balise <meta robots="noindex"> + <link canonical> qui
+# regroupe proprement le signal vers /belgique/faire-tenir.html.
+# (Bloquer leur crawl empêcherait Google de voir ces balises.)
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ouaisfieu.github.io/belgique/sitemap.xml
