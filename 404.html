@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page introuvable · Le Dossier noir de la Belgique</title>
+<meta name="description" content="Cette page n'existe pas ou a été déplacée. Retour au Dossier noir de la Belgique.">
+<meta name="robots" content="noindex, follow">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#15110c">
+<link rel="canonical" href="https://ouaisfieu.github.io/belgique/">
+<link rel="icon" href="/belgique/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/belgique/assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/belgique/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15110c; --ink-2:#1d1812;
+  --paper:#ece3d2; --paper-dim:#b9ae98; --paper-faint:#8a8069;
+  --gold:#c8a24a; --gold-text:#d9b65f;
+  --oxblood:#a8392f; --oxblood-tx:#d2695d;
+  --line:rgba(236,227,210,.12);
+  --serif-d:'Fraunces',Georgia,'Times New Roman',serif;
+  --serif-t:'Newsreader',Georgia,'Times New Roman',serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #211a12 0%, rgba(33,26,18,0) 60%),
+    var(--ink);
+  color:var(--paper);
+  font-family:var(--serif-t);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  padding:clamp(1.2rem,5vw,3rem);
+}
+::selection{background:var(--gold);color:#1a140c;}
+a{color:var(--gold-text);text-decoration:none;}
+a:hover{color:#ecd089;}
+.card{max-width:54ch;text-align:center;}
+.kicker{
+  font-family:var(--mono); font-size:.74rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--oxblood-tx); margin-bottom:1.4rem;
+}
+.code{
+  font-family:var(--serif-d); font-weight:900;
+  font-size:clamp(4.5rem,18vw,8.5rem); line-height:.92;
+  color:var(--gold); margin:0 0 .2rem; letter-spacing:-.02em;
+  font-optical-sizing:auto;
+}
+h1{
+  font-family:var(--serif-d); font-weight:600;
+  font-size:clamp(1.3rem,4vw,1.9rem); margin:.3rem 0 1rem; color:var(--paper);
+}
+p{color:var(--paper-dim); margin:0 auto 1.8rem; max-width:46ch;}
+.rule{width:54px;height:3px;background:var(--gold);margin:1.6rem auto;}
+.home{
+  display:inline-block; font-family:var(--mono); font-size:.82rem;
+  letter-spacing:.04em; padding:.7rem 1.3rem;
+  border:1px solid rgba(200,162,74,.45); border-radius:3px;
+  color:var(--gold-text); transition:background .2s,border-color .2s;
+}
+.home:hover{background:rgba(200,162,74,.10);border-color:var(--gold);}
+.links{margin-top:2.4rem;font-family:var(--mono);font-size:.78rem;color:var(--paper-faint);}
+.links a{margin:0 .5rem;white-space:nowrap;}
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="kicker">Dossier · pièce manquante</div>
+    <p class="code">404</p>
+    <div class="rule"></div>
+    <h1>Cette pièce ne figure pas au dossier</h1>
+    <p>La page que vous cherchez n'existe pas, a été renommée, ou a disparu des archives — comme tant de dossiers belges restés sans réponse.</p>
+    <a class="home" href="/belgique/">← Revenir au sommaire</a>
+    <nav class="links">
+      <a href="/belgique/faire-tenir.html">Faire tenir</a>·
+      <a href="/belgique/faire-tomber.html">Faire tomber</a>·
+      <a href="/belgique/le-forage.html">Le Forage</a>·
+      <a href="/belgique/le-requisitoire.html">Le Réquisitoire</a>·
+      <a href="/belgique/democratie-sous-cloche.html">Sous cloche</a>
+    </nav>
+  </main>
+</body>
+</html>
