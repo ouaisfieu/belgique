@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ceci n'est pas une démocratie — essai sur la Belgique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --bg: #100C09;
+  --bg2: #161109;
+  --ink: #ECE2CD;
+  --ink-dim: #AA9F8B;
+  --ink-faint: #6F6555;
+  --accent: #B91E3A;
+  --accent-soft: rgba(185,30,58,0.45);
+  --rule: rgba(236,226,205,0.14);
+  --serif: 'Fraunces', 'Iowan Old Style', serif;
+  --text: 'Source Serif 4', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --hand: 'Caveat', cursive;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+body{
+  margin:0; background:var(--bg); color:var(--ink); font-family:var(--text);
+  font-size:19px; line-height:1.78; -webkit-font-smoothing:antialiased;
+}
+::selection{ background:var(--accent); color:var(--bg); }
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+a{ color:var(--ink); }
+h1,h2{ font-family:var(--serif); font-weight:600; margin:0; }
+
+.col{ max-width:700px; margin:0 auto; padding:0 24px; }
+.col-wide{ max-width:840px; margin:0 auto; padding:0 24px; }
+
+p{ margin:0 0 1.5em; }
+.essay p{ font-size:1rem; }
+em{ font-style:italic; }
+strong{ font-weight:600; color:var(--ink); }
+
+/* ---------- masthead ---------- */
+.masthead{ padding:88px 0 64px; border-bottom:1px solid var(--rule); }
+.kicker{ font-family:var(--mono); font-size:0.74rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); margin-bottom:28px; }
+.kicker span{ color:var(--ink-faint); }
+h1.title{ font-size:clamp(2.4rem,7vw,4.3rem); line-height:1.02; letter-spacing:-0.015em; font-weight:600; margin-bottom:22px; }
+h1.title em{ font-style:italic; font-weight:500; color:var(--accent); }
+.subtitle{ font-family:var(--text); font-style:italic; font-size:clamp(1.05rem,2vw,1.32rem); color:var(--ink-dim); max-width:42ch; line-height:1.5; margin-bottom:34px; }
+.byline{ font-family:var(--mono); font-size:0.78rem; color:var(--ink-faint); display:flex; gap:18px; flex-wrap:wrap; }
+.byline b{ color:var(--ink-dim); font-weight:500; }
+
+/* ---------- strike / annotation device ---------- */
+.strike-wrap{ position:relative; display:inline-block; white-space:nowrap; }
+.strike-wrap::after{ content:""; position:absolute; left:-2%; right:-2%; top:54%; height:3px; background:var(--accent); transform:rotate(-1.4deg); border-radius:2px; }
+.anno{ font-family:var(--hand); color:var(--accent); font-size:1.5em; line-height:1; font-weight:700; position:relative; top:0.14em; margin-left:0.1em; display:inline-block; transform:rotate(-3deg); }
+
+/* ---------- essay body ---------- */
+.essay{ padding:72px 0; }
+.essay .col{ }
+.lead p:first-of-type{ }
+.dropcap{ float:left; font-family:var(--serif); font-size:5.2rem; line-height:0.78; font-weight:600; color:var(--accent); padding:6px 10px 0 0; }
+
+.divider{ display:flex; align-items:baseline; gap:18px; margin:84px 0 36px; }
+.divider .num{ font-family:var(--mono); font-size:1rem; color:var(--accent); letter-spacing:0.04em; flex:none; }
+.divider h2{ font-size:clamp(1.5rem,3.4vw,2.05rem); line-height:1.18; color:var(--ink); }
+.divider .rule{ flex:1; height:1px; background:var(--rule); align-self:center; }
+.essay > .col > .divider:first-of-type{ margin-top:0; }
+
+.pull{
+  font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(1.3rem,2.8vw,1.7rem);
+  line-height:1.42; color:var(--ink); border-left:3px solid var(--accent); padding:4px 0 4px 28px; margin:44px 0;
+  max-width:62ch;
+}
+.pull b{ color:var(--accent); font-style:normal; font-weight:600; }
+
+.aside{ font-size:0.86rem; color:var(--ink-faint); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:16px 0; margin:36px 0; line-height:1.55; }
+.aside b{ color:var(--ink-dim); }
+
+.bignum{ text-align:center; margin:56px 0; }
+.bignum .n{ font-family:var(--serif); font-weight:600; font-size:clamp(3.2rem,11vw,6.4rem); color:var(--accent); line-height:0.95; }
+.bignum .l{ font-family:var(--mono); font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px; }
+
+.treachery{ display:inline-block; font-family:var(--mono); font-size:0.66rem; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--accent-soft); padding-bottom:3px; }
+
+.js [data-fade]{ opacity:0; transform:translateY(14px); transition:opacity 0.8s ease, transform 0.8s ease; }
+.js [data-fade].vis{ opacity:1; transform:translateY(0); }
+
+/* ---------- closing counter ---------- */
+.counter-wrap{ text-align:center; margin:56px 0; padding:34px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+.counter{ font-family:var(--mono); font-size:clamp(2.6rem,8vw,4.2rem); color:var(--accent); font-weight:600; line-height:1; }
+.counter-label{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-top:10px; }
+
+/* ---------- footer ---------- */
+footer{ border-top:1px solid var(--rule); padding:56px 0 64px; }
+footer .col{ }
+.colophon{ font-size:0.82rem; color:var(--ink-faint); line-height:1.7; max-width:62ch; }
+.colophon b{ color:var(--ink-dim); }
+.colophon + .colophon{ margin-top:18px; }
+.foot-bottom{ margin-top:34px; font-family:var(--mono); font-size:0.7rem; color:var(--ink-faint); }
+
+@media (max-width:600px){
+  body{ font-size:17.5px; }
+  .dropcap{ font-size:4rem; }
+  .pull{ padding-left:20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="col-wide">
+    <div class="kicker">Essai <span>·</span> sur la Belgique, juin 2026</div>
+    <h1 class="title">Ceci n'est pas<br><em>une démocratie</em></h1>
+    <p class="subtitle">Sur la Belgique, son double fond institutionnel, et un mot qu'elle a, depuis longtemps, cessé de mériter sans qu'on ose le lui dire en face.</p>
+    <div class="byline"><b>I à VIII</b><span>Lecture ≈ 22 min</span><span>Sources en pied de page</span></div>
+  </div>
+</header>
+
+<article class="essay">
+  <div class="col lead">
+
+    <p><span class="dropcap">I</span>l y a, gravée depuis cent quatre-vingt-quinze ans dans la Constitution belge, une phrase que plus personne ne lit — parce que tout le monde sait déjà, sans l'avoir jamais vérifiée, qu'elle ne veut plus rien dire. Article 42&nbsp;: « Les membres des deux Chambres représentent <span class="strike-wrap">la Nation</span><span class="anno">leur parti</span>, et non uniquement ceux qui les ont élus. » Une belle phrase. Une phrase de dix-neuvième siècle, pleine de majuscules et de certitude. Une phrase fausse.</p>
+
+    <p>Quatre-vingt-dix-neuf virgule soixante-treize pour cent des votes parlementaires belges suivent, sans exception notable depuis des décennies, la ligne dictée par l'état-major du parti. Pas la Nation. Le parti. On pourrait croire à un dérapage récent, une anomalie de saison. Ce n'est pas le cas&nbsp;: c'est la norme, stable, mesurée, documentée, depuis qu'on prend la peine de la mesurer. Le mandat est libre comme le tableau de Magritte est une pipe.</p>
+
+    <p>En 1929, un peintre né à Lessines peint une pipe, et écrit dessous&nbsp;: <em>Ceci n'est pas une pipe.</em> Bien sûr que ce n'est pas une pipe — c'est de la peinture sur toile, une image qui désigne une chose sans être cette chose. Magritte ne s'est jamais autant moqué de personne qu'en peignant cette évidence que presque tout le monde, depuis, continue de refuser de voir&nbsp;: on confond sans cesse la représentation d'une chose et la chose elle-même.</p>
+
+    <p>La Belgique a fait de ce tableau sa méthode de gouvernement. Elle a peint le mot « démocratie » sur la façade d'un édifice dont l'architecture intérieure obéit, étage après étage, à des lois entièrement différentes — et elle s'étonne, depuis vingt ans, que de plus en plus de gens, en passant devant, choisissent de ne plus y entrer.</p>
+
+  </div>
+
+  <div class="col">
+
+    <div class="divider"><span class="num">I.</span><h2>Le mot et la chose</h2><span class="rule"></span></div>
+
+    <p>Le mot qui désigne ce système — <strong>particratie</strong> — n'est pas une invention militante récente. Le politologue Lieven De Winter le théorise depuis 1981&nbsp;: un régime où « les partis politiques, plus que les autres éléments du système politique — parlement, gouvernement, administration, autorité judiciaire — déterminent le processus décisionnel ». Quarante-cinq ans de littérature académique belge, du <em>Courrier hebdomadaire</em> du CRISP aux travaux de Wilfried Dewachter — dont l'ouvrage de référence s'intitule, sans trembler, <em>De trukendoos van de Belgische particratie</em>, « la boîte à trucs de la particratie belge » — en passant par Kris Deschouwer, n'ont jamais réussi à faire descendre ce constat du séminaire universitaire jusqu'au débat public. Pas faute de preuves. Faute, peut-être, d'un mot assez court pour tenir dans une légende sous un tableau.</p>
+
+    <p>L'ironie fondatrice mérite d'être racontée, parce qu'elle explique tout le reste. En 1830, les pères du Congrès national, traumatisés par les corps intermédiaires de l'Ancien Régime et nourris des idéaux de la Révolution française, ont délibérément choisi de ne jamais écrire le mot « parti » dans la Constitution. Ils redoutaient que des factions ne s'interposent entre la Nation souveraine et ses représentants. La précaution s'est retournée contre son objet avec une précision presque comique&nbsp;: faute d'avoir été nommés, encadrés, soumis à un statut, à des obligations, à un contrôle, les partis belges ont grandi dans l'angle mort du droit constitutionnel — libres de devenir exactement ce que ce droit voulait empêcher, sans jamais avoir à en répondre, puisqu'ils n'existaient, juridiquement, presque pas. Aujourd'hui encore, la quasi-totalité d'entre eux sont de simples « associations de fait »&nbsp;: des entités sans personnalité juridique propre, que l'État finance à hauteur de plusieurs dizaines de millions d'euros chaque année, et qu'il est, en pratique, redoutablement difficile d'attaquer en justice. On a eu peur des loups, alors on a verrouillé la porte de la bergerie — et on a oublié d'en construire les murs.</p>
+
+    <p>Ce vide juridique fondateur a permis de bâtir, en un siècle et demi, une architecture à trois étages qui tient debout précisément parce qu'aucun des trois n'est séparable des deux autres.</p>
+
+    <p><strong>Premier étage&nbsp;: l'argent.</strong> La loi du 4 juillet 1989, votée dans la panique morale qui a suivi le scandale Agusta — des pots-de-vin italiens contre des hélicoptères militaires, qui a coûté leur carrière à plusieurs ministres —, devait assainir le financement politique en remplaçant les dons occultes par des dotations publiques transparentes. Trente-cinq ans plus tard, la loi anti-corruption est devenue le mécanisme de la rente. Les partis représentés au Parlement tirent aujourd'hui environ 80&nbsp;% de leurs revenus de l'argent public — entre 75 et plus de 100 millions d'euros par an selon ce qu'on additionne, fédéral, régional, communautaire, groupes parlementaires confondus. Leur patrimoine cumulé a triplé en vingt ans. Et le contrôle de cette manne est confié à une commission... composée de parlementaires issus des partis qu'elle est censée auditer. Le politologue Bart Maddens a un nom pour cette plaisanterie institutionnelle&nbsp;: « financement par les partis, contrôlé par les partis ». On ne saurait être plus clair sans rire jaune.</p>
+
+    <p><strong>Deuxième étage&nbsp;: l'État lui-même.</strong> Les cabinets ministériels belges — jusqu'à une centaine de collaborateurs par ministre dans certains gouvernements, recrutés non sur titre mais sur fidélité — exercent le pouvoir réel de conception des lois, pendant qu'une administration officiellement neutre se contente d'exécuter. Les intercommunales, 45,6 milliards d'euros d'actifs cumulés rien qu'en Wallonie, sont devenues des réservoirs de mandats où l'on recase les fidèles méritants. Et au sommet de cet édifice trône le « Kern », ce comité ministériel restreint qui concentre l'essentiel des arbitrages réels — sans existence constitutionnelle, sans base légale depuis 1992, sans procès-verbal. On ne sait pas ce qui s'y dit. On sait seulement que c'est là, et non au Conseil des ministres que décrit la Constitution, que les choses se décident pour de vrai.</p>
+
+    <p><strong>Troisième étage&nbsp;: la carrière.</strong> Les états-majors composent seuls les listes électorales, et un parlementaire qui s'écarte de la ligne sait, avec une certitude de physicien, qu'il sera relégué en position inéligible au scrutin suivant. Certains partis vont plus loin et organisent ce que la doctrine appelle, sans détour, un « mandat impératif déguisé »&nbsp;: Ecolo plafonne le revenu net de ses élus et reverse le surplus au parti&nbsp;; le PTB impose à ses mandataires un « salaire de travailleur » et engrange les rétrocessions — 23,1&nbsp;% de son revenu total en 2024. La discipline de vote belge — 99,73&nbsp;% de cohésion — n'a donc pas besoin d'être écrite noir sur blanc dans un règlement intérieur. Elle est devenue un réflexe de survie. Ce qui est une manière bien plus efficace, et bien plus difficile à attaquer en justice, de tenir une laisse.</p>
+
+    <p class="pull">On peut discipliner un vote sans coloniser un État. La Belgique fait les deux à la fois — et c'est cette accumulation, pas un seul de ses éléments pris isolément, qui transforme une démocratie parlementaire ordinaire en <b>particratie</b>.</p>
+
+    <div class="divider"><span class="num">II.</span><h2>L'art de se noter soi-même</h2><span class="rule"></span></div>
+
+    <p>La Belgique est membre fondateur, depuis le 1ᵉʳ mai 1999, du Groupe d'États contre la corruption — le GRECO, organe anti-corruption du Conseil de l'Europe, l'institution même dont elle abrite la capitale symbolique de l'intégration européenne. Vingt-sept ans plus tard, le pays qui a contribué à écrire les règles continue, avec une constance presque touchante, de ne pas se les appliquer à lui-même.</p>
+
+    <p>Le compte est facile à tenir, parce que le GRECO le tient lui-même, cycle après cycle, avec la patience d'un examinateur qui corrige toujours la même copie. Quatrième cycle, quinze recommandations sur la corruption des parlementaires&nbsp;: zéro sur quinze jugées satisfaisantes en 2016. Une sur quinze en 2018. Onze toujours pas appliquées en 2021. Le cycle ne sera formellement clos qu'en 2025 — quatorze ans après son lancement — et seules deux des huit recommandations visant spécifiquement le Parlement auront, à l'arrivée, été satisfaites. Cinquième cycle, vingt-deux recommandations sur l'exécutif et les services répressifs&nbsp;: au dernier relevé, en novembre 2025, huit sur vingt-deux seulement sont pleinement appliquées, quatre sont purement et simplement ignorées. Toujours bloqués, sans surprise&nbsp;: le registre des lobbyistes, la publication des patrimoines, la période de carence pour les anciens ministres qui rejoignent le secteur privé qu'ils réglementaient la veille. Lors de sa 101ᵉ réunion plénière, le GRECO a fini par inviter le Secrétaire général du Conseil de l'Europe à écrire personnellement au ministre belge des Affaires étrangères. Il ne reste, après ce geste, qu'une seule marche avant la déclaration publique de non-conformité — la honte diplomatique nue. La Belgique a jusqu'au 30 novembre 2026 pour l'éviter. Au moment où ces lignes sont écrites, il reste cinq mois.</p>
+
+    <p>Le registre fédéral des lobbyistes, instauré en 2018, est administré par une seule personne. Une. Le Sénat n'en a pas. Le gouvernement fédéral n'en a pas. Cinq des six entités fédérées du pays n'en ont pas davantage. Bruxelles, deuxième capitale mondiale du lobbying après Washington, plus de treize mille entités actives, ne compte que cent quatre-vingts inscrits au registre belge — quand le registre interinstitutionnel européen, à deux pas de là, en recense environ douze mille cinq cents.</p>
+
+    <p>Les déclarations de patrimoine, elles, sont déposées sous pli fermé auprès de la Cour des comptes, et détruites cinq ans après la fin du dernier mandat de leur auteur. Seul un juge d'instruction, dans le cadre d'une enquête pénale déjà ouverte, peut en demander la levée. En clair&nbsp;: le patrimoine d'un ministre belge n'est jamais public, et la trace en disparaît avant même que la plupart des prescriptions pénales n'arrivent à expiration. Pour la seule année 2023, quarante-deux mandataires n'ont même pas pris la peine de déposer leur liste de mandats. Onze n'ont pas déclaré leur patrimoine du tout. L'amende prévue&nbsp;: entre cent et mille euros. Un parlementaire qui ne déclare rien risque, dans le pire des cas, le prix d'un week-end à la mer.</p>
+
+    <p>Même la comptabilité officielle ment par omission. La Cour des comptes a dû reconstituer, en 2022, le coût réel des cabinets ministériels wallons&nbsp;: plafond budgétaire affiché, 23 millions d'euros. Coût réel, une fois comptés les fonctionnaires détachés gratuitement dont le salaire n'apparaît dans aucune ligne budgétaire officielle&nbsp;: 37 millions. Plus de la moitié du personnel de ces cabinets était constituée d'agents publics « prêtés », gracieusement, par une administration qui, elle, doit boucler ses comptes au centime près.</p>
+
+    <div class="divider"><span class="num">III.</span><h2>La fabrique du consentement</h2><span class="rule"></span></div>
+
+    <p>Tout cet argent ne finance pas seulement des études et des campagnes électorales. Le politologue Bart Maddens (KU Leuven) a documenté ce qu'il appelle la « campagne permanente »&nbsp;: grâce à leur dotation publique, les partis belges mènent une publicité ciblée continue sur les réseaux sociaux, y compris hors période électorale, financée par l'argent du contribuable. En 2024, année d'élections à tous les étages, les partis belges ont dépensé plus de quinze millions d'euros en publicités sur Meta et Google — un record absolu, et l'un des montants les plus élevés d'Europe rapporté à la taille du pays. Ce n'est plus du financement de la démocratie. C'est un transfert de subvention publique vers la fabrication du consentement — pour reprendre, sans excès d'ironie, le titre que Chomsky et Herman avaient donné, dans un tout autre contexte, à un mécanisme étonnamment proche.</p>
+
+    <p>Pendant ce temps, le paysage médiatique qui devrait, en théorie, faire contrepoids, se concentre à une vitesse vertigineuse&nbsp;: la fusion Rossel-IPM porte la part de marché d'un seul groupe à environ 94&nbsp;% de la presse quotidienne francophone — une situation dont la Fédération européenne des journalistes dit n'avoir « pas connaissance d'un autre exemple » en Europe. La RTBF et la VRT, financées par dotation publique, ont vu des cabinets ministériels commander directement des programmes — 274&nbsp;825&nbsp;€, 246&nbsp;450&nbsp;€, 175&nbsp;000&nbsp;€ pour trois émissions documentées par le Parlement flamand en 2024. Et quand une chaîne privée choisit de fabriquer, elle, du consentement à coups de reportage à charge contre les allocataires sociaux — montage malhonnête, témoins vulnérables non anonymisés, exposés ensuite à la vindicte publique —, ce n'est pas la dérive isolée d'un journaliste zélé&nbsp;: le régulateur de l'audiovisuel y a vu la trace d'une « symbiose assumée » avec l'agenda d'un parti de la coalition au pouvoir. On ne ment pas à la population belge sur son propre système. On l'occupe, simplement, à regarder ailleurs — vers le fraudeur du CPAS plutôt que vers le ministre dont le patrimoine sera détruit dans cinq ans.</p>
+
+  </div>
+</article>
+
+<article class="essay" style="padding-top:0;">
+  <div class="col">
+
+    <div class="divider"><span class="num">IV.</span><h2>Une comédie qui se rejoue</h2><span class="rule"></span></div>
+
+    <p>Il y a une scène que la Belgique politique rejoue, à intervalles réguliers, depuis quarante ans, avec une fidélité de rituel.</p>
+
+    <p><strong>2016&nbsp;:</strong> un échevin des finances d'une petite commune liégeoise découvre que Publifin, intercommunale énergétique, verse des jetons de présence à vingt-quatre mandataires de tous les partis traditionnels pour des « comités de secteur » dont certains n'existent que sur le papier. L'administrateur délégué touchait 960&nbsp;000 euros par an. Le gouvernement wallon tombe. Cinq ans plus tard, l'intéressé négocie une transaction pénale d'environ 400&nbsp;000 euros — et évite, ainsi, le procès public.</p>
+
+    <p><strong>2017&nbsp;:</strong> le bourgmestre de Bruxelles et la présidente de son CPAS perçoivent des jetons de présence pour des réunions de gestion fictives, au sein d'une association financée à 98&nbsp;% par des fonds publics destinés, en théorie, à héberger des sans-abri. Ils seront renvoyés devant le tribunal correctionnel.</p>
+
+    <p><strong>2021&nbsp;:</strong> on découvre que les filiales les plus rentables de cette même intercommunale liégeoise — un câblo-opérateur, une société d'éolien, une entreprise informatique — ont été vendues en secret, sous leur valeur, à des sociétés liées à la direction en place. Indemnités de départ octroyées par un comité de rémunération complaisant&nbsp;: plus de douze millions d'euros.</p>
+
+    <p><strong>2022&nbsp;:</strong> des valises de cash circulent au Parlement européen. Qatargate.</p>
+
+    <p><strong>2024-2026&nbsp;:</strong> un ancien vice-Premier ministre, ministre des Finances pendant douze ans, puis commissaire européen à la Justice — la justice, précisément — est inculpé pour blanchiment en octobre 2025, après que sa banque a signalé près de 800&nbsp;000 euros de dépôts en espèces sur dix ans. <em>(La présomption d'innocence s'applique, bien sûr, tant qu'aucun jugement définitif n'est rendu — mais une inculpation, lecture sobre, n'est déjà pas un non-événement.)</em></p>
+
+    <p>Cinq dossiers, cinq décennies, cinq partis différents — presque toutes les familles politiques traditionnelles représentées au générique. Et un seul schéma, immuable&nbsp;: prescription, transaction pénale, non-lieu, ou peine symbolique assortie d'un sursis. Les rares condamnations fermes tombent une décennie après les faits, quand l'opinion publique a depuis longtemps tourné la page. Entre 2011 et 2020, le recours à la transaction pénale — ce mécanisme qui permet d'éteindre des poursuites moyennant une amende négociée, sans procès, sans aveu, sans débat public — a augmenté de 845&nbsp;%. Ce n'est pas une faille dans le système judiciaire belge. À ce niveau de régularité, sur quarante ans, dans tous les partis, à tous les étages du pouvoir, ce n'est plus une faille. C'est une fonctionnalité.</p>
+
+    <p>Même au sommet de l'État, le vernis craque, parfois, sans qu'on le lui demande. Interrogé sur la formation laborieuse d'un gouvernement régional, le Premier ministre lui-même a résumé un jour, dans un podcast, l'esprit du système qu'il dirige, en une phrase de coulisse qu'aucun communiqué n'aurait jamais validée&nbsp;: <em>« tout le monde se fait baiser à Bruxelles, et moi aussi. »</em> Une confidence, pas un discours — ce qui, peut-être, la rend plus instructive que n'importe quel rapport du GRECO.</p>
+
+    <div class="divider"><span class="num">V.</span><h2>Le prix, payé par d'autres</h2><span class="rule"></span></div>
+
+    <p>Personne, dans cette comédie répétée, ne paie le prix réel de l'opacité. Le prix réel se paie ailleurs, par d'autres gens, qui n'ont jamais lu l'article 42 et n'ont jamais entendu parler du Kern.</p>
+
+    <p>Près d'une personne sur deux qui remplit les conditions de détresse financière pour toucher le revenu d'intégration sociale ne le perçoit jamais. La moitié des personnes âgées éligibles à la garantie de revenus aux aînés — entre 46&nbsp;000 et 86&nbsp;000 personnes, selon les estimations disponibles — vivent sous le seuil que cette allocation est censée garantir, sans jamais la réclamer. Plus des deux tiers des aînés en précarité énergétique ne demandent jamais l'allocation de chauffage à laquelle ils ont droit. Ce non-recours massif représente, chaque année, entre trois et cinq milliards d'euros d'économies tacites pour l'État belge — une cagnotte qui ne dit jamais son nom, parce qu'elle n'a pas besoin d'être votée&nbsp;: il suffit que les formulaires restent compliqués, les guichets rares, les courriers écrits en jargon administratif.</p>
+
+    <div class="bignum"><div class="n">0,3&nbsp;%</div><div class="l">du budget de la sécurité sociale — la part réelle de la fraude sociale détectée, celle qui occupe pourtant l'essentiel du débat budgétaire chaque automne</div></div>
+
+    <p>Trois dixièmes de pour cent. On consacre des reportages télévisés entiers — sanctionnés depuis par le régulateur pour malhonnêteté de montage — à une fraction qui tient sur la pointe d'une aiguille, et l'on détourne le regard d'un renoncement aux droits cent cinquante fois plus massif, dont l'État est, lui, le premier bénéficiaire comptable.</p>
+
+    <p>Ce n'est pas qu'une question de pourcentages. Les chercheurs en neurosciences cognitives distinguent la pauvreté — un état objectif, « avoir peu » — de la précarité, qui est une pathologie du lien&nbsp;: la peur chronique de perdre ce qui reste. Cette peur, documente la théorie de la rareté de Mullainathan et Shafir, sature la mémoire de travail, rigidifie la flexibilité mentale, épuise la capacité d'inhibition émotionnelle — exactement les fonctions cognitives qu'il faut mobiliser pour remplir un formulaire complexe, contester une décision dans les délais, ou simplement tenir, sans s'effondrer, face à un médecin-conseil dont l'entretien ressemble, selon les témoignages recueillis par les associations d'usagers, à un interrogatoire. Le système n'épuise pas seulement des budgets. Il épuise les capacités mêmes dont il faudrait disposer pour s'en sortir — et s'étonne ensuite, dans le même mouvement, du non-recours qu'il a lui-même fabriqué.</p>
+
+    <p>La littérature internationale identifie, à propos de l'austérité, cinq vecteurs de souffrance documentés&nbsp;: l'humiliation, la peur, l'instabilité, l'isolement, le sentiment d'être pris au piège. En Belgique, les enquêtes de santé publique suivent depuis plusieurs années une dégradation continue de la santé mentale dans les ménages les plus précarisés — hausse des troubles anxieux, dépressifs, des idéations suicidaires. Ce n'est pas l'effet secondaire malheureux d'une politique par ailleurs bien intentionnée. C'est la conséquence directe, documentée, traçable, d'un choix de conception administrative que personne n'a jamais eu à assumer publiquement — parce que personne, précisément, ne porte plus la responsabilité de rien.</p>
+
+    <p class="aside"><b>Note&nbsp;:</b> ce paragraphe s'appuie sur des données de santé publique agrégées, à des fins d'information citoyenne. Si ces lignes vous concernent personnellement&nbsp;: Centre de Prévention du Suicide, <b>0800&nbsp;32&nbsp;123</b>, gratuit, 24h/24 — Télé-Accueil, <b>107</b>.</p>
+
+    <div class="divider"><span class="num">VI.</span><h2>Ce qu'on me dira</h2><span class="rule"></span></div>
+
+    <p>On me dira — et il faut le dire, parce que c'est vrai — que la Belgique n'a rien d'une anomalie continentale sur un point précis&nbsp;: la discipline de vote. Le Danemark affiche un indice de cohésion partisane de 99,93 sur 100. La France, 99,33. Le Royaume-Uni, 99,25. La Belgique ferme cette marche de tête à 99,06. Un point d'écart entre le premier et le dernier élève de cette classe européenne. Un point. Le mandat libre, inscrit mot pour mot dans toutes les constitutions d'Europe occidentale, n'est respecté dans la pratique politique d'aucune d'entre elles&nbsp;: l'article 38 de la Loi fondamentale allemande, l'article 27 de la Constitution française, l'article 67 de la Constitution italienne disent, chacun à sa façon, exactement ce que dit l'article 42 belge — et chacun, dans les faits, est aussi peu suivi. Si la discipline de parti suffisait à elle seule à disqualifier une démocratie, il n'en resterait plus aucune sur ce continent. Le Danemark, justement, qui discipline ses élus plus strictement que la Belgique, trône année après année au sommet de tous les classements démocratiques mondiaux.</p>
+
+    <p>On me dira aussi, et il faut l'entendre, que le modèle consociatif belge — cette manie du compromis entre piliers linguistiques et philosophiques — a longtemps réussi ce que peu d'architectures institutionnelles parviennent à faire&nbsp;: empêcher qu'une majorité n'écrase une minorité, dans un pays structurellement divisé en deux opinions publiques qui ne se parlent presque jamais. La discipline partisane, plaident ses défenseurs, garantit une <em>accountability</em> lisible — on sanctionne un parti, pas cent cinquante individus dispersés — et une stabilité des politiques publiques dans le temps. Rien de tout cela n'est faux.</p>
+
+    <p>Mais voilà précisément ce que cet argument ne dit pas, et ce qu'aucun de ses défenseurs ne choisit jamais d'aborder dans la même phrase&nbsp;: la discipline de vote, en elle-même, n'est pas le problème belge. Le problème belge, c'est sa combinaison avec une profondeur de pénétration partisane — cabinets, intercommunales, nominations administratives, financement — que la plupart des démocraties comparables ne tolèrent pas à ce degré, additionnée d'une fragmentation linguistique qui interdit à toute opinion publique nationale de se former autour des mêmes faits. Sur l'indice V-Dem, qui mesure la protection structurelle contre la concentration du pouvoir, la Belgique devance l'Allemagne, le Royaume-Uni, les États-Unis. Sur l'indice de l'<em>Economist Intelligence Unit</em>, qui mesure la qualité fonctionnelle de la gouvernance et de la participation citoyenne, elle pointe au trente-sixième rang mondial — la dernière de ce groupe de quatre.</p>
+
+    <p class="pull">Voilà le paradoxe belge en une phrase&nbsp;: un système remarquablement bien protégé contre la dictature, et remarquablement mal équipé contre la <b>captation tranquille</b>.</p>
+
+  </div>
+</article>
+
+<article class="essay" style="padding-top:0;">
+  <div class="col">
+
+    <div class="divider"><span class="num">VII.</span><h2>La sécession</h2><span class="rule"></span></div>
+
+    <p>Une démocratie ne s'effondre pas toujours dans un coup d'État ou un incendie de palais. Le plus souvent, elle se vide — lentement, silencieusement, pendant que personne, parmi ceux qui la dirigent encore, ne semble s'en apercevoir à temps.</p>
+
+    <p>En Wallonie, la confiance dans les partis politiques est tombée à 22&nbsp;% en 2023, contre 32&nbsp;% cinq ans plus tôt. Dix-neuf pour cent seulement font encore confiance aux responsables politiques en général. Le vote, obligatoire depuis 1893, masque une partie de cette défiance — mais en juin 2024, l'abstention fédérale a atteint son record depuis 1981&nbsp;: 12,5&nbsp;%, plus d'un million d'électeurs, qui formeraient à eux seuls, virtuellement, le deuxième parti du pays. Quand les électeurs se déplacent malgré tout, c'est de plus en plus souvent vers les deux extrémités antisystème de l'échiquier, qui pesaient ensemble, dans certains sondages de 2026, jusqu'à 35 à 40&nbsp;% des intentions de vote.</p>
+
+    <p>Pendant que la confiance institutionnelle se vide, une société civile de substitution s'organise, en silence, pour faire ce que l'État renonce ou échoue à assurer&nbsp;: environ 120&nbsp;000 personnes dans des coopératives citoyennes d'énergie, 209&nbsp;000 bénéficiaires mensuels des banques alimentaires, plus de 420&nbsp;000 nuitées d'hébergement assurées en un an par des réseaux citoyens d'accueil aux exilés que l'État lui-même refuse de loger, malgré des condamnations répétées. Plus de onze mille jugements des tribunaux du travail contre l'État belge pour non-accueil de demandeurs d'asile restent, à ce jour, inexécutés&nbsp;; environ dix-sept mille décisions d'accueil ne l'étaient toujours pas fin 2025&nbsp;; plus de six millions d'euros d'astreintes financières, ordonnées par la justice elle-même, demeurent impayés. La Cour européenne des droits de l'homme a constaté, dans deux arrêts successifs, une « carence systémique » de l'État belge — la même expression, deux fois, à trois ans d'écart, parce qu'entre-temps, rien n'avait changé. En avril 2026, près de cinq cents travailleurs de l'agence fédérale chargée de l'accueil ont signé une lettre ouverte dénonçant, au sein de leur propre administration, des « violations quotidiennes de l'État de droit ».</p>
+
+    <p>Voilà ce que veut dire, concrètement, une démocratie qui se vide&nbsp;: un État qui perd des procès contre lui-même, et qui choisit, année après année, de budgétiser le prix de sa propre désobéissance plutôt que de s'y conformer.</p>
+
+    <div class="divider"><span class="num">VIII.</span><h2>Ce qui reste</h2><span class="rule"></span></div>
+
+    <p>Rien de tout cela n'autorise à dire que la Belgique est un État voyou, ou une dictature déguisée. Ce serait commode. Et ce serait faux. Les élections y restent libres. Les juges, lorsqu'on les saisit, tranchent en toute indépendance — y compris, on vient de le voir, contre l'État lui-même. La presse n'y est pas censurée, même si elle se concentre dangereusement entre quelques mains. Rien de tout cela ne ressemble, et ne ressemblera jamais, à une tyrannie classique.</p>
+
+    <p>C'est précisément ce qui rend le diagnostic plus difficile à entendre, et plus urgent à poser. On sait reconnaître une dictature&nbsp;: elle s'annonce, elle interdit, elle censure, elle emprisonne ouvertement ses opposants. On sait moins bien reconnaître une démocratie qui s'est arrangée avec elle-même — qui a gardé toutes les apparences du régime qu'elle prétend être, et déplacé, en coulisse, presque tout le reste. Pas de coup d'État. Juste un mot, peint sur une façade, pendant que l'architecture intérieure obéit, étage après étage, à d'autres lois&nbsp;: celle de l'argent qui s'auto-contrôle, celle des carrières qu'on verrouille avant même qu'elles ne commencent, celle des comités qui décident sans existence légale, celle des comptes qu'on noircit avant que quiconque ne songe à les vérifier.</p>
+
+    <p>Il existe un précédent historique à ce genre de système qui finit par craquer plutôt que de se réformer de l'intérieur. L'Italie de la Première République — la <em>partitocrazia</em>, sœur jumelle italienne de la particratie belge — s'est effondrée en deux ans, entre 1992 et 1994, quand des magistrats milanais ont enfin tiré le premier fil d'un système de corruption généralisée que tout le monde, depuis des décennies, savait là sans jamais oser le démanteler. Personne ne peut dire, en 2026, si la Belgique suivra ce chemin, le contournera, ou s'enfoncera encore pendant une génération dans la version douce, administrative, presque indolore, de la même érosion. Mais il existe déjà, fixée noir sur blanc, une date qui ne dépend ni d'une intuition ni d'une théorie&nbsp;: le 30 novembre 2026. C'est l'échéance que le GRECO a lui-même donnée à la Belgique pour produire un rapport de progrès convaincant. Faute de quoi, l'étape suivante n'est plus une lettre discrète à un ministre, mais une déclaration publique de non-conformité — la première reconnaissance officielle, par l'organisme même que la Belgique a contribué à fonder, que le pays ne tient plus ses propres engagements en matière de corruption politique.</p>
+
+    <div class="counter-wrap">
+      <div class="counter" id="counter">—</div>
+      <div class="counter-label">jours, au moment où vous lisez ceci, avant cette échéance</div>
+    </div>
+
+    <p>Les leviers, en attendant, existent — et ils ne sont pas réservés aux juristes. Le droit belge offre, gratuitement, plus de portes qu'on ne le croit&nbsp;: un médiateur pour l'administration qui ne répond pas, une commission d'accès aux documents pour celle qui refuse de montrer ses dossiers, un tribunal du travail sans obligation d'avocat pour l'aide sociale injustement refusée, une aide juridique entièrement gratuite — sans condition de revenus, en première ligne — pour quiconque ne sait simplement pas par où commencer. Un parlementaire, même celui pour qui vous n'avez jamais voté, peut poser une question écrite à un ministre, gratuitement, le jour même où vous le lui demandez. Des juristes explorent, depuis 2023, des voies plus ambitieuses encore&nbsp;: la question préjudicielle pour faire constater l'absence d'encadrement de la discipline de vote, l'action en responsabilité civile contre l'État-législateur, l'invocation de la jurisprudence européenne sur le droit d'exercer effectivement un mandat. Rien de tout cela n'est garanti. Tout cela, au moins, existe — ce qui est déjà plus qu'on ne le dit, d'ordinaire, à ceux qui demandent ce qu'ils peuvent faire.</p>
+
+    <p>Magritte n'a jamais prétendu que la pipe peinte était inutile. Il a seulement insisté pour qu'on cesse de la confondre avec une vraie. Le jour où suffisamment de Belges cesseront de regarder l'image peinte sur la façade pour exiger, enfin, l'objet qu'elle prétend représenter — ce jour-là, et ce jour seulement, le mot <em>démocratie</em> redeviendra autre chose qu'une légende, en lettres soignées, sous un tableau que plus personne ne prenait la peine de vérifier.</p>
+
+    <p style="text-align:right;"><span class="treachery">Ceci n'était pas un dossier</span></p>
+
+  </div>
+</article>
+
+<footer>
+  <div class="col">
+    <p class="colophon"><b>Méthode&nbsp;:</b> cet essai s'appuie sur les rapports du GRECO et du Conseil de l'Europe, la Cour des comptes fédérale et régionales, le CRISP, l'IWEPS, Cumuleo, Transparency International, la jurisprudence de la Cour européenne des droits de l'homme, et la doctrine académique belge — notamment Lieven De Winter, Frederik Verleden, Kris Deschouwer, Wilfried Dewachter et Bart Maddens — ainsi que la presse d'investigation belge (Médor, Apache, Le Vif, Wilfried). Les chiffres portent la date de leur dernière mise à jour connue au moment de la rédaction.</p>
+    <p class="colophon"><b>Avertissement&nbsp;:</b> ceci est une synthèse citoyenne indépendante, à finalité d'information et de débat démocratique — pas un avis juridique, et pas un substitut à la consultation d'un·e avocat·e. Les personnes mentionnées en lien avec des procédures en cours demeurent présumées innocentes. Aucune accusation pénale individuelle n'est formulée&nbsp;: ce texte interprète des pratiques institutionnelles documentées, et assume, en le signalant, le point de vue qui s'en dégage.</p>
+    <div class="foot-bottom">Essai citoyen — édition de juin 2026 — partageable, citable, à charge d'inventaire.</div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+
+(function(){
+  var target = new Date('2026-11-30T00:00:00');
+  var el = document.getElementById('counter');
+  function tick(){
+    var diff = target - new Date();
+    if(!el) return;
+    if(diff <= 0){ el.textContent = '0'; return; }
+    el.textContent = Math.floor(diff / 86400000);
+  }
+  tick();
+  setInterval(tick, 60000);
+})();
+
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var items = document.querySelectorAll('[data-fade]');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold:0.15 });
+  items.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+</body>
+</html>
