@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Belgique à deux étages — Dossier citoyen sur l'État de droit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============ TOKENS ============ */
+:root{
+  --bg: #1A1612;
+  --bg-deep: #120F0C;
+  --bg-soft: #221C16;
+  --paper: #F1ECDE;
+  --paper-deep: #E6DFC6;
+  --paper-line: rgba(28,35,51,0.16);
+  --ink: #1C2333;
+  --ink-soft: #4A4F62;
+  --bone: #E9E3D3;
+  --bone-soft: #B9B2A0;
+  --bone-faint: #8A8473;
+  --alert: #B3122B;
+  --alert-bright: #D81E3F;
+  --gold: #B68D46;
+  --gold-soft: #8C6F3C;
+  --redact: #0B0D12;
+  --line-dark: rgba(233,227,211,0.14);
+  --shadow: 0 18px 50px -20px rgba(0,0,0,0.65);
+  --radius: 3px;
+  --maxw: 1180px;
+  --serif-display: 'Fraunces', 'Iowan Old Style', serif;
+  --serif-body: 'Source Serif 4', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --hand: 'Caveat', cursive;
+}
+
+/* ============ RESET ============ */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--bone);
+  font-family:var(--serif-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{ font-family:var(--serif-display); font-weight:600; margin:0; color:inherit; }
+p{ margin:0 0 1em; }
+a{ color:inherit; }
+img,svg{ display:block; max-width:100%; }
+::selection{ background:var(--alert); color:var(--paper); }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+:focus-visible{ outline:2px solid var(--alert-bright); outline-offset:3px; }
+
+/* ============ LAYOUT UTILITIES ============ */
+.wrap{ max-width:var(--maxw); margin:0 auto; padding:0 clamp(20px,5vw,56px); }
+section{ position:relative; padding:clamp(64px,10vw,128px) 0; }
+.eyebrow{
+  font-family:var(--mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--gold); display:flex; align-items:center; gap:10px; margin-bottom:18px;
+}
+.eyebrow::before{ content:""; width:26px; height:1px; background:var(--gold-soft); display:inline-block; }
+h2.head{
+  font-size:clamp(1.9rem,4.2vw,3.1rem); line-height:1.06; letter-spacing:-0.01em; color:var(--bone);
+  max-width:18ch;
+}
+h2.head em{ font-style:italic; color:var(--alert-bright); }
+.lede{ font-size:clamp(1.05rem,1.6vw,1.28rem); color:var(--bone-soft); max-width:62ch; line-height:1.55; margin-top:18px; }
+.kicker-num{ font-family:var(--mono); color:var(--bone-faint); font-size:0.82rem; }
+
+/* reveal-on-scroll: default visible; only animate once JS confirms it can run */
+.js [data-reveal]{ opacity:0; transform:translateY(22px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.js [data-reveal].is-visible{ opacity:1; transform:translateY(0); }
+.js [data-reveal-delay="1"]{ transition-delay:0.08s; }
+.js [data-reveal-delay="2"]{ transition-delay:0.16s; }
+.js [data-reveal-delay="3"]{ transition-delay:0.24s; }
+
+/* ============ TICKER ============ */
+.ticker{
+  position:sticky; top:0; z-index:60; background:var(--redact);
+  border-bottom:1px solid rgba(214,30,55,0.35);
+}
+.ticker-inner{
+  max-width:var(--maxw); margin:0 auto; padding:9px clamp(16px,4vw,56px);
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:space-between;
+}
+.ticker-label{ font-family:var(--mono); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--bone-faint); display:flex; align-items:center; gap:8px;}
+.ticker-dot{ width:7px; height:7px; border-radius:50%; background:var(--alert-bright); box-shadow:0 0 0 0 rgba(216,30,63,0.6); animation:pulse 2.2s infinite; flex:none; }
+@keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(216,30,63,0.55);} 70%{box-shadow:0 0 0 7px rgba(216,30,63,0);} 100%{box-shadow:0 0 0 0 rgba(216,30,63,0);} }
+.ticker-clock{ display:flex; gap:6px; font-family:var(--mono); font-size:0.86rem; color:var(--bone); }
+.ticker-clock b{ color:var(--alert-bright); font-weight:600; }
+.ticker-clock span.u{ color:var(--bone-faint); font-size:0.62rem; margin-left:2px; }
+.progress{ position:absolute; left:0; bottom:-1px; height:2px; background:var(--alert-bright); width:0%; transition:width 0.1s linear; }
+
+/* ============ HERO ============ */
+.hero{
+  padding-top:clamp(56px,9vw,108px); padding-bottom:clamp(64px,9vw,108px);
+  background:
+    radial-gradient(ellipse 900px 500px at 85% -10%, rgba(182,141,70,0.10), transparent 60%),
+    radial-gradient(ellipse 700px 500px at -10% 20%, rgba(179,18,43,0.10), transparent 55%),
+    var(--bg);
+  border-bottom:1px solid var(--line-dark);
+}
+.stamp{
+  display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:0.7rem;
+  letter-spacing:0.12em; text-transform:uppercase; color:var(--bone-faint);
+  border:1px solid rgba(233,227,211,0.22); padding:7px 13px; border-radius:2px; margin-bottom:34px;
+}
+.stamp b{ color:var(--alert-bright); font-weight:600; }
+.const-quote{
+  font-family:var(--serif-display); font-weight:500; font-style:italic;
+  font-size:clamp(1.55rem,4vw,2.7rem); line-height:1.28; color:var(--paper); max-width:18ch;
+  margin-bottom:8px;
+}
+.strike-wrap{ position:relative; display:inline-block; white-space:nowrap; }
+.strike-wrap::after{
+  content:""; position:absolute; left:-3%; right:-3%; top:52%; height:3px; background:var(--alert-bright);
+  transform:rotate(-1.6deg); border-radius:2px;
+}
+.anno{
+  font-family:var(--hand); color:var(--alert-bright); font-size:1.5em; line-height:1; font-weight:700;
+  position:relative; top:0.16em; margin-left:0.12em; display:inline-block; transform:rotate(-3deg);
+}
+.const-source{
+  font-family:var(--mono); font-size:0.78rem; color:var(--bone-faint); margin-top:14px; margin-bottom:40px;
+  display:block; letter-spacing:0.02em;
+}
+.hero-thesis{ font-family:var(--serif-display); font-weight:500; font-size:clamp(1.5rem,2.8vw,2.05rem); line-height:1.28; color:var(--bone); max-width:24ch; margin-bottom:22px; }
+.hero-thesis .hl{ color:var(--gold); }
+.hero-sub{ font-size:clamp(1.02rem,1.5vw,1.18rem); color:var(--bone-soft); max-width:56ch; margin-bottom:38px; }
+.hero-cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+.btn{
+  font-family:var(--mono); font-size:0.82rem; letter-spacing:0.04em; text-decoration:none;
+  padding:13px 22px; border-radius:2px; display:inline-flex; align-items:center; gap:10px; transition:transform 0.2s ease, background 0.2s ease;
+}
+.btn-primary{ background:var(--alert-bright); color:var(--paper); }
+.btn-primary:hover{ transform:translateY(-2px); background:#ED2A4E; }
+.btn-ghost{ border:1px solid rgba(233,227,211,0.3); color:var(--bone); }
+.btn-ghost:hover{ transform:translateY(-2px); border-color:var(--gold); color:var(--gold); }
+.scroll-cue{ margin-top:56px; font-family:var(--mono); font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--bone-faint); display:flex; align-items:center; gap:10px; }
+.scroll-cue::after{ content:""; width:1px; height:34px; background:linear-gradient(var(--gold-soft),transparent); animation:drip 2s infinite; }
+@keyframes drip{ 0%{opacity:0.2;} 50%{opacity:1;} 100%{opacity:0.2;} }
+
+</style>
+</head>
+<body>
+
+<div class="ticker" id="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-label"><span class="ticker-dot" aria-hidden="true"></span>Échéance GRECO — rapport de progrès attendu de la Belgique avant le</span>
+    <div class="ticker-clock" id="countdown" aria-live="off">
+      <span><b id="cd-d">—</b><span class="u">J</span></span>
+      <span><b id="cd-h">—</b><span class="u">H</span></span>
+      <span><b id="cd-m">—</b><span class="u">M</span></span>
+      <span><b id="cd-s">—</b><span class="u">S</span></span>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="stamp">DOSSIER N° 42 / 1831–2026 <b>·</b> ÉTAT DE DROIT — BELGIQUE</div>
+
+    <h1 class="const-quote">
+      « Les membres des deux Chambres représentent
+      <span class="strike-wrap">la Nation</span><span class="anno">leur parti</span>,
+      et non uniquement ceux qui les ont élus. »
+    </h1>
+    <span class="const-source">— Article 42, Constitution belge, 1831. Toujours en vigueur, mot pour mot.</span>
+
+    <p class="hero-thesis">Ce que la loi affirme depuis <span class="hl">195 ans</span>. Ce que <span class="hl">99,73 %</span> des votes parlementaires démontrent depuis toujours.</p>
+    <p class="hero-sub">Ce dossier n'est pas une théorie du complot. C'est la synthèse, pièce par pièce, de ce que le Conseil de l'Europe, la Cour des comptes, la Cour européenne des droits de l'homme et la propre jurisprudence belge documentent déjà — froidement, depuis des années. Il reste cinq mois à la Belgique pour répondre. Voici le dossier qu'elle devra ouvrir.</p>
+    <div class="hero-cta-row">
+      <a href="#sommaire" class="btn btn-primary">Ouvrir le dossier ↓</a>
+      <a href="#agir" class="btn btn-ghost">Aller directement à « ce qui peut être fait »</a>
+    </div>
+    <div class="scroll-cue">Pièces n°1 à 6, ci-dessous</div>
+  </div>
+</header>
+
+<style>
+/* ============ SOMMAIRE ============ */
+.sommaire-wrap{ margin-top:-1px; }
+.sommaire{
+  background:var(--paper); color:var(--ink); border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:clamp(28px,4vw,48px); position:relative; top:-58px; margin-bottom:-30px;
+}
+.sommaire-top{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px; border-bottom:1px solid var(--paper-line); padding-bottom:16px; margin-bottom:8px; }
+.sommaire-top h2{ font-size:1.05rem; letter-spacing:0.06em; text-transform:uppercase; font-family:var(--mono); font-weight:600; }
+.sommaire-meta{ font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft); }
+.som-list{ list-style:none; margin:0; padding:0; }
+.som-list li{ border-bottom:1px solid var(--paper-line); }
+.som-list li:last-child{ border-bottom:none; }
+.som-list a{
+  display:grid; grid-template-columns:64px 1fr auto; gap:18px; align-items:baseline; text-decoration:none;
+  padding:15px 4px; color:var(--ink); transition:padding-left 0.2s ease, color 0.2s ease;
+}
+.som-list a:hover{ padding-left:10px; color:var(--alert); }
+.som-num{ font-family:var(--mono); color:var(--gold-soft); font-size:0.82rem; font-weight:600; }
+.som-title{ font-family:var(--serif-display); font-weight:600; font-size:clamp(1rem,1.6vw,1.18rem); }
+.som-tag{ font-family:var(--mono); font-size:0.68rem; color:var(--ink-soft); text-align:right; max-width:18ch; }
+
+/* ============ DEUX ÉTAGES ============ */
+.etages{ background:var(--bg-soft); border-bottom:1px solid var(--line-dark); padding-top:clamp(96px,11vw,148px); }
+.floor-icon{ margin-bottom:26px; opacity:0.9; }
+.compare-row{
+  display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line-dark); border-radius:var(--radius); overflow:hidden;
+  margin-bottom:2px;
+}
+.compare-cell{ padding:20px 26px; }
+.compare-cell.law{ background:var(--paper); color:var(--ink); border-right:1px solid var(--paper-line); }
+.compare-cell.real{ background:var(--bg-deep); color:var(--bone); }
+.compare-tag{ font-family:var(--mono); font-size:0.64rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:7px; display:block; }
+.compare-cell.law .compare-tag{ color:var(--gold-soft); }
+.compare-cell.real .compare-tag{ color:var(--alert-bright); }
+.compare-cell p{ margin:0; font-size:0.97rem; line-height:1.45; }
+.compare-cell.law p{ font-style:italic; }
+.compare-cell strong{ font-family:var(--serif-display); font-weight:600; }
+@media (max-width:700px){
+  .compare-row{ grid-template-columns:1fr; }
+  .compare-cell.law{ border-right:none; border-bottom:1px solid var(--paper-line); }
+}
+.etages-note{ margin-top:34px; padding-top:28px; border-top:1px solid var(--line-dark); font-size:1.02rem; color:var(--bone-soft); max-width:62ch; }
+.etages-note b{ color:var(--gold); font-weight:600; }
+
+/* ============ PIÈCE label shared ============ */
+.exhibit-tag{
+  display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:0.72rem;
+  letter-spacing:0.1em; text-transform:uppercase; color:var(--bg-deep); background:var(--gold);
+  padding:5px 11px; border-radius:1px; margin-bottom:20px;
+}
+
+/* ============ MÉCANIQUE / PILIERS ============ */
+.mecanique{ background:var(--bg); }
+.beam{
+  margin-top:60px; border-top:5px double var(--gold-soft); padding-top:0; position:relative;
+}
+.beam-label{
+  position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--bg);
+  padding:0 18px; font-family:var(--mono); font-size:0.76rem; letter-spacing:0.18em; color:var(--gold); text-transform:uppercase; white-space:nowrap;
+}
+.pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-dark); margin-top:28px; }
+.pillar{ background:var(--bg); padding:30px 26px 36px; position:relative; }
+.pillar-num{ font-family:var(--serif-display); font-size:2.4rem; font-weight:300; color:var(--gold-soft); line-height:1; margin-bottom:14px; font-style:italic; }
+.pillar h3{ font-size:1.18rem; line-height:1.25; margin-bottom:12px; color:var(--bone); }
+.pillar p{ font-size:0.94rem; color:var(--bone-soft); line-height:1.55; }
+.pillar .stat{ margin-top:16px; padding-top:14px; border-top:1px solid var(--line-dark); font-family:var(--mono); font-size:0.84rem; color:var(--alert-bright); }
+@media (max-width:820px){ .pillars{ grid-template-columns:1fr; } }
+</style>
+
+<div class="sommaire-wrap wrap">
+  <nav class="sommaire" id="sommaire" aria-label="Sommaire du dossier">
+    <div class="sommaire-top">
+      <h2>Table des pièces</h2>
+      <span class="sommaire-meta">6 pièces · lecture ≈ 16 min</span>
+    </div>
+    <ul class="som-list">
+      <li><a href="#mecanique"><span class="som-num">N°1</span><span class="som-title">La mécanique</span><span class="som-tag">Comment la particratie fonctionne</span></a></li>
+      <li><a href="#chiffres"><span class="som-num">N°2</span><span class="som-title">Les chiffres</span><span class="som-tag">GRECO, financement, ce qu'on ne vous montre pas</span></a></li>
+      <li><a href="#affaires"><span class="som-num">N°3</span><span class="som-title">Les affaires</span><span class="som-tag">Quinze ans de scandales, un seul schéma</span></a></li>
+      <li><a href="#cout-humain"><span class="som-num">N°4</span><span class="som-title">Le coût humain</span><span class="som-tag">Quand l'opacité atteint les gens</span></a></li>
+      <li><a href="#comparaison"><span class="som-num">N°5</span><span class="som-title">La comparaison</span><span class="som-tag">Ce qui est belge, ce qui ne l'est pas</span></a></li>
+      <li><a href="#secession"><span class="som-num">N°6</span><span class="som-title">La sécession civique</span><span class="som-tag">Quand la confiance décroche</span></a></li>
+    </ul>
+  </nav>
+</div>
+
+<section class="etages" id="etages">
+  <div class="wrap">
+    <svg class="floor-icon" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+      <rect x="6" y="6" width="34" height="15" stroke="#B68D46" stroke-width="1.4"/>
+      <rect x="6" y="25" width="34" height="15" stroke="#D81E3F" stroke-width="1.4" stroke-dasharray="2 2"/>
+      <line x1="2" y1="21" x2="44" y2="21" stroke="#8C6F3C" stroke-width="1"/>
+    </svg>
+    <div class="eyebrow" data-reveal>Cadrage</div>
+    <h2 class="head" data-reveal>Une démocratie à deux étages</h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Au rez-de-chaussée, la façade : une Constitution de 1831 toujours debout, des élections libres, une Cour constitutionnelle, une presse qui n'est pas censurée. Au sous-sol, le moteur réel : des mécanismes qui neutralisent, un par un, les principes affichés à l'étage du dessus — sans jamais techniquement les violer.</p>
+
+    <div style="margin-top:48px; display:grid; gap:2px;" data-reveal data-reveal-delay="2">
+      <div class="compare-row">
+        <div class="compare-cell law"><span class="compare-tag">Rez-de-chaussée — le texte</span><p><strong>Le mandat est libre</strong> — art. 42 : le parlementaire représente la Nation, pas son parti.</p></div>
+        <div class="compare-cell real"><span class="compare-tag">Sous-sol — la pratique</span><p>Cohésion de vote intra-groupe de <strong>99,73 %</strong>. Un cas marginal en 1999 ; aucun recours judiciaire sur la discipline de vote n'a jamais été introduit.</p></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell law"><span class="compare-tag">Rez-de-chaussée — le texte</span><p><strong>Séparation des pouvoirs</strong> — le Conseil des ministres délibère, articles 99 à 101.</p></div>
+        <div class="compare-cell real"><span class="compare-tag">Sous-sol — la pratique</span><p>Les arbitrages réels se prennent au <strong>« Kern »</strong>, comité restreint sans existence constitutionnelle, sans base légale depuis 1992, sans procès-verbal.</p></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell law"><span class="compare-tag">Rez-de-chaussée — le texte</span><p><strong>Financement contrôlé</strong> — loi du 4 juillet 1989, comptabilité ouverte des partis.</p></div>
+        <div class="compare-cell real"><span class="compare-tag">Sous-sol — la pratique</span><p>Contrôlé par une commission composée... de parlementaires des partis contrôlés. <strong>« Les contrôleurs et les contrôlés ne font qu'un. »</strong></p></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell law"><span class="compare-tag">Rez-de-chaussée — le texte</span><p><strong>Membre fondateur</strong> du Conseil de l'Europe et du GRECO, le 1ᵉʳ mai 1999.</p></div>
+        <div class="compare-cell real"><span class="compare-tag">Sous-sol — la pratique</span><p>Procédure de non-conformité activée ou réactivée en 2011, 2016, 2018, 2021 — <strong>et toujours en cours fin 2025</strong> sur le cycle en cours.</p></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell law"><span class="compare-tag">Rez-de-chaussée — le texte</span><p><strong>Publicité de l'administration</strong> — article 32 de la Constitution.</p></div>
+        <div class="compare-cell real"><span class="compare-tag">Sous-sol — la pratique</span><p><strong>122ᵉ rang mondial sur 139</strong> pour le droit d'accès à l'information administrative.</p></div>
+      </div>
+    </div>
+
+    <p class="etages-note" data-reveal>Ce dossier ne prétend pas que la Belgique est un État voyou. Les élections y sont libres, les juges, lorsqu'on les saisit, tranchent en toute indépendance — y compris contre l'État. <b>Mais le second étage existe, et il n'est pas une rumeur</b> : il est documenté, daté, chiffré, ligne par ligne, dans les pièces qui suivent.</p>
+  </div>
+</section>
+
+<section class="mecanique" id="mecanique">
+  <div class="wrap">
+    <span class="exhibit-tag">Pièce n° 1</span>
+    <h2 class="head" data-reveal>La mécanique<br><em>— comment ça tient</em></h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Le politologue Lieven De Winter définit la particratie comme un système où « les partis politiques, plus que les autres éléments du système politique, déterminent le processus décisionnel ». En Belgique, cette domination tient sur trois piliers — interconnectés, et conçus pour qu'aucun ne puisse être retiré sans faire tomber les deux autres.</p>
+
+    <div class="beam">
+      <span class="beam-label">la particratie</span>
+      <div class="pillars" data-reveal data-reveal-delay="2">
+        <div class="pillar">
+          <div class="pillar-num">I</div>
+          <h3>Le financement public monopolistique</h3>
+          <p>La loi du 4 juillet 1989 fait des partis des rentiers de l'État : environ 80 % de leurs revenus proviennent de dotations publiques. Le contrôle de cette manne est confié à une commission... composée des partis qu'elle est censée auditer.</p>
+          <div class="stat">≈ 75 à 108,7 M€ / an</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">II</div>
+          <h3>La colonisation de l'appareil d'État</h3>
+          <p>Cabinets ministériels pléthoriques (jusqu'à 100 collaborateurs par ministre), intercommunales transformées en réservoirs de mandats — 45,6 milliards € de bilan cumulé — et un « Kern » qui décide hors de toute existence constitutionnelle.</p>
+          <div class="stat">45,6 Md€ d'actifs sous influence partisane</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">III</div>
+          <h3>Le verrouillage des carrières</h3>
+          <p>Les états-majors composent seuls les listes électorales. Un élu qui s'écarte de la ligne sait, avec certitude, qu'il sera relégué en position non éligible au scrutin suivant. La discipline de vote n'a pas besoin d'être écrite : elle est un instinct de survie.</p>
+          <div class="stat">99,73 % de cohésion de vote</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ============ CHIFFRES ============ */
+.chiffres{ background:var(--bg-soft); border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark); }
+.greco-block{ margin-top:50px; }
+.greco-cycle{ margin-bottom:38px; }
+.greco-head{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+.greco-head h4{ font-size:1.08rem; color:var(--bone); font-weight:600; }
+.greco-head span{ font-family:var(--mono); font-size:0.78rem; color:var(--bone-faint); }
+.greco-bar{ display:flex; height:30px; border-radius:2px; overflow:hidden; border:1px solid var(--line-dark); }
+.greco-seg{ height:100%; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:0.7rem; color:var(--bg-deep); font-weight:600; white-space:nowrap; }
+.greco-seg.done{ background:var(--gold); }
+.greco-seg.partial{ background:#8C8467; color:var(--bone); }
+.greco-seg.no{ background:var(--alert-bright); color:var(--paper); }
+.greco-legend{ display:flex; gap:22px; margin-top:10px; flex-wrap:wrap; }
+.greco-legend span{ font-family:var(--mono); font-size:0.72rem; color:var(--bone-soft); display:flex; align-items:center; gap:7px; }
+.greco-legend i{ width:10px; height:10px; display:inline-block; border-radius:2px; }
+.greco-legend i.done{ background:var(--gold); } .greco-legend i.partial{ background:#8C8467; } .greco-legend i.no{ background:var(--alert-bright); }
+.greco-foot{ font-size:0.92rem; color:var(--bone-soft); margin-top:12px; }
+
+.rule32{ margin-top:54px; padding-top:40px; border-top:1px solid var(--line-dark); }
+.rule32-track{ display:flex; overflow-x:auto; gap:0; padding-bottom:18px; margin-top:24px; }
+.r32-step{ flex:0 0 auto; width:158px; position:relative; padding-right:18px; }
+.r32-step::after{ content:""; position:absolute; top:9px; right:0; width:18px; height:1px; background:var(--gold-soft); }
+.r32-step:last-child::after{ display:none; }
+.r32-dot{ width:9px; height:9px; border-radius:50%; background:var(--gold-soft); margin-bottom:12px; }
+.r32-step.hot .r32-dot{ background:var(--alert-bright); box-shadow:0 0 0 4px rgba(216,30,63,0.18); }
+.r32-year{ font-family:var(--mono); font-size:0.82rem; color:var(--gold); margin-bottom:6px; }
+.r32-step.hot .r32-year{ color:var(--alert-bright); }
+.r32-text{ font-size:0.84rem; color:var(--bone-soft); line-height:1.4; }
+
+/* redaction cards */
+.redact-intro{ margin-top:56px; padding-top:40px; border-top:1px solid var(--line-dark); }
+.redact-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
+.redact-card{
+  background:var(--bg-deep); border:1px solid var(--line-dark); border-radius:var(--radius); padding:22px 22px 20px;
+  text-align:left; cursor:pointer; font-family:inherit; color:inherit; transition:border-color 0.2s ease;
+}
+.redact-card:hover{ border-color:var(--gold-soft); }
+.redact-q{ font-size:0.92rem; color:var(--bone-soft); line-height:1.5; margin-bottom:14px; min-height:64px; }
+.redact-bar{
+  display:inline-block; background:var(--redact); color:var(--redact); border-radius:2px; padding:3px 10px;
+  letter-spacing:0.04em; font-family:var(--mono); position:relative; transition:background 0.25s ease, color 0.25s ease;
+}
+.redact-bar::before{ content:"cliquer pour révéler"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--bone-faint); font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0; transition:opacity 0.2s; }
+.redact-card:hover .redact-bar::before{ opacity:1; }
+.redact-card.is-open .redact-bar{ background:transparent; color:var(--alert-bright); padding:3px 0; font-weight:600; }
+.redact-card.is-open .redact-bar::before{ display:none; }
+.redact-reveal{ display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line-dark); font-size:0.86rem; color:var(--bone); line-height:1.5; }
+.redact-card.is-open .redact-reveal{ display:block; }
+.redact-hint{ font-family:var(--mono); font-size:0.66rem; color:var(--bone-faint); text-transform:uppercase; letter-spacing:0.08em; margin-top:14px; display:block; }
+@media (max-width:860px){ .redact-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:560px){ .redact-grid{ grid-template-columns:1fr; } }
+
+/* ============ AFFAIRES / TIMELINE ============ */
+.affaires{ background:var(--bg); }
+.case-list{ margin-top:48px; border-left:1px solid var(--line-dark); padding-left:0; }
+.case{ position:relative; padding:0 0 36px 32px; }
+.case::before{ content:""; position:absolute; left:-5px; top:4px; width:9px; height:9px; border-radius:50%; background:var(--gold); border:2px solid var(--bg); box-shadow:0 0 0 1px var(--gold-soft); }
+.case-year{ font-family:var(--mono); color:var(--gold); font-size:0.84rem; margin-bottom:6px; display:block; }
+.case h4{ font-size:1.12rem; color:var(--bone); margin-bottom:6px; font-weight:600; }
+.case p{ font-size:0.95rem; color:var(--bone-soft); line-height:1.55; margin-bottom:8px; max-width:64ch; }
+.case-status{ display:inline-block; font-family:var(--mono); font-size:0.66rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--bone-faint); border:1px solid var(--line-dark); padding:3px 9px; border-radius:2px; }
+.affaires-pattern{ margin-top:8px; background:var(--bg-deep); border-left:3px solid var(--alert-bright); padding:22px 26px; border-radius:0 var(--radius) var(--radius) 0; }
+.affaires-pattern p{ margin:0; font-size:1rem; color:var(--bone); }
+.affaires-caveat{ font-size:0.82rem; color:var(--bone-faint); font-style:italic; margin-top:18px; }
+</style>
+
+<section class="chiffres" id="chiffres">
+  <div class="wrap">
+    <span class="exhibit-tag">Pièce n° 2</span>
+    <h2 class="head" data-reveal>Les chiffres<br><em>— ce qu'on ne vous montre pas</em></h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Le Conseil de l'Europe note la Belgique chaque année depuis 1999, via le GRECO — son organe anti-corruption. Voici le bulletin scolaire, suivi de quelques cases noircies de l'administration belge. Cliquez dessus.</p>
+
+    <div class="greco-block" data-reveal data-reveal-delay="2">
+      <div class="greco-cycle">
+        <div class="greco-head"><h4>4ᵉ cycle — corruption des parlementaires, juges et procureurs</h4><span>15 recommandations · clôturé nov. 2025</span></div>
+        <div class="greco-bar">
+          <div class="greco-seg done" style="width:53.3%">8 mises en œuvre</div>
+          <div class="greco-seg partial" style="width:46.7%">7 partielles</div>
+        </div>
+        <div class="greco-legend"><span><i class="done"></i>Entièrement mise en œuvre</span><span><i class="partial"></i>Partiellement mise en œuvre</span></div>
+        <p class="greco-foot">Détail aggravant : sur les seules mesures visant le <strong>Parlement</strong> lui-même, 2 recommandations sur 8 seulement sont satisfaites.</p>
+      </div>
+      <div class="greco-cycle">
+        <div class="greco-head"><h4>5ᵉ cycle — exécutif central et services répressifs</h4><span>22 recommandations · dernier addendum nov. 2025</span></div>
+        <div class="greco-bar">
+          <div class="greco-seg done" style="width:36.4%">8 faites</div>
+          <div class="greco-seg partial" style="width:45.4%">10 partielles</div>
+          <div class="greco-seg no" style="width:18.2%">4 ignorées</div>
+        </div>
+        <div class="greco-legend"><span><i class="done"></i>Entièrement mise en œuvre</span><span><i class="partial"></i>Partiellement mise en œuvre</span><span><i class="no"></i>Non mise en œuvre</span></div>
+        <p class="greco-foot">Toujours bloqué fin 2025 : le registre des lobbyistes, la publication des déclarations de patrimoine, la période de carence (« cooling-off ») pour les anciens ministres.</p>
+      </div>
+    </div>
+
+    <div class="rule32" data-reveal>
+      <div class="eyebrow" style="margin-bottom:6px;">Quinze ans de procédure de non-conformité</div>
+      <p style="color:var(--bone-soft); font-size:0.95rem; max-width:62ch;">La « Règle 32 » est le mécanisme d'alerte du GRECO. Voici, sans interruption notable, son application à la Belgique.</p>
+      <div class="rule32-track">
+        <div class="r32-step"><div class="r32-dot"></div><div class="r32-year">2011</div><div class="r32-text">3ᵉ cycle : conformité jugée « globalement insuffisante ». Règle 32 activée.</div></div>
+        <div class="r32-step"><div class="r32-dot"></div><div class="r32-year">2016</div><div class="r32-text">4ᵉ cycle : zéro recommandation sur 15 jugée satisfaisante.</div></div>
+        <div class="r32-step"><div class="r32-dot"></div><div class="r32-year">2018</div><div class="r32-text">Une seule recommandation satisfaisante. Alerte renforcée.</div></div>
+        <div class="r32-step"><div class="r32-dot"></div><div class="r32-year">2021</div><div class="r32-text">11 recommandations toujours pas appliquées. « Globalement insatisfaisant », à nouveau.</div></div>
+        <div class="r32-step"><div class="r32-dot"></div><div class="r32-year">2024</div><div class="r32-text">La procédure de non-conformité du 4ᵉ cycle est enfin levée. Le cycle lui-même ne sera formellement clôturé qu'en novembre 2025 — plusieurs points restant partiels.</div></div>
+        <div class="r32-step hot"><div class="r32-dot"></div><div class="r32-year">Nov. 2025</div><div class="r32-text">5ᵉ cycle toujours non conforme. Le Secrétaire général du Conseil de l'Europe est invité à écrire au ministre belge des Affaires étrangères.</div></div>
+        <div class="r32-step hot"><div class="r32-dot"></div><div class="r32-year">30.11.2026</div><div class="r32-text"><strong>Échéance.</strong> Sans rapport de progrès convaincant : l'étape suivante est la déclaration publique de non-conformité.</div></div>
+      </div>
+    </div>
+
+    <div class="redact-intro" data-reveal>
+      <div class="eyebrow" style="margin-bottom:6px;">Pièces noircies</div>
+      <h3 style="font-size:1.5rem; color:var(--bone); max-width:30ch;">Six phrases officielles. Six chiffres qu'on préfère ne pas y mettre.</h3>
+    </div>
+    <div class="redact-grid" data-reveal data-reveal-delay="1">
+
+      <button class="redact-card" type="button" data-redact>
+        <p class="redact-q">Le registre fédéral des lobbyistes (Chambre, depuis juillet 2018) est administré par :</p>
+        <span class="redact-bar">▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
+        <div class="redact-reveal">Une seule personne. Le Sénat, le gouvernement fédéral et cinq des six entités fédérées n'ont aucun dispositif équivalent.</div>
+        <span class="redact-hint">Pièce 2.1</span>
+      </button>
+
+      <button class="redact-card" type="button" data-redact>
+        <p class="redact-q">Bruxelles est la 2ᵉ capitale mondiale du lobbying après Washington. Lobbyistes inscrits au registre fédéral belge :</p>
+        <span class="redact-bar">▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
+        <div class="redact-reveal">180. Plus de 13 000 entités font du lobbying à Bruxelles ; le registre interinstitutionnel européen, lui, en recense environ 12 500.</div>
+        <span class="redact-hint">Pièce 2.2</span>
+      </button>
+
+      <button class="redact-card" type="button" data-redact>
+        <p class="redact-q">Les déclarations de patrimoine des ministres et parlementaires sont-elles publiques, pour permettre le contrôle citoyen ?</p>
+        <span class="redact-bar">▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
+        <div class="redact-reveal">Non. Elles sont transmises sous pli fermé et ne sont consultables que dans le cadre d'une enquête pénale déjà ouverte.</div>
+        <span class="redact-hint">Pièce 2.3</span>
+      </button>
+
+      <button class="redact-card" type="button" data-redact>
+        <p class="redact-q">Plafond budgétaire officiel des cabinets ministériels wallons en 2021 : 23 millions €. Coût réel reconstitué par la Cour des comptes :</p>
+        <span class="redact-bar">▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
+        <div class="redact-reveal">37 millions €. La différence — 14,8 M€ — correspond à des fonctionnaires détachés gratuitement, dont la rémunération n'apparaît dans aucun budget officiel.</div>
+        <span class="redact-hint">Pièce 2.4</span>
+      </button>
+
+      <button class="redact-card" type="button" data-redact>
+        <p class="redact-q">Indemnité de départ maximale d'un parlementaire non réélu — sans obligation de chercher un emploi :</p>
+        <span class="redact-bar">▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
+        <div class="redact-reveal">Jusqu'à 500 000 €. (9 742 €/mois pendant deux mois par année de mandat, plafonné à 24 mois.)</div>
+        <span class="redact-hint">Pièce 2.5</span>
+      </button>
+
+      <button class="redact-card" type="button" data-redact>
+        <p class="redact-q">Classement mondial de la Belgique pour le droit d'accès à l'information administrative, sur 139 pays évalués :</p>
+        <span class="redact-bar">▓▓▓▓▓▓▓▓▓▓▓▓▓▓</span>
+        <div class="redact-reveal">122ᵉ sur 139. Entre des pays que la diplomatie belge ne cite jamais comme modèles de comparaison.</div>
+        <span class="redact-hint">Pièce 2.6</span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<section class="affaires" id="affaires">
+  <div class="wrap">
+    <span class="exhibit-tag">Pièce n° 3</span>
+    <h2 class="head" data-reveal>Les affaires<br><em>— un seul schéma, quinze ans durant</em></h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Publifin, Samusocial, Nethys, Kazakhgate, Qatargate : des noms différents, des partis différents, des régions différentes. Et systématiquement, la même issue.</p>
+
+    <div class="case-list" data-reveal data-reveal-delay="2">
+      <div class="case">
+        <span class="case-year">2011 → 2017</span>
+        <h4>Kazakhgate</h4>
+        <p>Loi sur les transactions pénales (2011) utilisée pour éteindre des poursuites contre des oligarques kazakhs, moyennant 23 M€ d'amende. Le principal prévenu belge meurt en 2019 : extinction de l'action publique, aucun procès, aucune vérité judiciaire complète.</p>
+        <span class="case-status">Transaction pénale · jamais jugé sur le fond</span>
+      </div>
+      <div class="case">
+        <span class="case-year">Déc. 2016</span>
+        <h4>Publifin</h4>
+        <p>24 mandataires locaux, tous partis confondus, perçoivent des jetons de présence pour des « comités de secteur » fictifs. L'administrateur délégué Stéphane Moreau touchait 960 000 €/an. Le scandale fait tomber la majorité régionale wallonne.</p>
+        <span class="case-status">Renvoi correctionnel · transaction pénale 2021 (≈400 000 €)</span>
+      </div>
+      <div class="case">
+        <span class="case-year">Mai 2017</span>
+        <h4>Samusocial</h4>
+        <p>Le bourgmestre de Bruxelles et la présidente du CPAS perçoivent des jetons de présence pour des réunions de gestion fictives, au sein d'une ASBL financée à 98 % par des fonds publics destinés à l'aide d'urgence aux sans-abri.</p>
+        <span class="case-status">Renvoyés devant le tribunal correctionnel</span>
+      </div>
+      <div class="case">
+        <span class="case-year">2021</span>
+        <h4>Nethys</h4>
+        <p>Vente secrète et sous-évaluée de filiales rentables (Voo, Elicio, Win) à des sociétés liées à la direction. Indemnités de départ dépassant 12 millions € octroyées par un comité de rémunération complaisant.</p>
+        <span class="case-status">Mandat d'arrêt 2021 · instruction en cours</span>
+      </div>
+      <div class="case">
+        <span class="case-year">Déc. 2022</span>
+        <h4>Qatargate</h4>
+        <p>Corruption présumée au Parlement européen, valises de cash, élus belges et liens belges impliqués dans l'enquête. Procédures toujours en cours.</p>
+        <span class="case-status">Instruction en cours</span>
+      </div>
+      <div class="case">
+        <span class="case-year">2024 → 2026</span>
+        <h4>Affaire Reynders</h4>
+        <p>Enquête pour trafic d'influence présumé visant l'ancien ministre et commissaire européen. Information judiciaire ouverte contre une banque en 2026.</p>
+        <span class="case-status">Instruction en cours</span>
+      </div>
+    </div>
+
+    <div class="affaires-pattern" data-reveal>
+      <p>Le schéma qui se répète : prescriptions, transactions pénales, non-lieux ou peines symboliques. Les rares condamnations fermes tombent une décennie après les faits. Entre 2011 et 2020, le recours à la transaction pénale a augmenté de <strong>845 %</strong>.</p>
+    </div>
+    <p class="affaires-caveat">Les personnes mises en cause dans des procédures en cours demeurent présumées innocentes tant qu'aucune décision judiciaire définitive n'a été rendue.</p>
+  </div>
+</section>
+
+<style>
+/* ============ COÛT HUMAIN ============ */
+.cout-humain{ background:var(--paper); color:var(--ink); }
+.cout-humain .eyebrow{ color:var(--alert); }
+.cout-humain .eyebrow::before{ background:var(--alert); opacity:0.5; }
+.cout-humain h2.head{ color:var(--ink); }
+.cout-humain h2.head em{ color:var(--alert); }
+.cout-humain .lede{ color:var(--ink-soft); }
+.cout-humain .exhibit-tag{ background:var(--ink); color:var(--paper); }
+
+.ghost-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:28px 40px; margin-top:48px; }
+.ghost{ }
+.ghost-top{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
+.ghost-name{ font-family:var(--serif-display); font-weight:600; font-size:1.08rem; }
+.ghost-pct{ font-family:var(--mono); font-size:1.3rem; color:var(--alert); font-weight:600; }
+.dots{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:9px; }
+.dot{ width:17px; height:17px; border-radius:50%; border:1.6px solid var(--ink); background:transparent; flex:none; }
+.dot.off{ background:var(--alert); border-color:var(--alert); }
+.ghost-desc{ font-size:0.86rem; color:var(--ink-soft); line-height:1.45; max-width:46ch; }
+@media (max-width:680px){ .ghost-grid{ grid-template-columns:1fr; } }
+
+.big-callouts{ display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:54px; background:var(--paper-line); }
+.callout{ background:var(--paper-deep); padding:30px 28px; }
+.callout .num{ font-family:var(--serif-display); font-size:clamp(2.2rem,4vw,3.1rem); font-weight:600; color:var(--alert); line-height:1; margin-bottom:10px; }
+.callout p{ font-size:0.92rem; color:var(--ink-soft); margin:0; max-width:34ch; }
+@media (max-width:680px){ .big-callouts{ grid-template-columns:1fr; } }
+
+.ih-text{ margin-top:54px; padding-top:40px; border-top:1px solid var(--paper-line); max-width:72ch; }
+.ih-text h3{ font-size:1.5rem; color:var(--ink); margin-bottom:18px; max-width:24ch; }
+.ih-text p{ font-size:1.02rem; color:var(--ink-soft); line-height:1.65; }
+.resource-note{ margin-top:24px; font-size:0.82rem; color:var(--ink-soft); border-left:2px solid var(--alert); padding-left:14px; }
+
+/* ============ COMPARAISON ============ */
+.comparaison{ background:var(--bg); }
+.compare-table-wrap{ margin-top:40px; overflow-x:auto; }
+.compare-table{ width:100%; border-collapse:collapse; min-width:480px; }
+.compare-table caption{ text-align:left; font-family:var(--mono); font-size:0.74rem; color:var(--bone-faint); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.06em; }
+.compare-table th, .compare-table td{ text-align:left; padding:11px 16px; border-bottom:1px solid var(--line-dark); font-size:0.94rem; }
+.compare-table th{ font-family:var(--mono); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--gold); font-weight:500; }
+.compare-table td.num{ font-family:var(--mono); color:var(--bone); }
+.compare-table tr.be td{ background:rgba(216,30,63,0.07); }
+.compare-table tr.be td:first-child{ border-left:2px solid var(--alert-bright); padding-left:14px; }
+.compare-note{ font-size:0.88rem; color:var(--bone-faint); margin-top:12px; max-width:60ch; }
+
+.steelman{ margin-top:54px; background:var(--bg-deep); border-radius:var(--radius); padding:30px 32px; border:1px solid var(--line-dark); }
+.steelman .eyebrow{ margin-bottom:14px; }
+.steelman p{ font-size:1rem; color:var(--bone-soft); line-height:1.6; max-width:68ch; }
+.steelman p:last-child{ margin-bottom:0; }
+
+.synth{ margin-top:48px; font-family:var(--serif-display); font-style:italic; font-weight:500; font-size:clamp(1.2rem,2vw,1.55rem); line-height:1.45; color:var(--bone); max-width:54ch; border-left:3px solid var(--gold); padding-left:24px; }
+.synth b{ color:var(--gold); font-style:normal; }
+</style>
+
+<section class="cout-humain" id="cout-humain">
+  <div class="wrap">
+    <span class="exhibit-tag">Pièce n° 4</span>
+    <h2 class="head" data-reveal>Le coût humain<br><em>— quand l'opacité atteint les gens</em></h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Les pièces précédentes parlent de mécanismes, de pourcentages, de cycles d'évaluation. Celle-ci parle de personnes : celles qui, chaque année, renoncent à des droits auxquels elles ont droit — non par choix, mais parce que le système est conçu pour les épuiser avant qu'elles n'y arrivent.</p>
+
+    <div class="ghost-grid" data-reveal data-reveal-delay="2">
+      <div class="ghost">
+        <div class="ghost-top"><span class="ghost-name">Revenu d'intégration sociale</span><span class="ghost-pct">45 %</span></div>
+        <div class="dots">
+          <span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <p class="ghost-desc">Près d'une personne sur deux remplissant les conditions de détresse financière ne perçoit jamais le dernier filet de sécurité de l'État belge.</p>
+      </div>
+      <div class="ghost">
+        <div class="ghost-top"><span class="ghost-name">Garantie de revenu aux aînés (GRAPA)</span><span class="ghost-pct">50 %</span></div>
+        <div class="dots">
+          <span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <p class="ghost-desc">Censée éradiquer la pauvreté des aînés. N'atteint pas la moitié de son public — 46 000 à 86 000 personnes âgées concernées.</p>
+      </div>
+      <div class="ghost">
+        <div class="ghost-top"><span class="ghost-name">Allocation de chauffage, 65 ans et +</span><span class="ghost-pct">≈ 77 %</span></div>
+        <div class="dots">
+          <span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span>
+          <span class="dot"></span><span class="dot"></span>
+        </div>
+        <p class="ghost-desc">Plus de 2 personnes âgées en précarité énergétique sur 3 ne réclament jamais l'aide à laquelle elles ont droit.</p>
+      </div>
+      <div class="ghost">
+        <div class="ghost-top"><span class="ghost-name">Prime au loyer (Région flamande)</span><span class="ghost-pct">46 %</span></div>
+        <div class="dots">
+          <span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span><span class="dot off"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <p class="ghost-desc">Ces ménages sont pourtant déjà identifiés par l'administration, et reçoivent un courrier les informant de leur droit. Un seul formulaire à renvoyer suffit à en perdre près de la moitié.</p>
+      </div>
+    </div>
+
+    <div class="big-callouts" data-reveal>
+      <div class="callout"><div class="num">3 à 5 Md€</div><p>économisés chaque année, tacitement, par l'État belge grâce à ce non-recours — selon les estimations disponibles.</p></div>
+      <div class="callout"><div class="num">0,3 %</div><p>du budget de la sécurité sociale que représente la fraude sociale réellement détectée — celle qui occupe pourtant l'essentiel du débat politique.</p></div>
+    </div>
+
+    <div class="ih-text" data-reveal>
+      <h3>Une violence qui ne laisse pas de trace visible</h3>
+      <p>Les chercheurs en neurosciences cognitives distinguent la pauvreté — un état objectif, « avoir peu » — de la précarité : la peur chronique de perdre ce qui reste. Cette peur a un coût mesurable. Sous le prisme de la théorie de la rareté, le fardeau administratif et la menace permanente de sanction saturent la mémoire de travail, rigidifient la flexibilité mentale et érodent la capacité d'inhibition émotionnelle — les fonctions cognitives mêmes dont une personne aurait besoin pour remplir un formulaire complexe, contester une décision, ou tenir face à un médecin-conseil dont l'entretien ressemble, selon les témoignages recueillis par les associations d'usagers, à un interrogatoire.</p>
+      <p>La littérature internationale regroupe les effets psychologiques de l'austérité sous cinq vecteurs documentés : l'humiliation, la peur, l'instabilité, l'isolement, et le sentiment d'être piégé sans recours. En Belgique, les enquêtes de santé publique (Sciensano) suivent depuis plusieurs années une dégradation continue de la santé mentale dans les ménages les plus précarisés, avec une hausse des troubles anxieux, dépressifs et des idéations suicidaires. Ce n'est pas un effet secondaire regrettable. C'est la conséquence directe, documentée, d'un choix de conception administrative.</p>
+      <p class="resource-note">Ce paragraphe s'appuie sur des données de santé publique agrégées, à des fins d'information citoyenne. Si ces enjeux vous touchent personnellement : Centre de Prévention du Suicide, <strong>0800 32 123</strong> (gratuit, 24h/24) — Télé-Accueil, <strong>107</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="comparaison" id="comparaison">
+  <div class="wrap">
+    <span class="exhibit-tag">Pièce n° 5</span>
+    <h2 class="head" data-reveal>La comparaison<br><em>— ce qui est belge, ce qui ne l'est pas</em></h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Un dossier honnête ne peut pas prétendre que la Belgique est une anomalie isolée. Sur un point précis — la discipline de vote — elle ne l'est pas du tout.</p>
+
+    <div class="compare-table-wrap" data-reveal data-reveal-delay="2">
+      <table class="compare-table">
+        <caption>Indice Rice de cohésion partisane — Depauw &amp; Martin, 2009 (données 1990s, sur 100)</caption>
+        <thead><tr><th>Pays</th><th>Indice</th><th>Lecture</th></tr></thead>
+        <tbody>
+          <tr><td>Danemark</td><td class="num">99,93</td><td>Discipline la plus stricte d'Europe occidentale</td></tr>
+          <tr><td>France</td><td class="num">99,33</td><td>L'article 49-3 rend le vote individuel presque accessoire</td></tr>
+          <tr><td>Royaume-Uni</td><td class="num">99,25</td><td>Système de whips le plus formalisé au monde</td></tr>
+          <tr class="be"><td>Belgique</td><td class="num">99,06</td><td>Quatrième de ce classement — pas première</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">L'écart entre le premier et le quatrième de ce classement : 0,87 point. Statistiquement insignifiant. Le mandat libre constitutionnel et son contournement par la discipline de parti ne sont pas une exception belge — c'est la norme dans toutes les démocraties parlementaires d'Europe occidentale.</p>
+
+    <div class="compare-table-wrap" data-reveal style="margin-top:36px;">
+      <table class="compare-table">
+        <caption>Le paradoxe belge — qualité démocratique comparée (V-Dem &amp; EIU, données 2024)</caption>
+        <thead><tr><th>Pays</th><th>V-Dem (indice libéral, sur 1)</th><th>EIU (indice démocratique, sur 10)</th></tr></thead>
+        <tbody>
+          <tr class="be"><td>Belgique</td><td class="num">0,805</td><td class="num">7,64</td></tr>
+          <tr><td>Allemagne</td><td class="num">0,792</td><td class="num">8,73</td></tr>
+          <tr><td>Royaume-Uni</td><td class="num">0,752</td><td class="num">8,34</td></tr>
+          <tr><td>États-Unis</td><td class="num">0,748</td><td class="num">7,85</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">Sur la protection structurelle contre la concentration du pouvoir exécutif (V-Dem) — fédéralisme, proportionnelle, consensus — la Belgique devance les trois autres. Mais sur la qualité <em>fonctionnelle</em> de la gouvernance et de la participation (EIU, où la Belgique pointe au 36ᵉ rang mondial), c'est la dernière de ce groupe de quatre.</p>
+
+    <div class="steelman" data-reveal>
+      <div class="eyebrow">Ce que défendent les partisans du système</div>
+      <p>La discipline partisane n'est pas qu'un instrument de confiscation. La littérature académique lui reconnaît des bénéfices réels : stabilité gouvernementale, cohérence des politiques publiques dans le temps, accountability électorale claire — l'électeur sanctionne un parti, pas 150 individus isolés — et réduction de la corruption liée au marchandage individuel des votes. Le modèle consociatif belge, en particulier, a longtemps réussi ce que peu d'architectures institutionnelles réussissent : empêcher qu'une majorité linguistique n'écrase l'autre dans un pays structurellement divisé.</p>
+      <p>Les pays nordiques, qui affichent la discipline de vote la plus stricte d'Europe, occupent aussi le sommet de tous les classements démocratiques mondiaux. La discipline forte, en elle-même, ne signifie donc pas une démocratie faible.</p>
+    </div>
+
+    <p class="synth" data-reveal>Ce qui aggrave le cas belge n'est donc pas la discipline de vote en elle-même : c'est sa combinaison avec une <b>profondeur de pénétration partisane</b> — cabinets, intercommunales, nominations — que peu de démocraties comparables connaissent à ce degré, et avec une fragmentation linguistique qui empêche toute opinion publique nationale de se former autour des mêmes constats.</p>
+  </div>
+</section>
+
+<style>
+/* ============ SÉCESSION ============ */
+.secession{ background:var(--bg-soft); border-top:1px solid var(--line-dark); }
+.trust-block{ margin-top:48px; display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start; }
+.trust-bars{ }
+.trust-row{ margin-bottom:20px; }
+.trust-label{ display:flex; justify-content:space-between; font-family:var(--mono); font-size:0.78rem; color:var(--bone-soft); margin-bottom:6px; }
+.trust-track{ height:14px; background:rgba(233,227,211,0.08); border-radius:2px; overflow:hidden; }
+.trust-fill{ height:100%; background:var(--gold-soft); border-radius:2px; }
+.trust-fill.now{ background:var(--alert-bright); }
+.trust-side p{ font-size:0.97rem; color:var(--bone-soft); line-height:1.6; }
+.trust-side strong{ color:var(--bone); }
+@media (max-width:780px){ .trust-block{ grid-template-columns:1fr; } }
+
+.parallel-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:54px; background:var(--line-dark); }
+.parallel-card{ background:var(--bg-soft); padding:26px 20px; }
+.parallel-card .num{ font-family:var(--serif-display); font-weight:600; font-size:clamp(1.5rem,2.4vw,2rem); color:var(--gold); line-height:1.1; }
+.parallel-card p{ font-size:0.82rem; color:var(--bone-soft); margin-top:8px; line-height:1.4; }
+@media (max-width:860px){ .parallel-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:480px){ .parallel-grid{ grid-template-columns:1fr; } }
+.parallel-intro{ margin-top:54px; font-size:1.02rem; color:var(--bone-soft); max-width:64ch; }
+
+.justice-box{ margin-top:40px; border:1px solid var(--line-dark); border-radius:var(--radius); padding:26px 30px; background:var(--bg-deep); }
+.justice-box h4{ color:var(--bone); font-size:1.05rem; margin-bottom:10px; }
+.justice-box p{ font-size:0.95rem; color:var(--bone-soft); margin:0; max-width:68ch; }
+.media-note{ margin-top:24px; font-size:0.86rem; color:var(--bone-faint); max-width:68ch; }
+
+/* ============ AGIR ============ */
+.agir{ background:var(--paper); color:var(--ink); }
+.agir .eyebrow{ color:var(--alert); }
+.agir .eyebrow::before{ background:var(--alert); opacity:0.5; }
+.agir h2.head{ color:var(--ink); }
+.agir h2.head em{ color:var(--alert); }
+.agir .lede{ color:var(--ink-soft); }
+
+.reflexes{ list-style:none; counter-reset:reflex; margin:46px 0 0; padding:0; display:grid; gap:0; border-top:1px solid var(--paper-line); }
+.reflexes li{ counter-increment:reflex; display:grid; grid-template-columns:54px 1fr; gap:20px; padding:18px 0; border-bottom:1px solid var(--paper-line); align-items:baseline; }
+.reflexes li::before{ content:counter(reflex,decimal-leading-zero); font-family:var(--mono); font-size:1rem; color:var(--gold-soft); font-weight:600; }
+.reflexes li p{ margin:0; font-size:0.98rem; color:var(--ink-soft); line-height:1.5; }
+.reflexes li strong{ color:var(--ink); font-family:var(--serif-display); }
+
+.action-table-wrap{ margin-top:54px; overflow-x:auto; }
+.action-table{ width:100%; border-collapse:collapse; min-width:640px; background:var(--paper-deep); }
+.action-table caption{ text-align:left; font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.06em; }
+.action-table th{ text-align:left; font-family:var(--mono); font-size:0.66rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink); background:var(--gold); padding:10px 16px; }
+.action-table td{ padding:13px 16px; border-bottom:1px solid var(--paper-line); font-size:0.9rem; color:var(--ink-soft); vertical-align:top; }
+.action-table td:first-child{ color:var(--ink); font-weight:600; }
+.action-table tr:last-child td{ border-bottom:none; }
+
+.frontier{ margin-top:54px; max-width:74ch; }
+.frontier h3{ font-size:1.4rem; color:var(--ink); margin-bottom:14px; }
+.frontier p{ font-size:1rem; color:var(--ink-soft); line-height:1.65; }
+
+.closing-cta{
+  margin-top:60px; background:var(--ink); color:var(--paper); border-radius:var(--radius); padding:clamp(32px,5vw,52px);
+  display:flex; justify-content:space-between; align-items:center; gap:30px; flex-wrap:wrap;
+}
+.closing-cta-text{ max-width:46ch; }
+.closing-cta-text h3{ font-family:var(--serif-display); font-size:clamp(1.3rem,2.4vw,1.7rem); margin-bottom:10px; color:var(--paper); }
+.closing-cta-text p{ font-size:0.95rem; color:#C7BFA8; margin:0; }
+.cc-count{ font-family:var(--mono); font-size:2.6rem; color:var(--alert-bright); font-weight:600; white-space:nowrap; line-height:1; }
+.cc-count span{ display:block; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:#C7BFA8; margin-top:6px; }
+</style>
+
+<section class="secession" id="secession">
+  <div class="wrap">
+    <span class="exhibit-tag">Pièce n° 6</span>
+    <h2 class="head" data-reveal>La sécession civique<br><em>— quand la confiance décroche</em></h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Quand un système cesse d'être cru, il ne s'effondre pas dans un grand bruit. Il se vide, lentement, pendant que les citoyens construisent ailleurs ce que l'État ne fournit plus.</p>
+
+    <div class="trust-block" data-reveal data-reveal-delay="2">
+      <div class="trust-bars">
+        <div class="trust-row">
+          <div class="trust-label"><span>Confiance dans les partis — Wallonie, 2018</span><span>32 %</span></div>
+          <div class="trust-track"><div class="trust-fill" style="width:32%"></div></div>
+        </div>
+        <div class="trust-row">
+          <div class="trust-label"><span>Confiance dans les partis — Wallonie, 2023</span><span>22 %</span></div>
+          <div class="trust-track"><div class="trust-fill now" style="width:22%"></div></div>
+        </div>
+        <div class="trust-row">
+          <div class="trust-label"><span>Confiance dans « les politiques »</span><span>19 %</span></div>
+          <div class="trust-track"><div class="trust-fill now" style="width:19%"></div></div>
+        </div>
+      </div>
+      <div class="trust-side">
+        <p><strong>Le vote reste obligatoire</strong>, ce qui masque une partie de la défiance. Mais en juin 2024, l'abstention fédérale atteint son record depuis 1981 : <strong>12,5 %</strong> — soit plus d'un million d'électeurs. À eux seuls, ils formeraient virtuellement le deuxième parti du pays.</p>
+      </div>
+    </div>
+
+    <p class="parallel-intro" data-reveal>Pendant ce temps, une société civile de substitution prend en charge ce que l'État renonce, ou échoue, à assurer :</p>
+    <div class="parallel-grid" data-reveal data-reveal-delay="1">
+      <div class="parallel-card"><div class="num">≈ 120 000</div><p>coopérateurs dans des coopératives citoyennes d'énergie</p></div>
+      <div class="parallel-card"><div class="num">209 000</div><p>bénéficiaires par mois des banques alimentaires</p></div>
+      <div class="parallel-card"><div class="num">422 078</div><p>nuitées d'hébergement assurées par les réseaux citoyens d'accueil aux exilés (2024)</p></div>
+      <div class="parallel-card"><div class="num">3,3 M</div><p>personnes syndiquées — la dernière infrastructure de masse encore debout</p></div>
+    </div>
+
+    <div class="justice-box" data-reveal>
+      <h4>Et quand la justice tranche, l'État n'exécute pas toujours</h4>
+      <p>Plus de 11 000 condamnations des tribunaux du travail contre l'État pour non-accueil de demandeurs d'asile sont restées inexécutées ; environ 17 000 décisions d'accueil ne l'étaient toujours pas fin 2025, pour plus de 6 millions € d'astreintes impayées. La Cour européenne des droits de l'homme a constaté, dans l'arrêt <em>Camara c. Belgique</em> (2023) puis <em>M.V. et autres c. Belgique</em> (2026), une « carence systémique » et une atteinte à l'article 3 de la Convention. En avril 2026, près de 500 travailleurs de Fedasil ont publiquement dénoncé des « violations quotidiennes de l'État de droit ».</p>
+    </div>
+    <p class="media-note" data-reveal>En toile de fond : un paysage médiatique francophone qui, après la fusion Rossel-IPM, concentre environ 94 % du marché de la presse quotidienne dans un seul groupe — une situation que la Fédération européenne des journalistes dit n'avoir « pas connaissance d'un autre exemple » en Europe. Sans pluralisme de la presse, pas d'opinion publique nationale capable de porter ces constats.</p>
+  </div>
+</section>
+
+<section class="agir" id="agir">
+  <div class="wrap">
+    <div class="eyebrow">Et maintenant</div>
+    <h2 class="head" data-reveal>Ce qui peut être fait<br><em>— ce n'est pas révolutionnaire</em></h2>
+    <p class="lede" data-reveal data-reveal-delay="1">Les leviers existent. Ils ne sont pas spectaculaires : ils sont juridiques, associatifs, électoraux, médiatiques. Ce dossier n'a d'utilité que s'il se traduit en gestes concrets — à votre échelle, et à celle du débat public.</p>
+
+    <ol class="reflexes" data-reveal data-reveal-delay="2">
+      <li><p><strong>Ne restez pas seul·e</strong> avec votre problème. Presque chaque type de litige administratif belge a une association spécialisée qui conseille gratuitement.</p></li>
+      <li><p><strong>Écrivez tout, gardez tout.</strong> Dates, noms, mails, captures d'écran. Sans trace, pas de dossier — avec trace, vous existez face à l'administration.</p></li>
+      <li><p><strong>L'aide juridique de première ligne est gratuite</strong>, pour tout le monde, sans condition de revenus : Maison de Justice, Bureau d'Aide Juridique, permanences associatives.</p></li>
+      <li><p><strong>Si vos revenus sont modestes, l'État paie votre avocat·e</strong> — c'est l'aide juridique de deuxième ligne, dite « pro deo ». Le seuil tourne autour de 1 650 €/mois net pour un isolé en 2026.</p></li>
+      <li><p><strong>Parlez à votre parlementaire</strong>, même si vous n'avez pas voté pour elle ou lui. C'est gratuit, et iel dispose d'outils que vous n'avez pas : question écrite au ministre, interpellation, question orale.</p></li>
+    </ol>
+
+    <div class="action-table-wrap" data-reveal>
+      <table class="action-table">
+        <caption>Votre problème → la première porte, gratuite → si ça ne suffit pas</caption>
+        <thead><tr><th>Si votre problème est…</th><th>Première porte (gratuite)</th><th>Si ça ne suffit pas</th></tr></thead>
+        <tbody>
+          <tr><td>L'administration ne répond pas, ou mal</td><td>Le Médiateur compétent</td><td>Conseil d'État</td></tr>
+          <tr><td>On vous refuse un document</td><td>Demande formelle → CADA</td><td>Conseil d'État</td></tr>
+          <tr><td>Une aide sociale vous a été refusée</td><td>Atelier des droits sociaux + Tribunal du travail (gratuit, avocat non obligatoire)</td><td>Cour du travail</td></tr>
+          <tr><td>Un·e policier·ère a abusé de son autorité</td><td>Comité P + dépôt de plainte au Parquet + Ligue des droits humains</td><td>Action civile contre l'État</td></tr>
+          <tr><td>Vous avez été discriminé·e</td><td>Unia / IEFH selon le cas</td><td>Tribunal, avec l'appui de l'organisme</td></tr>
+          <tr><td>Un litige porte sur moins de 5 000 €</td><td>Juge de paix</td><td>Tribunal de première instance</td></tr>
+          <tr><td>Vous voulez signaler une pratique systémique, pas un cas isolé</td><td>Ligue des droits humains + votre parlementaire + la presse</td><td>GRECO, CEDH, mécanismes onusiens</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="frontier" data-reveal>
+      <h3>La frontière juridique — incertaine, mais réelle</h3>
+      <p>Des juristes et citoyens explorent, depuis 2023, des voies plus ambitieuses : la question préjudicielle devant la Cour constitutionnelle pour contester l'absence d'encadrement de la discipline de vote, l'action en responsabilité civile contre l'État-législateur pour faute d'abstention, ou l'invocation de la jurisprudence de la Cour européenne des droits de l'homme (<em>Demirtaş c. Turquie</em>, <em>Lykourezos c. Grèce</em>) sur le droit d'exercer effectivement un mandat parlementaire. Ces routes sont semées d'obstacles procéduraux documentés, et leur issue est incertaine — ce dossier ne promet aucune victoire judiciaire. Mais elles existent, et c'est déjà plus que ce qu'on en dit habituellement.</p>
+    </div>
+
+    <div class="closing-cta" data-reveal>
+      <div class="closing-cta-text">
+        <h3>Le 30 novembre 2026 n'est pas une date abstraite</h3>
+        <p>C'est l'échéance que le GRECO a lui-même fixée à la Belgique. Une pression médiatique, associative et citoyenne organisée d'ici là peut transformer une formalité diplomatique en véritable moment de bascule.</p>
+      </div>
+      <div class="cc-count" id="cc-days-wrap">—<span>jours restants</span></div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ============ FOOTER ============ */
+footer{ background:var(--bg-deep); border-top:1px solid var(--line-dark); padding:clamp(56px,8vw,96px) 0 48px; }
+.foot-stamp{ display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--bone-faint); border:1px solid var(--line-dark); padding:7px 13px; border-radius:2px; margin-bottom:32px; }
+.foot-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:60px; }
+.foot-grid h4{ font-family:var(--mono); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.foot-sources{ font-size:0.88rem; color:var(--bone-soft); line-height:1.7; max-width:54ch; }
+.foot-disclaimer{ font-size:0.84rem; color:var(--bone-faint); line-height:1.65; max-width:50ch; }
+.foot-closing{ margin-top:56px; padding-top:40px; border-top:1px solid var(--line-dark); font-family:var(--serif-display); font-style:italic; font-weight:500; font-size:clamp(1.1rem,1.9vw,1.4rem); line-height:1.5; color:var(--bone); max-width:50ch; }
+.foot-bottom{ margin-top:40px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:var(--mono); font-size:0.7rem; color:var(--bone-faint); letter-spacing:0.04em; }
+.foot-bottom a{ color:var(--gold-soft); text-decoration:none; }
+@media (max-width:780px){ .foot-grid{ grid-template-columns:1fr; gap:36px; } }
+
+/* small fixes */
+.redact-card{ width:100%; display:block; text-align:left; }
+</style>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-stamp">FIN DU DOSSIER N° 42 / 1831–2026</div>
+    <div class="foot-grid">
+      <div>
+        <h4>Méthode &amp; sources</h4>
+        <p class="foot-sources">Cette synthèse s'appuie sur les rapports du GRECO et du Conseil de l'Europe, la Cour des comptes fédérale et régionales, le CRISP, l'IWEPS, Cumuleo, Transparency International, la jurisprudence de la Cour européenne des droits de l'homme, la doctrine académique de science politique belge (notamment Lieven De Winter, Frederik Verleden, Kris Deschouwer, Wilfried Dewachter, Bart Maddens) et la presse d'investigation belge (Médor, Apache, Le Vif, Wilfried). Les chiffres cités portent les dates de leur dernière mise à jour connue au moment de la rédaction.</p>
+      </div>
+      <div>
+        <h4>Avertissement</h4>
+        <p class="foot-disclaimer">Ce dossier est une synthèse citoyenne indépendante, à finalité d'information et de débat démocratique. Il ne constitue pas un avis juridique et ne remplace pas la consultation d'un·e avocat·e. Les personnes mentionnées en lien avec des procédures en cours demeurent présumées innocentes. Aucune accusation pénale individuelle n'est formulée : ce texte documente des pratiques institutionnelles à des fins d'argumentation de droit public.</p>
+      </div>
+    </div>
+    <p class="foot-closing">Une constitution n'est pas un texte qu'on récite une fois tous les cinq ans dans un isoloir. C'est un texte qu'on fait vivre — ou qu'on laisse mourir d'inertie administrative. Ce choix n'a jamais appartenu qu'aux citoyens qui refusent de détourner le regard.</p>
+    <div class="foot-bottom">
+      <span>Dossier citoyen — édition juin 2026</span>
+      <a href="#sommaire">Revenir au sommaire ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* ---- Countdown to GRECO deadline (30 nov 2026) ---- */
+(function(){
+  var target = new Date('2026-11-30T00:00:00');
+  var elD = document.getElementById('cd-d');
+  var elH = document.getElementById('cd-h');
+  var elM = document.getElementById('cd-m');
+  var elS = document.getElementById('cd-s');
+  var ccWrap = document.getElementById('cc-days-wrap');
+
+  function tick(){
+    var now = new Date();
+    var diff = target - now;
+    if(diff <= 0){
+      if(elD) elD.textContent = '0';
+      if(elH) elH.textContent = '0';
+      if(elM) elM.textContent = '0';
+      if(elS) elS.textContent = '0';
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    if(elD) elD.textContent = d;
+    if(elH) elH.textContent = String(h).padStart(2,'0');
+    if(elM) elM.textContent = String(m).padStart(2,'0');
+    if(elS) elS.textContent = String(s).padStart(2,'0');
+    if(ccWrap){
+      ccWrap.innerHTML = d + '<span>jours restants</span>';
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* ---- Scroll progress bar ---- */
+(function(){
+  var bar = document.getElementById('progress');
+  if(!bar) return;
+  function update(){
+    var h = document.documentElement;
+    var scrollable = h.scrollHeight - h.clientHeight;
+    var pct = scrollable > 0 ? (h.scrollTop / scrollable) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  document.addEventListener('scroll', update, { passive:true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+/* ---- Scroll reveal ---- */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var items = document.querySelectorAll('[data-reveal]');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+  items.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ---- Redaction reveal cards ---- */
+(function(){
+  var cards = document.querySelectorAll('[data-redact]');
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      card.classList.toggle('is-open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
