@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séparation des Pouvoirs en Belgique — Analyse 2024-2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0C1A2E;--navy2:#152338;--navy3:#1A3553;
+  --gold:#C9A84C;--gold2:#E2C97A;--gold3:rgba(201,168,76,.1);
+  --red:#C0392B;--red2:#E74C3C;--red3:rgba(192,57,43,.1);
+  --green:#1E6B40;--green2:#27AE60;--green3:rgba(39,174,96,.1);
+  --blue:#1A4D8F;--blue2:#5B8DD9;--blue3:rgba(91,141,217,.1);
+  --cream:#F4F1EA;--white:#FAFAF7;--grey:#7A8090;--greyl:#B0B5C0;
+  --r:3px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);line-height:1.65;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.fade{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade.vis{opacity:1;transform:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2.5rem;background:rgba(12,26,46,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,.18)}
+.nav-logo{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.06em;color:var(--greyl);text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-tag{font-family:'DM Mono',monospace;font-size:.6rem;padding:.2rem .5rem;border:1px solid rgba(201,168,76,.3);color:var(--gold)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 60% at 50% 55%,rgba(201,168,76,.06) 0%,transparent 70%),radial-gradient(ellipse 80% 40% at 15% 20%,rgba(26,53,83,.6) 0%,transparent 60%);pointer-events:none}
+.hero-tag{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.2em;color:var(--gold);margin-bottom:1.4rem;text-transform:uppercase;opacity:0;animation:fadeUp .7s .2s forwards}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.2rem);font-weight:300;line-height:1.08;max-width:860px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-h1 em{font-style:italic;color:var(--gold2)}
+.hero-sub{margin-top:1.6rem;font-size:1rem;color:var(--greyl);max-width:580px;line-height:1.7;opacity:0;animation:fadeUp .8s .6s forwards}
+.art-pills{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:2rem;opacity:0;animation:fadeUp .8s .8s forwards}
+.art-pill{font-family:'DM Mono',monospace;font-size:.6rem;padding:.25rem .65rem;border:1px solid rgba(201,168,76,.4);border-radius:2px;color:var(--gold);letter-spacing:.07em}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:2.2rem;padding:.4rem 1rem;border:1px solid rgba(201,168,76,.25);font-family:'DM Mono',monospace;font-size:.68rem;color:var(--gold2);letter-spacing:.06em;opacity:0;animation:fadeUp .8s 1s forwards}
+
+/* LAYOUT */
+.sw{max-width:1100px;margin:0 auto;padding:0 2rem}
+.sec-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.sec-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.7rem);font-weight:400;color:var(--cream);line-height:1.15;margin-bottom:.6rem}
+.sec-intro{font-size:.9rem;color:var(--greyl);line-height:1.75;max-width:680px;margin-bottom:2.5rem}
+.gold-rule{width:48px;height:2px;background:var(--gold);margin:.8rem 0 0}
+.divider{border:none;border-top:1px solid rgba(255,255,255,.07)}
+
+/* STAT STRIP */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+.stat-item{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-item:last-child{border-right:none}
+.sn{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--gold2);display:block;line-height:1}
+.sl{display:block;font-size:.73rem;color:var(--greyl);margin-top:.4rem;line-height:1.35}
+
+/* ARTICLES GRID */
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem;margin-top:2rem}
+.art-card{padding:1.3rem 1.5rem;border:1px solid rgba(255,255,255,.07);border-left:3px solid var(--gold);background:rgba(255,255,255,.02);border-radius:0 var(--r) var(--r) 0;transition:background .2s}
+.art-card:hover{background:rgba(255,255,255,.05)}
+.art-num{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--gold);letter-spacing:.12em;margin-bottom:.5rem}
+.art-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:.4rem}
+.art-quote{font-size:.78rem;color:var(--greyl);line-height:1.6;font-style:italic;margin-bottom:.5rem;border-left:2px solid rgba(201,168,76,.3);padding-left:.6rem}
+.art-note{font-size:.73rem;color:var(--greyl);line-height:1.55}
+
+/* TIMELINE */
+.tl{position:relative;margin-top:2.5rem;padding-bottom:1rem}
+.tl::before{content:'';position:absolute;left:110px;top:0;bottom:0;width:1px;background:rgba(201,168,76,.2)}
+.tl-item{display:flex;gap:1.8rem;margin-bottom:2rem;align-items:flex-start}
+.tl-year{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--gold);min-width:110px;text-align:right;padding-top:.2rem}
+.tl-dot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:.5rem;position:relative;z-index:1;box-shadow:0 0 0 3px var(--navy),0 0 0 4px rgba(201,168,76,.3)}
+.tl-content{flex:1}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:.98rem;font-weight:600;color:var(--cream);margin-bottom:.25rem}
+.tl-text{font-size:.78rem;color:var(--greyl);line-height:1.6}
+
+/* POWERS */
+.pow-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:2.5rem;margin-top:2rem;overflow-x:auto}
+.p-tab{padding:.75rem 1.5rem;font-size:.8rem;color:var(--greyl);cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+.p-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.p-tab:hover{color:var(--cream)}
+.p-panel{display:none}
+.p-panel.active{display:block}
+.pow-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.pow-block{padding:1.5rem;border:1px solid rgba(255,255,255,.07);border-radius:var(--r);background:rgba(255,255,255,.02)}
+.pow-full{grid-column:1/-1}
+.pow-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--cream);margin-bottom:.3rem}
+.pow-art{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.7rem}
+.pow-text{font-size:.81rem;color:var(--greyl);line-height:1.65;margin-bottom:.9rem}
+.pow-list{list-style:none}
+.pow-list li{font-size:.79rem;color:var(--cream);padding:.28rem 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-start;gap:.45rem;line-height:1.4}
+.pow-list li:last-child{border-bottom:none}
+.pow-list li::before{content:'→';color:var(--gold);flex-shrink:0;font-size:.73rem;margin-top:.05rem}
+.kern-box{margin-top:1rem;padding:1rem 1.2rem;border-left:3px solid var(--red2);background:rgba(192,57,43,.08);border-radius:0 var(--r) var(--r) 0}
+.kern-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#ff7070;margin-bottom:.4rem}
+.kern-text{font-size:.78rem;color:var(--greyl);line-height:1.6;margin-bottom:.6rem}
+.mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1rem 0}
+.mini-stat{text-align:center;padding:.9rem;background:rgba(192,57,43,.08);border-radius:var(--r)}
+.mini-n{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#ff6b6b;display:block;line-height:1}
+.mini-l{font-size:.68rem;color:var(--greyl);margin-top:.3rem;line-height:1.3}
+
+/* TABLE */
+.table-wrap{margin:2.5rem 0;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:600px}
+thead th{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-align:left;padding:.75rem 1rem;border-bottom:1px solid rgba(201,168,76,.3)}
+tbody td{font-size:.78rem;padding:.8rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);color:var(--greyl);vertical-align:top;line-height:1.5}
+tbody tr:hover td{background:rgba(255,255,255,.025)}
+.td-m{color:var(--cream);font-weight:500}
+.td-a{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--gold)}
+
+/* CHECKS */
+.ch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:2.5rem}
+.ch-card{padding:1.4rem;border-radius:var(--r);border:1px solid rgba(255,255,255,.07);transition:border-color .25s}
+.ch-card:hover{border-color:rgba(201,168,76,.25)}
+.ch-card.go{border-left:3px solid var(--gold);background:var(--gold3)}
+.ch-card.bl{border-left:3px solid var(--blue2);background:var(--blue3)}
+.ch-card.gr{border-left:3px solid var(--green2);background:var(--green3)}
+.ch-card.re{border-left:3px solid var(--red2);background:var(--red3)}
+.ch-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem;display:block}
+.ch-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--cream);margin-bottom:.35rem}
+.ch-text{font-size:.79rem;color:var(--greyl);line-height:1.65}
+
+/* CRISES */
+.cr-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:0}
+.cr-item{border-top:1px solid rgba(255,255,255,.07);padding:2.5rem 0;display:grid;grid-template-columns:80px 1fr;gap:1.8rem;align-items:flex-start}
+.cr-n{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;color:rgba(201,168,76,.12);line-height:1}
+.cr-lbl{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--red2);margin-bottom:.3rem}
+.cr-lbl.warn{color:#E8A000}
+.cr-lbl.info{color:var(--blue2)}
+.cr-h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--cream);margin-bottom:.5rem;line-height:1.25}
+.cr-text{font-size:.81rem;color:var(--greyl);line-height:1.7;margin-bottom:.8rem}
+.cr-text strong{color:var(--cream)}
+.cr-stats{display:flex;flex-wrap:wrap;gap:.5rem}
+.cs{font-family:'DM Mono',monospace;font-size:.62rem;padding:.25rem .65rem;border:1px solid rgba(255,255,255,.1);border-radius:2px;color:var(--greyl);letter-spacing:.05em}
+.cs.r{border-color:rgba(231,76,60,.3);color:#ff8a80}
+.cs.g{border-color:rgba(201,168,76,.3);color:var(--gold2)}
+.cs.b{border-color:rgba(91,141,217,.3);color:#90c8ff}
+.cs.gr{border-color:rgba(39,174,96,.3);color:#7fe5a0}
+
+/* QUOTE */
+.quote-block{padding:4rem 2rem;text-align:center;background:rgba(201,168,76,.04);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12)}
+.q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,3vw,1.8rem);font-style:italic;line-height:1.55;max-width:800px;margin:0 auto;color:var(--cream)}
+.q-src{margin-top:1.4rem;font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.1em;color:var(--gold)}
+
+/* RESILIENCE */
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;margin-top:2.5rem}
+.res-card{padding:1.4rem;border:1px solid rgba(39,174,96,.2);background:var(--green3);border-radius:var(--r)}
+.res-date{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--green2);letter-spacing:.1em;margin-bottom:.4rem;display:block}
+.res-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--cream);margin-bottom:.35rem}
+.res-text{font-size:.78rem;color:var(--greyl);line-height:1.6}
+
+/* INDICATORS */
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.5rem}
+.ind-card{padding:1.3rem;border:1px solid rgba(255,255,255,.07);border-radius:var(--r);text-align:center;background:rgba(255,255,255,.02)}
+.ind-n{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;line-height:1;margin-bottom:.35rem}
+.ind-n.bad{color:var(--red2)}
+.ind-n.warn{color:#E8A000}
+.ind-nm{font-size:.7rem;color:var(--cream);margin-bottom:.2rem;font-weight:500}
+.ind-sub{font-size:.65rem;color:var(--grey);line-height:1.4}
+
+/* RECO */
+.reco-list{margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem}
+.reco-item{display:flex;gap:1.4rem;padding:1.4rem 1.5rem;border:1px solid rgba(255,255,255,.07);border-radius:var(--r);background:rgba(255,255,255,.02);align-items:flex-start;transition:background .2s}
+.reco-item:hover{background:rgba(255,255,255,.04)}
+.reco-n{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:rgba(201,168,76,.22);line-height:1;min-width:2.4rem}
+.reco-title{font-family:'Cormorant Garamond',serif;font-size:1.02rem;font-weight:600;color:var(--cream);margin-bottom:.3rem}
+.reco-text{font-size:.79rem;color:var(--greyl);line-height:1.6}
+
+/* FOOTER */
+.footer-wrap{max-width:1100px;margin:0 auto;padding:3rem 2rem;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2rem}
+.footer-brand-name{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gold);letter-spacing:.1em;margin-bottom:.4rem}
+.footer-brand-sub{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--grey);line-height:1.5}
+.footer-sources{font-size:.7rem;color:var(--grey);max-width:500px;line-height:1.6}
+.footer-sources strong{color:var(--greyl)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:.8rem 1.2rem}.nav-links{display:none}
+  .stat-strip,.pow-grid,.ch-grid,.res-grid,.ind-grid{grid-template-columns:1fr 1fr}
+  .cr-item{grid-template-columns:55px 1fr;gap:1rem}.cr-n{font-size:2.4rem}
+  .tl::before{left:80px}.tl-year{min-width:80px;font-size:1rem}
+  .mini-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .stat-strip,.ind-grid{grid-template-columns:1fr}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+  .pow-grid,.ch-grid,.res-grid{grid-template-columns:1fr}
+  .art-grid{grid-template-columns:1fr}
+  .mini-grid{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0s!important;transition-duration:0s!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Séparation des Pouvoirs · Belgique</span>
+  <ul class="nav-links">
+    <li><a href="#fondements">Fondements</a></li>
+    <li><a href="#pouvoirs">Trois pouvoirs</a></li>
+    <li><a href="#controles">Contrôles</a></li>
+    <li><a href="#crises">Crises</a></li>
+    <li><a href="#resilience">Résistances</a></li>
+    <li><a href="#recommandations">Réformes</a></li>
+  </ul>
+  <span class="nav-tag">2024–2026</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-tag">Analyse constitutionnelle approfondie · État de droit</p>
+  <h1 class="hero-h1">La Séparation des Pouvoirs<br>en Belgique<br><em>équilibres, dérives et résilience</em></h1>
+  <p class="hero-sub">Un principe non codifié mais constitutionnel, doublement mis à l'épreuve : par la capture particratique du législatif et par le refus assumé de l'exécutif d'exécuter les décisions de justice.</p>
+  <div class="art-pills">
+    <span class="art-pill">Art. 33 — Nation</span>
+    <span class="art-pill">Art. 36 — Législatif</span>
+    <span class="art-pill">Art. 37 — Exécutif</span>
+    <span class="art-pill">Art. 40 — Judiciaire</span>
+    <span class="art-pill">Art. 42 — Mandat libre</span>
+    <span class="art-pill">Art. 88 — Inviolabilité</span>
+    <span class="art-pill">Art. 106 — Contreseing</span>
+    <span class="art-pill">Art. 142 — Cour Const.</span>
+    <span class="art-pill">Art. 151 — CSJ</span>
+    <span class="art-pill">Art. 159 — Illégalité</span>
+  </div>
+  <div class="hero-badge">⚖ Monarchie constitutionnelle fédérale · Constitution du 7 février 1831</div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip fade">
+  <div class="stat-item"><span class="sn">1831</span><span class="sl">Constitution fondatrice<br>Principe non codifié<br>mais constitutionnel</span></div>
+  <div class="stat-item"><span class="sn">16 000+</span><span class="sl">Condamnations Fedasil<br>ignorées depuis<br>janvier 2022</span></div>
+  <div class="stat-item"><span class="sn">+43 %</span><span class="sl">Magistrats nécessaires<br>pour traiter les dossiers<br>en délai raisonnable</span></div>
+  <div class="stat-item"><span class="sn">~99 %</span><span class="sl">Indice de Rice<br>Discipline de vote<br>Art. 42 fictif de facto</span></div>
+</div>
+
+<!-- FONDEMENTS -->
+<section id="fondements" style="padding:5rem 0">
+  <div class="sw fade">
+    <p class="sec-label">Partie I — Fondements</p>
+    <h2 class="sec-h2">Architecture constitutionnelle du modèle belge</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-intro" style="margin-top:1.2rem">La Constitution belge du 7 février 1831 est produite par le Congrès national dans un climat de rupture avec l'autoritarisme de Guillaume I<sup>er</sup>. Elle érige la séparation des pouvoirs en principe général de droit de rang constitutionnel, sans l'inscrire dans un article unique. À l'art. 33, les constituants posent que <em>« tous les pouvoirs émanent de la Nation »</em> — rupture radicale avec les chartes qui proclamaient que la justice émanait du Roi. La séparation n'a jamais été conçue comme une étanchéité absolue, mais comme une interdépendance fonctionnelle où chaque pouvoir dépend d'une autre institution pour l'exercice de ses compétences.</p>
+  </div>
+</section>
+
+<div style="background:var(--navy2);padding:5rem 0">
+  <div class="sw fade">
+    <p class="sec-label">Textes fondateurs</p>
+    <h2 class="sec-h2">Les articles constitutionnels clés</h2>
+    <div class="gold-rule"></div>
+    <div class="art-grid">
+      <div class="art-card"><p class="art-num">ART. 33 — SOUVERAINETÉ</p><h3 class="art-title">Tous les pouvoirs émanent de la Nation</h3><p class="art-quote">« Tous les pouvoirs émanent de la Nation. Ils sont exercés de la manière établie par la Constitution. »</p><p class="art-note">Jamais révisé depuis 1831. Fondement de l'exclusion du référendum décisionnel (Conseil d'État, al. 2). Les présidences de partis exercent aujourd'hui un pouvoir que cet article ne reconnaît pas.</p></div>
+      <div class="art-card"><p class="art-num">ART. 36 — LÉGISLATIF</p><h3 class="art-title">Exercice collectif du pouvoir législatif</h3><p class="art-quote">« Le pouvoir législatif fédéral s'exerce collectivement par le Roi, la Chambre des représentants et le Sénat. »</p><p class="art-note">Depuis la 6e réforme (2014), l'essentiel revient à la Chambre. Le Sénat (art. 77) est devenu une chambre non permanente de représentation des entités fédérées, aux compétences limitées.</p></div>
+      <div class="art-card"><p class="art-num">ART. 37 — EXÉCUTIF</p><h3 class="art-title">Le pouvoir exécutif au Roi</h3><p class="art-quote">« Au Roi appartient le pouvoir exécutif fédéral, tel qu'il est réglé par la Constitution. »</p><p class="art-note">Combiné avec les art. 88 (inviolabilité) et 106 (contreseing). Art. 105 : le Roi n'a d'autres pouvoirs que ceux attribués par la Constitution. Art. 108 : il ne peut suspendre les lois. En pratique : le Kern décide.</p></div>
+      <div class="art-card"><p class="art-num">ART. 40 — JUDICIAIRE</p><h3 class="art-title">Le pouvoir judiciaire aux cours et tribunaux</h3><p class="art-quote">« Le pouvoir judiciaire est exercé par les cours et tribunaux. Les arrêts et jugements sont exécutés au nom du Roi. »</p><p class="art-note">La disposition « au nom du Roi » impose à l'exécutif un devoir constitutionnel d'exécution. La non-exécution systémique de Fedasil (16 000+ condamnations) constitue une violation directe de cet article.</p></div>
+      <div class="art-card"><p class="art-num">ART. 42 — MANDAT LIBRE</p><h3 class="art-title">Les parlementaires représentent la Nation</h3><p class="art-quote">« Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus. »</p><p class="art-note">Interdit le mandat impératif. Largement fictif : indice de Rice ~99 % (99,73 % sur les votes stratégiques). La Cour constitutionnelle (arrêt 130/2016) refuse de censurer cette contradiction — une « constitutionnalité de droit artificielle ».</p></div>
+      <div class="art-card"><p class="art-num">ART. 88 · 106 — INVIOLABILITÉ &amp; CONTRESEING</p><h3 class="art-title">Responsabilité ministérielle</h3><p class="art-quote">Art. 88 : « La personne du Roi est inviolable ; ses ministres sont responsables. » Art. 106 : « Aucun acte du Roi ne peut avoir d'effet, s'il n'est contresigné par un ministre. »</p><p class="art-note">Clé de voûte de la responsabilité gouvernementale. La Commission de Venise confirme que ce principe est « absolu et ne connaît aucune exception ». Art. 91 : le Roi prête serment avant tout exercice du pouvoir.</p></div>
+      <div class="art-card"><p class="art-num">ART. 142 — COUR CONSTITUTIONNELLE</p><h3 class="art-title">Contrôle de constitutionnalité</h3><p class="art-quote">Fondement constitutionnel du contrôle de constitutionnalité des lois, décrets et ordonnances.</p><p class="art-note">12 juges (double parité linguistique ; dans chaque groupe, 3 juristes + 3 anciens parlementaires). Née sous le nom de Cour d'arbitrage (1984). Ses arrêts d'annulation ont effet ex tunc, modulable. Monopole du contrôle des normes législatives.</p></div>
+      <div class="art-card"><p class="art-num">ART. 151 — INDÉPENDANCE JUDICIAIRE · CSJ</p><h3 class="art-title">Le Conseil supérieur de la Justice</h3><p class="art-quote">Les juges sont nommés par le Roi sur présentation motivée du CSJ. Le ministre ne peut refuser qu'en motivant formellement.</p><p class="art-note">CSJ créé en 1999 après la Marche blanche. 44 membres (22 magistrats élus + 22 non-magistrats désignés par le Sénat aux 2/3). Son financement reste subordonné aux crédits de l'exécutif — limite pratique de l'indépendance formelle.</p></div>
+      <div class="art-card"><p class="art-num">ART. 159 — EXCEPTION D'ILLÉGALITÉ</p><h3 class="art-title">Contrôle incident des actes administratifs</h3><p class="art-quote">« Les cours et tribunaux n'appliquent les arrêtés et règlements généraux, provinciaux et locaux, qu'autant qu'ils sont conformes aux lois. »</p><p class="art-note">Prive l'acte illégal de tout effet dans le litige. Étendu (lois 1999 et 2007) aux actes administratifs des assemblées législatives elles-mêmes, sans toucher au noyau de leur activité politique.</p></div>
+      <div class="art-card"><p class="art-num">ART. 187 — INTANGIBILITÉ</p><h3 class="art-title">La Constitution ne peut être suspendue</h3><p class="art-quote">« La Constitution ne peut être suspendue en tout ni en partie. »</p><p class="art-note">Absence d'état d'exception formel — source de tensions pendant les guerres mondiales et le COVID-19. La Cour constitutionnelle a validé la loi pandémie (arrêt 33/2023) sous réserve d'un contrôle parlementaire strict de 15 jours.</p></div>
+      <div class="art-card"><p class="art-num">ART. 99 — GOUVERNEMENT</p><h3 class="art-title">Collégialité &amp; parité linguistique</h3><p class="art-quote">Le gouvernement fédéral compte 15 ministres maximum avec stricte parité linguistique.</p><p class="art-note">Le Kern (Kernkabinet) contourne l'art. 99 en pré-décidant hors Conseil des ministres. Sous Arizona (fév. 2025), le Kern réunit pour la première fois plus de la moitié des membres maximaux du Conseil.</p></div>
+      <div class="art-card"><p class="art-num">ART. 143 — LOYAUTÉ FÉDÉRALE</p><h3 class="art-title">Obligation de coopération loyale</h3><p class="art-quote">L'État fédéral et les entités fédérées s'abstiennent d'exercer leurs compétences de manière à nuire aux conditions d'exercice des compétences des autres.</p><p class="art-note">Justiciable depuis la loi spéciale du 6 janvier 2014. Pendant interne du principe de loyauté constitutionnelle (constitutionele hoffelijkheid néerlandaise).</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline-section" style="padding:5rem 0">
+  <div class="sw fade">
+    <p class="sec-label">Jalons historiques</p>
+    <h2 class="sec-h2">Histoire d'un équilibre en construction</h2>
+    <div class="gold-rule"></div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-year">1831</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Constitution fondatrice</div><div class="tl-text">Le Congrès national pose la souveraineté nationale (art. 33). Rupture avec l'absolutisme et les chartes de l'Ancien Régime. Séparation des pouvoirs comme principe implicite et obligatoire.</div></div></div>
+      <div class="tl-item"><div class="tl-year">1920</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Arrêt La Flandria — Cour de cassation</div><div class="tl-text">L'État est soumis au droit commun de la responsabilité civile. Premier jalon de la justiciabilité de l'action publique. Fondement de toutes les condamnations de l'État qui suivront.</div></div></div>
+      <div class="tl-item"><div class="tl-year">1946</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Création du Conseil d'État</div><div class="tl-text">Juge administratif indépendant. Son exclusion de l'ordre judiciaire ordinaire reflète une conception classique : éviter l'immixtion des tribunaux civils dans les actes de l'administration.</div></div></div>
+      <div class="tl-item"><div class="tl-year">1971</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Arrêt Le Ski — primauté des traités</div><div class="tl-text">La Cour de cassation consacre la primauté des traités internationaux à effet direct sur le droit interne. Ouvre la voie à l'invocabilité de la CEDH contre l'État belge.</div></div></div>
+      <div class="tl-item"><div class="tl-year">1984</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Cour d'arbitrage → Cour constitutionnelle</div><div class="tl-text">La Belgique abandonne le dogme de la souveraineté parlementaire absolue. Contrôle des lois — révolution dans l'équilibre des pouvoirs. Compétences étendues par les réformes de 1988, 2003 et 2014.</div></div></div>
+      <div class="tl-item"><div class="tl-year">1998</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Conseil supérieur de la Justice</div><div class="tl-text">Créé suite à la Marche blanche (affaire Dutroux, 1996). Art. 151 révisé. Fin théorique des nominations politiques. 44 membres, double parité linguistique et fonctionnelle.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2004</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Arrêt 93/2004 — Cour constitutionnelle</div><div class="tl-text">Les actes administratifs du Parlement (personnel, marchés publics) peuvent être contrôlés par le Conseil d'État. Limite l'immunité absolue des assemblées sans toucher à leur noyau politique.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2013</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Affaire Trabelsi — extradition illégale</div><div class="tl-text">Nizar Trabelsi extradé vers les États-Unis malgré une mesure provisoire de la CEDH. Cinq ministres de la Justice successifs ignorent les injonctions de rapatriement. Condamnation civile de l'État (Cour d'appel Bxl, sept. 2022).</div></div></div>
+      <div class="tl-item"><div class="tl-year">2020</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">COVID — Pouvoirs spéciaux &amp; tensions constitutionnelles</div><div class="tl-text">AR n°2 du 9 avril 2020 : l'exécutif organise la paralysie du judiciaire en suspendant les délais civils. Le 31 mars 2021, le TPI condamne l'État à se doter d'une base légale sous 30 jours (5 000 €/jour). Résultat : la loi pandémie du 14 août 2021, validée par l'arrêt 33/2023.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2022</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Responsabilité civile de l'État-législateur</div><div class="tl-text">Cour de cassation (15 déc. 2022) : le législateur imprudent peut engager la responsabilité civile de l'État. Arrêt AVOCATS.BE (Cour d'appel, 6 nov. 2023) : astreinte 1 000 €/jour pour non-publication des postes vacants de magistrats (plafond 250 000 €).</div></div></div>
+      <div class="tl-item"><div class="tl-year">2023</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Camara c. Belgique · Klimaatzaak en appel</div><div class="tl-text">CEDH (18 juill. 2023, req. 49255/22) : « carence systémique » et « refus caractérisé » (§ 118 et 121). 358 requêtes pendantes. Klimaatzaak : Cour d'appel Bxl (30 nov. 2023) impose une réduction GES d'au moins 55 % d'ici 2030 — 2e injonction quantifiée au monde après Urgenda.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2024</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Mémorandum commun des trois hautes juridictions</div><div class="tl-text">Juillet 2024 : la Cour constitutionnelle, la Cour de cassation et le Conseil d'État interpellent conjointement le formateur De Wever — démarche d'une rareté absolue. Réclament financement, exécution des décisions, indépendance. Le même avertissement de 2019 n'avait pas été entendu.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2025</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Grève des magistrats · Réforme Van Tigchelt · GRECO Règle 32</div><div class="tl-text">Réforme de retraite : -30-40% de revenu pour les magistrats. Grève sans précédent. Juges de paix bruxellois lisent des manifestes en audience. Déclaration conjointe Premier président + PG Cour de cassation (27 juin 2025). GRECO active la procédure de non-conformité (Règle 32, nov. 2025).</div></div></div>
+      <div class="tl-item"><div class="tl-year">2026</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">M.V. c. Belgique (CEDH) · Suspensions de lois migratoires</div><div class="tl-text">CEDH (9 avr. 2026) : première violation de l'art. 3 (traitements inhumains) dans ce contexte + art. 6 et 34. Cour constitutionnelle suspend les lois migratoires 2025 (arrêts 23/2026 et 24/2026, 26 fév. 2026). La ministre tente de contourner — Conseil d'État suspend en urgence (27 mars 2026).</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TROIS POUVOIRS -->
+<section id="pouvoirs" style="padding:5rem 0;background:var(--navy2)">
+  <div class="sw fade">
+    <p class="sec-label">Partie II — Architecture &amp; Dérives</p>
+    <h2 class="sec-h2">Les trois pouvoirs</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-intro" style="margin-top:1.2rem">La séparation n'a jamais été conçue comme une étanchéité absolue. C'est une interdépendance fonctionnelle : chaque pouvoir dépend d'une autre institution dans l'exercice de ses compétences. Cette interpénétration positive prévient les dérives autoritaires — à condition que la <strong style="color:var(--cream)">loyauté constitutionnelle</strong> soit respectée par tous les acteurs.</p>
+    <div class="pow-tabs">
+      <div class="p-tab active" onclick="showTab('leg',this)">🏛 Pouvoir Législatif</div>
+      <div class="p-tab" onclick="showTab('exec',this)">👑 Pouvoir Exécutif</div>
+      <div class="p-tab" onclick="showTab('jud',this)">⚖ Pouvoir Judiciaire</div>
+    </div>
+
+    <div id="tab-leg" class="p-panel active">
+      <div class="pow-grid">
+        <div class="pow-block">
+          <div class="pow-title">🏛 Chambre des représentants</div>
+          <p class="pow-art">ART. 36, 62, 64 CONSTITUTION</p>
+          <p class="pow-text">150 membres élus au suffrage universel direct. Depuis la 6e réforme, concentre l'essentiel du pouvoir législatif fédéral.</p>
+          <ul class="pow-list">
+            <li>Vote les lois fédérales (projets + propositions)</li>
+            <li>Adopte le budget, contrôle son exécution</li>
+            <li>Vote la confiance / méfiance constructive (art. 96)</li>
+            <li>Exerce le droit d'enquête parlementaire</li>
+            <li>Interpellation des ministres, questions orales et écrites</li>
+          </ul>
+        </div>
+        <div class="pow-block">
+          <div class="pow-title">📋 Sénat fédéral</div>
+          <p class="pow-art">ART. 36, 77 CONSTITUTION · 6E RÉFORME 2014</p>
+          <p class="pow-text">60 membres non élus directement : sénateurs désignés par les parlements des communautés et des régions. Rôle résiduel limité aux matières bicamérisées de l'art. 77.</p>
+          <ul class="pow-list">
+            <li>Matières bicamérisées obligatoires (art. 77)</li>
+            <li>Révisions constitutionnelles (art. 195)</li>
+            <li>Désignation des membres non-magistrats du CSJ (aux 2/3)</li>
+            <li>Présentation des juges à la Cour constitutionnelle</li>
+          </ul>
+        </div>
+        <div class="pow-block pow-full">
+          <div class="pow-title" style="color:#ff7070">⚠ Capture particratique du législatif</div>
+          <p class="pow-art">ART. 42 VIOLÉ DE FACTO · ARRÊT CC 130/2016</p>
+          <div class="mini-grid">
+            <div class="mini-stat"><span class="mini-n">~99 %</span><span class="mini-l">Indice de Rice<br>(99,73 % stratégique)<br>Art. 42 fictif</span></div>
+            <div class="mini-stat"><span class="mini-n">&gt; 90 %</span><span class="mini-l">Lois votées<br>= projets<br>de l'exécutif</span></div>
+            <div class="mini-stat"><span class="mini-n">188 M€</span><span class="mini-l">Financement<br>partis/an<br>(KU Leuven 2025)</span></div>
+            <div class="mini-stat"><span class="mini-n">7 €/hab</span><span class="mini-l">Double Allemagne<br>4× Pays-Bas<br>Plus haut d'Europe</span></div>
+          </div>
+          <p class="pow-text" style="margin-top:.8rem">Les leviers de cette domination : contrôle des listes électorales (effet « case de tête »), menace d'exclusion du parti, lettres de démission pré-signées (nulles juridiquement mais pratiquées). La Cour constitutionnelle (arrêt 130/2016) refuse de considérer que la discipline de vote vicie la constitutionnalité d'une loi, validant une <em>constitutionnalité de droit artificielle</em> doublée d'une inconstitutionnalité matérielle de fait.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-exec" class="p-panel">
+      <div class="pow-grid">
+        <div class="pow-block">
+          <div class="pow-title">👑 Le Roi</div>
+          <p class="pow-art">ART. 37, 88, 91, 106 CONSTITUTION</p>
+          <p class="pow-text">Le Roi règne mais ne gouverne pas. Inviolabilité en contrepartie de la responsabilité ministérielle et du contreseing. Il est formellement l'une des branches du pouvoir législatif (art. 36) et chef de l'exécutif (art. 37).</p>
+          <ul class="pow-list">
+            <li>Inviolable : ses ministres sont seuls responsables de ses actes</li>
+            <li>Contreseing ministériel obligatoire pour tout acte royal</li>
+            <li>Serment constitutionnel avant prise du trône (art. 91)</li>
+            <li>Magistrature d'influence (Bagehot) : consulter, encourager, avertir</li>
+            <li>Rôle clé lors des formations gouvernementales (informateur, préformateur)</li>
+          </ul>
+        </div>
+        <div class="pow-block">
+          <div class="pow-title">🏢 Gouvernement fédéral</div>
+          <p class="pow-art">ART. 37, 96, 99 CONSTITUTION</p>
+          <p class="pow-text">Max. 15 ministres, parité linguistique stricte. Responsable devant la Chambre. Motion de méfiance constructive (art. 96) : le Parlement doit simultanément proposer un successeur.</p>
+          <ul class="pow-list">
+            <li>Exécute les lois, dirige l'administration publique</li>
+            <li>Conduit les relations internationales</li>
+            <li>Prépare le budget et les projets de loi</li>
+            <li>Pouvoirs spéciaux en crise (art. 105) sous encadrement parlementaire</li>
+          </ul>
+        </div>
+        <div class="pow-block pow-full">
+          <div class="kern-box">
+            <div class="kern-title">⚠ Le Kern — la boîte noire extra-constitutionnelle</div>
+            <p class="kern-text">Le Comité ministériel restreint (Kern/Kernkabinet) est un organe de fait <strong style="color:var(--cream)">sans aucune base constitutionnelle ni légale</strong>, qui ne tient aucun procès-verbal officiel archivé. Il arbitre les dossiers majeurs (budget, réformes, décisions politiques sensibles) avant même le Conseil des ministres formel, réduit à un acte d'entérinement. Le constitutionnaliste Hugues Dumont le qualifie de structure « para-légale ».</p>
+            <p class="kern-text">Sous le gouvernement Arizona (De Wever, mis en place le 3 février 2025 — N-VA, MR, Les Engagés, Vooruit, CD&amp;V), le Kern réunit le Premier ministre et les vice-Premiers ministres des cinq partis : pour la première fois, plus de la moitié des membres maximaux du Conseil des ministres. La « dérive consulaire » : le Roi consulte prioritairement les présidents de partis (dont certains ne sont pas parlementaires), qui désignent les ministres selon des quotas.</p>
+            <p class="kern-text" style="color:#ff8080">Conséquence constitutionnelle : une entité de droit privé (présidences de partis) dicte la loi à l'institution représentative. La doctrine (Marc Uyttendaele) y voit une « fraude à la Constitution » au sens de l'art. 33. Les <strong style="color:var(--cream)">cabinets ministériels</strong> constituent une administration parallèle opaque, au recrutement discrétionnaire — dénoncée par le GRECO (5e cycle) : absence de code de conduite contraignant, déclarations de patrimoine non publiées, vide juridique en matière d'intégrité.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-jud" class="p-panel">
+      <div class="pow-grid">
+        <div class="pow-block">
+          <div class="pow-title">⚖ Cour constitutionnelle</div>
+          <p class="pow-art">ART. 142 · 12 JUGES · DOUBLE PARITÉ</p>
+          <p class="pow-text">12 juges (6 francophones/6 néerlandophones ; 3 juristes + 3 anciens parlementaires dans chaque groupe). Nommés par le Roi sur présentation alternée de la Chambre et du Sénat aux 2/3. Née sous le nom de Cour d'arbitrage (1984), elle a mis fin au dogme de la souveraineté parlementaire absolue.</p>
+          <ul class="pow-list">
+            <li>Recours en annulation des lois, décrets, ordonnances — délai 6 mois</li>
+            <li>Questions préjudicielles posées par les autres juridictions</li>
+            <li>Demandes de suspension (mesure d'urgence)</li>
+            <li>Effet ex tunc des annulations, modulable pour sécurité juridique</li>
+            <li>Monopole du contrôle de constitutionnalité des normes législatives</li>
+          </ul>
+        </div>
+        <div class="pow-block">
+          <div class="pow-title">⚖ Conseil d'État</div>
+          <p class="pow-art">LOI DU 23 DÉCEMBRE 1946</p>
+          <p class="pow-text">Juge administratif suprême, délibérément extérieur à l'ordre judiciaire ordinaire. Section de législation (avis préventifs) et section du contentieux administratif (censure des actes illégaux).</p>
+          <ul class="pow-list">
+            <li>Annulation erga omnes des actes administratifs illégaux</li>
+            <li>Suspension en urgence des actes contestés</li>
+            <li>Avis sur les projets de loi et décrets (non contraignants)</li>
+            <li>A suspendu les instructions migratoires illégales (2023, 2026)</li>
+            <li>A censuré les licences d'armes vers l'Arabie saoudite à 3 reprises</li>
+          </ul>
+        </div>
+        <div class="pow-block">
+          <div class="pow-title">⚖ Cour de cassation</div>
+          <p class="pow-art">SOMMET DE L'ORDRE JUDICIAIRE</p>
+          <p class="pow-text">Juge du droit, non du fond. Ses mercuriales annuelles sont devenues une tribune politique majeure pour la défense de l'État de droit face aux atteintes de l'exécutif.</p>
+          <ul class="pow-list">
+            <li>Cassation des arrêts pour violation du droit</li>
+            <li>Arrêt La Flandria (1920) : État justiciable au droit commun</li>
+            <li>Arrêt 15 déc. 2022 : responsabilité civile de l'État-législateur</li>
+            <li>Mémorandum commun (juill. 2024) avec Cour constitutionnelle et Conseil d'État</li>
+            <li>Déclaration conjointe Premier président + PG (27 juin 2025)</li>
+          </ul>
+        </div>
+        <div class="pow-block">
+          <div class="pow-title">🔍 Conseil supérieur de la Justice</div>
+          <p class="pow-art">ART. 151 §2 · 44 MEMBRES · CRÉÉ EN 1999</p>
+          <p class="pow-text">Rempart contre les nominations politiques, hérité de la crise post-Dutroux. 22 magistrats élus + 22 non-magistrats désignés par le Sénat aux 2/3.</p>
+          <ul class="pow-list">
+            <li>Sélection et présentation des candidats magistrats</li>
+            <li>Organisation des concours indépendants</li>
+            <li>Audits externes du fonctionnement de la justice</li>
+            <li>Appel au dialogue des trois pouvoirs (D. Van den Bossche, 2025)</li>
+          </ul>
+        </div>
+        <div class="pow-block pow-full">
+          <div class="pow-title" style="color:#ff7070">🚨 Crise budgétaire structurelle</div>
+          <p class="pow-art">CEPEJ · EU JUSTICE SCOREBOARD · AVOCATS.BE</p>
+          <div class="mini-grid">
+            <div class="mini-stat"><span class="mini-n">0,22%</span><span class="mini-l">du PIB pour la justice<br>(CEPEJ) — 2× moins<br>que la moyenne UE</span></div>
+            <div class="mini-stat"><span class="mini-n">14,4</span><span class="mini-l">juges / 100 000 hab.<br>(CEPEJ 2024)<br>vs ~22 en Europe</span></div>
+            <div class="mini-stat"><span class="mini-n">52,8h</span><span class="mini-l">semaine des magistrats<br>(Capgemini, fév. 2024)<br>+43 % nécessaires</span></div>
+            <div class="mini-stat"><span class="mini-n">120+</span><span class="mini-l">postes de magistrats<br>vacants<br>(Moniteur, juin 2025)</span></div>
+          </div>
+          <p class="pow-text" style="margin-top:.8rem">Délais : 40 mois en droit du travail ; 4-6 ans en civil à Bruxelles. Condamnations CEDH répétées pour dépassement du délai raisonnable (Van den Kerkhof, 2023). Arrêt AVOCATS.BE (6 nov. 2023) : astreinte 1 000 €/jour pour non-publication des postes vacants (plafond 250 000 €). Réforme Van Tigchelt 2025 : retraites des magistrats amputées de 30-40%, grève sans précédent dans l'histoire judiciaire belge.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE CONTROLS -->
+<section style="padding:4rem 0">
+  <div class="sw fade">
+    <h2 class="sec-h2" style="font-size:1.5rem">Tableau des mécanismes de contrôle</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Pouvoir contrôlé</th><th>Mécanisme</th><th>Base légale</th><th>Organe</th><th>Effet</th></tr></thead>
+        <tbody>
+          <tr><td class="td-m">Exécutif</td><td>Responsabilité politique</td><td class="td-a">Art. 96</td><td>Chambre des représentants</td><td>Renversement gouvernement (méfiance constructive)</td></tr>
+          <tr><td class="td-m">Exécutif</td><td>Contrôle de légalité administratif</td><td class="td-a">Art. 159 · Loi 1946</td><td>Conseil d'État</td><td>Annulation erga omnes des actes illégaux</td></tr>
+          <tr><td class="td-m">Exécutif</td><td>Exception d'illégalité</td><td class="td-a">Art. 159</td><td>Cours et tribunaux</td><td>Refus d'appliquer l'acte illégal dans le litige</td></tr>
+          <tr><td class="td-m">Exécutif</td><td>Responsabilité civile extracontractuelle</td><td class="td-a">Cass. 15/12/2022</td><td>Tribunaux civils</td><td>Réparation du dommage causé par faute/omission</td></tr>
+          <tr><td class="td-m">Législatif</td><td>Contrôle de constitutionnalité</td><td class="td-a">Art. 142</td><td>Cour constitutionnelle</td><td>Annulation ex tunc (modulable) des normes inconstitutionnelles</td></tr>
+          <tr><td class="td-m">Législatif</td><td>Question préjudicielle</td><td class="td-a">Art. 142</td><td>Juge → Cour const.</td><td>Interprétation constitutionnelle contraignante</td></tr>
+          <tr><td class="td-m">Parlement (actes adm.)</td><td>Contrôle actes administratifs</td><td class="td-a">Arrêt 93/2004 CC</td><td>Conseil d'État</td><td>Annulation des actes administratifs (personnel, marchés)</td></tr>
+          <tr><td class="td-m">État belge</td><td>CEDH</td><td class="td-a">Art. 6, 3, 34, 46 CEDH</td><td>CEDH · Comité des Ministres</td><td>Condamnation + suivi exécution obligatoire</td></tr>
+          <tr><td class="td-m">Exécutif · Parlement</td><td>GRECO</td><td class="td-a">Statut GRECO · Règle 32</td><td>Conseil de l'Europe</td><td>Recommandations + procédure de non-conformité publique</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKS & BALANCES -->
+<section id="controles" style="padding:5rem 0;background:var(--navy2)">
+  <div class="sw fade">
+    <p class="sec-label">Partie III — Contre-pouvoirs</p>
+    <h2 class="sec-h2">Checks &amp; Balances — mécanismes clés</h2>
+    <div class="gold-rule"></div>
+    <div class="ch-grid">
+      <div class="ch-card go"><span class="ch-tag">Art. 142 Constitution</span><h3 class="ch-title">Cour constitutionnelle — gardienne des libertés</h3><p class="ch-text">Née sous le nom de Cour d'arbitrage (1984), elle a mis fin au dogme de la souveraineté parlementaire absolue. Elle a censuré 3× les lois de surveillance des métadonnées, annulé la taxe comptes-titres (dispositions rétroactives), validé la loi pandémie (arrêt 33/2023) sous conditions, et suspendu les lois migratoires de 2025 (arrêts 23/2026 et 24/2026). Face aux tentatives de la N-VA de créer un mécanisme permettant au Parlement de passer outre ses arrêts, la Cour reste un rempart institutionnel robuste.</p></div>
+      <div class="ch-card bl"><span class="ch-tag" style="color:var(--blue2)">Loi du 23 décembre 1946</span><h3 class="ch-title">Conseil d'État — juge de l'exécutif</h3><p class="ch-text">Section de législation (avis préventifs non contraignants) et section du contentieux (annulation et suspension). A suspendu les instructions migratoires illégales de Nicole de Moor (2023) et Anneleen Van Bossuyt (27 mars 2026, violation de l'autorité de la chose jugée). A censuré les licences d'armes vers l'Arabie saoudite à 3 reprises — sans que le gouvernement wallon ne change de pratique, illustrant la limite réelle du contrôle juridictionnel.</p></div>
+      <div class="ch-card go"><span class="ch-tag">Art. 159 Constitution</span><h3 class="ch-title">Exception d'illégalité — contrôle incident</h3><p class="ch-text">Les cours et tribunaux refusent d'appliquer tout acte administratif illégal, quel que soit son rang. Ce contrôle incident prive l'acte de tout effet dans le litige et protège directement les droits subjectifs. Étendu (lois 1999 et 2007) aux actes administratifs des assemblées législatives elles-mêmes, sans toucher au noyau politique de leur activité.</p></div>
+      <div class="ch-card gr"><span class="ch-tag" style="color:var(--green2)">Cour de cassation · 15 déc. 2022</span><h3 class="ch-title">Responsabilité civile de l'État-législateur</h3><p class="ch-text">Depuis l'arrêt fondateur de la Cour de cassation (15 décembre 2022), le législateur engage la responsabilité extracontractuelle de l'État s'il méconnaît une règle supralégislative ou commet une erreur qu'un législateur normalement prudent n'aurait pas commise. Arrêt AVOCATS.BE (6 nov. 2023) : carence fautive dans le recrutement de magistrats — astreinte 1 000 €/jour. Condamnations pour surpopulation carcérale à Lantin et Mons (2 000 €/jour/détenu excédentaire).</p></div>
+      <div class="ch-card bl"><span class="ch-tag" style="color:var(--blue2)">CEDH · Conseil de l'Europe</span><h3 class="ch-title">Contrôle international — dernier rempart</h3><p class="ch-text">Arrêt Le Ski (1971) : primauté des traités à effet direct. Condamnations majeures : Vasilescu (2014, surpopulation structurelle), Mugemangango (2020, validation des élections par les assemblées elles-mêmes — réforme imposée), Camara (2023, carence systémique), M.V. (2026, art. 3 — traitement inhumain). La Belgique est le <em>seul</em> État de l'UE à avoir reçu une recommandation spécifique exigeant l'exécution diligente des décisions de justice.</p></div>
+      <div class="ch-card re"><span class="ch-tag" style="color:#ff8080">GRECO · Règle 32 · Novembre 2025</span><h3 class="ch-title">Procédure de non-conformité — escalade maximale</h3><p class="ch-text">Procédure de non-conformité (Règle 32) activée en novembre 2025 sur le 5e cycle (22 recommandations relatives à l'exécutif). Délai : rapport d'avancement au 30 novembre 2026. Étape maximale avant la « déclaration publique de non-conformité » — mesure prononcée jusqu'ici uniquement contre la Biélorussie. Blocages : absence de registre des lobbyistes couvrant le gouvernement, déclarations de patrimoine non publiées, pantouflage non encadré.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 1 -->
+<div class="quote-block fade">
+  <p class="q-text">« Quand on refuse d'exécuter une décision de justice pour des raisons budgétaires, on affirme que la loi ne vaut plus rien. Il y avait un glissement imperceptible, qui l'est moins, vers une fusion des pouvoirs, où l'exécutif décide d'appliquer ou non les décisions de justice. »</p>
+  <p class="q-src">— Frédéric Van Leeuw, Procureur général de Bruxelles · BX1, 2 octobre 2025</p>
+</div>
+
+<!-- CRISES -->
+<section id="crises" style="padding:5rem 0;background:var(--navy2)">
+  <div class="sw fade">
+    <p class="sec-label">Partie IV — Dérives documentées 2020–2026</p>
+    <h2 class="sec-h2">Les atteintes à la séparation des pouvoirs</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-intro" style="margin-top:1.2rem">Le diagnostic converge sur un mécanisme d'érosion convergente : ni coup d'État, ni dissolution des institutions, mais une banalisation cumulative de la désobéissance institutionnelle. L'érosion reconfigure progressivement les attentes mutuelles entre pouvoirs, citoyens et instances internationales.</p>
+    <div class="cr-list">
+
+      <div class="cr-item">
+        <div class="cr-n">01</div>
+        <div>
+          <p class="cr-lbl">⛔ Violation directe de l'Art. 40 Constitution · CEDH Art. 6 + Art. 3</p>
+          <h3 class="cr-h3">La crise de l'accueil — 16 000+ jugements ignorés</h3>
+          <p class="cr-text">Depuis l'ordonnance du TPI bruxellois (19 janvier 2022), l'État belge et Fedasil refusent systématiquement d'héberger les demandeurs d'asile malgré plus de 16 000 condamnations. La ministre Van Bossuyt (N-VA) déclare publiquement : <em style="color:var(--cream)">« Ces astreintes existent et nous ne les paierons pas. »</em> L'État se retranche derrière l'insaisissabilité des biens publics (art. 1412bis Code judiciaire). Des huissiers saisissent du mobilier au sein des cabinets. <strong>500 travailleurs de Fedasil</strong> publient une lettre ouverte (avril 2026).</p>
+          <p class="cr-text">La CEDH qualifie la situation de <strong>« carence systémique »</strong> et de <strong>« refus caractérisé »</strong> (Camara, 2023, § 118 et 121). L'arrêt M.V. (2026) établit pour la première fois une violation de l'art. 3 CEDH (traitements inhumains et dégradants) dans ce contexte, en plus des art. 6 et 34. Le Conseil d'État néerlandais a refusé de transférer des demandeurs d'asile vers la Belgique, qualifiant l'attitude belge d'« indifférence structurelle ».</p>
+          <div class="cr-stats">
+            <span class="cs r">16 000+ condamnations depuis jan. 2022</span>
+            <span class="cs r">2 300+ mesures provisoires CEDH</span>
+            <span class="cs r">Camara c. Belgique · req. 49255/22 · 18 juill. 2023</span>
+            <span class="cs r">M.V. c. Belgique · req. 52836/22 · 9 avr. 2026 · Art. 3 CEDH</span>
+            <span class="cs g">Astreintes cumulées : largement impayées</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">02</div>
+        <div>
+          <p class="cr-lbl">⛔ Non-exécution structurelle · Art. 40 · Art. 3 CEDH</p>
+          <h3 class="cr-h3">Surpopulation carcérale — 12 ans de refus depuis Vasilescu</h3>
+          <p class="cr-text"><strong>Vasilescu c. Belgique</strong> (25 nov. 2014, req. 64682/12) a identifié un problème « structurel » de surpopulation et de conditions de détention — violation de l'art. 3. Douze ans plus tard, rien de fondamental n'a changé. Les tribunaux de Liège, Bruxelles et la Cour d'appel de Mons ont prononcé des condamnations sous astreintes de 2 000 à 4 000 € par jour et par détenu excédentaire. Le Comité des Ministres du Conseil de l'Europe exprime sa « profonde inquiétude » (décision du 5 décembre 2024).</p>
+          <div class="cr-stats">
+            <span class="cs r">13 397 détenus / 10 795 places = 124 % (déc. 2025)</span>
+            <span class="cs r">763 personnes dormant au sol (record avr. 2026)</span>
+            <span class="cs r">+21 % de détenus entre 2023 et 2025</span>
+            <span class="cs r">4e pays d'Europe pour la surpopulation</span>
+            <span class="cs g">Comité des Ministres CE : profonde inquiétude (5 déc. 2024)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">03</div>
+        <div>
+          <p class="cr-lbl warn">⚠ Capture extra-constitutionnelle du législatif · Art. 33 + Art. 42</p>
+          <h3 class="cr-h3">La particratie — le Kern et la dilution du Parlement</h3>
+          <p class="cr-text">L'art. 33 ne reconnaît que la Couronne, le Gouvernement et les Chambres. Or le centre décisionnel s'est déplacé vers le Kern, organe sans base légale ni procès-verbaux archivés — la « boîte noire » de la démocratie belge. Ses décisions sont imposées aux groupes parlementaires comme obligations non négociables sous peine de crise gouvernementale. La délibération parlementaire (garantie par les art. 26-28) est vidée de sa substance.</p>
+          <p class="cr-text">Le financement public des partis — <strong>188,3 M€/an</strong> (KU Leuven, oct. 2025 : 83,7 M€ de subventions directes + 104,6 M€ de salaires de collaborateurs parlementaires souvent affectés au parti) — verrouille le système. 7 €/habitant : plus du double de l'Allemagne, quatre fois les Pays-Bas.</p>
+          <div class="cr-stats">
+            <span class="cs r">Rice ~99 % — art. 42 (mandat libre) fictif</span>
+            <span class="cs r">&gt; 90 % des lois : projets de l'exécutif</span>
+            <span class="cs g">188,3 M€/an · Financement partis (KU Leuven, oct. 2025)</span>
+            <span class="cs b">Kern : zéro base constitutionnelle, zéro procès-verbal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">04</div>
+        <div>
+          <p class="cr-lbl warn">⚠ Délégation législative · Urgence sanitaire</p>
+          <h3 class="cr-h3">COVID — Pouvoirs spéciaux et auto-habilitation de l'exécutif</h3>
+          <p class="cr-text">En mars 2020, les lois d'habilitation Wilmès II accordent des pouvoirs spéciaux au gouvernement. L'<strong>AR n°2 du 9 avril 2020</strong> suspend les délais de procédure civile : l'exécutif organise de fait la paralysie du judiciaire. La doctrine (Clarenne, Romainville) dénonce une « auto-habilitation » — le gouvernement prolonge lui-même la suspension par arrêté ministériel, contournant le contrôle parlementaire et les limites de la loi d'habilitation.</p>
+          <p class="cr-text">Le 31 mars 2021, le TPI francophone condamne l'État à adopter une base légale sous 30 jours (astreinte 5 000 €/jour). Résultat : la <strong>loi pandémie du 14 août 2021</strong>, validée par la Cour constitutionnelle (arrêt 33/2023, 2 mars 2023) — sous réserve d'un contrôle parlementaire strict de 15 jours sous peine de caducité rétroactive.</p>
+          <div class="cr-stats">
+            <span class="cs g">AR pouvoirs spéciaux n°2 · 9 avr. 2020 · Paralysie judiciaire</span>
+            <span class="cs b">TPI Bxl 31 mars 2021 · Astreinte 5 000 €/jour</span>
+            <span class="cs gr">Loi pandémie 14 août 2021 · Validée · Arrêt 33/2023</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">05</div>
+        <div>
+          <p class="cr-lbl warn">⚠ Indépendance judiciaire · Art. 151</p>
+          <h3 class="cr-h3">Réforme Van Tigchelt 2025 — Grève des magistrats</h3>
+          <p class="cr-text">Le ministre de la Justice Paul Van Tigchelt (Open VLD) impose en 2025 une réforme en deux volets : centralisation managériale des cours (pouvoir élargi aux procureurs du Roi) et révision des pensions entraînant une baisse de revenu de <strong>30-40 %</strong>, imposée unilatéralement sans concertation. Réaction sans précédent : les juges de paix bruxellois suspendent leurs audiences et lisent des manifestes aux citoyens en salle d'audience. Fermeture temporaire de justices de paix dans tout le pays — menaçant la protection juridique des personnes vulnérables.</p>
+          <p class="cr-text">Le <strong>27 juin 2025</strong>, le Premier président et le Procureur général de la Cour de cassation signent une déclaration conjointe condamnant les insinuations de politisation proférées par Bart De Wever et réaffirmant que « l'indépendance de la justice est le fondement irremplaçable de la paix sociale et de la sécurité économique du pays ».</p>
+          <div class="cr-stats">
+            <span class="cs r">Retraites magistrats : -30 à -40 % de revenu</span>
+            <span class="cs r">Grève sans précédent · Justices de paix fermées</span>
+            <span class="cs g">Déclaration conjointe Cour de cassation · 27 juin 2025</span>
+            <span class="cs b">CSJ : appel au dialogue des 3 pouvoirs (D. Van den Bossche)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">06</div>
+        <div>
+          <p class="cr-lbl warn">⚠ Souveraineté numérique du judiciaire</p>
+          <h3 class="cr-h3">Registre central numérique — dépendance technologique</h3>
+          <p class="cr-text">La loi du 15 mai 2024 portant dématérialisation de la justice instaure un Registre central géré par le SPF Justice (exécutif). Des magistrats, dont Pierre Thiriar, contestent devant la Cour constitutionnelle (affaires n° 8369 et 8372) que l'art. 22 prive greffiers et magistrats de leur autonomie opérationnelle en les plaçant sous dépendance de systèmes conçus et supervisés par l'exécutif. Risque dénoncé : contrôle par l'exécutif des flux d'informations judiciaires, accès aux dossiers d'instruction ou de délibération. L'arrêt n° 149/2025 (13 novembre 2025) a partiellement traité ces recours. Enjeu de principe : l'autonomie numérique comme condition de l'indépendance matérielle du judiciaire au XXI<sup>e</sup> siècle.</p>
+          <div class="cr-stats">
+            <span class="cs b">Loi 15 mai 2024 · Registre central SPF Justice</span>
+            <span class="cs g">Affaires CC n° 8369 et 8372 · Pierre Thiriar</span>
+            <span class="cs b">Arrêt n° 149/2025 · 13 novembre 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">07</div>
+        <div>
+          <p class="cr-lbl warn">⚠ Justice climatique</p>
+          <h3 class="cr-h3">Klimaatzaak — quand le judiciaire comble l'inertie politique</h3>
+          <p class="cr-text">Jugement de 1ère instance (17 juin 2021) : constat de carence fautive, mais refus de fixer des objectifs chiffrés pour préserver la marge discrétionnaire de l'exécutif. Cour d'appel de Bruxelles (<strong>30 novembre 2023</strong>) : condamnation de l'État fédéral, Région flamande et Région bruxelloise pour violation des art. 2 et 8 CEDH et faute (art. 1382 anc. Code civil). Injonction de réduire les GES d'<strong>au moins 55 %</strong> d'ici 2030 — 2e injonction quantifiée au monde après Urgenda (NL). La rhétorique du « gouvernement des juges » envahit le débat, alors que c'est l'inertie de l'exécutif qui a forcé l'escalade judiciaire.</p>
+          <div class="cr-stats">
+            <span class="cs g">Appel Bxl · 30 nov. 2023 · -55% GES avant 2030</span>
+            <span class="cs b">2e injonction quantifiée au monde (après Urgenda NL)</span>
+            <span class="cs r">Cassation flamande uniquement · Astreintes réservées</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">08</div>
+        <div>
+          <p class="cr-lbl warn">⚠ Liberté d'association · Art. 27 Constitution</p>
+          <h3 class="cr-h3">Loi Quintin — dissolution administrative sans juge</h3>
+          <p class="cr-text">Avant-projet du ministre de l'Intérieur B. Quintin (MR), approuvé par Arizona (24 juillet 2025) : dissoudre par arrêté royal des associations, personnes morales et groupements de fait jugés menaçants — sans condamnation pénale préalable, sur base de rapports de renseignement inaccessibles à l'organisation visée. L'<strong>art. 27 Constitution</strong> interdit explicitement toute mesure préventive contre la liberté d'association. Conseil d'État (avis déc. 2025) : imprécision des motifs. IFDH : « ingérences importantes ». Une clause exempte partis, syndicats et cultes reconnus — immunité levable par le seul ministre.</p>
+          <div class="cr-stats">
+            <span class="cs r">Art. 27 Constitution violé · Dissolution sans juge</span>
+            <span class="cs g">Avis Conseil d'État déc. 2025 · Motifs imprécis</span>
+            <span class="cs b">IFDH · Ingérences importantes · Liberté d'association</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cr-item">
+        <div class="cr-n">09</div>
+        <div>
+          <p class="cr-lbl warn">⚠ Armes · Nuisances aériennes</p>
+          <h3 class="cr-h3">Contournement systémique des arrêts du Conseil d'État</h3>
+          <p class="cr-text">Le Conseil d'État a suspendu et annulé à 3 reprises (2018, 2020, 2021) des licences d'exportation d'armes vers l'Arabie saoudite accordées à FN Herstal (100 % Région wallonne) et John Cockerill, faute d'examen suffisant du risque de violations des droits humains au Yémen. Le gouvernement wallon délivre systématiquement de nouvelles licences quasi identiques, invoquant l'emploi (≈ 5 000 postes) comme motif de désobéissance.</p>
+          <p class="cr-text">Pour les <strong>nuisances aériennes de Bruxelles-National</strong>, le gouvernement fédéral a choisi de payer des astreintes plutôt que d'adopter une solution structurelle : 25 M€ (corpus) à 42-45 M€ (médiation fédérale + Région bruxelloise) payés depuis 2017. L'astreinte, outil de rétablissement de la légalité, est devenue une <em>« taxe de tolérance de l'illégal »</em>.</p>
+          <div class="cr-stats">
+            <span class="cs r">Armes Yémen · 3 annulations contournées (2018, 2020, 2021)</span>
+            <span class="cs g">Nuisances aériennes · 25-45 M€ d'astreintes payées depuis 2017</span>
+            <span class="cs r">Astreinte transformée en taxe de tolérance de l'illégal</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 2 -->
+<div class="quote-block fade">
+  <p class="q-text">« La Belgique risque de voir le pacte fondateur de la séparation des pouvoirs perdre sa consistance matérielle, sans avoir jamais cessé d'exister sur le papier. »</p>
+  <p class="q-src">— Mémorandum commun · Cour constitutionnelle, Cour de cassation, Conseil d'État · Juillet 2024</p>
+</div>
+
+<!-- INDICATEURS -->
+<section style="padding:5rem 0">
+  <div class="sw fade">
+    <p class="sec-label">Déclassement international</p>
+    <h2 class="sec-h2">La Belgique dans les classements mondiaux</h2>
+    <div class="gold-rule"></div>
+    <div class="ind-grid" style="margin-top:2rem">
+      <div class="ind-card"><div class="ind-n bad">69/100</div><div class="ind-nm">CPI 2024 · Transparency Int'l</div><div class="ind-sub">22e rang mondial (était 16e en 2023, 15e en 2016). Recul de 4 pts — niveau historiquement bas depuis la création de l'indice. Classée « significant decliner ».</div></div>
+      <div class="ind-card"><div class="ind-n bad">7,64/10</div><div class="ind-nm">Democracy Index 2024 · EIU</div><div class="ind-sub">34e rang mondial. Classée « démocratie défaillante » — sous le seuil de 8,00 des « démocraties pleines ». Parfois cité comme 36e selon les sources.</div></div>
+      <div class="ind-card"><div class="ind-n warn">17e</div><div class="ind-nm">WJP Rule of Law Index 2024</div><div class="ind-sub">Sur 142 juridictions. Sous-scores faibles pour la justice civile (22e) et les contraintes sur le pouvoir gouvernemental.</div></div>
+      <div class="ind-card"><div class="ind-n warn">77/100</div><div class="ind-nm">CIVICUS Monitor 2025-2026</div><div class="ind-sub">Classé « narrowed » (rétréci). Traitement des manifestants, usage excessif de la force policière, contraction de l'espace civique.</div></div>
+      <div class="ind-card"><div class="ind-n bad">Slider</div><div class="ind-nm">V-Dem/Liberties 2026</div><div class="ind-sub">Parmi les « Sliders » — pays en recul sans projet illibéral explicite — avec France, Allemagne, Suède, Danemark.</div></div>
+      <div class="ind-card"><div class="ind-n bad">Règle 32</div><div class="ind-nm">GRECO · 5e cycle · Nov. 2025</div><div class="ind-sub">Procédure de non-conformité. 22 recommandations. Délai : 30 nov. 2026. Stade maximal avant déclaration publique.</div></div>
+      <div class="ind-card"><div class="ind-n bad">Seul</div><div class="ind-nm">Commission européenne</div><div class="ind-sub">Seul État de l'UE à avoir reçu une recommandation spécifique exigeant l'exécution diligente des décisions de justice.</div></div>
+      <div class="ind-card"><div class="ind-n bad">0,22 %</div><div class="ind-nm">Budget justice / PIB · CEPEJ</div><div class="ind-sub">Deux fois moins que la moyenne européenne (~0,43 %). 14,4 juges/100 000 hab. vs ~22 en Europe. Magistrats : 52,8h/semaine.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESILIENCE -->
+<section id="resilience" style="padding:5rem 0;background:var(--navy2)">
+  <div class="sw fade">
+    <p class="sec-label">Partie V — Résilience</p>
+    <h2 class="sec-h2">Les contre-pouvoirs qui résistent</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-intro" style="margin-top:1.2rem">Contrairement à la Hongrie où la magistrature a été méthodiquement capturée, l'appareil judiciaire belge maintient un cap de rigueur et d'indépendance. Les mécanismes de contrôle existent et opèrent — c'est leur contournement par l'exécutif qui constitue la crise, non leur inexistence.</p>
+    <div class="res-grid">
+      <div class="res-card"><span class="res-date">Juillet 2024</span><h3 class="res-title">Mémorandum commun des trois hautes juridictions</h3><p class="res-text">Démarche d'une rareté absolue : la Cour constitutionnelle, la Cour de cassation et le Conseil d'État interpellent conjointement le formateur De Wever. Ils réclament financement, exécution des décisions, indépendance et numérisation maîtrisée. Ils rappellent que le même avertissement de 2019 n'avait pas été entendu.</p></div>
+      <div class="res-card"><span class="res-date">27 juin 2025</span><h3 class="res-title">Déclaration conjointe Premier président + PG Cour de cassation</h3><p class="res-text">Face aux insinuations de politisation de la magistrature proférées par De Wever, le Premier président et le Procureur général de la Cour de cassation signent une déclaration conjointe sans précédent réaffirmant l'indépendance judiciaire comme « fondement irremplaçable de la paix sociale ».</p></div>
+      <div class="res-card"><span class="res-date">Octobre 2025</span><h3 class="res-title">Communiqué judiciaire commun — Crise Fedasil</h3><p class="res-text">La Cour de cassation, le Collège des procureurs généraux et le Collège des cours et tribunaux publient un communiqué inédit dénonçant la non-exécution comme une atteinte à la séparation des pouvoirs. Van Leeuw : « C'est une attaque frontale contre la séparation des pouvoirs. »</p></div>
+      <div class="res-card"><span class="res-date">26 fév. · 27 mars 2026</span><h3 class="res-title">Suspensions CC · Ordonnance Conseil d'État</h3><p class="res-text">Arrêts 23/2026 et 24/2026 : suspension des lois migratoires de juillet 2025. La ministre tente de contourner par des instructions administratives. Le Conseil d'État suspend en extrême urgence (27 mars 2026) pour violation de l'autorité de la chose jugée.</p></div>
+      <div class="res-card"><span class="res-date">9 avril 2026</span><h3 class="res-title">Arrêt M.V. c. Belgique — escalade CEDH</h3><p class="res-text">Première condamnation belge au titre de l'art. 3 CEDH (traitements inhumains) dans le contexte de la crise de l'accueil. Violations également des art. 6 et 34. Mesures provisoires exécutées avec 21 à 261 jours de retard.</p></div>
+      <div class="res-card"><span class="res-date">Continu 2015–2026</span><h3 class="res-title">Censures constitutionnelles répétées</h3><p class="res-text">3× censures des lois de surveillance des métadonnées (2015, 2021, arrêt 97/2024). Taxe comptes-titres censurée (2019, 2022). Arrêt 33/2023 : loi pandémie validée sous conditions. Arrêt 93/2004 : contrôle des actes administratifs du Parlement. Arrêt 149/2025 : numérisation de la justice.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE 3 -->
+<div class="quote-block fade">
+  <p class="q-text">« Un État de droit résilient ne peut reposer uniquement sur la confrontation formelle devant les cours et tribunaux, mais exige l'émergence d'une véritable culture d'État de droit partagée par les différentes institutions. »</p>
+  <p class="q-src">— Procureur général près la Cour de cassation · Mercuriales 2023-2024</p>
+</div>
+
+<!-- RECOMMANDATIONS -->
+<section id="recommandations" style="padding:5rem 0">
+  <div class="sw fade">
+    <p class="sec-label">Partie VI — Perspectives</p>
+    <h2 class="sec-h2">Recommandations structurelles</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-intro" style="margin-top:1.2rem">Le rétablissement de l'équilibre effectif ne requiert pas une réforme constitutionnelle majeure. Il dépend d'un sursaut politique et du respect sans faille de la <strong style="color:var(--cream)">loyauté constitutionnelle</strong> — ce principe non écrit qui impose à chaque pouvoir de reconnaître la légitimité et l'indépendance des autres, et de s'abstenir d'exercer ses compétences dans le seul but de nuire à leurs prérogatives (<em>versant négatif de la retenue</em>) tout en coopérant loyalement (<em>versant positif</em>).</p>
+    <div class="reco-list">
+      <div class="reco-item"><div class="reco-n">1</div><div><div class="reco-title">Sanctuariser le financement de la justice</div><p class="reco-text">Adopter une loi de programmation pluriannuelle indexée sur des critères objectifs de charge de travail (étude Capgemini) pour porter les effectifs vers l'objectif de +43 %. Objectif minimal : porter le budget de la justice à la moyenne européenne (~0,43 % du PIB contre 0,22 % actuellement). CSJ mémorandum 2024, recommandation 01.</p></div></div>
+      <div class="reco-item"><div class="reco-n">2</div><div><div class="reco-title">Rendre l'exécution des décisions de justice inconditionnelle</div><p class="reco-text">Mécanisme de paiement automatique et prioritaire des astreintes dues par l'État. Sanctions politiques et personnelles effectives des responsables refusant l'exécution. Suivi parlementaire dédié et publicité systématique des décisions non exécutées. L'art. 40 de la Constitution doit être respecté en pratique, pas seulement sur le papier.</p></div></div>
+      <div class="reco-item"><div class="reco-n">3</div><div><div class="reco-title">Encadrer légalement le Kern et les cabinets ministériels</div><p class="reco-text">Inscrire le Kern dans le droit organique avec obligation de traçabilité (ordres du jour, procès-verbaux, archivage, publicité). Élaborer un code de conduite contraignant pour les ministres sur les conflits d'intérêts et le pantouflage — recommandation GRECO dont la non-mise en œuvre expose au risque de déclaration publique de non-conformité avant novembre 2026.</p></div></div>
+      <div class="reco-item"><div class="reco-n">4</div><div><div class="reco-title">Réformer le financement des partis et restaurer le mandat libre</div><p class="reco-text">Transparence des listes électorales, protection juridique des dissidents, plafonnement des dépenses permanentes sur les réseaux sociaux. Réviser le système des lettres de démission pré-signées. L'arrêt 130/2016 de la Cour constitutionnelle ne peut rester indéfiniment la seule réponse à une inconstitutionnalité de fait.</p></div></div>
+      <div class="reco-item"><div class="reco-n">5</div><div><div class="reco-title">Transparence : patrimoine et registre du lobbying</div><p class="reco-text">Publication effective des déclarations de patrimoine (actuellement sous pli fermé à la Cour des comptes). Registre obligatoire, exhaustif et sanctionné du lobbying couvrant gouvernement et cabinets — condition sine qua non de sortie de la procédure GRECO Règle 32 avant novembre 2026.</p></div></div>
+      <div class="reco-item"><div class="reco-n">6</div><div><div class="reco-title">Préserver l'indépendance organique du judiciaire</div><p class="reco-text">Retirer ou refondre la loi Quintin pour confier toute dissolution d'association à un juge (art. 27 Const.). Dépolitiser les nominations à la Cour constitutionnelle. Garantir la souveraineté numérique du judiciaire. Interdire les réformes de gestion unilatérales imposées à la magistrature sans concertation préalable — « versant négatif de la retenue » de la loyauté constitutionnelle.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+<div class="footer-wrap">
+  <div>
+    <div class="footer-brand-name">SÉPARATION DES POUVOIRS · BELGIQUE</div>
+    <div class="footer-brand-sub">Analyse constitutionnelle · 2024-2026<br>Art. 33 · 36 · 37 · 40 · 42 · 88 · 91 · 99 · 105 · 106 · 142 · 143 · 151 · 159 · 187</div>
+  </div>
+  <div class="footer-sources"><strong>Sources primaires :</strong> Constitution belge (1831, révisée) · CEDH Camara (2023) et M.V. (2026) · Vasilescu (2014) · Mugemangango (2020) · Arrêts CC 33/2023, 93/2004, 130/2016, 23/2026, 24/2026, 149/2025 · Mémorandum commun juill. 2024 · Déclaration judiciaire 27 juin 2025 · GRECO 4e et 5e cycles (addendum déc. 2025) · Transparency International CPI 2024 · CIVICUS Monitor 2025-2026 · Democracy Index EIU 2024 · WJP Rule of Law Index 2024 · KU Leuven (Maddens, Smulders, Vanden Eynde, oct. 2025) · CEPEJ/EU Justice Scoreboard · Capgemini fév. 2024 · Avocats.be · CSJ mémorandum · Mercuriales Cour de cassation 2023-2024 · Séparation des Pouvoirs en Belgique (docx 1 et 2) · séparation_des_pouvoirs.md</div>
+</div>
+
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.07});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a');
+const sio=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){const id=x.target.id;navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+id)})}}),{rootMargin:'-40% 0px -50% 0px'});
+sections.forEach(s=>sio.observe(s));
+</script>
+</body>
+</html>
