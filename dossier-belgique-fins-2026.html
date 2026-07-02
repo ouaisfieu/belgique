@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fin(s) de la Belgique — Inventaire de ce qui manque, état de ce qui cède · Dossier, juillet 2026</title>
+<meta name="description" content="Que manque-t-il à la Belgique pour arriver au bout de son existence, et où en est-on ? Dossier complet : état des lieux mi-2026, les huit conditions manquantes de la fin territoriale, le délitement fonctionnel documenté, cinq scénarios 2026-2035.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============ FONDATIONS ============ */
+:root{
+  --papier:#ECEDE7;
+  --papier-2:#E2E3DB;
+  --papier-3:#D8D9D0;
+  --encre:#1A1C1B;
+  --encre-70:rgba(26,28,27,.72);
+  --encre-45:rgba(26,28,27,.45);
+  --ligne:rgba(26,28,27,.28);
+  --ligne-forte:rgba(26,28,27,.85);
+  --jaune:#FDDA24;
+  --rouge:#C4331F;
+  --tampon-gris:#6F726B;
+  --max:78rem;
+  --colonne:46rem;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--papier);
+  color:var(--encre);
+  font-family:'Spectral',Georgia,serif;
+  font-size:1.0625rem;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--jaune);color:var(--encre)}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-color:var(--rouge)}
+:focus-visible{outline:3px solid var(--rouge);outline-offset:2px}
+
+h1,h2,h3{font-family:'Barlow Condensed',sans-serif;line-height:1.04;letter-spacing:.015em}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+mark{
+  background:linear-gradient(to bottom,transparent 52%,var(--jaune) 52%,var(--jaune) 94%,transparent 94%);
+  color:inherit;padding:0 .1em;
+}
+strong{font-weight:600}
+
+/* ============ TAMPONS ============ */
+.tampon{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  border:2px solid currentColor;padding:.28em .7em .24em;
+  display:inline-block;transform:rotate(-1.5deg);
+  white-space:nowrap;
+}
+.tampon--rouge{color:var(--rouge)}
+.tampon--gris{color:var(--tampon-gris)}
+.tampon--jaune{color:var(--encre);background:var(--jaune);border-color:var(--encre)}
+.tampon--encre{color:var(--encre)}
+
+/* ============ BANDEAU ============ */
+.bandeau{
+  position:sticky;top:0;z-index:50;
+  background:var(--encre);color:var(--papier);
+  border-bottom:3px solid var(--jaune);
+}
+.bandeau-int{
+  max-width:var(--max);margin:0 auto;padding:.55rem 1.25rem;
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+}
+.bandeau a{text-decoration:none;opacity:.85;padding:.1rem 0}
+.bandeau a:hover{opacity:1;color:var(--jaune)}
+.bandeau-nav{display:flex;gap:1.1rem;flex-wrap:wrap}
+.bandeau-marque{font-weight:600;color:var(--jaune)}
+
+/* ============ HERO / CERTIFICAT ============ */
+.hero{max-width:var(--max);margin:0 auto;padding:3.2rem 1.25rem 3.6rem;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:3rem;align-items:start}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:2.2rem;padding-top:2.4rem}}
+
+.certificat{
+  background:#F6F6F1;border:2px solid var(--ligne-forte);
+  box-shadow:6px 6px 0 var(--papier-3);
+  padding:1.6rem 1.7rem 1.9rem;position:relative;
+  font-family:'IBM Plex Mono',monospace;font-size:.86rem;line-height:1.9;
+}
+.certificat-entete{
+  text-align:center;border-bottom:2px solid var(--ligne-forte);
+  padding-bottom:.9rem;margin-bottom:1.2rem;
+}
+.certificat-entete .royaume{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--encre-70)}
+.certificat-entete .acte{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.9rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.25rem}
+.certificat-entete .sous{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--encre-45);margin-top:.2rem}
+.certificat dl{display:grid;grid-template-columns:auto 1fr;gap:.15rem 1rem}
+.certificat dt{color:var(--encre-70);white-space:nowrap}
+.certificat dd{font-weight:500}
+.champ-vide{
+  display:inline-block;min-width:11ch;border-bottom:2px dotted var(--encre);
+  color:transparent;user-select:none;
+}
+.certificat-pied{margin-top:1.2rem;padding-top:1rem;border-top:1px dashed var(--ligne);
+  display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;
+  font-size:.72rem;color:var(--encre-70)}
+.grand-tampon{
+  position:absolute;right:1.1rem;top:42%;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;
+  color:var(--rouge);border:4px solid var(--rouge);
+  padding:.35em .8em;font-size:1.35rem;letter-spacing:.2em;text-transform:uppercase;
+  transform:rotate(-9deg);opacity:.92;background:rgba(246,246,241,.6);
+  animation:coup-de-tampon .45s cubic-bezier(.2,1.4,.4,1) .5s backwards;
+}
+@keyframes coup-de-tampon{
+  from{transform:rotate(-9deg) scale(2.6);opacity:0}
+  to{transform:rotate(-9deg) scale(1);opacity:.92}
+}
+@media (max-width:520px){.grand-tampon{font-size:1rem;right:.6rem}}
+
+.hero-texte .sur-titre{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--rouge);margin-bottom:1rem;font-weight:600;
+}
+.hero-texte h1{
+  font-weight:700;text-transform:uppercase;
+  font-size:clamp(2.5rem,5.6vw,4.4rem);
+  max-width:16ch;
+}
+.hero-texte h1 .souligne{box-shadow:inset 0 -0.28em var(--jaune)}
+.chapeau{
+  margin-top:1.5rem;font-size:1.2rem;line-height:1.66;max-width:34rem;
+}
+.chapeau em{font-style:italic}
+.hero-meta{
+  margin-top:1.6rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--encre-70);
+  display:flex;gap:1.4rem;flex-wrap:wrap;
+}
+
+/* ============ SECTIONS ============ */
+.section{border-top:2px solid var(--ligne-forte)}
+.section-int{max-width:var(--max);margin:0 auto;padding:3rem 1.25rem 3.6rem}
+.piece-tete{
+  display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap;margin-bottom:2rem;
+}
+.piece-num{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.78rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--papier);
+  background:var(--encre);padding:.4em .8em;white-space:nowrap;
+}
+.piece-tete h2{
+  font-weight:700;text-transform:uppercase;font-size:clamp(1.7rem,3.4vw,2.6rem);
+}
+.colonne{max-width:var(--colonne)}
+.colonne p{margin-bottom:1.15rem}
+.colonne p:last-child{margin-bottom:0}
+.colonne h3{
+  font-size:1.35rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+  margin:2.3rem 0 .9rem;
+}
+.note-marge{
+  font-family:'IBM Plex Mono',monospace;font-size:.78rem;line-height:1.7;
+  color:var(--encre-70);border-left:3px solid var(--jaune);
+  padding:.2rem 0 .2rem 1rem;margin:1.6rem 0;
+}
+
+/* ============ EN BREF ============ */
+.en-bref{background:var(--papier-2)}
+.en-bref ol{list-style:none;counter-reset:constat;max-width:56rem}
+.en-bref li{
+  counter-increment:constat;position:relative;
+  padding:1.05rem 0 1.05rem 4.2rem;border-bottom:1px solid var(--ligne);
+  font-size:1.02rem;
+}
+.en-bref li:last-child{border-bottom:none}
+.en-bref li::before{
+  content:"C." counter(constat,decimal-leading-zero);
+  position:absolute;left:0;top:1.2rem;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.75rem;
+  letter-spacing:.12em;color:var(--rouge);
+}
+
+/* ============ CHRONOLOGIE ============ */
+.chrono{border:2px solid var(--ligne-forte);background:#F3F3EE;margin:2rem 0}
+.chrono-ligne{
+  display:grid;grid-template-columns:9.5rem 1fr;gap:1.2rem;
+  padding:.85rem 1.1rem;border-bottom:1px solid var(--ligne);align-items:baseline;
+}
+.chrono-ligne:last-child{border-bottom:none}
+.chrono-date{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--rouge)}
+.chrono-fait{font-size:.97rem;line-height:1.6}
+@media (max-width:600px){.chrono-ligne{grid-template-columns:1fr;gap:.2rem}}
+
+/* ============ RELEVÉ (ledger) ============ */
+.releve{border:2px solid var(--ligne-forte);margin:1.8rem 0;background:#F3F3EE}
+.releve-titre{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  background:var(--encre);color:var(--papier);padding:.55em 1.1rem;
+}
+.releve-ligne{
+  display:grid;grid-template-columns:minmax(7rem,auto) 1fr;gap:1.4rem;
+  padding:.9rem 1.1rem;border-bottom:1px dashed var(--ligne);align-items:baseline;
+}
+.releve-ligne:last-child{border-bottom:none}
+.releve-val{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:1.5rem;
+  letter-spacing:-.01em;white-space:nowrap;
+}
+.releve-val small{font-size:.7rem;font-weight:500;letter-spacing:.08em;display:block;color:var(--encre-70);text-transform:uppercase}
+.releve-def{font-size:.94rem;line-height:1.6}
+.releve-def .src{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--encre-45);display:block;margin-top:.25rem}
+.releve--rouge .releve-val{color:var(--rouge)}
+@media (max-width:600px){.releve-ligne{grid-template-columns:1fr;gap:.3rem}}
+
+/* ============ FICHES INVENTAIRE ============ */
+.inventaire{display:grid;gap:1.6rem;max-width:62rem}
+.fiche{border:2px solid var(--ligne-forte);background:#F4F4EF;box-shadow:5px 5px 0 var(--papier-3)}
+.fiche-tete{
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  padding:1rem 1.3rem;border-bottom:2px solid var(--ligne-forte);
+  background:var(--papier-2);
+}
+.fiche-num{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.72rem;
+  letter-spacing:.14em;color:var(--encre-70);white-space:nowrap;
+}
+.fiche-tete h3{font-size:1.28rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;flex:1 1 14rem;margin:0}
+.fiche-corps{padding:1.2rem 1.3rem 1.4rem;font-size:.99rem}
+.fiche-corps p{margin-bottom:1rem}
+.fiche-corps p:last-child{margin-bottom:0}
+
+/* ============ SCÉNARIOS ============ */
+.scenarios{width:100%;border-collapse:collapse;margin:2rem 0;border:2px solid var(--ligne-forte);background:#F3F3EE;font-size:.92rem}
+.scenarios caption{
+  text-align:left;font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;background:var(--encre);color:var(--papier);
+  padding:.55em 1.1rem;border:2px solid var(--encre);border-bottom:none;
+}
+.scenarios th,.scenarios td{
+  border:1px solid var(--ligne);padding:.75rem .9rem;vertical-align:top;text-align:left;line-height:1.55;
+}
+.scenarios thead th{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;background:var(--papier-2);
+}
+.scenarios td:first-child{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;white-space:nowrap}
+.scenarios .proba{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.tableau-defile{overflow-x:auto;margin:2rem 0}
+.tableau-defile .scenarios{margin:0;min-width:52rem}
+
+/* ============ VERDICT ============ */
+.verdict{background:var(--encre);color:var(--papier);border-top:4px solid var(--jaune)}
+.verdict .section-int{padding-top:3.4rem;padding-bottom:3.8rem}
+.verdict .piece-num{background:var(--jaune);color:var(--encre)}
+.verdict h2{color:var(--papier)}
+.verdict .colonne{font-size:1.14rem;line-height:1.78}
+.verdict .colonne p{margin-bottom:1.3rem}
+.verdict mark{background:linear-gradient(to bottom,transparent 52%,var(--jaune) 52%,var(--jaune) 94%,transparent 94%);color:var(--encre);padding:0 .15em}
+.verdict .tampon--rouge{color:#FF6B52}
+
+/* ============ SOURCES ============ */
+.sources .colonne{max-width:62rem}
+.sources-grille{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;margin-top:1.6rem}
+@media (max-width:760px){.sources-grille{grid-template-columns:1fr}}
+.sources h3{font-size:1.1rem;margin-top:0}
+.sources ul{list-style:none}
+.sources li{
+  padding:.55rem 0;border-bottom:1px dashed var(--ligne);
+  font-size:.88rem;line-height:1.55;
+}
+.sources li:last-child{border-bottom:none}
+.sources .ref{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--rouge);display:block}
+
+/* ============ PIED ============ */
+.pied{border-top:2px solid var(--ligne-forte);background:var(--papier-2)}
+.pied-int{
+  max-width:var(--max);margin:0 auto;padding:1.6rem 1.25rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--encre-70);
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== BANDEAU ===================== -->
+<header class="bandeau">
+  <div class="bandeau-int">
+    <span class="bandeau-marque">Dossier · Belgique · 02.07.2026</span>
+    <nav class="bandeau-nav" aria-label="Sommaire du dossier">
+      <a href="#piece-1">P.1 État des lieux</a>
+      <a href="#piece-2">P.2 Deux fins</a>
+      <a href="#piece-3">P.3 L’inventaire</a>
+      <a href="#piece-4">P.4 Le délitement</a>
+      <a href="#piece-5">P.5 Scénarios</a>
+      <a href="#verdict">Verdict</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <aside class="certificat" aria-label="Certificat symbolique : acte de décès non délivré">
+    <div class="certificat-entete">
+      <div class="royaume">Royaume de Belgique</div>
+      <div class="acte">Acte de décès</div>
+      <div class="sous">État civil des États — formulaire n°&nbsp;1830/BE</div>
+    </div>
+    <dl>
+      <dt>Nom&nbsp;:</dt><dd>BELGIQUE (Royaume de)</dd>
+      <dt>Né le&nbsp;:</dt><dd>4 octobre 1830, à Bruxelles</dd>
+      <dt>Décédé le&nbsp;:</dt><dd><span class="champ-vide" aria-label="champ vide">________</span></dd>
+      <dt>Cause&nbsp;:</dt><dd><span class="champ-vide" aria-label="champ vide">________</span></dd>
+      <dt>État général&nbsp;:</dt><dd><span class="tampon tampon--jaune">Défaillant — voir pièces jointes</span></dd>
+    </dl>
+    <div class="grand-tampon" aria-hidden="true">Non délivré</div>
+    <div class="certificat-pied">
+      <span>Pièces jointes&nbsp;: 5</span>
+      <span>Dossier arrêté au 02.07.2026</span>
+    </div>
+  </aside>
+
+  <div class="hero-texte">
+    <p class="sur-titre">Compte rendu complet — édition web</p>
+    <h1>Que manque-t-il à la Belgique pour <span class="souligne">finir</span>&nbsp;?</h1>
+    <p class="chapeau">La question a deux réponses, parce que la Belgique a deux façons de finir. Pour la <em>fin territoriale</em> — la scission —, il manque presque tout&nbsp;: une majorité populaire, une procédure praticable, une solution pour Bruxelles, un accord sur la dette, un feu vert européen, et même un acteur décidé à appuyer sur le bouton. Pour la <em>fin fonctionnelle</em> — un État qui subsiste sur la carte mais cesse d’être obéi, cru et habité —, il ne manque presque rien&nbsp;: elle est engagée, documentée, chiffrée. Ce dossier fait l’inventaire des deux, et répond à la question «&nbsp;où en est-on&nbsp;?&nbsp;» au 2&nbsp;juillet&nbsp;2026.</p>
+    <div class="hero-meta">
+      <span>5 pièces + verdict</span>
+      <span>≈ 20 min de lecture</span>
+      <span>Sources en fin de dossier</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== EN BREF ===================== -->
+<section class="section en-bref" aria-labelledby="titre-bref">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Bordereau</span>
+      <h2 id="titre-bref">En bref — six constats</h2>
+    </div>
+    <ol>
+      <li>La coalition <strong>Arizona</strong> (N-VA, MR, Les&nbsp;Engagés, Vooruit, CD&amp;V), au pouvoir depuis février&nbsp;2025 sous la direction de Bart De&nbsp;Wever, gouverne en régime de «&nbsp;négociation perpétuelle&nbsp;». L’échec budgétaire répété est identifié comme le scénario de rupture le plus crédible à court terme.</li>
+      <li><strong>Aucune majorité populaire pour la scission</strong>&nbsp;: le soutien flamand à l’indépendance pure plafonne durablement autour d’un cinquième à un quart des sondés. Le vote nationaliste (N-VA&nbsp;+&nbsp;VB, près de la moitié des voix flamandes) n’est pas un mandat séparatiste.</li>
+      <li>La Constitution <strong>verrouille</strong> toute fin ordonnée (article&nbsp;195, majorités des deux tiers et par groupe linguistique) — mais l’article&nbsp;195 lui-même est <mark>déclaré ouvert à révision pour 2024-2029</mark>&nbsp;: la clé du verrou est officiellement posée sur l’établi pour 2029.</li>
+      <li><strong>Bruxelles et la dette</strong> (≈&nbsp;105&nbsp;% du PIB en 2024, ≈&nbsp;110&nbsp;% projetés pour 2026) rendent toute liquidation non chiffrable&nbsp;; l’Union européenne n’offre aucune porte de sortie automatique aux États successeurs.</li>
+      <li>Pendant ce temps, la <strong>fin fonctionnelle</strong> avance&nbsp;: plus de 16&nbsp;000 condamnations de justice non exécutées dans le seul dossier de l’accueil, 278,5&nbsp;millions d’euros d’astreintes impayées, «&nbsp;carence systémique&nbsp;» constatée par la CEDH, procédure de non-conformité au GRECO, déclassements aux indices internationaux.</li>
+      <li>Le pays tient par son <strong>étage social</strong> (83&nbsp;à&nbsp;87&nbsp;% de confiance dans la sécurité sociale et la santé) et par le coût de sa propre disparition — pas par l’adhésion à son étage politique (22&nbsp;à&nbsp;39&nbsp;% de confiance).</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== PIÈCE 1 ===================== -->
+<section class="section" id="piece-1" aria-labelledby="titre-p1">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Pièce n°&nbsp;1</span>
+      <h2 id="titre-p1">Où en est-on&nbsp;? L’état des lieux, juillet 2026</h2>
+    </div>
+    <div class="colonne">
+      <p>Le point de départ obligé est le scrutin du 9&nbsp;juin&nbsp;2024. La N-VA de Bart De&nbsp;Wever y a confirmé son statut de première force du pays, talonnée en Flandre par le Vlaams Belang&nbsp;; côté francophone, le MR a opéré un rebond historique et les écologistes se sont effondrés. Il a ensuite fallu <strong>239&nbsp;jours</strong> de formation — informateur, préformateur, formateur, deux renoncements, une interruption pour les communales — pour aboutir, le 3&nbsp;février&nbsp;2025, à la prestation de serment du gouvernement De&nbsp;Wever&nbsp;: 81&nbsp;sièges sur&nbsp;150, et le <mark>premier Premier ministre nationaliste flamand de l’histoire du royaume</mark>. Le symbole compte&nbsp;: l’homme qui a théorisé l’«&nbsp;évaporation&nbsp;» de la Belgique en dirige désormais le gouvernement fédéral.</p>
+      <p>Seize mois plus tard, la coalition n’est ni tombée ni stabilisée. Elle survit de conclave en conclave, dans ce que le CRISP et la presse qualifient de négociation permanente entre un Premier ministre qui joue les stabilisateurs et des présidents de partis — au premier rang desquels Georges-Louis Bouchez (MR), resté hors du gouvernement — en campagne continue.</p>
+
+      <div class="chrono" role="list" aria-label="Chronologie 2024-2026">
+        <div class="chrono-ligne" role="listitem"><span class="chrono-date">09.06.2024</span><span class="chrono-fait">Élections. N-VA première force (23,9&nbsp;% en Flandre), Vlaams Belang à 22,7&nbsp;%, rebond du MR côté francophone, effondrement d’Ecolo et de l’Open&nbsp;VLD.</span></div>
+        <div class="chrono-ligne" role="listitem"><span class="chrono-date">Juin 24 → Jan. 25</span><span class="chrono-fait">239&nbsp;jours de formation. Accord de coalition de 206&nbsp;pages conclu le 31&nbsp;janvier 2025 après 60&nbsp;heures de négociation ininterrompue.</span></div>
+        <div class="chrono-ligne" role="listitem"><span class="chrono-date">03.02.2025</span><span class="chrono-fait">Serment du gouvernement De&nbsp;Wever (Arizona). Programme&nbsp;: 23&nbsp;milliards d’efforts, chômage limité à 24&nbsp;mois, réforme des pensions, taxe sur les plus-values à 10&nbsp;%, retour du nucléaire, 2&nbsp;% du PIB pour la défense.</span></div>
+        <div class="chrono-ligne" role="listitem"><span class="chrono-date">Oct.–Nov. 2025</span><span class="chrono-fait">Crise budgétaire majeure&nbsp;: discours sur l’état de l’Union reporté, ultimatum du Premier ministre, menace de démission portée jusqu’au seuil du Palais. Accord arraché le 24&nbsp;novembre.</span></div>
+        <div class="chrono-ligne" role="listitem"><span class="chrono-date">Mars 2026</span><span class="chrono-fait">Grand Baromètre&nbsp;: N-VA 25,5&nbsp;% et VB 25,4&nbsp;% en Flandre (écart dans la marge d’erreur)&nbsp;; le PTB première force à Bruxelles (25,5&nbsp;%)&nbsp;; le PS repasse devant le MR en Wallonie. VB&nbsp;+&nbsp;PTB cumulent plus de 35&nbsp;% des intentions nationales — un record.</span></div>
+        <div class="chrono-ligne" role="listitem"><span class="chrono-date">19–20.06.2026</span><span class="chrono-fait">Conclave sur des dossiers explicitement «&nbsp;liés&nbsp;» (annualisation du temps de travail, vente partielle de Belfius, IVG, importations des colonies israéliennes)&nbsp;: la méthode du paquet, symptôme d’un exécutif où plus rien n’avance isolément.</span></div>
+      </div>
+
+      <h3>Le nerf&nbsp;: les finances publiques</h3>
+      <p>Le déficit public tournait autour de 4,5&nbsp;% du PIB en 2024 et les projections le poussent vers 5,5&nbsp;% en 2026&nbsp;; la dette glisse de 104,7&nbsp;% vers près de 110&nbsp;% du PIB. Le gouvernement cherche une dizaine de milliards d’économies supplémentaires d’ici 2030 pour tenir ses engagements européens — la Banque nationale en réclame onze. La Cour des comptes a jugé le plan budgétaire fragile dans sa méthode comme dans ses chiffres. Chaque contrôle budgétaire est donc, structurellement, une crise de gouvernement en puissance&nbsp;: c’est le détonateur identifié par à peu près tous les observateurs.</p>
+
+      <h3>Le cordon sanitaire se fissure par le bas</h3>
+      <p>Aux communales d’octobre&nbsp;2024, Ninove a élu le premier bourgmestre Vlaams Belang de l’histoire (majorité absolue de la liste Forza Ninove) et Ranst a connu la première rupture officielle du cordon au sein d’une majorité communale. Un sondage HLN/VTM de la même période donnait 60&nbsp;% des Flamands favorables à l’arrivée du VB au pouvoir local. Le cordon tient encore aux niveaux régional et fédéral — mais il ne tient plus comme un principe, seulement comme un rapport de forces.</p>
+
+      <p>Voilà le décor. Ce n’est ni un pays en train d’éclater, ni un pays en train de se redresser&nbsp;: c’est un pays administré à flux tendu, dont le gouvernement le plus à droite depuis des décennies est dirigé par un nationaliste qui a intérêt à durer, sous la double pression d’une extrême droite qui le talonne au nord et d’une gauche radicale devenue première force dans la capitale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIÈCE 2 ===================== -->
+<section class="section" id="piece-2" aria-labelledby="titre-p2" style="background:var(--papier-2)">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Pièce n°&nbsp;2</span>
+      <h2 id="titre-p2">De quelle «&nbsp;fin&nbsp;» parle-t-on&nbsp;?</h2>
+    </div>
+    <div class="colonne">
+      <p>«&nbsp;Arriver au bout de son existence&nbsp;» peut vouloir dire deux choses très différentes, et toute la confusion du débat belge vient de leur mélange.</p>
+      <p>La <strong>fin territoriale</strong> est celle qu’on imagine spontanément&nbsp;: un acte juridique, des frontières redessinées, un drapeau descendu. Elle suppose une scission (ou une «&nbsp;évaporation&nbsp;» confédérale poussée à son terme), c’est-à-dire une décision, une procédure, une négociation et une reconnaissance internationale. C’est un événement.</p>
+      <p>La <strong>fin fonctionnelle</strong> est plus discrète&nbsp;: l’État demeure sur la carte, à l’ONU, dans les traités — mais il cesse progressivement d’exister comme réalité vécue. Il n’est plus obéi (y compris par lui-même, quand l’exécutif ignore ses propres juges), plus cru (effondrement de la confiance), plus habité (retrait électoral, désaffiliation, suppléance par la société civile). Ce n’est pas un événement, c’est une pente. La science politique belge lui a donné un nom&nbsp;: la <mark>«&nbsp;sécession civique&nbsp;»</mark> — une rupture verticale entre la population et l’appareil d’État, qui a remplacé la vieille menace horizontale entre le Nord et le Sud comme principal risque existentiel du pays.</p>
+      <p>Les deux fins n’ont ni le même calendrier, ni les mêmes conditions, ni les mêmes acteurs. La suite du dossier les traite donc séparément&nbsp;: la pièce n°&nbsp;3 dresse l’inventaire de ce qui <em>manque encore</em> pour la première&nbsp;; la pièce n°&nbsp;4 documente ce qui <em>est déjà acquis</em> pour la seconde.</p>
+      <p class="note-marge">Précision de méthode&nbsp;: «&nbsp;fin&nbsp;» ne signifie pas ici disparition des Belges, de leurs régions ou de leurs institutions locales — mais fin de l’État belge tel que fondé en 1830 et fédéralisé depuis 1970, soit par démembrement, soit par évidement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIÈCE 3 ===================== -->
+<section class="section" id="piece-3" aria-labelledby="titre-p3">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Pièce n°&nbsp;3</span>
+      <h2 id="titre-p3">L’inventaire&nbsp;: huit conditions manquantes de la fin territoriale</h2>
+    </div>
+    <div class="colonne" style="margin-bottom:2.2rem">
+      <p>Pour que la Belgique finisse en droit, huit conditions devraient être réunies. Voici, pour chacune, son état au 2&nbsp;juillet&nbsp;2026 — avec le tampon qui convient.</p>
+    </div>
+
+    <div class="inventaire">
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 1/8</span>
+          <h3>Une majorité populaire pour en finir</h3>
+          <span class="tampon tampon--rouge">Manquante</span>
+        </div>
+        <div class="fiche-corps">
+          <p>C’est le malentendu fondateur du débat. Près d’un électeur flamand sur deux vote nationaliste (N-VA&nbsp;+&nbsp;VB), mais les enquêtes d’opinion flamandes situent durablement le soutien à l’indépendance <em>pure</em> autour d’un cinquième à un quart des sondés — et même au sein de l’électorat VB, la migration et la protestation antisystème priment sur le séparatisme. Le vote nationaliste est un vote de droite identitaire et de colère&nbsp;; il n’a jamais été converti en mandat de rupture. Côté francophone, aucune demande&nbsp;: le rattachisme reste folklorique et le séparatisme wallon, résiduel. Sans demande populaire massive, l’offre séparatiste reste une rhétorique de congrès.</p>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 2/8</span>
+          <h3>Une procédure praticable</h3>
+          <span class="tampon tampon--encre">Verrouillée — serrure sur l’établi</span>
+        </div>
+        <div class="fiche-corps">
+          <p>La Constitution de 1831 n’a pas prévu sa propre mort, et sa révision est l’une des plus lourdes d’Europe. L’article&nbsp;195 impose une procédure en deux temps&nbsp;: déclaration de révision, dissolution automatique des Chambres, élections, puis vote à la majorité des deux tiers par les nouvelles assemblées. Les lois spéciales — celles qui organisent le fédéralisme — exigent en plus une majorité au sein de <em>chaque</em> groupe linguistique. Ajoutez la sonnette d’alarme et la parité linguistique au Conseil des ministres&nbsp;: chaque communauté détient un droit de veto absolu sur toute fin ordonnée. L’article&nbsp;35, inscrit en 1993 comme «&nbsp;bouton confédéral&nbsp;» (lister les compétences fédérales, donner le reste aux entités), n’a jamais été activé — notamment parce qu’attribuer les compétences résiduelles aux Régions léserait les Communautés, et l’inverse paralyserait Bruxelles.</p>
+          <p><strong>Le fait nouveau, et il est majeur&nbsp;:</strong> l’article&nbsp;195 lui-même figure dans la déclaration de révision pour la législature 2024-2029, et l’accord de gouvernement Arizona prévoit la préparation de textes de révision constitutionnelle. Le verrou des verrous est donc, pour la première fois, <mark>officiellement posé sur l’établi pour 2029</mark>. Il n’est pas ouvert&nbsp;; il est en cours de crochetage assumé.</p>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 3/8</span>
+          <h3>Une réponse pour Bruxelles</h3>
+          <span class="tampon tampon--rouge">Introuvable</span>
+        </div>
+        <div class="fiche-corps">
+          <p>C’est l’objection qui, à elle seule, a survécu à toutes les crises depuis 2007. Bruxelles produit près d’un cinquième de la richesse nationale, est très majoritairement francophone sur un territoire enclavé en Flandre, et sert de capitale à l’Union européenne comme de siège à l’OTAN. Elle n’est ni annexable par la Flandre (démographie), ni rattachable à la Wallonie (géographie), ni viable seule aux conditions actuelles (financement), ni «&nbsp;district européen&nbsp;» consenti par quiconque. Toutes les écoles de pensée — cogestion, ville-région élargie, condominium — s’annulent mutuellement. Tant que personne ne peut dire ce que Bruxelles devient <em>le lendemain</em>, il n’y a pas de lendemain.</p>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 4/8</span>
+          <h3>Un partage de la dette</h3>
+          <span class="tampon tampon--rouge">Explosif, non chiffré</span>
+        </div>
+        <div class="fiche-corps">
+          <p>Environ 105&nbsp;% du PIB de dette en 2024, près de 110&nbsp;% projetés pour 2026, un déficit qui dérive&nbsp;: qui reprend quoi&nbsp;? Clé démographique, clé PIB, clé «&nbsp;historique&nbsp;»&nbsp;? Chaque formule fabrique un perdant qui la refusera. La référence rituelle au «&nbsp;divorce de velours&nbsp;» tchécoslovaque de 1993 oublie que celui-ci s’est fait avec une dette faible, deux républiques déjà constituées et sans capitale disputée — trois conditions dont aucune n’existe ici. Et les marchés votent tous les jours&nbsp;: une perspective de scission non préparée se paierait immédiatement en prime de risque sur le refinancement d’un État déjà sous surveillance budgétaire européenne.</p>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 5/8</span>
+          <h3>Le sort de la sécurité sociale</h3>
+          <span class="tampon tampon--gris">Tabou fondateur</span>
+        </div>
+        <div class="fiche-corps">
+          <p>La sécurité sociale fédérale est le dernier grand circuit de solidarité interpersonnelle qui traverse la frontière linguistique — les estimations, d’origine flamande, chiffrent les transferts nord-sud autour de six milliards d’euros par an. Elle est aussi, paradoxe central de ce dossier, <mark>l’institution la plus légitime du pays</mark>&nbsp;: 83&nbsp;% de confiance, contre 39&nbsp;% pour l’État belge lui-même. La scinder, c’est dissoudre le seul étage de l’État auquel les citoyens des deux côtés tiennent encore. Aucun parti de gouvernement, N-VA comprise, n’a jusqu’ici accepté d’en porter la responsabilité politique — la coalition Arizona la réforme, la comprime, mais ne la communautarise pas.</p>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 6/8</span>
+          <h3>Un feu vert extérieur</h3>
+          <span class="tampon tampon--rouge">Refusé par défaut</span>
+        </div>
+        <div class="fiche-corps">
+          <p>La doctrine constante de la Commission européenne — opposée aux Écossais en 2014 comme aux Catalans en 2017 — veut qu’un territoire issu d’une sécession sorte de l’Union et doive y réadhérer à l’unanimité des Vingt-Sept. Une Flandre ou une Wallonie indépendantes commenceraient donc leur existence hors de l’UE, hors de l’euro en droit, et en file d’attente. S’ajoute une circonstance unique au monde&nbsp;: l’État qui se dissoudrait est le pays hôte des institutions européennes et de l’OTAN. Aucune chancellerie, aucun marché, aucune organisation n’a le moindre intérêt à l’instabilité de Bruxelles — et tous le feraient savoir.</p>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 7/8</span>
+          <h3>Un acteur décidé, maintenant</h3>
+          <span class="tampon tampon--rouge">Absent</span>
+        </div>
+        <div class="fiche-corps">
+          <p>La fin d’un État exige un entrepreneur politique qui la veuille, la porte et l’assume. Or le paradoxe de 2026 est complet&nbsp;: le premier nationaliste flamand à diriger la Belgique s’est fait le gestionnaire de son budget, de son armée et de ses engagements atlantiques — la N-VA a besoin de prouver qu’elle gouverne, pas qu’elle démolit. Le Vlaams Belang, seul à réclamer l’acte final, reste exclu du pouvoir fédéral par un cordon sanitaire qui craque au niveau local mais tient au sommet. Les partis francophones, eux, ne demandent rien&nbsp;: ils défendent le statu quo qui les finance. Il n’y a, pour l’heure, que des rentiers du système et un héritier qui attend 2029.</p>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-tete">
+          <span class="fiche-num">Condition 8/8</span>
+          <h3>Un détonateur</h3>
+          <span class="tampon tampon--jaune">En incubation — horizon 2029</span>
+        </div>
+        <div class="fiche-corps">
+          <p>Toutes les conditions précédentes peuvent rester manquantes indéfiniment — sauf si une crise les rend soudain secondaires. La configuration qui poserait la question «&nbsp;pour de vrai&nbsp;» est identifiable&nbsp;: des élections en 2029 avec le Vlaams Belang première force en Flandre, le PTB première force à Bruxelles (c’est déjà le cas dans les sondages) et puissant en Wallonie, un centre incapable de former quoi que ce soit, et un article&nbsp;195 rendu révisable dans l’intervalle. Ce serait la crise des 541&nbsp;jours de 2010-2011, sans les amortisseurs d’alors — ni partis traditionnels solides, ni confiance résiduelle, ni marges budgétaires. Rien ne garantit qu’elle accoucherait d’une scission. Mais c’est la seule séquence connue où la fin territoriale cesserait d’être une hypothèse d’école pour devenir une option de sortie de crise.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="colonne" style="margin-top:2.4rem">
+      <p><strong>Bilan de la pièce n°&nbsp;3&nbsp;:</strong> sur huit conditions, aucune n’est remplie, une seule est en mouvement (la procédure, via l’ouverture de l’article&nbsp;195) et une seule mûrit toute seule (le détonateur électoral). La fin territoriale n’est donc ni imminente ni impossible&nbsp;: elle est <em>datée</em>. Tout converge vers un rendez-vous — 2029 — dont l’issue dépendra moins des séparatistes que de l’état dans lequel l’étage fédéral y arrivera. C’est précisément l’objet de la pièce suivante.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIÈCE 4 ===================== -->
+<section class="section" id="piece-4" aria-labelledby="titre-p4" style="background:var(--papier-2)">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Pièce n°&nbsp;4</span>
+      <h2 id="titre-p4">La fin qui n’attend personne&nbsp;: le délitement documenté</h2>
+    </div>
+    <div class="colonne">
+      <p>Pendant que la fin territoriale attend ses conditions, l’autre fin n’attend rien. Elle se mesure sur trois plans&nbsp;: un État qui n’obéit plus à ses propres juges, un État déclassé par ses pairs, un État quitté par les siens.</p>
+
+      <h3>1. L’État qui n’obéit plus à ses juges</h3>
+      <p>Le cas le plus documenté d’Europe occidentale est belge. Depuis octobre&nbsp;2021, l’État et son agence Fedasil ont été condamnés par les tribunaux du travail pour défaut d’hébergement de demandeurs d’asile — non pas dix fois, ni cent fois, mais plus de seize mille fois. Les astreintes cumulées ont dépassé 278&nbsp;millions d’euros&nbsp;; elles ne sont pas payées, l’exécutif s’abritant derrière l’insaisissabilité des biens publics (article&nbsp;1412bis du Code judiciaire) et des contestations dilatoires. La ministre de l’Asile a assumé publiquement la position&nbsp;: «&nbsp;Ces astreintes existent et nous ne les paierons pas.&nbsp;»</p>
+      <p>La Cour européenne des droits de l’homme a qualifié la situation dans l’arrêt <em>Camara c.&nbsp;Belgique</em> (18&nbsp;juillet&nbsp;2023)&nbsp;: non pas un retard, mais une <mark>«&nbsp;carence systémique&nbsp;»</mark> dans l’exécution des décisions de justice définitives. Le 9&nbsp;avril&nbsp;2026, l’arrêt <em>M.V. et autres c.&nbsp;Belgique</em> a franchi un seuil supplémentaire&nbsp;: violation de l’article&nbsp;3 de la Convention (traitement dégradant) pour quatre requérants restés de 111 à 338&nbsp;jours à la rue malgré des ordonnances définitives — la Cour notant au passage que les astreintes demeuraient impayées. Plus de 2&nbsp;200&nbsp;mesures provisoires ont été imposées à la Belgique depuis. En juillet&nbsp;2024, fait sans précédent, les trois plus hautes juridictions du pays (Cour constitutionnelle, Cour de cassation, Conseil d’État) ont adressé un mémorandum commun au formateur pour dire leur «&nbsp;vive préoccupation&nbsp;». Une loi de juillet&nbsp;2025 a répondu en légalisant une partie du non-accueil (exclusion des personnes protégées ailleurs dans l’UE, plus de 3&nbsp;200 personnes concernées)&nbsp;: quand le droit gêne, on change le droit.</p>
+      <p>Le procédé déborde l’asile. La surpopulation carcérale vaut à la Belgique des condamnations européennes récurrentes depuis 2014&nbsp;: 13&nbsp;363&nbsp;détenus en 2025 (+21&nbsp;% en deux ans), 763&nbsp;détenus dormant au sol en avril&nbsp;2026. Des licences d’exportation d’armes annulées par le Conseil d’État ont été réoctroyées à l’identique. L’arriéré judiciaire fixe des affaires civiles à quatre ou six ans à la Cour d’appel de Bruxelles, certains dossiers glissant vers 2040. Le débat public a donné un nom au mécanisme — la «&nbsp;désobéissance budgétisée&nbsp;»&nbsp;: la condamnation devient une ligne de coût, plus un interdit. Et de hauts magistrats en ont tiré le vocabulaire, parlant d’un État qui se comporte, sur son propre sol, en «&nbsp;État voyou&nbsp;».</p>
+
+      <div class="releve releve--rouge" role="table" aria-label="Relevé : l’État condamné">
+        <div class="releve-titre">Relevé n°&nbsp;1 — l’État condamné</div>
+        <div class="releve-ligne" role="row"><span class="releve-val">+&nbsp;16&nbsp;000<small>condamnations</small></span><span class="releve-def">Décisions de justice ordonnant l’hébergement de demandeurs d’asile, non exécutées depuis octobre 2021.<span class="src">Juridictions du travail · IFDH · presse</span></span></div>
+        <div class="releve-ligne" role="row"><span class="releve-val">278,5&nbsp;M€<small>d’astreintes</small></span><span class="releve-def">Montant cumulé des astreintes, non payé&nbsp;; refus assumé au niveau ministériel.<span class="src">RTBF (2024) · déclarations ministérielles</span></span></div>
+        <div class="releve-ligne" role="row"><span class="releve-val">+&nbsp;2&nbsp;200<small>mesures provisoires</small></span><span class="releve-def">Mesures d’urgence imposées par la CEDH à la Belgique depuis l’arrêt <em>Camara</em>.<span class="src">CEDH, 2023-2026</span></span></div>
+        <div class="releve-ligne" role="row"><span class="releve-val">763<small>détenus au sol</small></span><span class="releve-def">Record d’avril 2026&nbsp;; surpopulation carcérale de 19,3&nbsp;% fin 2025, +21&nbsp;% de détenus en deux ans.<span class="src">CCSP, rapport 2026</span></span></div>
+        <div class="releve-ligne" role="row"><span class="releve-val">3<small>hautes juridictions</small></span><span class="releve-def">Mémorandum commun sans précédent (juillet 2024) sur le non-respect des décisions de justice.<span class="src">C. const. · Cassation · Conseil d’État</span></span></div>
+      </div>
+
+      <h3>2. L’État déclassé par ses pairs</h3>
+      <p>Les instances internationales enregistrent la même trajectoire, chacune dans son langage. Le GRECO (Conseil de l’Europe) a placé la Belgique sous procédure de non-conformité pour son refus persistant de réformer le financement des partis et les règles d’intégrité — un financement public d’environ 188&nbsp;millions d’euros par an, sans contrôle indépendant. Transparency International a fait tomber le pays à 69/100 (2024) et le classe parmi les reculs significatifs. Le CIVICUS Monitor a rétrogradé l’espace civique belge d’«&nbsp;ouvert&nbsp;» à «&nbsp;rétréci&nbsp;». L’EIU maintient la Belgique parmi les «&nbsp;démocraties imparfaites&nbsp;», autour du 34<sup>e</sup>&nbsp;rang&nbsp;; le World Justice Project la voit reculer d’année en année.</p>
+      <p>Un paradoxe protège encore l’image du pays&nbsp;: Freedom House le note 96/100 («&nbsp;libre&nbsp;») et V-Dem classe ses élections parmi les meilleures du monde. C’est l’<mark>effet d’écran</mark>&nbsp;: la façade électorale — scrutins réguliers, alternances, comptage propre — masque l’érosion des étages inférieurs (exécution des jugements, intégrité, espace civique). Il explique aussi le silence international relatif&nbsp;: on ne fait pas de réquisitoire contre le pays qui héberge les institutions européennes.</p>
+
+      <h3>3. L’État quitté par les siens</h3>
+      <p>Le troisième plan est le plus lourd de conséquences, parce qu’il conditionne les deux autres. Aux scrutins de 2024, près de 23&nbsp;% de l’électorat s’est soustrait à toute expression valable — abstention, votes blancs, votes nuls — <em>malgré</em> l’obligation constitutionnelle de voter, dont la sanction est morte de fait (dernière condamnation d’un simple électeur&nbsp;: 2003). Le Baromètre social wallon mesure l’effondrement&nbsp;: 39&nbsp;% de confiance dans l’État belge, 22 à 35&nbsp;% dans les partis et les parlements, soit une chute d’environ trente points en une décennie. Les partis traditionnels ont perdu près d’un tiers de leurs membres depuis 2010-2012&nbsp;; le Vlaams Belang, lui, en a gagné 20&nbsp;% en un an.</p>
+      <p>Mais le même baromètre livre la donnée qui structure tout ce dossier&nbsp;: la confiance dans le système de santé (87&nbsp;%) et la sécurité sociale (83&nbsp;%) reste massive et stable depuis vingt ans. Les Belges ne rejettent pas l’État-services&nbsp;; ils quittent l’État-décision. Et là où celui-ci défaille, la société civile supplée — coopératives énergétiques citoyennes, réseaux d’aide alimentaire, hébergement des exilés organisé par des particuliers quand l’État se fait condamner pour ne pas le faire. C’est la sécession civique «&nbsp;positive&nbsp;»&nbsp;: on ne détruit pas l’État, on le remplace pièce par pièce.</p>
+
+      <div class="releve" role="table" aria-label="Relevé : l’État quitté">
+        <div class="releve-titre">Relevé n°&nbsp;2 — l’État quitté</div>
+        <div class="releve-ligne" role="row"><span class="releve-val">≈&nbsp;23&nbsp;%<small>de l’électorat 2024</small></span><span class="releve-def">Hors expression valable (abstention + blancs + nuls), malgré le vote obligatoire.<span class="src">Résultats officiels 2024 · analyses</span></span></div>
+        <div class="releve-ligne" role="row"><span class="releve-val">39&nbsp;%<small>vs&nbsp;83&nbsp;%</small></span><span class="releve-def">Confiance dans l’État belge contre confiance dans la sécurité sociale&nbsp;: l’étage politique s’effondre, l’étage social tient.<span class="src">IWEPS, Baromètre social de la Wallonie</span></span></div>
+        <div class="releve-ligne" role="row"><span class="releve-val">−&nbsp;⅓<small>de membres</small></span><span class="releve-def">Effectifs militants perdus par les partis traditionnels depuis 2010-2012.<span class="src">Données partisanes compilées · CRISP</span></span></div>
+        <div class="releve-ligne" role="row"><span class="releve-val">&gt;&nbsp;35&nbsp;%<small>VB&nbsp;+&nbsp;PTB</small></span><span class="releve-def">Cumul historique des intentions de vote pour les deux partis hors système, mars 2026.<span class="src">Grand Baromètre, mars 2026</span></span></div>
+      </div>
+
+      <p><strong>Bilan de la pièce n°&nbsp;4&nbsp;:</strong> à la question «&nbsp;où en est-on&nbsp;?&nbsp;», il existe donc une réponse mesurable et dérangeante. Pour ses propres juges, pour les instances qui l’évaluent et pour un quart au moins de ses citoyens, l’État belge fonctionne déjà, par endroits, comme une <em>fiction administrée</em>&nbsp;: il perçoit, il légifère, il siège — mais il n’exécute plus ce que son droit ordonne et ne convainc plus ceux qu’il représente. Cette fin-là n’a besoin ni de l’article&nbsp;195, ni de Bruxelles, ni d’un référendum. Elle a seulement besoin qu’on continue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIÈCE 5 ===================== -->
+<section class="section" id="piece-5" aria-labelledby="titre-p5">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Pièce n°&nbsp;5</span>
+      <h2 id="titre-p5">Cinq scénarios, 2026-2035</h2>
+    </div>
+    <div class="colonne">
+      <p>Croisons maintenant les deux fins. Cinq trajectoires couvrent l’essentiel du champ des possibles&nbsp;; elles ne s’excluent pas toutes — la dernière, en particulier, est compatible avec chacune des autres.</p>
+    </div>
+
+    <div class="tableau-defile">
+      <table class="scenarios">
+        <caption>Tableau des trajectoires — état d’analyse au 02.07.2026</caption>
+        <thead>
+          <tr><th scope="col">Scénario</th><th scope="col">Mécanisme</th><th scope="col">Horizon</th><th scope="col">Plausibilité</th><th scope="col">Ce que cela «&nbsp;finirait&nbsp;»</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A. Le pataugeage</td>
+            <td>L’Arizona survit de conclave en conclave («&nbsp;aanmodderen&nbsp;»), tenue par l’absence d’alternative et l’intérêt de la N-VA à durer. Rien n’est tranché, tout s’use.</td>
+            <td>2026-2029</td>
+            <td class="proba">Élevée</td>
+            <td>Rien en droit&nbsp;; beaucoup en fait — le délitement (pièce&nbsp;4) se poursuit à son rythme.</td>
+          </tr>
+          <tr>
+            <td>B. La chute de l’Arizona</td>
+            <td>Échec budgétaire répété (détonateur n°&nbsp;1 identifié), annulation d’une réforme phare par la Cour constitutionnelle (malus pension, taxe sur les plus-values), ou aventure de listes MR en Flandre perçue comme rupture du pacte.</td>
+            <td>2026-2028</td>
+            <td class="proba">Réelle</td>
+            <td>Un gouvernement, pas un pays — mais rejouerait la crise de formation avec des sondages pires qu’en 2024.</td>
+          </tr>
+          <tr>
+            <td>C. Le rendez-vous 2029</td>
+            <td>Article&nbsp;195 révisé ou révisable, négociation confédérale portée par la N-VA (activation de l’article&nbsp;35), septième réforme de l’État poussée à sa limite.</td>
+            <td>2029-2031</td>
+            <td class="proba">Conditionnelle</td>
+            <td>La Belgique fédérale. Naîtrait une Belgique-coquille — confédération ou «&nbsp;Belgique à quatre&nbsp;» — la fin par métamorphose, sans acte de décès.</td>
+          </tr>
+          <tr>
+            <td>D. L’ingouvernabilité</td>
+            <td>VB première force en Flandre, PTB première force à Bruxelles et puissant en Wallonie&nbsp;; aucune coalition centrale arithmétiquement ou politiquement possible. La crise de 2010-2011, sans amortisseurs.</td>
+            <td>2029-2030</td>
+            <td class="proba">Non négligeable</td>
+            <td>La seule configuration connue où la scission sèche redeviendrait une option de sortie de crise — sans qu’aucune des huit conditions de la pièce&nbsp;3 ne soit pour autant réglée.</td>
+          </tr>
+          <tr>
+            <td>E. L’évaporation</td>
+            <td>Aucune rupture&nbsp;: poursuite du non-respect des jugements, confiance politique sous les 20&nbsp;%, suppléance civile généralisée, abstention réelle croissante. L’État demeure à l’international, s’absente à l’intérieur.</td>
+            <td>Continu</td>
+            <td class="proba">En cours</td>
+            <td>L’existence effective de l’État — la fin sans date, sans acte et sans coupable désigné. Compatible avec A, B, C et D.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="colonne">
+      <h3>Cinq marqueurs à surveiller</h3>
+      <p>Pour suivre en temps réel laquelle de ces trajectoires s’impose, cinq indicateurs suffisent. Le contrôle budgétaire de l’automne 2026, d’abord&nbsp;: le gouvernement cherche trois à quatre milliards de plus, la Banque nationale en réclame onze — l’écart entre les deux est la mesure exacte du risque de chute. Les arrêts de la Cour constitutionnelle sur les pensions et la taxe sur les plus-values, ensuite&nbsp;: une annulation rouvrirait tout l’équilibre de la coalition. Le lancement, ou non, de listes MR en Flandre, qui vaudrait signal de fin de pacte pour la N-VA. La trajectoire comparée du Vlaams Belang et de la N-VA dans les vagues de sondage, qui déterminera qui négocie quoi en 2029. Et enfin le sort des astreintes après l’arrêt <em>M.V. et autres</em>&nbsp;: leur paiement marquerait un retour dans le droit&nbsp;; leur non-paiement confirmé, une étape de plus dans le scénario&nbsp;E.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VERDICT ===================== -->
+<section class="section verdict" id="verdict" aria-labelledby="titre-verdict">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Verdict</span>
+      <h2 id="titre-verdict">Ce qu’il manque, en une page</h2>
+    </div>
+    <div class="colonne">
+      <p>Que manque-t-il à la Belgique pour arriver au bout de son existence&nbsp;?</p>
+      <p><strong>Pour mourir en droit&nbsp;:</strong> une majorité populaire, une procédure, une réponse pour Bruxelles, un partage de la dette, un feu vert européen, un entrepreneur politique et un détonateur — <mark>presque tout</mark>. Et c’est précisément parce qu’il manque tout à la fois que personne ne s’y risque&nbsp;: le coût de la liquidation est le premier gardien du royaume.</p>
+      <p><strong>Pour mourir en fait&nbsp;:</strong> <mark>presque rien</mark>. Il suffit que continue ce qui est déjà à l’œuvre — un exécutif qui trie les jugements qu’il daigne exécuter, des astreintes traitées en ligne budgétaire, une confiance politique sous les 40&nbsp;%, un quart de l’électorat sorti du jeu, une société civile qui remplace l’État pièce par pièce.</p>
+      <p>En juillet 2026, la Belgique n’est donc ni en train de se dissoudre, ni en train de se redresser. Elle est <strong>verrouillée de l’extérieur et vidée de l’intérieur</strong>&nbsp;: trop coûteuse à liquider, trop défaillante pour être crue. Sa fin la plus probable n’est pas celle qu’on guette — une déclaration, un drapeau, une frontière. C’est celle qui n’aura pas de date&nbsp;: le jour où la scission elle-même n’aura plus d’objet, faute d’État restant à partager. Le rendez-vous de 2029 dira si le pays choisit sa métamorphose — ou s’il continue de laisser le champ «&nbsp;cause du décès&nbsp;» se remplir tout seul.</p>
+      <p style="margin-top:2rem"><span class="tampon tampon--rouge">Acte de décès&nbsp;: non délivré</span>&nbsp;&nbsp;<span class="tampon tampon--jaune">Dossier&nbsp;: à rouvrir en 2029</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOURCES ===================== -->
+<section class="section sources" id="sources" aria-labelledby="titre-sources">
+  <div class="section-int">
+    <div class="piece-tete">
+      <span class="piece-num">Annexe</span>
+      <h2 id="titre-sources">Sources &amp; méthode</h2>
+    </div>
+    <div class="colonne">
+      <p>Ce dossier synthétise un corpus documentaire constitué entre 2024 et 2026 (rapports institutionnels, jurisprudence, données d’enquête, analyses de presse et de centres de recherche), recoupé et arrêté au 2&nbsp;juillet&nbsp;2026. Les principales familles de sources&nbsp;:</p>
+    </div>
+    <div class="sources-grille">
+      <div>
+        <h3>Jurisprudence &amp; institutions</h3>
+        <ul>
+          <li><span class="ref">CEDH</span><em>Camara c.&nbsp;Belgique</em> (18.07.2023, req. 49255/22)&nbsp;; <em>M.V. et autres c.&nbsp;Belgique</em> (09.04.2026) — carence systémique, violation des articles&nbsp;3, 6 et 34.</li>
+          <li><span class="ref">Hautes juridictions belges</span>Mémorandum commun de la Cour constitutionnelle, de la Cour de cassation et du Conseil d’État au formateur (juillet 2024).</li>
+          <li><span class="ref">IFDH</span>Institut fédéral des droits humains, rapports État de droit 2024 et 2025.</li>
+          <li><span class="ref">CCSP</span>Conseil central de surveillance pénitentiaire, rapport annuel publié en mai 2026 (données carcérales 2023-2026).</li>
+          <li><span class="ref">GRECO — Conseil de l’Europe</span>4<sup>e</sup> et 5<sup>e</sup> cycles d’évaluation&nbsp;; procédure de non-conformité (règle 32) sur le financement des partis et l’intégrité.</li>
+          <li><span class="ref">Commission européenne</span>Rapports annuels sur l’État de droit, chapitres Belgique, 2022-2025.</li>
+          <li><span class="ref">Cour des comptes &amp; BNB</span>Avis sur les plans budgétaires 2025-2026&nbsp;; évaluations de l’effort d’assainissement requis.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Données, indices &amp; analyses</h3>
+        <ul>
+          <li><span class="ref">IWEPS</span>Baromètre social de la Wallonie (vagues jusqu’à 2023)&nbsp;: confiance institutionnelle différenciée.</li>
+          <li><span class="ref">Grand Baromètre</span>Ipsos – Le Soir/RTL/VTM/HLN, vagues septembre 2024 → mars 2026 (marge d’erreur ±&nbsp;3,1&nbsp;points).</li>
+          <li><span class="ref">Indices internationaux</span>Transparency International (CPI 2024&nbsp;: 69/100)&nbsp;; CIVICUS Monitor («&nbsp;rétréci&nbsp;»)&nbsp;; EIU Democracy Index («&nbsp;démocratie imparfaite&nbsp;»)&nbsp;; World Justice Project&nbsp;; Freedom House&nbsp;; V-Dem.</li>
+          <li><span class="ref">CRISP</span>Courriers hebdomadaires sur la formation du gouvernement De&nbsp;Wever&nbsp;; «&nbsp;2026, année de la mise à l’épreuve pour l’Arizona&nbsp;».</li>
+          <li><span class="ref">Textes fondamentaux</span>Constitution belge (art.&nbsp;35, 42, 195)&nbsp;; lois spéciales de réformes institutionnelles&nbsp;; déclaration de révision 2024&nbsp;; accord de coalition fédérale 2025-2029.</li>
+          <li><span class="ref">Littérature</span>Travaux de politologie belge et comparée sur la particratie, le consociativisme et la sécession civique (Deschouwer, Sinardet, Reuchamps, Delwit, e.a.).</li>
+          <li><span class="ref">Presse de référence</span>RTBF, Le Soir, Le Vif, L’Avenir, De Standaard, The Brussels Times, Belga (2024-2026).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="colonne" style="margin-top:2.2rem">
+      <p class="note-marge">Limites assumées. Les sondages sont des instantanés à marge d’erreur&nbsp;: les écarts N-VA/VB de 2026 n’y sont pas significatifs. Certaines qualifications citées («&nbsp;État voyou&nbsp;», «&nbsp;désobéissance budgétisée&nbsp;») sont des expressions d’acteurs — magistrats, ONG, presse — rapportées comme telles et non comme des catégories juridiques. Les scénarios de la pièce n°&nbsp;5 relèvent de l’analyse, non de la prédiction&nbsp;: plusieurs «&nbsp;moments de vérité&nbsp;» annoncés depuis 2025 n’ont pas provoqué de rupture. Enfin, l’estimation du soutien à l’indépendance flamande agrège des vagues d’enquêtes aux formulations variables&nbsp;; l’ordre de grandeur (un cinquième à un quart) fait consensus, pas la décimale.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="pied">
+  <div class="pied-int">
+    <span>Fin(s) de la Belgique — dossier documentaire</span>
+    <span>Arrêté au 2 juillet 2026 · Reproduction libre avec mention des sources</span>
+  </div>
+</footer>
+
+</body>
+</html>
