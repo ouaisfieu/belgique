@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le bruit et la machine — La coalition Arizona et la démocratie belge</title>
+<meta name="description" content="Essai réflexif : ce que le tumulte de la coalition Arizona (2025-2026) révèle — et protège — de la démocratie belge. Une lecture structurelle de l'instabilité productive.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Light stratum — the theatre (surface) */
+    --paper:#E7E4DB;
+    --paper-2:#DEDACD;
+    --ink:#191B1D;
+    --muted:#6B675C;
+    --rule:#C8C3B5;
+    /* Dark stratum — the machine (base) */
+    --deep:#141719;
+    --deep-2:#1E2226;
+    --bone:#E4E1D7;
+    --muted-d:#8D897D;
+    --rule-d:#31363B;
+    /* Accents */
+    --slate:#4E6C86;      /* structural / data steel-blue */
+    --slate-d:#7A98B2;    /* on dark */
+    --seal:#9E3739;       /* oxblood — correction ink / dissent */
+    --seal-d:#C55D5F;     /* on dark */
+    /* Type */
+    --disp:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --body:"Newsreader",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+    --measure:66ch;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:clamp(1.06rem,0.55vw + 0.95rem,1.2rem);
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* ---------- Layout primitives ---------- */
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(1.15rem,4vw,3rem);}
+  .col{max-width:var(--measure);}
+  .col-wide{max-width:80ch;}
+
+  section.band{width:100%;position:relative;}
+  section.surface{background:var(--paper);color:var(--ink);}
+  section.machine{background:var(--deep);color:var(--bone);}
+  section.machine ::selection{background:var(--seal-d);color:#fff;}
+  ::selection{background:var(--ink);color:var(--paper);}
+
+  /* ---------- Eyebrows / mono utility ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--muted);
+    margin:0 0 1.4rem;
+    display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;
+  }
+  .machine .eyebrow{color:var(--muted-d);}
+  .eyebrow .tick{color:var(--seal);}
+  .machine .eyebrow .tick{color:var(--seal-d);}
+
+  /* ---------- Masthead / hero ---------- */
+  .masthead{padding:clamp(3.2rem,9vh,7rem) 0 clamp(2.4rem,5vh,3.6rem);border-bottom:1px solid var(--rule);}
+  .kicker{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--seal);font-weight:600;margin:0 0 1.8rem;
+  }
+  h1.title{
+    font-family:var(--disp);
+    font-weight:700;
+    font-size:clamp(2.7rem,8.5vw,6rem);
+    line-height:.95;
+    letter-spacing:-.025em;
+    margin:0 0 1.6rem;
+    max-width:16ch;
+  }
+  h1.title em{font-style:normal;color:var(--seal);}
+  .standfirst{
+    font-size:clamp(1.22rem,1.1vw + 1rem,1.55rem);
+    line-height:1.55;
+    font-weight:400;
+    max-width:60ch;
+    color:#2c2f31;
+    margin:0 0 2.2rem;
+  }
+  .standfirst .lede{font-weight:600;font-style:italic;}
+  .byline{
+    font-family:var(--mono);font-size:.76rem;letter-spacing:.05em;color:var(--muted);
+    display:flex;gap:1.4rem;flex-wrap:wrap;border-top:1px solid var(--rule);padding-top:1.2rem;max-width:60ch;
+  }
+  .byline b{color:var(--ink);font-weight:600;}
+
+  /* ---------- Unanimity band (signature) ---------- */
+  .unanimity{margin:clamp(2.6rem,6vh,4rem) 0 0;}
+  .uwrap{
+    border:1px solid var(--rule);
+    background:linear-gradient(180deg,var(--paper-2),var(--paper));
+    padding:1.5rem 1.4rem 1.1rem;
+  }
+  .machine .uwrap{border-color:var(--rule-d);background:linear-gradient(180deg,#181c1f,var(--deep-2));}
+  .ticks{
+    display:flex;align-items:flex-end;gap:2px;height:64px;overflow:hidden;
+  }
+  .ticks .t{
+    flex:1 1 auto;min-width:1px;
+    background:var(--slate);
+    height:100%;
+    transform-origin:bottom center;
+    transform:rotate(var(--r,0deg)) translateY(var(--y,0px));
+    opacity:.9;
+    transition:transform .9s cubic-bezier(.16,.84,.3,1),background .6s ease;
+  }
+  .machine .ticks .t{background:var(--slate-d);opacity:.85;}
+  .ticks .t.dissent{background:var(--seal);opacity:1;}
+  .machine .ticks .t.dissent{background:var(--seal-d);}
+  .ticks.aligned .t{transform:rotate(0deg) translateY(0);}
+  .ticks.aligned .t.dissent{transform:rotate(19deg) translateY(-3px);}
+  .ucap{
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted);margin-top:.9rem;
+  }
+  .machine .ucap{color:var(--muted-d);}
+  .ucap .big{color:var(--ink);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  .machine .ucap .big{color:var(--bone);}
+  .ucap .dis{color:var(--seal);}
+  .machine .ucap .dis{color:var(--seal-d);}
+
+  /* ---------- Index ---------- */
+  .index{padding:clamp(2.2rem,5vh,3.4rem) 0;border-bottom:1px solid var(--rule);}
+  .index ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.2rem 2.4rem;}
+  .index li{border-top:1px solid var(--rule);padding:.75rem 0;}
+  .index a{
+    text-decoration:none;color:var(--ink);display:flex;gap:.9rem;align-items:baseline;
+    transition:color .2s ease;
+  }
+  .index a:hover{color:var(--seal);}
+  .index .n{font-family:var(--mono);font-size:.74rem;color:var(--slate);font-weight:600;flex:0 0 auto;width:2.2em;}
+  .index .l{font-family:var(--disp);font-weight:500;font-size:1.02rem;line-height:1.2;letter-spacing:-.01em;}
+
+  /* ---------- Movements ---------- */
+  .movement{padding:clamp(3.4rem,9vh,6.5rem) 0;}
+  .mv-head{display:flex;gap:1.4rem;align-items:baseline;margin:0 0 2rem;flex-wrap:wrap;}
+  .mv-num{
+    font-family:var(--mono);font-weight:600;font-size:.9rem;letter-spacing:.08em;
+    color:var(--seal);flex:0 0 auto;padding-top:.4rem;
+  }
+  .machine .mv-num{color:var(--seal-d);}
+  h2.mv-title{
+    font-family:var(--disp);font-weight:700;
+    font-size:clamp(1.75rem,4vw,2.9rem);line-height:1.03;letter-spacing:-.02em;
+    margin:0;max-width:20ch;
+  }
+  .mv-title span{display:block;color:var(--muted);font-weight:500;font-size:.5em;letter-spacing:.02em;margin-top:.55rem;}
+  .machine .mv-title span{color:var(--muted-d);}
+
+  p{margin:0 0 1.3rem;}
+  p.first{margin-top:.2rem;}
+  .movement p, .movement blockquote, .movement .note{max-width:var(--measure);}
+  em{font-style:italic;}
+  strong{font-weight:600;}
+  .machine strong{color:#fff;font-weight:600;}
+
+  /* drop cap on opening movement */
+  p.dropcap:first-letter{
+    font-family:var(--disp);font-weight:700;float:left;font-size:3.7rem;line-height:.78;
+    padding:.35rem .55rem 0 0;color:var(--seal);
+  }
+
+  /* inline emphasis mark */
+  .mark{
+    background:linear-gradient(180deg,transparent 62%,rgba(158,55,57,.22) 62%);
+    padding:0 .05em;
+  }
+  .machine .mark{background:linear-gradient(180deg,transparent 62%,rgba(197,93,95,.28) 62%);}
+
+  /* ---------- Pull quote ---------- */
+  blockquote.pull{
+    margin:2.4rem 0;padding:0 0 0 1.5rem;border-left:3px solid var(--seal);
+    font-family:var(--disp);font-weight:500;font-size:clamp(1.35rem,2.2vw,1.9rem);
+    line-height:1.28;letter-spacing:-.015em;color:var(--ink);max-width:24ch;
+  }
+  .machine blockquote.pull{border-color:var(--seal-d);color:var(--bone);}
+  blockquote.pull cite{
+    display:block;font-family:var(--mono);font-style:normal;font-weight:500;
+    font-size:.72rem;letter-spacing:.06em;color:var(--muted);margin-top:1rem;text-transform:uppercase;
+  }
+  .machine blockquote.pull cite{color:var(--muted-d);}
+
+  /* ---------- Readout callout (the machine's output) ---------- */
+  .readout{
+    border:1px solid var(--rule);background:var(--paper-2);
+    padding:1.5rem 1.6rem;margin:2.2rem 0;max-width:var(--measure);
+  }
+  .machine .readout{border-color:var(--rule-d);background:var(--deep-2);}
+  .readout .rh{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 1.1rem;display:flex;justify-content:space-between;gap:1rem;
+  }
+  .machine .readout .rh{color:var(--muted-d);}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.3rem 1.6rem;}
+  .stat .v{
+    font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,3.5vw,2.4rem);
+    line-height:1;letter-spacing:-.02em;color:var(--slate);
+  }
+  .machine .stat .v{color:var(--slate-d);}
+  .stat .v.red{color:var(--seal);}
+  .machine .stat .v.red{color:var(--seal-d);}
+  .stat .k{font-family:var(--mono);font-size:.72rem;line-height:1.35;color:var(--muted);margin-top:.5rem;letter-spacing:.01em;}
+  .machine .stat .k{color:var(--muted-d);}
+
+  /* balance / counterpoint box */
+  .counter{
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    padding:1.5rem 0;margin:2.2rem 0;max-width:var(--measure);
+  }
+  .machine .counter{border-color:var(--rule-d);}
+  .counter .clab{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin:0 0 .8rem;
+  }
+  .machine .counter .clab{color:var(--slate-d);}
+  .counter p{margin:0;font-size:.98em;color:#3a3d3f;}
+  .machine .counter p{color:#c9c6bc;}
+
+  /* section divider with mini-band */
+  .divider{padding:clamp(2rem,5vh,3.2rem) 0;background:var(--deep);}
+  .divider .mini{display:flex;align-items:flex-end;gap:2px;height:34px;max-width:1180px;margin:0 auto;padding:0 clamp(1.15rem,4vw,3rem);}
+  .divider .mini .t{flex:1 1 auto;background:var(--slate-d);height:100%;opacity:.5;transform-origin:bottom;}
+  .divider .mini .t.dissent{background:var(--seal-d);opacity:1;}
+
+  /* transition label between strata */
+  .strata-note{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted-d);text-align:center;padding:0 1rem;margin:0 auto 2.2rem;max-width:52ch;line-height:1.7;
+  }
+
+  /* ---------- Footer / method ---------- */
+  footer{background:var(--deep);color:var(--muted-d);border-top:1px solid var(--rule-d);padding:clamp(2.6rem,6vh,4rem) 0 clamp(3rem,7vh,5rem);}
+  footer h3{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);margin:0 0 1.2rem;}
+  footer p{font-family:var(--mono);font-size:.78rem;line-height:1.7;color:var(--muted-d);max-width:78ch;}
+  footer .sep{height:1px;background:var(--rule-d);margin:2rem 0;max-width:78ch;}
+  footer a{color:var(--slate-d);text-decoration:none;border-bottom:1px solid var(--rule-d);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:640px){
+    :root{--measure:100%;}
+    h1.title{font-size:clamp(2.3rem,12vw,3.4rem);}
+    .mv-head{gap:.7rem;}
+    .index ol{grid-template-columns:1fr;}
+    .ticks{height:52px;}
+    blockquote.pull{max-width:100%;}
+  }
+
+  /* reduced motion: no snap animation, render aligned */
+  @media (prefers-reduced-motion:reduce){
+    .ticks .t{transition:none;transform:rotate(0)!important;}
+    .ticks .t.dissent{transform:rotate(19deg)!important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="band surface masthead">
+  <div class="wrap">
+    <p class="kicker">Dossier · Démocratie belge · Juillet 2026</p>
+    <h1 class="title">Le bruit<br>et la <em>machine</em></h1>
+    <p class="standfirst">
+      <span class="lede">Le gouvernement De Wever est décrit, mois après mois, comme une coalition au bord de la rupture.</span>
+      Il a pourtant fait voter les réformes de droite les plus profondes de l'histoire sociale belge. Ce paradoxe n'en est pas un&nbsp;: la guerre y est bruyante sur le <em>partage</em> des efforts, silencieuse sur la <em>méthode</em>. Derrière le théâtre des désaccords tourne un mécanisme qui transforme les arbitrages d'un cénacle en lois — quel qu'en soit le coût documenté.
+    </p>
+    <div class="byline">
+      <span><b>Essai réflexif</b></span>
+      <span>Lecture croisée — recherche Arizona × corpus institutionnel × presse récente</span>
+      <span>≈ 20 min</span>
+    </div>
+
+    <!-- SIGNATURE: unanimity band -->
+    <div class="unanimity">
+      <div class="uwrap">
+        <div class="ticks" id="hero-ticks" aria-hidden="true"></div>
+        <div class="ucap">
+          <span class="big">Cohésion partisane à la Chambre&nbsp;: <span class="slate">≈&nbsp;99,73&nbsp;%</span></span>
+          <span>Un vote de majorité, des centaines de textes — <span class="dis">une dissidence sur environ 370</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== INDEX ===================== -->
+<nav class="band surface index" aria-label="Sommaire">
+  <div class="wrap">
+    <p class="eyebrow">Mouvements du dossier</p>
+    <ol>
+      <li><a href="#m0"><span class="n">00</span><span class="l">Le paradoxe de la paix armée</span></a></li>
+      <li><a href="#m1"><span class="n">01</span><span class="l">Le théâtre des désaccords</span></a></li>
+      <li><a href="#m2"><span class="n">02</span><span class="l">La machine invisible</span></a></li>
+      <li><a href="#m3"><span class="n">03</span><span class="l">Ce sur quoi ils s'accordent</span></a></li>
+      <li><a href="#m4"><span class="n">04</span><span class="l">Le coût, angle mort</span></a></li>
+      <li><a href="#m5"><span class="n">05</span><span class="l">Les trois verrous</span></a></li>
+      <li><a href="#m6"><span class="n">06</span><span class="l">Pas une exception belge</span></a></li>
+      <li><a href="#m7"><span class="n">07</span><span class="l">L'automne comme test</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ===================== 00 — PARADOXE ===================== -->
+<section class="band surface movement" id="m0">
+  <div class="wrap">
+    <div class="mv-head">
+      <span class="mv-num">00</span>
+      <h2 class="mv-title">Le paradoxe de la paix armée<span>Deux faits qui, ensemble, ne devraient pas tenir</span></h2>
+    </div>
+    <p class="first dropcap">Deux constats coexistent depuis février 2025, et ils devraient s'exclure. Le premier&nbsp;: la coalition Arizona — N-VA, MR, Les Engagés, CD&amp;V et Vooruit — donne à chaque saison le spectacle d'un attelage prêt à se disloquer. Budget renvoyé à l'automne, guerre ouverte sur la TVA, crises diplomatiques à répétition, déploiement militaire annoncé par-dessus la tête de la ministre de la Justice, comité restreint sans une seule femme. Le second&nbsp;: ce même gouvernement a fait adopter les réformes socio-économiques les plus lourdes depuis un demi-siècle — limitation du chômage dans le temps, malus sur les pensions, flexibilisation du marché du travail, activation forcée des malades de longue durée.</p>
+
+    <p>Comment un exécutif si visiblement en guerre peut-il gouverner avec une telle efficacité&nbsp;? La recherche dont ce texte part qualifie l'état du gouvernement de <span class="mark">«&nbsp;paix armée&nbsp;»</span>. L'image est juste. Encore faut-il demander vers quoi les armes sont pointées. La thèse défendue ici est simple, et elle inverse la lecture spontanée&nbsp;: <strong>l'instabilité de l'Arizona est réelle, mais elle est un spectacle de répartition, pas de méthode.</strong> Les partis se battent bruyamment sur la question de savoir <em>qui paie</em>. Ils s'accordent en silence sur la <em>direction</em> — et surtout sur le <em>dispositif</em> qui la met en œuvre.</p>
+
+    <p>Ce dispositif, le corpus institutionnel belge le nomme depuis longtemps&nbsp;: une particratie articulée autour d'un organe sans existence légale, le Kern, et d'une discipline de vote quasi parfaite qui vide le mandat libre de sa substance. Lu à travers ce prisme, le tumulte de la coalition cesse d'être le symptôme d'une démocratie fragile. Il devient le mécanisme par lequel une démocratie hyper-conflictuelle en surface reste hyper-imperméable à sa base. Le bruit, ci-dessous, puis la machine.</p>
+  </div>
+</section>
+
+<!-- ===================== 01 — THÉÂTRE ===================== -->
+<section class="band surface movement" id="m1">
+  <div class="wrap">
+    <div class="mv-head">
+      <span class="mv-num">01</span>
+      <h2 class="mv-title">Le théâtre des désaccords<span>La surface — ce que l'on voit, ce que l'on commente</span></h2>
+    </div>
+    <p class="first">La scène est authentiquement conflictuelle. Au cœur de l'attelage court un clivage idéologique béant. D'un côté, un pôle N-VA/MR qui défend compétitivité industrielle, flexibilisation du travail et rigueur budgétaire sans nouveaux prélèvements. De l'autre, Vooruit, qui exige une contribution accrue du capital pour justifier, devant son électorat, sa présence dans une coalition à dominante de droite. Au centre, CD&amp;V et Les Engagés jouent les modérateurs et tentent de sanctuariser les services publics. Sur le papier, chaque famille défend une ligne rouge sincère.</p>
+
+    <p>Ce clivage est aggravé par une asymétrie électorale déstabilisante. Au nord, la N-VA reste stable et la popularité personnelle de Bart De Wever se consolide. Au sud, les partenaires francophones — le MR au premier chef — s'érodent dans les sondages au profit du PS et du PTB. D'où une nervosité constante&nbsp;: pour réaffirmer leur identité devant un électorat qui glisse, les alliés francophones multiplient les sorties médiatiques tranchantes. La forme du conflit obéit à une géométrie&nbsp;: on hausse le ton d'autant plus fort qu'on recule dans les urnes.</p>
+
+    <p>Le reste est théâtre de personnalités. Georges-Louis Bouchez ferraille publiquement avec Frank Vandenbroucke. En février&nbsp;2026, le président de Vooruit compare Donald Trump à Adolf Hitler dans une vidéo, provoquant la colère de l'ambassade américaine&nbsp;; Bouchez fustige aussitôt son propre allié. En mars, De Wever lance l'idée de <span class="mark">«&nbsp;normaliser les relations avec la Russie&nbsp;»</span> pour rendre une énergie bon marché à l'industrie, avant de rétropédaler sous la pression de Sammy Mahdi. La même semaine, Theo Francken et Bernard Quintin annoncent à la presse le déploiement de militaires pour protéger des institutions juives — sans en avertir la ministre de la Justice, qui s'y opposait. Mahdi qualifie le procédé d'«&nbsp;irrespectueux&nbsp;»&nbsp;; le ministre du Budget promet que cela «&nbsp;ne se reproduira plus&nbsp;».</p>
+
+    <blockquote class="pull">
+      La forme du conflit est spectaculaire. Son objet, presque toujours, est la répartition et la posture — rarement la méthode.
+    </blockquote>
+
+    <p>Notons ce que ces épisodes ont en commun. Ils portent sur des <em>totems</em> (la TVA, l'index, la fermeté diplomatique), sur des <em>préséances</em> (qui décide, qui est prévenu), sur des <em>signes</em> adressés à des électorats. Ils ne portent presque jamais sur la manière dont, in fine, une décision devient une loi. C'est cette manière-là qu'il faut maintenant regarder — car c'est elle qui explique pourquoi tout ce bruit ne bloque à peu près rien.</p>
+  </div>
+</section>
+
+<!-- divider: transition surface → machine -->
+<div class="divider" aria-hidden="true">
+  <div class="mini" id="mini-band"></div>
+</div>
+
+<!-- ===================== 02 — MACHINE ===================== -->
+<section class="band machine movement" id="m2">
+  <div class="wrap">
+    <p class="strata-note">↓ On quitte la scène éclairée pour la salle des machines. Là où les décisions se prennent réellement, la lumière ne va pas.</p>
+    <div class="mv-head">
+      <span class="mv-num">02</span>
+      <h2 class="mv-title">La machine invisible<span>La base — où se prend la décision, et comment elle devient loi</span></h2>
+    </div>
+
+    <p class="first">Où gouverne-t-on, en Belgique&nbsp;? Pas à la Chambre, qui vote. Pas même au Conseil des ministres formel, seul organe collégial que la Constitution reconnaît (articles 99 à 101). On gouverne au <strong>Kern</strong> — le comité ministériel restreint, réunion du Premier ministre et des vice-Premiers ministres, un par parti. Marc Uyttendaele en fait le <span class="mark">«&nbsp;centre névralgique du pouvoir&nbsp;»</span>. Or cet organe n'a <strong>aucune existence constitutionnelle et aucune base légale</strong> depuis l'arrêté royal du 16&nbsp;mars 1992 qui a abrogé les textes qui l'organisaient jadis. Il ne tient pas de procès-verbaux accessibles au titre de la loi de 1994 sur la publicité de l'administration. Il échappe à la parité linguistique de l'article 99 comme au contrôle parlementaire de l'article 101.</p>
+
+    <p>La doctrine a un nom pour cela&nbsp;: la <span class="mark">«&nbsp;para-légalité d'État&nbsp;»</span>. Non pas l'illégalité — le Kern ne viole aucune règle — mais la neutralisation organisée du droit applicable. On construit un angle mort et l'on y loge la décision. C'est dans cet angle mort qu'ont été scellés l'accord d'été du 21&nbsp;juillet 2025 et les conclaves budgétaires successifs. Le cœur battant de l'État se trouve exactement là où le droit constitutionnel ne regarde pas.</p>
+
+    <p>Reste la seconde moitié du mécanisme&nbsp;: comment un arbitrage de cinq à huit personnes devient-il la loi du pays&nbsp;? Par la discipline de vote. L'article 42 de la Constitution dispose que les membres des Chambres représentent la Nation, et prohibe le mandat impératif&nbsp;: le parlementaire est, en droit, totalement libre. Dans les faits, cette liberté est une <strong>fiction juridique</strong>. L'alignement à l'intérieur des groupes de la majorité atteint, sur les législatures récentes, près de 99,73&nbsp;%. Une telle unanimité arithmétique, sur des centaines de textes complexes, est statistiquement impossible si elle résulte du libre arbitre de dizaines d'individus.</p>
+
+    <div class="readout">
+      <p class="rh"><span>Le convertisseur</span><span>arbitrage → loi</span></p>
+      <div class="grid">
+        <div class="stat"><div class="v">≈ 99,73 %</div><div class="k">cohésion intra-groupe de la majorité (analyses des votes nominaux, travaux Verleden / CRISP)</div></div>
+        <div class="stat"><div class="v">5–8</div><div class="k">personnes au Kern qui arbitrent l'essentiel — sans base légale depuis 1992</div></div>
+        <div class="stat"><div class="v red">0</div><div class="k">procès-verbal du Kern accessible au public</div></div>
+      </div>
+    </div>
+
+    <p>La contrainte n'a pas besoin d'être juridique pour être totale. Un élu doit sa place sur la liste, le financement de sa campagne et l'accès aux fonctions à son président de parti&nbsp;; dissiper cette dépendance, c'est risquer la non-réinvestiture. Le dissident garde légalement son siège — mais il le garde seul. La discipline s'obtient donc par des pressions de fait, ce qui la rend à la fois implacable et insaisissable en justice&nbsp;: il n'existe aucun acte attaquable, aucune juridiction pour contrôler le comportement interne d'un groupe. Le Kern décide&nbsp;; la discipline exécute&nbsp;; la Chambre entérine.</p>
+
+    <blockquote class="pull">
+      L'absence de femmes au Kern n'est pas une anecdote. C'est la machine qui montre son visage.
+      <cite>quatre ministres femmes, aucune au comité restreint</cite>
+    </blockquote>
+
+    <p>La crise de parité en offre la preuve la plus limpide. Le gouvernement compte quinze ministres, dont quatre femmes&nbsp;; aucune ne siège au Kern, là où tout se joue. La ministre Vanessa Matz juge la situation <span class="mark">«&nbsp;pas normale&nbsp;»</span> et réclame des quotas légaux. Lisons la scène structurellement. L'organe qui échappe à l'existence constitutionnelle, à la parité linguistique, au contrôle parlementaire et à la publicité administrative échappe, tout naturellement, à la parité de genre. Et l'ironie est vertigineuse&nbsp;: une ministre en est réduite à demander une <em>norme de droit</em> pour contraindre un organe qui existe précisément parce qu'il opère <em>hors du droit</em>. On ne régule pas de l'extérieur un pouvoir dont toute la définition est de se tenir dans l'angle mort.</p>
+  </div>
+</section>
+
+<!-- ===================== 03 — ACCORD SILENCIEUX ===================== -->
+<section class="band surface movement" id="m3">
+  <div class="wrap">
+    <div class="mv-head">
+      <span class="mv-num">03</span>
+      <h2 class="mv-title">Ce sur quoi ils s'accordent<span>La direction — bruyants sur le partage, muets sur le cap</span></h2>
+    </div>
+
+    <p class="first">Reprenons les batailles visibles, mais en les triant. Sur <em>qui paie</em>, la guerre est totale. De Wever remet sur la table une TVA normale portée de 21 à 22&nbsp;% et une harmonisation des taux réduits vers 9&nbsp;%&nbsp;; le MR y voit un impôt direct sur la consommation et bloque net. La taxe de 10&nbsp;% sur les plus-values, entrée en vigueur le 1er&nbsp;janvier 2026, divise&nbsp;: le CD&amp;V veut la relever, le MR refuse. Le plafonnement de l'indexation — le «&nbsp;centenindex&nbsp;» — devient, selon l'opposition, un «&nbsp;saut d'index déguisé&nbsp;» au-dessus de 4&nbsp;000&nbsp;euros bruts&nbsp;; la proposition alternative de Voka et des syndicats, neutraliser l'énergie dans le calcul de l'indice, est rejetée par la N-VA et Vooruit. Le budget de la Défense oppose la trajectoire OTAN de Francken aux enveloppes santé que défendent CD&amp;V et Vooruit. Autant de fronts réels.</p>
+
+    <p>Mais sur la <em>direction</em>, le silence, et l'accord. Le bilan de la première année tient, pour Martine Dubuisson (<em>Le Soir</em>), en une formule&nbsp;: ce gouvernement a surtout <span class="mark">«&nbsp;mis la barre à droite&nbsp;»</span>. La substance passe, quelles que soient les querelles de répartition. La limitation du chômage à vingt-quatre mois entre en vigueur le 1er&nbsp;mars 2026. Le malus sur les pensions — le «&nbsp;malus Jambon&nbsp;», publié le 1er&nbsp;juin 2026, applicable en 2027 — pénalise les carrières incomplètes, donc, statistiquement, les femmes. Les flexi-jobs sont généralisés à tous les secteurs&nbsp;; l'activation des malades de longue durée vise 100&nbsp;000 remises au travail d'ici 2029. Devant la Cour constitutionnelle, un avocat des requérants résume l'esprit de la réforme du chômage&nbsp;: <span class="mark">«&nbsp;l'assistantiel l'emporte sur l'assurantiel&nbsp;»</span> — une transformation structurelle, pas un ajustement technique.</p>
+
+    <p>La Cour des comptes, elle, démonte la copie. Le rendement attendu de la lutte contre la fraude — 300&nbsp;millions en 2026 — est inscrit <em>sans méthodologie rigoureuse ni plan d'action</em>. Les économies liées à l'activation des malades sont comptabilisées <em>sans financer</em> les médecins et contrôleurs qu'elles exigent. Dorian De Meeûs (<em>La Libre</em>) parle de réformes faites <span class="mark">«&nbsp;de bric et de broc&nbsp;»</span>, de dispositifs fiscaux si alambiqués qu'ils masquent les désaccords de fond. La réécriture de la TVA de l'automne 2025 fut d'ailleurs jugée <span class="mark">«&nbsp;juridiquement indéfendable&nbsp;»</span> par le Conseil d'État — et qualifiée par De Wever lui-même de très mauvais compromis.</p>
+
+    <p>Voilà le point décisif&nbsp;: cette complexité n'est pas de l'incompétence. Elle est la <strong>signature de la machine</strong>. Le dispositif doit produire une sortie — une loi — même quand les entrées, les partis, sont en désaccord. Il fabrique donc un compromis baroque, parfois indéfendable en droit, que ses propres artisans jugent mauvais — et qui passe quand même. Le bruit de la surface n'empêche pas la production&nbsp;: il en est le sous-produit acoustique.</p>
+
+    <div class="counter">
+      <p class="clab">Contrepoint — la défense du dispositif</p>
+      <p>Ce diagnostic doit être confronté à ses contradicteurs, qui ne sont pas de paille. Pour le gouvernement, l'assainissement en cours est «&nbsp;le plus difficile de ce siècle&nbsp;» et l'inaction serait coupable&nbsp;; limiter la durée du chômage, plaident les ministres libéraux, ce n'est pas sanctionner mais «&nbsp;inciter au retour à l'emploi&nbsp;». La Fédération des entreprises de Belgique voit dans la réforme du chômage la réforme sociale la plus importante depuis vingt-cinq ans. On peut juger cette ligne légitime, nécessaire même, au regard d'un déficit structurel réel et des règles budgétaires européennes. Le propos de ce dossier n'est pas de trancher ce débat de fond&nbsp;: c'est d'observer que, quel que soit le camp qu'on lui donne raison, la <em>manière</em> dont la décision est prise et rendue irréversible échappe entièrement au citoyen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 — COÛT ===================== -->
+<section class="band machine movement" id="m4">
+  <div class="wrap">
+    <div class="mv-head">
+      <span class="mv-num">04</span>
+      <h2 class="mv-title">Le coût, angle mort<span>La sortie de la machine a un prix que la scène ne montre pas</span></h2>
+    </div>
+
+    <p class="first">La réforme du chômage n'abolit pas la précarité&nbsp;: elle la <strong>déplace</strong>, mécaniquement et géographiquement, vers le dernier filet de sécurité — les CPAS, déjà structurellement en déficit. Les vagues d'exclusion se succèdent selon un calendrier planifié pour éviter l'engorgement&nbsp;: environ 21&nbsp;500 personnes au 1er&nbsp;janvier 2026 (plus de vingt ans de chômage), puis les strates suivantes au 1er&nbsp;mars et au 1er&nbsp;avril, une nouvelle tranche à partir du 1er&nbsp;juillet 2026, et ainsi jusqu'à l'été 2027. Selon les sources — ONEM, SPF Emploi, syndicats — ce sont entre 180&nbsp;000 et près de 194&nbsp;000 personnes qui perdront leurs droits d'ici juillet 2027.</p>
+
+    <div class="readout">
+      <p class="rh"><span>Ce que la sortie produit</span><span>fédéral → communal</span></p>
+      <div class="grid">
+        <div class="stat"><div class="v">≈ 180–194 k</div><div class="k">personnes exclues du chômage d'ici juillet 2027 (fourchette selon sources)</div></div>
+        <div class="stat"><div class="v red">≈ 36,8 %</div><div class="k">taux de basculement vers le revenu d'intégration (au-dessus de l'hypothèse gouvernementale de 33 %)</div></div>
+        <div class="stat"><div class="v">493–631 M€</div><div class="k">coût du transfert pour les CPAS wallons sur la législature (estimation Fédération des CPAS)</div></div>
+        <div class="stat"><div class="v">35–77 %</div><div class="k">non-recours aux droits sociaux selon la prestation (études TAKE)</div></div>
+      </div>
+    </div>
+
+    <p>Ce transfert vient frapper un État social qui, déjà, ne délivre pas ce qu'il promet. Le non-recours atteint des niveaux que la recherche qualifie de massifs&nbsp;: de l'ordre de 37 à 51&nbsp;% pour le revenu d'intégration, 50&nbsp;% pour la GRAPA, jusqu'à 77&nbsp;% pour l'allocation de chauffage des aînés. La sociologie parle d'une <span class="mark">«&nbsp;fabrique du non-recours&nbsp;»</span>&nbsp;: fragmentation institutionnelle, pratiques de guichet qui ajoutent des seuils non prévus par la loi, conditionnalité algorithmique, stigmatisation. Le rapporteur spécial de l'ONU Olivier De Schutter parle de <span class="mark">«&nbsp;maltraitances institutionnelles&nbsp;»</span>. Et l'effet est genré&nbsp;: temps partiel, familles monoparentales, métiers du soin — les femmes portent le tribut le plus lourd, deux fois, à l'entrée (droits incomplets) et à la sortie (malus des pensions).</p>
+
+    <blockquote class="pull">
+      L'État traque une fraude qu'il chiffre sans méthode, pendant que le non-recours, lui, dépasse de loin la fraude détectée.
+    </blockquote>
+
+    <p>Une double asymétrie referme le tableau. D'un côté, l'État <em>surveille</em> le pauvre — croisements de fichiers, contrôles renforcés, aide versée pour partie en bons — pendant que l'opacité protège le puissant&nbsp;: le Kern sans procès-verbaux, les cabinets longtemps hors du champ de la publicité, Bruxelles devenue deuxième place mondiale du lobbying. De l'autre, une asymétrie d'attention. Le feuilleton de la coalition — Bouchez, Rousseau, les sondages — occupe les unes&nbsp;; les dizaines de milliers d'exclus, non. Le théâtre absorbe exactement l'attention que le coût, autrement, attirerait. Le bruit n'est pas seulement le sous-produit de la machine. Il est aussi son écran.</p>
+  </div>
+</section>
+
+<!-- ===================== 05 — TROIS VERROUS ===================== -->
+<section class="band surface movement" id="m5">
+  <div class="wrap">
+    <div class="mv-head">
+      <span class="mv-num">05</span>
+      <h2 class="mv-title">Les trois verrous<span>Pourquoi le gouverné n'a, concrètement, aucune prise</span></h2>
+    </div>
+
+    <p class="first">Systématisons ce que «&nbsp;imperméable&nbsp;» veut dire. Face à la machine, le citoyen dispose de trois leviers classiques&nbsp;: le vote, la rue, le juge. Les trois portes sont, en pratique, verrouillées.</p>
+
+    <p><strong>Le vote.</strong> L'asymétrie électorale — N-VA stable, francophones qui s'érodent — <em>ressemble</em> à un levier. La discipline de vote le réduit à rien. Voter contre un parti de la majorité ne délie pas l'arbitrage pris au Kern&nbsp;; et le seul contre-pouvoir qui le pourrait — un mandat libre exercé jusqu'à briser les rangs — est une fiction, précisément parce que la dissidence se paie ailleurs&nbsp;: sur la liste, dans le financement, dans les fonctions. Le bulletin déplace des sièges&nbsp;; il ne déplace pas la salle des machines.</p>
+
+    <p><strong>La rue.</strong> Les grèves générales — des dizaines de milliers de personnes à Bruxelles contre l'austérité — n'ont pas arrêté les réformes. La main tendue commune du patronat et des syndicats sur l'indexation a été refusée. La mobilisation est entendue, puis surclassée. Elle pèse sur le climat&nbsp;; elle ne pèse pas sur le vote de la loi-programme.</p>
+
+    <p><strong>Le juge.</strong> Un front commun de syndicats et d'associations — rejoint par la Ville de Mons, et par le PTB sur les pensions — a saisi la Cour constitutionnelle dès octobre 2025, puis à nouveau en janvier 2026, invoquant l'article 23 (dignité), les articles 10 et 11 (égalité), la confiance légitime et l'obligation de non-régression. Mais le 15&nbsp;janvier 2026, la Cour a <em>refusé de suspendre</em> la réforme, faute de «&nbsp;préjudice grave difficilement réparable&nbsp;» établi. L'arrêt sur le fond, l'annulation éventuelle, n'est attendu qu'à l'automne 2026 — après que la plupart des exclusions auront eu lieu. Le temps du droit arrive après le temps du dommage.</p>
+
+    <div class="readout">
+      <p class="rh"><span>Trois portes, trois serrures</span><span>où pousser&nbsp;?</span></p>
+      <div class="grid">
+        <div class="stat"><div class="v">Vote</div><div class="k">neutralisé par la discipline&nbsp;: le siège bouge, l'arbitrage non</div></div>
+        <div class="stat"><div class="v">Rue</div><div class="k">entendue puis surclassée&nbsp;: la loi-programme passe malgré les grèves</div></div>
+        <div class="stat"><div class="v">Juge</div><div class="k">suspension refusée (15 janv. 2026)&nbsp;; fond renvoyé à l'automne 2026</div></div>
+      </div>
+    </div>
+
+    <p>Et lorsque le juge finit par condamner l'État, une dernière parade demeure&nbsp;: la ligne budgétaire. Le corpus en donne l'exemple le plus glaçant. Faute d'héberger les demandeurs d'asile, l'État belge, via Fedasil, a accumulé plus de 16&nbsp;000 condamnations et quelque 278,5&nbsp;millions d'euros d'astreintes — et a choisi d'<em>inscrire ces pénalités au budget</em> plutôt que d'exécuter les décisions. La justice devient un poste comptable. La quatrième porte, celle de l'exécution, se referme elle aussi. La machine est joignable par aucun levier ordinaire&nbsp;: c'est cela, être imperméable à sa base.</p>
+  </div>
+</section>
+
+<!-- ===================== 06 — PAS UNE EXCEPTION ===================== -->
+<section class="band machine movement" id="m6">
+  <div class="wrap">
+    <div class="mv-head">
+      <span class="mv-num">06</span>
+      <h2 class="mv-title">Pas une exception belge<span>Le dialecte local d'une grammaire continentale</span></h2>
+    </div>
+
+    <p class="first">Il serait rassurant de lire tout ceci comme une curiosité belge. Le corpus soutient l'inverse. Les épisodes Rousseau/Trump ou De Wever/Russie ne sont pas de simples bourdes&nbsp;: ce sont les symptômes locaux d'un motif continental. La personnalisation de la politique, la tentation transactionnelle — de l'énergie bon marché contre un réalignement stratégique —, la dérive de l'asymétrie fraude/non-recours vers un «&nbsp;pauvrétisme&nbsp;» généralisé, la marchandisation de la sécurité sociale sur un modèle inspiré des réformes Hartz&nbsp;: ce sont les traits de l'érosion démocratique occidentale. Celle-ci ne s'annonce presque jamais comme un coup d'État. Elle avance comme une accumulation discrète d'imperméabilité&nbsp;: des exécutifs qui concentrent la décision, des publics qui perdent leur prise.</p>
+
+    <blockquote class="pull">
+      Ailleurs, la concentration a un visage. En Belgique, elle a la forme d'une fusion invisible de présidents de parti.
+    </blockquote>
+
+    <p>La spécificité belge n'est donc pas l'érosion&nbsp;: c'est sa <strong>forme</strong>. Ailleurs, la concentration du pouvoir passe volontiers par un chef fort et visible qui personnalise la décision — et que l'on peut, au moins, désigner et sanctionner. En Belgique, elle passe par la fusion invisible des présidents de parti au sein du Kern&nbsp;: une concentration <em>sans visage</em>, et d'autant plus difficile à combattre. Le paradoxe est que cette concentration se légitime par le pluralisme même de la coalition. Plus les partis se donnent à voir en désaccord, plus le régime a l'air d'une démocratie vivante — et moins on se demande qui décide réellement, et comment. La «&nbsp;paix armée&nbsp;» est le dialecte belge d'une langue qu'on parle sur tout le continent.</p>
+  </div>
+</section>
+
+<!-- ===================== 07 — CODA ===================== -->
+<section class="band surface movement" id="m7">
+  <div class="wrap">
+    <div class="mv-head">
+      <span class="mv-num">07</span>
+      <h2 class="mv-title">L'automne comme test<span>De quoi, au juste, le budget 2026 est-il l'épreuve&nbsp;?</span></h2>
+    </div>
+
+    <p class="first">La recherche annonce le conclave budgétaire de l'automne 2026 comme un «&nbsp;test de résistance grandeur nature&nbsp;». Il l'est. Mais de quoi&nbsp;? À l'heure où ces lignes s'écrivent — juillet 2026 —, l'accord global est déjà repoussé à octobre, la hausse de la TVA à 22&nbsp;% de retour sur la table, le MR arc-bouté sur son refus, et l'effort réel estimé en interne autour de dix milliards. Si la coalition survit — l'issue la plus probable, parce que la machine tient —, on y lira la preuve de l'habileté de De Wever. Si elle se disloque, on y lira le prix de l'asymétrie. Les deux lectures gardent la caméra braquée sur la scène.</p>
+
+    <p>Le vrai test est ailleurs. Il ne porte pas sur la survie de l'Arizona, mais sur la visibilité de la machine. La question n'est pas de savoir si l'attelage tiendra jusqu'aux prochaines élections. Elle est de savoir si le dispositif — le Kern extra-constitutionnel, la discipline à 99,73&nbsp;% qui évide le mandat libre, l'impunité inscrite au budget — deviendra un jour assez visible pour être contesté. Tant qu'il reste dans l'angle mort, il survivra à n'importe quelle recomposition&nbsp;: on changera les acteurs sur la scène sans jamais toucher aux machines.</p>
+
+    <blockquote class="pull">
+      Une démocratie ne se mesure pas au volume des querelles de ses gouvernants, mais à l'existence, pour les gouvernés, d'un endroit où pousser.
+    </blockquote>
+
+    <p>La paix armée peut durer longtemps, précisément parce que ses armes pointent vers l'extérieur. Les ministres se visent les uns les autres, bruyamment, pour les caméras&nbsp;; le mécanisme, lui, vise vers l'intérieur, silencieusement, les gouvernés. À l'aune de la prise réelle laissée au citoyen, le bruit n'est pas la crise. <strong>Le bruit est ce qui empêche la crise d'être vue.</strong></p>
+  </div>
+</section>
+
+<!-- ===================== FOOTER / MÉTHODE ===================== -->
+<footer>
+  <div class="wrap">
+    <h3>Note de méthode &amp; sources</h3>
+    <p>Ce texte met en perspective une recherche consacrée à la coalition Arizona (gouvernement De Wever, 2025-2026) avec un corpus d'analyses portant sur la particratie, l'effectivité de l'État de droit, le Kern, le financement des partis et le non-recours aux droits en Belgique, et avec la presse la plus récente (jusqu'en juillet 2026). Les données factuelles proviennent notamment de la Cour des comptes, de l'ONEM et du SPF Emploi, de la Fédération des CPAS wallons, des études TAKE, des travaux du CRISP (dont Faniel &amp; Sägesser sur le kern, Verleden sur la cohésion partisane), et de la presse belge (Le Soir, La Libre, RTBF, 21News, Belga, DaarDaar).</p>
+    <div class="sep"></div>
+    <p>Les chiffres sont présentés en fourchettes lorsque les sources divergent (ampleur des exclusions, coût pour les CPAS, montant de l'effort budgétaire). Le taux de cohésion de ≈ 99,73 % se réfère à des analyses de votes nominaux de législatures récentes et n'est pas une constante immuable. Certaines séquences relèvent d'un calendrier annoncé et de projections, non d'un état de fait clos.</p>
+    <div class="sep"></div>
+    <p>Il s'agit d'un essai réflexif à visée critique. Les jugements de valeur, lorsqu'ils apparaissent, relèvent d'une lecture assumée et visent le <em>système institutionnel</em> — non des personnes. Les contrepoints (défense gouvernementale de l'assainissement, position patronale) sont restitués pour ce qu'ils sont&nbsp;: des positions légitimes dans un débat de fond que ce texte ne prétend pas trancher. Les noms cités proviennent exclusivement de sources publiques.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Build the unanimity band: many aligned ticks, one dissenter.
+  function buildBand(el, count, dissentAt){
+    if(!el) return;
+    var frag = document.createDocumentFragment();
+    for(var i=0;i<count;i++){
+      var t = document.createElement('span');
+      t.className = 't';
+      if(i === dissentAt){ t.className += ' dissent'; }
+      // scatter initial rotation/offset (except dissenter keeps its lean)
+      if(i !== dissentAt){
+        var r = (Math.random()*18 - 9).toFixed(2);      // -9..9 deg
+        var y = (Math.random()*8).toFixed(1);            // 0..8 px
+        t.style.setProperty('--r', r + 'deg');
+        t.style.setProperty('--y', y + 'px');
+      }
+      frag.appendChild(t);
+    }
+    el.appendChild(frag);
+  }
+
+  var hero = document.getElementById('hero-ticks');
+  var HERO_COUNT = 130;
+  var HERO_DISSENT = 87;
+  buildBand(hero, HERO_COUNT, HERO_DISSENT);
+
+  // mini divider band
+  var mini = document.getElementById('mini-band');
+  if(mini){
+    for(var j=0;j<90;j++){
+      var s = document.createElement('span');
+      s.className = 't' + (j===61?' dissent':'');
+      mini.appendChild(s);
+    }
+  }
+
+  function align(){ if(hero) hero.classList.add('aligned'); }
+
+  if(reduce){
+    align();
+  } else if('IntersectionObserver' in window && hero){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          setTimeout(align, 250); // let the scatter be seen, then snap into discipline
+          io.disconnect();
+        }
+      });
+    }, {threshold:0.5});
+    io.observe(hero.closest('.unanimity'));
+  } else {
+    align();
+  }
+})();
+</script>
+</body>
+</html>
