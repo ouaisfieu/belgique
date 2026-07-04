@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belgique — Acte d'accusation citoyen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EAEAE4;
+  --paper-dark:#DEDED6;
+  --ink:#17171B;
+  --red:#C8102E;
+  --yellow:#F2C400;
+  --grey:#5E5E63;
+  --hairline:rgba(23,23,27,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Spectral',Georgia,serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--yellow);color:var(--ink)}
+
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* ---------- STAMP (signature element) ---------- */
+.stamp{
+  display:inline-block;
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;
+  font-size:.8rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--red);
+  border:3px double var(--red);
+  padding:.45em 1em;
+  transform:rotate(-6deg);
+  border-radius:4px;
+  opacity:.88;
+  mask-image:radial-gradient(circle at 30% 40%, black 60%, rgba(0,0,0,.55) 100%);
+  -webkit-mask-image:radial-gradient(circle at 30% 40%, black 60%, rgba(0,0,0,.55) 100%);
+  user-select:none;
+}
+.stamp--big{font-size:1.05rem;padding:.55em 1.2em;transform:rotate(-8deg)}
+
+/* ---------- HERO ---------- */
+header{
+  border-bottom:3px solid var(--ink);
+  padding:0 clamp(1.2rem,5vw,4rem);
+}
+.hero-top{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:1.1rem 0;border-bottom:1px solid var(--hairline);
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);
+  flex-wrap:wrap;gap:.5rem;
+}
+.hero{
+  padding:clamp(2.5rem,7vw,5.5rem) 0 clamp(2rem,5vw,4rem);
+  position:relative;
+}
+.hero h1{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(3rem,11vw,9rem);
+  line-height:.95;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+}
+.hero h1 .line2{color:var(--red)}
+.hero-sub{
+  max-width:46rem;
+  margin-top:1.8rem;
+  font-size:clamp(1.05rem,2vw,1.3rem);
+  font-weight:300;
+}
+.hero-sub strong{font-weight:600}
+.hero .stamp-wrap{position:absolute;top:clamp(.5rem,3vw,2rem);right:0}
+.hero-tricolore{
+  display:flex;height:8px;margin-top:2.4rem;max-width:22rem;
+}
+.hero-tricolore span{flex:1}
+.hero-tricolore span:nth-child(1){background:var(--ink)}
+.hero-tricolore span:nth-child(2){background:var(--yellow)}
+.hero-tricolore span:nth-child(3){background:var(--red)}
+
+/* ---------- FIGURES BAND ---------- */
+.band{
+  border-bottom:3px solid var(--ink);
+  background:var(--ink);color:var(--paper);
+  padding:2.2rem clamp(1.2rem,5vw,4rem);
+}
+.band-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:2rem 2.5rem;max-width:1200px;
+}
+.figure .num{
+  font-family:'Anton',sans-serif;font-size:clamp(1.9rem,3.5vw,2.8rem);line-height:1;
+  color:var(--yellow);
+}
+.figure .num.red{color:#FF5A6E}
+.figure .label{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  margin-top:.5rem;color:rgba(234,234,228,.75);line-height:1.5;
+}
+
+/* ---------- SOMMAIRE ---------- */
+nav.toc{
+  padding:2.5rem clamp(1.2rem,5vw,4rem);
+  border-bottom:1px solid var(--hairline);
+}
+nav.toc h2{
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);
+  margin-bottom:1.2rem;
+}
+nav.toc ol{
+  list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.4rem 2rem;
+  counter-reset:toc;max-width:1200px;
+}
+nav.toc a{
+  counter-increment:toc;
+  display:flex;gap:.8rem;align-items:baseline;
+  text-decoration:none;color:var(--ink);
+  padding:.45rem 0;border-bottom:1px solid var(--hairline);
+  font-weight:600;font-size:.98rem;
+  transition:color .15s;
+}
+nav.toc a::before{
+  content:"Chef " counter(toc,upper-roman);
+  font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.72rem;color:var(--red);
+  min-width:4.2rem;letter-spacing:.06em;
+}
+nav.toc a:hover{color:var(--red)}
+
+/* ---------- SECTIONS ---------- */
+main{max-width:1200px;margin:0 auto}
+section.chef{
+  padding:clamp(3rem,7vw,5.5rem) clamp(1.2rem,5vw,4rem);
+  border-bottom:1px solid var(--hairline);
+  position:relative;
+}
+.chef-head{display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;justify-content:space-between;margin-bottom:2rem}
+.chef-eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);
+  margin-bottom:.6rem;
+}
+section.chef h2{
+  font-family:'Anton',sans-serif;font-size:clamp(1.9rem,4.5vw,3.4rem);
+  text-transform:uppercase;line-height:1.05;max-width:44rem;
+}
+.chef-body{
+  display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(2rem,4vw,4rem);
+  align-items:start;
+}
+.chef-body .prose p{margin-bottom:1.1rem;max-width:42rem}
+.chef-body .prose p:last-child{margin-bottom:0}
+.prose strong{font-weight:600}
+.prose em{font-style:italic}
+.hl{background:linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 92%, transparent 92%);padding:0 .1em}
+
+blockquote{
+  border-left:4px solid var(--red);
+  padding:.4rem 0 .4rem 1.2rem;
+  margin:1.5rem 0;
+  font-style:italic;font-size:1.08rem;font-weight:300;
+  max-width:40rem;
+}
+blockquote cite{
+  display:block;margin-top:.6rem;font-style:normal;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);
+}
+
+/* aside : pièces à conviction */
+.piece{
+  background:var(--paper-dark);
+  border:1px solid var(--hairline);
+  padding:1.4rem 1.5rem;
+  margin-bottom:1.2rem;
+}
+.piece-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--grey);
+  margin-bottom:.7rem;display:flex;justify-content:space-between;gap:1rem;
+}
+.piece .big{
+  font-family:'Anton',sans-serif;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1;color:var(--red);
+}
+.piece p{font-size:.92rem;margin-top:.6rem;line-height:1.55}
+.piece ul{list-style:none;font-size:.92rem;margin-top:.6rem}
+.piece li{padding:.35rem 0;border-bottom:1px dashed var(--hairline);display:flex;justify-content:space-between;gap:1rem}
+.piece li:last-child{border-bottom:none}
+.piece li .v{font-family:'IBM Plex Mono',monospace;font-weight:600;white-space:nowrap;color:var(--red)}
+
+.section-stamp{position:absolute;top:clamp(2.5rem,6vw,4.5rem);right:clamp(1.2rem,5vw,4rem)}
+
+/* timeline scandales */
+.dossiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin-top:2rem}
+.dossier{
+  border:1px solid var(--ink);
+  padding:1.3rem 1.4rem;
+  background:var(--paper);
+  position:relative;
+}
+.dossier .year{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.75rem;letter-spacing:.1em;color:var(--red)}
+.dossier h3{font-family:'Anton',sans-serif;font-size:1.25rem;text-transform:uppercase;margin:.4rem 0 .6rem}
+.dossier p{font-size:.92rem;line-height:1.55}
+.dossier .verdict{
+  margin-top:.9rem;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grey);border-top:1px dashed var(--hairline);padding-top:.7rem;
+}
+.dossier .verdict b{color:var(--red)}
+
+/* chronologie 140 ans */
+.chrono{margin-top:2.5rem;border-top:3px solid var(--ink)}
+.chrono-row{
+  display:grid;grid-template-columns:110px minmax(0,1fr) 170px;gap:1.2rem;
+  padding:1rem 0;border-bottom:1px solid var(--hairline);align-items:baseline;
+}
+.chrono-row .cy{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.82rem;color:var(--red);letter-spacing:.05em}
+.chrono-row .ct{font-size:.95rem;line-height:1.5}
+.chrono-row .ct b{font-weight:600}
+.chrono-row .cv{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grey);text-align:right;
+}
+.chrono-row .cv b{color:var(--red);font-weight:600}
+@media(max-width:700px){
+  .chrono-row{grid-template-columns:1fr;gap:.3rem}
+  .chrono-row .cv{text-align:left}
+}
+
+/* barres non-recours */
+.bars{margin-top:1rem}
+.bar-row{margin-bottom:1.1rem}
+.bar-row .bar-label{
+  display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.05em;
+  text-transform:uppercase;margin-bottom:.35rem;gap:1rem;
+}
+.bar-row .bar-label .v{font-weight:600;color:var(--red)}
+.bar-track{height:14px;background:var(--paper-dark);border:1px solid var(--hairline)}
+.bar-fill{height:100%;background:var(--red);width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.bar-fill.y{background:var(--yellow)}
+.bar-note{font-size:.85rem;color:var(--grey);margin-top:1rem;font-style:italic}
+
+/* section VII — combustible */
+.fuel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:2rem}
+.fuel{
+  border-top:4px solid var(--red);
+  background:var(--paper-dark);
+  padding:1.3rem 1.4rem;
+}
+.fuel h3{font-family:'Anton',sans-serif;font-size:1.1rem;text-transform:uppercase;margin-bottom:.6rem}
+.fuel p{font-size:.92rem;line-height:1.55}
+
+/* instruction à décharge */
+.fuel.damp{border-top-color:var(--yellow)}
+.missing{
+  margin-top:2.5rem;border:1px solid var(--ink);background:var(--paper-dark);
+  padding:1.6rem 1.8rem;
+}
+.missing h3{
+  font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1rem;
+}
+.missing ol{list-style:none;counter-reset:mq}
+.missing li{
+  counter-increment:mq;
+  display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;
+  padding:.8rem 0;border-bottom:1px dashed var(--hairline);
+  font-size:.95rem;line-height:1.55;
+}
+.missing li:last-child{border-bottom:none}
+.missing li::before{
+  content:counter(mq);
+  font-family:'Anton',sans-serif;font-size:1.6rem;line-height:1;color:var(--red);
+}
+.missing li b{font-weight:600}
+
+/* verdict final */
+.verdict-final{
+  background:var(--ink);color:var(--paper);
+  padding:clamp(3rem,7vw,5.5rem) clamp(1.2rem,5vw,4rem);
+}
+.verdict-final .inner{max-width:1200px;margin:0 auto}
+.verdict-final h2{
+  font-family:'Anton',sans-serif;font-size:clamp(2rem,5vw,3.6rem);text-transform:uppercase;line-height:1.05;
+  max-width:50rem;
+}
+.verdict-final h2 .y{color:var(--yellow)}
+.verdict-final p{max-width:44rem;margin-top:1.3rem;font-weight:300;font-size:1.05rem;color:rgba(234,234,228,.9)}
+.verdict-final .date-butoir{
+  display:inline-block;margin-top:2rem;
+  border:3px double var(--yellow);color:var(--yellow);
+  font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;
+  padding:.7em 1.3em;transform:rotate(-2deg);
+}
+
+/* sources */
+footer{
+  padding:2.5rem clamp(1.2rem,5vw,4rem) 4rem;
+  font-size:.85rem;color:var(--grey);
+}
+footer .inner{max-width:1200px;margin:0 auto}
+footer h2{
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:1rem;color:var(--ink);
+}
+footer ul{list-style:none;columns:2;column-gap:3rem}
+footer li{padding:.25rem 0;break-inside:avoid}
+footer .disclaimer{
+  margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--hairline);
+  font-style:italic;max-width:52rem;
+}
+@media(max-width:900px){
+  .chef-body{grid-template-columns:1fr}
+  footer ul{columns:1}
+  .section-stamp{position:static;margin-bottom:1.5rem;display:inline-block}
+}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .bar-fill{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hero-top">
+    <span>Dossier citoyen — document de travail</span>
+    <span>Royaume de Belgique · État au 4 juillet 2026</span>
+  </div>
+  <div class="hero">
+    <div class="stamp-wrap"><span class="stamp stamp--big">Non conforme</span></div>
+    <h1>Belgique,<br><span class="line2">acte d'accusation</span></h1>
+    <p class="hero-sub">Une démocratie de façade fonctionne à deux étages : en haut, une Constitution de 1831, des élections libres, des tribunaux indépendants. En bas, <strong>un État qui refuse d'obéir à ses propres juges, des partis qui se financent et se contrôlent eux-mêmes, et des citoyens qui décrochent en silence.</strong> Ce dossier compile les faits, les chiffres et les sources — et examine pourquoi la marmite chauffe.</p>
+    <div class="hero-tricolore"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="band">
+  <div class="band-grid">
+    <div class="figure"><div class="num red">+16 000</div><div class="label">condamnations judiciaires de l'État non exécutées (asile, depuis 2021)</div></div>
+    <div class="figure"><div class="num">278,5 M€</div><div class="label">d'astreintes accumulées — largement impayées (RTBF, 2024)</div></div>
+    <div class="figure"><div class="num red">8 %</div><div class="label">de confiance des citoyens envers les partis politiques</div></div>
+    <div class="figure"><div class="num">188 M€/an</div><div class="label">de financement public des partis — sans contrôle indépendant</div></div>
+    <div class="figure"><div class="num red">16 / 22</div><div class="label">recommandations anti-corruption du GRECO en souffrance</div></div>
+    <div class="figure"><div class="num">180 000</div><div class="label">personnes exclues du chômage d'ici juillet 2027 (réforme Arizona)</div></div>
+    <div class="figure"><div class="num red">~29 000</div><div class="label">lobbyistes à Bruxelles — 2 Md€/an, sans registre belge contraignant</div></div>
+    <div class="figure"><div class="num">~94 %</div><div class="label">de la presse quotidienne francophone dans les mains d'un seul groupe (fusion Rossel-IPM)</div></div>
+  </div>
+</div>
+
+<nav class="toc">
+  <h2>Sommaire du réquisitoire</h2>
+  <ol>
+    <li><a href="#chef1">La particratie, coup d'État silencieux</a></li>
+    <li><a href="#chef2">Un État hors-la-loi devant ses juges</a></li>
+    <li><a href="#chef3">L'opacité organisée en système</a></li>
+    <li><a href="#cheflobby">Bruxelles, capitale mondiale de l'influence</a></li>
+    <li><a href="#chefmedias">Le quatrième pouvoir sous perfusion</a></li>
+    <li><a href="#chef4">140 ans de scandales, impunité en boucle</a></li>
+    <li><a href="#chef5">Le coût humain : la fabrique du non-recours</a></li>
+    <li><a href="#chef6">L'austérité Arizona, accélérateur de rupture</a></li>
+    <li><a href="#chef7">Les ingrédients d'un soulèvement</a></li>
+    <li><a href="#decharge">Instruction à décharge : pourquoi rien n'a (encore) explosé</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============ CHEF I ============ -->
+<section class="chef reveal" id="chef1">
+  <span class="stamp section-stamp">Art. 42 — lettre morte</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation I</div>
+      <h2>La particratie, coup d'État silencieux</h2>
+    </div>
+  </div>
+  <div class="chef-body">
+    <div class="prose">
+      <p>L'article 42 de la Constitution est limpide : <em>« Les membres des deux Chambres représentent la Nation, et non uniquement ceux qui les ont élus. »</em> Le mandat impératif est interdit. Un parlementaire ne doit obéissance ni à ses électeurs, ni — <em>a fortiori</em> — à son parti.</p>
+      <p>La réalité est aux antipodes. Frederik Verleden (CRISP, 2019) conclut que la cohésion partisane belge est <span class="hl">« pratiquement la plus forte d'Europe occidentale »</span>. Les députés votent comme leur état-major l'ordonne, sous peine de voir leur carrière — place sur les listes, mandats, promotions — pulvérisée. Le paradoxe est vertigineux : les partis, qui dominent chaque rouage de l'État, <strong>n'apparaissent dans la Constitution qu'en 2014</strong>, dans une mention purement technique sur leur financement. Le vrai pouvoir belge est constitutionnellement invisible.</p>
+      <p>Ce pouvoir invisible s'autofinance : environ <strong>188 millions d'euros par an</strong> de dotations publiques, votées par les partis, contrôlées par une commission composée… de représentants des partis. Le contrôleur est le contrôlé. Les partis eux-mêmes restent de simples <em>associations de fait</em>, sans personnalité juridique pleine — un bouclier d'irresponsabilité organisée. En 2023, un panel citoyen a remis 34 recommandations de réforme du financement des partis au Parlement fédéral. <strong>Toutes ont été ignorées.</strong> C'est la difficulté belge en une phrase : la particratie empêche la réforme de la particratie.</p>
+      <blockquote>« Qui veut faire entendre sa voix en politique doit, en pratique, rejoindre un parti. »
+        <cite>Constat récurrent de la science politique belge (CRISP, Dewachter, Deschouwer)</cite>
+      </blockquote>
+    </div>
+    <aside>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce I.1</span><span>Verrouillage</span></div>
+        <div class="big">0 sanction</div>
+        <p>Aucun mécanisme juridique ne sanctionne la violation de l'article 42 par les partis — alors qu'un tel mécanisme existe (art. 15ter) pour les violations de la CEDH.</p>
+      </div>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce I.2</span><span>Autocontrôle</span></div>
+        <ul>
+          <li>Dotations publiques <span class="v">~188 M€/an</span></li>
+          <li>Contrôle indépendant <span class="v">inexistant</span></li>
+          <li>Statut juridique des partis <span class="v">assoc. de fait</span></li>
+          <li>Recommandations citoyennes (2023) <span class="v">34 / 34 ignorées</span></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CHEF II ============ -->
+<section class="chef reveal" id="chef2">
+  <span class="stamp section-stamp">Jugement non exécuté</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation II</div>
+      <h2>Un État hors-la-loi devant ses propres juges</h2>
+    </div>
+  </div>
+  <div class="chef-body">
+    <div class="prose">
+      <p>C'est la faille la plus grave, et elle est officiellement documentée. Depuis octobre 2021, l'État belge et Fedasil ont été condamnés <strong>plus de 16 000 fois</strong> par les juridictions belges pour défaut d'hébergement de demandeurs d'asile. Les astreintes cumulées ont dépassé <strong>278,5 millions d'euros</strong>. La réponse de l'exécutif ? La ministre de l'Asile a déclaré qu'elle <span class="hl">« ne peut ni ne veut payer ces astreintes »</span>. Un membre du gouvernement annonce publiquement qu'il n'obéira pas à la justice — et il ne se passe rien.</p>
+      <p>La Cour européenne des droits de l'homme a posé le diagnostic dans l'arrêt <em>Camara c. Belgique</em> (18 juillet 2023) : une <strong>« carence systémique des autorités belges d'exécuter les décisions de justice définitives »</strong> — non pas un retard, précise la Cour, mais un « refus caractérisé de se conformer aux injonctions du juge ». Plus de 2 200 mesures provisoires ont depuis été imposées à la Belgique. En avril 2026, la Cour condamnait encore le pays, constatant que les astreintes « n'ont toujours pas été payées à ce jour ».</p>
+      <p>Le mépris s'étend à tous les fronts : arrêt Klimaatzaak (–55 % d'émissions d'ici 2030) accueilli par un Premier ministre qui qualifie le procès de « pure perte de temps » ; environ 20 millions d'euros d'astreintes <em>payées</em> plutôt que de modifier les routes aériennes de Zaventem ; 3,5 ans de délai moyen pour appliquer les arrêts CEDH sur les prisons, malgré des condamnations pour traitements inhumains. La Belgique est <strong>le seul État de l'UE</strong> à avoir reçu de la Commission européenne une recommandation spécifique exigeant… l'exécution des décisions de justice.</p>
+      <blockquote>« Que vaut une décision de justice si elle n'est pas mise en œuvre ? »
+        <cite>Martien Schotsmans, directrice de l'Institut fédéral des droits humains, 2024</cite>
+      </blockquote>
+    </div>
+    <aside>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce II.1</span><span>CEDH</span></div>
+        <div class="big">« Carence systémique »</div>
+        <p><em>Camara c. Belgique</em>, 18/07/2023, § 118. Qualification juridique la plus lourde jamais posée sur l'exécution des jugements en Belgique.</p>
+      </div>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce II.2</span><span>Justice asphyxiée</span></div>
+        <ul>
+          <li>Budget justice <span class="v">&lt; médiane CoE</span></li>
+          <li>Effectifs manquants <span class="v">+43 % requis</span></li>
+          <li>Mesures provisoires CEDH <span class="v">&gt; 2 200</span></li>
+          <li>Astreintes aéroport payées <span class="v">~20 M€</span></li>
+        </ul>
+        <p>L'État préfère payer — ou ne pas payer — plutôt qu'obéir. L'obéissance à la loi devient optionnelle pour celui qui détient le pouvoir.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CHEF III ============ -->
+<section class="chef reveal" id="chef3">
+  <span class="stamp section-stamp">Accès refusé</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation III</div>
+      <h2>L'opacité organisée en système</h2>
+    </div>
+  </div>
+  <div class="chef-body">
+    <div class="prose">
+      <p>Le vrai gouvernement de la Belgique ne siège pas au Parlement. Il siège dans les <strong>cabinets ministériels</strong> — des armées parallèles de conseillers politiques (jusqu'à 81 personnes pour un seul ministre-président, 50,5 ETP en moyenne par ministre wallon) dont une partie du coût réel <strong>n'apparaît dans aucun budget</strong> : la Cour des comptes évalue à 14,8 M€/an la rémunération des fonctionnaires « détachés à titre gratuit » en Wallonie, portant le coût réel des cabinets wallons à 37 M€ pour un plafond affiché de 23 M€.</p>
+      <p>Et dans le <strong>Kern</strong> — ce comité ministériel restreint où se prennent les vraies décisions — aucune base constitutionnelle, aucun ordre du jour public, aucune traçabilité. La loi du 12 mai 2024 a fait mine d'étendre la transparence administrative aux cabinets… avant de la neutraliser par une exception couvrant tout « document portant sur l'exécution d'une stratégie politique ». Traduction d'un observateur (Cumuleo) : <span class="hl">« Tout ce que les ministres font relève d'une stratégie politique »</span> — donc tout reste verrouillé.</p>
+      <p>Le lobbying ? Registre volontaire, sans sanction, au fédéral ; inexistant en Wallonie, en Flandre, à Bruxelles et en FWB — dans la capitale qui abrite pourtant la plus grande concentration de lobbyistes d'Europe. Les déclarations de patrimoine des ministres ne sont pas publiées. Le GRECO, l'organe anti-corruption du Conseil de l'Europe, a fini par activer sa <strong>procédure de non-conformité (Règle 32)</strong> : sur 22 recommandations de 2019, 16 restaient en souffrance en 2024. Trois niveaux d'escalade ont déjà été franchis. Le niveau 4 — la déclaration publique de non-conformité, jamais infligée qu'à la Biélorussie — plane sur l'échéance du <strong>30 novembre 2026</strong>.</p>
+    </div>
+    <aside>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce III.1</span><span>GRECO — Règle 32</span></div>
+        <ul>
+          <li>Niveau 1 · rapport d'étape <span class="v">franchi</span></li>
+          <li>Niveau 2 · lettre au Représentant <span class="v">franchi</span></li>
+          <li>Niveau 3 · lettre au ministre AE <span class="v">activé 11/2025</span></li>
+          <li>Niveau 4 · déclaration publique <span class="v">30/11/2026</span></li>
+        </ul>
+        <p>Seul précédent au niveau 4 : la Biélorussie.</p>
+      </div>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce III.2</span><span>Corruption perçue</span></div>
+        <div class="big">77 → 69</div>
+        <p>Score belge à l'Indice de perception de la corruption (Transparency International), de 2015 à 2024 — plus bas niveau historique, –6 places en un an. Deux tiers des Belges jugent la corruption répandue (Eurobaromètre 2024).</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CHEF IV — LOBBYING ============ -->
+<section class="chef reveal" id="cheflobby">
+  <span class="stamp section-stamp">Registre facultatif</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation IV</div>
+      <h2>Bruxelles, capitale mondiale de l'influence</h2>
+    </div>
+  </div>
+  <div class="chef-body">
+    <div class="prose">
+      <p>Ironie géographique : la capitale de la Belgique abrite la <strong>deuxième plus grande concentration de lobbyistes au monde</strong> après Washington — entre 25 000 et 29 000 professionnels, près de 14 815 organisations inscrites au Registre de transparence de l'UE, et des dépenses annuelles estimées entre <span class="hl">1,3 et 2,2 milliards d'euros</span>. Les 162 plus gros acteurs corporatifs déclarent à eux seuls 343 millions d'euros — en hausse de 33 % depuis 2020, et ce sont des autodéclarations, universellement considérées comme sous-estimées. 75 % des réunions accordées par les Commissaires européens et hauts fonctionnaires le sont à des lobbyistes des grandes entreprises ; plus de 80 % dans les domaines stratégiques.</p>
+      <p>Et l'État belge, au cœur de ce réacteur d'influence ? Il a choisi de regarder ailleurs. Le registre du lobbying de la Chambre est <strong>volontaire et sans aucune sanction</strong> — environ 180 inscrits en 2023, un « talon d'Achille » selon l'analyse juridique de référence (Cruysmans &amp; Dal, ULB). Au Sénat : rien. Au gouvernement fédéral et dans les cabinets — là où se prennent les décisions : rien. Au Parlement flamand : rien. Au Parlement bruxellois : rien. Au Parlement wallon : proposition <strong>rejetée en avril 2024</strong> après une volte-face du MR. En FWB : un registre adopté sans sanction, où <span class="hl">un seul groupe s'est inscrit en un an — un lobby citoyen</span>. La Commission fédérale de déontologie recommandait un cadre complet dès 2017. Rien n'a suivi.</p>
+      <p>Résultat : la capture réglementaire à ciel ouvert. <strong>Énergie</strong> : l'abandon de la sortie du nucléaire (mai 2025) puis la reprise du parc d'Engie négociée en 2026 se sont opérés dans une opacité contractuelle quasi totale — les termes financiers du partage du passif de démantèlement ne sont pas publics — pendant que le Conseil général de la CREG, le régulateur, inclut… les producteurs eux-mêmes. <strong>Pharma</strong> : pharma.be siège à la Commission de remboursement des médicaments avec accès à toute l'instruction, et les conventions « article 81/111 » gardent les prix réels confidentiels. <strong>Finance</strong> : Febelfin, « la voix » du secteur, siège dans les concertations BNB et FSMA. <strong>Transversal</strong> : la FEB, qui représente 75 % de l'emploi privé, siège dans environ 150 organes fédéraux, européens et internationaux. Le régulé est assis à la table du régulateur — en permanence, et sans registre pour le noter.</p>
+    </div>
+    <aside>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce IV.1</span><span>L'écosystème bruxellois</span></div>
+        <ul>
+          <li>Lobbyistes à Bruxelles <span class="v">25–29 000</span></li>
+          <li>Organisations (Registre UE) <span class="v">~14 815</span></li>
+          <li>Dépenses annuelles <span class="v">1,3–2,2 Md€</span></li>
+          <li>Top 162 corporatif <span class="v">343 M€ (+33 %)</span></li>
+          <li>Réunions Commission / grandes entreprises <span class="v">75 %</span></li>
+        </ul>
+      </div>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce IV.2</span><span>Encadrement belge</span></div>
+        <ul>
+          <li>Chambre <span class="v">volontaire, 0 sanction</span></li>
+          <li>Sénat <span class="v">néant</span></li>
+          <li>Gouvernements &amp; cabinets <span class="v">néant</span></li>
+          <li>Flandre / Bruxelles <span class="v">néant</span></li>
+          <li>Wallonie <span class="v">rejeté 04/2024</span></li>
+          <li>FWB <span class="v">1 inscrit en 1 an</span></li>
+        </ul>
+        <p>Là où l'influence est la plus dense au monde, l'encadrement est le plus inexistant.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CHEF V — MÉDIAS ============ -->
+<section class="chef reveal" id="chefmedias">
+  <span class="stamp section-stamp">Bon à tirer</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation V</div>
+      <h2>Le quatrième pouvoir sous perfusion</h2>
+    </div>
+  </div>
+  <div class="chef-body">
+    <div class="prose">
+      <p>Le contre-pouvoir censé documenter tout ce qui précède est lui-même en soins intensifs. Le marché médiatique belge est un <strong>oligopole familial</strong> : Van Thillo (DPG Media) et Mediahuis au nord, Hurbain (Rossel) et Le Hodey (IPM) au sud. Le Media Pluralism Monitor 2024 évalue la concentration des médias d'information à <span class="hl">81 % — risque élevé</span>. Et le verrou s'est refermé : le 23 juin 2025, Rossel et IPM ont signé leur fusion-absorption, formalisée en 2026 devant l'Autorité de la concurrence. <strong>Un seul groupe contrôlera environ 94 % de la presse quotidienne francophone.</strong> L'Association des journalistes professionnels dénonce une concentration sans précédent.</p>
+      <p>À la concentration s'ajoute la dépendance : la RTBF vit d'une dotation publique de ~302 millions d'euros, soumise à une soixantaine d'indicateurs négociés avec le politique ; l'aide à la presse écrite francophone (9,7 M€/an) finance directement la masse salariale des rédactions. Les médias sont structurellement financés par ceux qu'ils sont censés surveiller — et attaqués quand ils le font : offensives répétées de G.-L. Bouchez contre la RTBF (propos jugés « indignes de démocrates » par la fédération des journalistes), procédures-bâillons ciblant précisément la presse d'investigation (Apache, Médor, Le Vif, Wilfried), celle-là même qui a révélé Publifin. La loi anti-SLAPP n'est entrée en vigueur qu'en juin 2026. Côté conditions de travail : plus de dix diplômés pour un poste, tarifs pigistes gelés depuis dix ans, violences contre les journalistes en hausse.</p>
+      <p>Le public, lui, décroche : la confiance dans la télévision a chuté de 10 points en un an (79 → 69 %, Eurobaromètre 2025), celle dans les réseaux sociaux de 11 points ; <strong>64 % des Flamands déclarent éviter les nouvelles</strong> (contre 48 % en 2017). Et le verrou le plus profond est linguistique : pas de quotidien national, pas d'audiovisuel public national, deux opinions publiques cloisonnées. Les Flamands lisent DPG et Mediahuis, les francophones Rossel. Conséquence dévastatrice pour la démocratie : <span class="hl">aucune opinion publique nationale ne peut se cristalliser</span> sur les rapports GRECO, les arrêts CEDH ou les scandales fédéraux. Chaque alerte se dissout dans le cloisonnement. L'exceptionnel devient routine ; la routine devient consentement.</p>
+    </div>
+    <aside>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce V.1</span><span>Concentration</span></div>
+        <div class="big">~94 %</div>
+        <p>Part de la presse quotidienne francophone contrôlée par un seul groupe après la fusion Rossel-IPM. Concentration des médias d'info : 81 % de risque (MPM 2024). Quatre acteurs TV captent 91 % des recettes en FWB.</p>
+      </div>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce V.2</span><span>Décrochage du public</span></div>
+        <ul>
+          <li>Confiance TV (1 an) <span class="v">79 → 69 %</span></li>
+          <li>Confiance internet <span class="v">51 → 39 %</span></li>
+          <li>Évitement des news (Flandre) <span class="v">64 %</span></li>
+          <li>Confiance médias Wallonie / Flandre <span class="v">35 % / 51 %</span></li>
+          <li>Pub politique en ligne, élections 2024 <span class="v">15,1 M€ (×5,5)</span></li>
+        </ul>
+        <p>Pendant que la presse s'affaiblit, les partis ont dépensé cinq fois et demi plus qu'en 2019 pour parler aux électeurs sans intermédiaire.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CHEF VI ============ -->
+<section class="chef reveal" id="chef4">
+  <span class="stamp section-stamp">Classé sans suite</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation VI</div>
+      <h2>140 ans de scandales, impunité en boucle</h2>
+    </div>
+  </div>
+  <div class="prose" style="max-width:42rem">
+    <p>Le pattern dominant de 140 ans de scandales belges n'est pas la dérive individuelle : c'est <strong>l'impunité par épuisement procédural</strong>. Prescriptions, transactions pénales, non-lieux, peines symboliques — les rares condamnations fermes tombent une décennie après les faits. Entre 2011 et 2020, le recours aux transactions pénales a augmenté de <span class="hl">845 %</span> — la justice négociée pour ceux qui peuvent payer, la justice pleine pour les autres. La chronologie parle d'elle-même.</p>
+  </div>
+  <div class="chrono">
+    <div class="chrono-row"><span class="cy">1885–1908</span><span class="ct"><b>Congo léopoldien.</b> L'État indépendant du Congo, propriété personnelle de Léopold II : travail forcé, mains coupées, effondrement démographique — les estimations académiques convergent autour de 10 millions de morts.</span><span class="cv">Bilan judiciaire : <b>aucun</b></span></div>
+    <div class="chrono-row"><span class="cy">1982–1985</span><span class="ct"><b>Tueurs du Brabant.</b> 28 morts dans des attaques jamais élucidées, sur fond de soupçons d'implication de milieux gendarmes et d'extrême droite. Quarante ans d'enquête.</span><span class="cv"><b>Prescription</b> sans coupable</span></div>
+    <div class="chrono-row"><span class="cy">1988–1998</span><span class="ct"><b>Agusta-Dassault.</b> Pots-de-vin de l'industrie de l'armement au PS et à la SP pour des contrats d'hélicoptères et d'avions. Condamnation de ministres — dont un secrétaire général de l'OTAN contraint à la démission.</span><span class="cv">Condamnation <b>10 ans après</b></span></div>
+    <div class="chrono-row"><span class="cy">1996</span><span class="ct"><b>Affaire Dutroux &amp; « arrêt spaghetti ».</b> Dessaisissement du juge Connerotte, dysfonctionnements policiers et judiciaires en cascade : 300 000 personnes dans la rue à la Marche blanche — la plus grande manifestation de l'histoire belge.</span><span class="cv">Procès en <b>2004</b>, 8 ans après</span></div>
+    <div class="chrono-row"><span class="cy">1996–2010</span><span class="ct"><b>KB-Lux.</b> Fraude fiscale massive via le Luxembourg impliquant des milliers de contribuables fortunés. La procédure s'effondre sur des vices de forme.</span><span class="cv"><b>Non-lieu</b> généralisé</span></div>
+    <div class="chrono-row"><span class="cy">2008</span><span class="ct"><b>Affaire Fortis.</b> Pressions du cabinet du Premier ministre Leterme sur la Cour d'appel de Bruxelles lors du démantèlement de la banque. Le gouvernement tombe — la séparation des pouvoirs vacille au sommet.</span><span class="cv">Démission, <b>pas de sanction pénale</b></span></div>
+    <div class="chrono-row"><span class="cy">2010</span><span class="ct"><b>Opération Calice.</b> Perquisitions dans l'enquête sur la pédophilie dans l'Église annulées par la justice ; des centaines de dossiers de victimes fragilisés.</span><span class="cv">Perquisitions <b>annulées</b></span></div>
+    <div class="chrono-row"><span class="cy">2011</span><span class="ct"><b>Loi « Chodiev » sur la transaction pénale.</b> Votée dans des conditions troubles (cf. Kazakhgate), elle institutionnalise l'extinction des poursuites contre paiement. Usage en hausse de 845 % en une décennie.</span><span class="cv">L'impunité <b>codifiée</b></span></div>
+  </div>
+  <div class="dossiers">
+    <div class="dossier">
+      <span class="year">2016 — Publifin / Nethys</span>
+      <h3>500 € la minute</h3>
+      <p>Des mandataires PS/MR/cdH rémunérés pour des « comités de secteur » fantômes — jusqu'à 500 € par minute de réunion, 2,5 M€ sur trois ans. L'administrateur délégué émargeait à 960 000 € bruts/an tout en finançant des procédures-bâillons contre les journalistes.</p>
+      <div class="verdict">Issue : <b>transaction pénale ~400 000 €</b>, pas de procès public.</div>
+    </div>
+    <div class="dossier">
+      <span class="year">2017 — Samusocial</span>
+      <h3>Détourner l'aide aux sans-abri</h3>
+      <p>ASBL financée à 98 % par des fonds publics : 350 000 € de jetons de présence indus pour des réunions fictives, répartis entre 12 administrateurs — dont le bourgmestre de Bruxelles.</p>
+      <div class="verdict">Renvoi correctionnel : <b>février 2026 — neuf ans après les faits</b>.</div>
+    </div>
+    <div class="dossier">
+      <span class="year">2011-2017 — Kazakhgate</span>
+      <h3>Une loi sur mesure</h3>
+      <p>La loi « transaction pénale » de 2011, adoptée dans des conditions troubles, permet à des oligarques kazakhs d'éteindre les poursuites contre 23 M€. Les conclusions de la commission d'enquête seront rabotées par la majorité.</p>
+      <div class="verdict">Décès du principal protagoniste : <b>extinction des poursuites</b>.</div>
+    </div>
+    <div class="dossier">
+      <span class="year">2022-2026 — Qatargate & Reynders</span>
+      <h3>Jusqu'au sommet</h3>
+      <p>Corruption présumée au Parlement européen ; puis l'affaire visant un ancien commissaire européen belge — soldée côté bancaire par une transaction d'ING à 1,6 M€. Le filtre médiatique fait le reste : Kazakhgate reste invisible là où Qatargate fait la une.</p>
+      <div class="verdict">Constante : <b>la culture de la transaction</b>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEF V ============ -->
+<section class="chef reveal" id="chef5">
+  <span class="stamp section-stamp">Droit non réclamé</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation VII</div>
+      <h2>Le coût humain : la fabrique du non-recours</h2>
+    </div>
+  </div>
+  <div class="chef-body">
+    <div class="prose">
+      <p>Voici où les failles institutionnelles cessent d'être abstraites. L'État social belge est devenu un labyrinthe — 581 CPAS, 6 entités fédérées, conditionnalité algorithmique, guichets numérisés — et il <strong>reproche aux égarés de ne pas en sortir</strong>. Résultat : des taux de non-recours aux droits que la recherche qualifie de massifs, documentés par les études TAKE (Banque-Carrefour de la Sécurité sociale).</p>
+      <p>Pendant ce temps, la fraude sociale détectée — objet de toute l'énergie politique et médiatique — représente <span class="hl">0,3 % du budget de la sécurité sociale</span>. L'État traque les pauvres au centime près et laisse dormir des milliards de droits non versés : une économie cynique, réalisée sur le dos des plus vulnérables. Le sociologue Philippe Warin parle de « fabrique du non-recours » ; le rapporteur spécial de l'ONU Olivier De Schutter, de « pauvrétisme ».</p>
+      <p>S'y ajoute la fracture numérique : <strong>40 % des Belges de 16 à 74 ans</strong> sont en vulnérabilité numérique, alors que les guichets ferment. Une plainte collective contre la Belgique a été déposée devant le Comité européen des droits sociaux pour exclusion numérique des droits fondamentaux. Le logement social ? En Flandre, 215 000 ménages en attente, dont 135 000 enfants — au rythme actuel, il faudrait <strong>plus de 80 ans</strong> pour résorber la liste. Un Belge sur quatre déclare avoir renoncé à des soins pour raisons financières.</p>
+    </div>
+    <aside>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce V.1</span><span>Taux de non-recours (TAKE 2022)</span></div>
+        <div class="bars">
+          <div class="bar-row"><div class="bar-label"><span>Allocation chauffage 65+</span><span class="v">77 %</span></div><div class="bar-track"><div class="bar-fill" data-w="77"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>GRAPA (minimum aînés)</span><span class="v">50 %</span></div><div class="bar-track"><div class="bar-fill" data-w="50"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Revenu d'intégration (RIS)</span><span class="v">37–51 %</span></div><div class="bar-track"><div class="bar-fill" data-w="44"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>BIM 65+</span><span class="v">35 %</span></div><div class="bar-track"><div class="bar-fill" data-w="35"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Fraude sociale détectée (budget)</span><span class="v">0,3 %</span></div><div class="bar-track"><div class="bar-fill y" data-w="2"></div></div></div>
+        </div>
+        <p class="bar-note">Jusqu'à trois personnes éligibles sur quatre ne reçoivent pas ce à quoi la loi leur donne droit.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CHEF VI ============ -->
+<section class="chef reveal" id="chef6">
+  <span class="stamp section-stamp">Exclu·e du système</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation VIII</div>
+      <h2>L'austérité Arizona, accélérateur de rupture</h2>
+    </div>
+  </div>
+  <div class="chef-body">
+    <div class="prose">
+      <p>Investie le 3 février 2025 après 239 jours de tractations, la coalition Arizona a lancé un exercice budgétaire d'environ 23 milliards d'euros — dont <strong>18 milliards de coupes</strong>, concentrées sur la santé, le chômage et les pensions. La mesure-phare met fin à une exception historique du modèle social belge : les allocations de chômage sont désormais limitées à <strong>24 mois</strong>.</p>
+      <p>Le bilan chiffré est brutal : 25 000 personnes exclues dès le 1er janvier 2026, plus de <strong>180 000 d'ici juillet 2027</strong>. En Wallonie, un tiers des exclus sont sans emploi depuis plus de 20 ans. À Bruxelles, <span class="hl">42 % des exclus n'ouvriront aucun droit au revenu d'intégration</span> — ils ne basculent pas vers le CPAS, ils tombent dans le vide. Une purge statistique maquillée en « remise à l'emploi », adossée à un récit de boucs émissaires : chômeurs « oisifs », malades « complaisants », syndicalistes « manipulateurs ».</p>
+      <p>La réponse sociale a été immédiate et massive : <strong>88 journées de grèves intersectorielles pour la seule année 2025</strong>. Or les exclus du chômage frapperont aux portes de CPAS déjà à la dérive (enquête VRT Pano, novembre 2024), financés par des communes exsangues. La chaîne causale est écrite d'avance : exclusion fédérale → engorgement local → non-recours → invisibilisation. Le problème ne disparaît pas. Il disparaît <em>des statistiques</em>.</p>
+    </div>
+    <aside>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce VI.1</span><span>Choc social 2025-2027</span></div>
+        <ul>
+          <li>Coupes budgétaires <span class="v">18 Md€</span></li>
+          <li>Chômage limité à <span class="v">24 mois</span></li>
+          <li>Exclusions au 01/01/2026 <span class="v">25 000</span></li>
+          <li>Exclusions d'ici 07/2027 <span class="v">&gt; 180 000</span></li>
+          <li>Exclus bruxellois sans droit au RIS <span class="v">42 %</span></li>
+          <li>Journées de grève en 2025 <span class="v">88</span></li>
+        </ul>
+      </div>
+      <div class="piece">
+        <div class="piece-tag"><span>Pièce VI.2</span><span>Pendant ce temps</span></div>
+        <div class="big">600+ jours</div>
+        <p>Blocage politique bruxellois avant la formation d'un gouvernement régional (février 2026) — record mondial. Licenciements dans les musées, projets gelés, crédits provisoires. La machine à décider est en panne ; la machine à couper, elle, tourne.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CHEF VII ============ -->
+<section class="chef reveal" id="chef7">
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Chef d'accusation IX — analyse prospective</div>
+      <h2>Les ingrédients d'un soulèvement</h2>
+    </div>
+  </div>
+  <div class="prose" style="max-width:44rem">
+    <p>La Belgique n'est pas un État voyou : élections libres, presse encore pluraliste, tribunaux indépendants. Mais l'histoire des colères populaires n'exige pas une dictature — elle exige un <strong>divorce entre la légalité et la légitimité</strong>. Et les données décrivent exactement cela : une « sécession civique » déjà en cours, silencieuse, mesurable. Quand l'État lui-même désobéit à ses juges, il enseigne à chacun que l'obéissance est optionnelle. Voici le combustible accumulé.</p>
+  </div>
+  <div class="fuel-grid">
+    <div class="fuel"><h3>1 · La confiance est morte</h3><p>8 % de confiance envers les partis. Deux tiers des Belges jugent la corruption répandue. Le vote obligatoire subsiste, mais les sanctions ne sont plus appliquées depuis 2003 — l'abstention réelle grimpe dans les segments précarisés. On ne quitte pas les urnes : on quitte le pacte.</p></div>
+    <div class="fuel"><h3>2 · L'exemple vient d'en haut</h3><p>Un gouvernement qui « provisionne » ses astreintes plutôt que d'exécuter les jugements a rompu le contrat social par le sommet. La CEDH parle de « refus caractérisé ». Chaque citoyen sommé de respecter la loi peut désormais répondre : et vous ?</p></div>
+    <div class="fuel"><h3>3 · La double peine des exclus</h3><p>180 000 exclus du chômage, dont une part massive sans filet CPAS ; 77 % de non-recours à certaines prestations ; un quart de la population qui renonce à des soins. Ce n'est plus de la pauvreté : c'est de la dépossession — le passage du statut d'ayant droit à celui de mendiant d'État.</p></div>
+    <div class="fuel"><h3>4 · La rue s'est déjà levée</h3><p>88 journées de grève en 2025 — un niveau de conflictualité sociale rarement atteint. La Belgique a une mémoire longue : la grève générale de 1950 a fait abdiquer un roi ; l'hiver 1960-61 a paralysé le pays. La tradition insurrectionnelle sociale existe, dormante.</p></div>
+    <div class="fuel"><h3>5 · Les soupapes se ferment</h3><p>Loi Quintin permettant la dissolution administrative d'associations, procédures-bâillons contre la presse d'investigation, attaques politiques contre le service public de l'information, un seul groupe contrôlant ~94 % de la presse quotidienne francophone, 64 % d'évitement des nouvelles en Flandre. Quand les canaux légitimes d'expression et d'information rétrécissent, la pression cherche d'autres sorties.</p></div>
+    <div class="fuel"><h3>6 · Aucune issue par les urnes</h3><p>C'est le verrou le plus explosif : la particratie empêche sa propre réforme. Panel citoyen ignoré, GRECO ignoré, arrêts ignorés. Si voter ne change rien au système — seulement ses gérants — la colère cesse de croire à l'élection. C'est historiquement à ce point précis que les démocraties basculent.</p></div>
+  </div>
+  <div class="prose" style="max-width:44rem;margin-top:2.5rem">
+    <p><strong>Le scénario n'est pourtant pas écrit.</strong> Les mêmes dossiers qui documentent la colère documentent aussi les leviers pacifiques : la question préjudicielle constitutionnelle sur le financement des partis, la pression du GRECO et de la CEDH, le contentieux stratégique, les médias d'investigation, la mobilisation syndicale et associative. Un soulèvement n'est jamais un projet — c'est un échec : celui d'un système qui a fermé toutes les autres portes. La question posée à l'establishment belge est simple : combien de portes reste-t-il ?</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ INSTRUCTION À DÉCHARGE ============ -->
+<main>
+<section class="chef reveal" id="decharge">
+  <span class="stamp section-stamp">Sursis</span>
+  <div class="chef-head">
+    <div>
+      <div class="chef-eyebrow">Instruction à décharge — partie réflexive</div>
+      <h2>Pourquoi rien n'a (encore) explosé</h2>
+    </div>
+  </div>
+  <div class="prose" style="max-width:44rem">
+    <p>Un réquisitoire honnête doit instruire à décharge. Si tous les combustibles du chef IX sont réunis, pourquoi la Belgique n'a-t-elle pas connu ses gilets jaunes, son Maïdan, son octobre chilien ? La réponse n'est pas que les Belges seraient résignés par nature. C'est que le système belge a été <strong>historiquement conçu pour absorber les colères</strong> — et qu'il y parvient encore, par six mécanismes d'amortissement. Chacun est réel. Chacun s'use.</p>
+  </div>
+  <div class="fuel-grid">
+    <div class="fuel damp"><h3>1 · Le conflit est institutionnalisé</h3><p>Héritage de la pilarisation et de la concertation sociale : avec 3,3 millions de syndiqués — l'un des taux les plus élevés du monde — la colère belge possède des canaux officiels. Les 88 journées de grève de 2025 ne sont pas les prémices d'une insurrection : elles en sont le <em>substitut ritualisé</em>. On défile, on négocie, on rentre. Le conflit est domestiqué avant d'être résolu — ou pas résolu du tout.</p></div>
+    <div class="fuel damp"><h3>2 · La misère est administrée, pas concentrée</h3><p>Malgré le non-recours massif, l'État social résiduel amortit encore : la pauvreté belge est diluée, gérée au cas par cas par 581 CPAS, invisibilisée dans des files d'attente plutôt qu'agglomérée dans une expérience collective. Or les soulèvements naissent de colères <em>partagées et visibles</em> — pas de dépossessions vécues chacun seul face à un guichet fermé.</p></div>
+    <div class="fuel damp"><h3>3 · La colère parle deux langues</h3><p>Le verrou le plus puissant : la fragmentation linguistique empêche toute synchronisation. La rage flamande vote Vlaams Belang, la rage francophone vote PTB — deux antisystèmes qui se détestent, deux presses qui s'ignorent, deux opinions publiques qui ne partagent ni scandales ni héros. Une révolte nationale exige un récit national ; la Belgique n'a plus d'espace où l'écrire.</p></div>
+    <div class="fuel damp"><h3>4 · Les urnes captent la radicalité</h3><p>VB + PTB pèsent 35 à 40 % des intentions de vote (mars 2026). Tant que la rupture semble achetable dans l'isoloir, la rue reste une option de second rang. Le vote obligatoire — même non sanctionné depuis 2003 — entretient le rituel de participation et l'illusion que « la prochaine fois » comptera. C'est un paratonnerre : il fonctionne jusqu'au jour où l'antisystème gagne… et est neutralisé par un cordon sanitaire ou une coalition. Ce jour-là, le paratonnerre devient détonateur.</p></div>
+    <div class="fuel damp"><h3>5 · L'exit a remplacé la voice</h3><p>Suivant la grille d'Hirschman, les Belges déçus ne protestent pas : ils <em>désertent</em>. 120 000 coopérateurs énergétiques, 209 000 personnes nourries chaque mois par les Banques alimentaires, 422 000 nuitées d'hébergement citoyen : une société civile de substitution assume déjà des fonctions que l'État a abandonnées. Cette « sécession positive » est admirable — et elle désamorce la confrontation en rendant l'État simplement… contournable.</p></div>
+    <div class="fuel damp"><h3>6 · La violence institutionnelle épuise avant de révolter</h3><p>Les invalidités pour burn-out et dépression ont bondi de 44 % en cinq ans. La charge mentale de la pauvreté, l'humiliation administrative répétée, produisent du retrait, de la honte et de l'épuisement — pas de la rage organisée. Cruauté du système : ceux qu'il lèse le plus sont précisément ceux qu'il rend le moins capables de se mobiliser.</p></div>
+  </div>
+  <div class="missing">
+    <h3>Ce qui manque — les cinq conditions non réunies</h3>
+    <ol>
+      <li><span><b>L'étincelle morale transcommunautaire.</b> Le seul précédent moderne est la Marche blanche de 1996 : 300 000 personnes, Flamands et francophones ensemble, soudés par un choc moral que personne ne pouvait relativiser. Ni les astreintes impayées ni le non-recours n'ont encore produit leur « visage » — la victime emblématique qui transforme une statistique en scandale national.</span></li>
+      <li><span><b>La convergence Nord-Sud des colères.</b> Elle existe objectivement — l'électorat VB et l'électorat PTB partagent le même profil sociologique de relégation (Pilet, Close, Jacobs 2024) — mais aucun acteur, aucun média, aucun langage commun ne la fait exister subjectivement. Le jour où les deux colères se reconnaissent, le rapport de force change d'échelle.</span></li>
+      <li><span><b>La défection des classes moyennes.</b> Historiquement, aucun soulèvement n'aboutit sans elles. Or elles sont encore relativement protégées — jusqu'à ce que l'austérité (soins de santé rationnés, pensions rabotées, services publics dégradés) et le déclassement des enfants diplômés les rattrapent. C'est la variable que le gouvernement teste actuellement en temps réel.</span></li>
+      <li><span><b>La preuve que l'urne ne sert à rien.</b> Paradoxalement, ce qui protège le système est l'espoir résiduel qu'il reste réformable de l'intérieur. Un scénario précis le tuerait : une victoire électorale antisystème massive suivie d'une neutralisation par coalition. La mécanique particratique rend ce scénario non seulement possible, mais probable.</span></li>
+      <li><span><b>Un répertoire d'action au-delà de la grève.</b> Le mouvement social belge maîtrise la grève générale ritualisée — pas l'occupation durable, ni la désobéissance civile de masse, ni la grève du zèle administrative et fiscale. Le jour où la contestation apprend à frapper les flux (financement des partis, consentement fiscal, données) plutôt que les trottoirs, l'État découvrira que ses amortisseurs ne couvrent pas ce spectre-là.</span></li>
+    </ol>
+  </div>
+  <div class="prose" style="max-width:44rem;margin-top:2.5rem">
+    <p>La lecture d'ensemble tient en une phrase : <strong>la Belgique ne tient pas parce que ses citoyens sont satisfaits, mais parce que sa colère est fragmentée, épuisée, ritualisée et détournée vers la sortie</strong>. Chaque amortisseur est en train de s'user — les syndicats affaiblis par l'Arizona, l'État social raboté, les urnes discréditées, la société civile de substitution attaquée (Unia −25 %, loi Quintin, fiscalité ASBL). Un système qui démonte ses propres amortisseurs tout en accumulant du combustible fait un pari actuariel audacieux : que l'épuisement des citoyens durera plus longtemps que leur patience. L'histoire sociale belge — 1886, 1950, 1960 — suggère que ce pari a déjà été perdu trois fois.</p>
+  </div>
+</section>
+</main>
+
+<div class="verdict-final reveal">
+  <div class="inner">
+    <h2>Verdict provisoire : une démocratie <span class="y">à deux étages</span>, dont l'escalier brûle</h2>
+    <p>Au premier étage, la façade : Constitution, élections, tribunaux. Au second, l'opérationnel : le mandat libre neutralisé par la discipline de parti, l'État de droit par le refus d'exécution des jugements, la transparence par l'opacité des cabinets, l'égalité par la fabrique du non-recours, le contrôle par l'autocontrôle des financeurs.</p>
+    <p>Ce n'est pas une opinion militante : c'est le constat convergent de la CEDH, du GRECO, de la Commission européenne, de Transparency International, de la Cour des comptes et de l'Institut fédéral des droits humains. La Belgique de 1831 avait inventé le parlementarisme continental. Celle de 2026 doit choisir entre le réformer — ou attendre que d'autres s'en chargent, dans la rue.</p>
+    <span class="date-butoir">Échéance GRECO · 30 novembre 2026</span>
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <h2>Sources principales</h2>
+    <ul>
+      <li>CEDH, <em>Camara c. Belgique</em>, 18 juillet 2023, req. 49255/22 (§ 118)</li>
+      <li>GRECO, 2ᵉ Rapport de conformité, 5ᵉ cycle, GrecoRC5(2024)3 ; Addendum 101ᵉ plénière (nov. 2025)</li>
+      <li>Commission européenne, Rapports sur l'État de droit — chapitre Belgique, 2024-2025</li>
+      <li>Institut fédéral des droits humains, Rapport État de droit 2025 ; enquête sur la non-exécution (nov. 2024)</li>
+      <li>Transparency International, Indice de perception de la corruption 2015-2024</li>
+      <li>Cour des comptes, rapports sur les cabinets ministériels wallons (2022)</li>
+      <li>Études TAKE 2022 (Banque-Carrefour de la Sécurité sociale) — non-recours aux droits</li>
+      <li>Fondation Roi Baudouin, Baromètre de l'inclusion numérique, 3ᵉ éd. 2024</li>
+      <li>F. Verleden, <em>Aux sources de la particratie</em>, CRISP, n° 2501-2504, 2019</li>
+      <li>W. Dewachter, <em>De trukendoos van de Belgische particratie</em>, 2014 ; K. Deschouwer, <em>The Politics of Belgium</em>, 2012</li>
+      <li>Cour d'appel de Bruxelles, arrêt Klimaatzaak, 30 novembre 2023</li>
+      <li>RTBF, Le Vif/L'Express, Apache, Médor, VRT Pano — enquêtes 2016-2026 (Publifin, Samusocial, CPAS, logement)</li>
+      <li>V-Dem Institute, Democracy Report 2026 ; Reporters sans frontières, classement 2026</li>
+      <li>Registre de transparence de l'UE ; Corporate Europe Observatory, <em>Lobby Planet Brussels</em>, 2024-2025</li>
+      <li>Cour des comptes européenne, audit du Registre de transparence, 2023</li>
+      <li>Cruysmans &amp; Dal, <em>La transparence du lobbying en Belgique</em>, ULB, 2021 ; Commission fédérale de déontologie, avis 2017/2</li>
+      <li>Media Pluralism Monitor 2024-2025 (CMPF/EUI) ; CSA, Rapport Pluralism Monitor, juin 2024</li>
+      <li>Médor n° 41, « Groupe Rossel : médiavore belge », hiver 2025-2026 ; AJP, dossiers concentration et fusion Rossel-IPM</li>
+      <li>Reuters Digital News Report 2025 ; Eurobaromètre médias EB104, octobre 2025</li>
+      <li>Note de recherche « La sécession civique en Belgique » (2024-2026) : SPF Intérieur (participation 2024), REScoop Wallonie/Vlaanderen, Ecopower, Banques alimentaires, BelRefugees</li>
+      <li>Pilet, Close, Jacobs, profil sociologique des électorats antisystème, 2024 ; A. Hirschman, <em>Exit, Voice, and Loyalty</em>, 1970</li>
+      <li>Collège des procureurs généraux, circulaire sur le vote obligatoire (oct. 2024) ; A. Vandeleene (ULB), RTBF, juin 2024</li>
+    </ul>
+    <p class="disclaimer">Document de travail citoyen à visée critique et analytique. Les faits cités proviennent de sources publiques, juridictionnelles et institutionnelles ; les jugements de valeur reflètent une lecture engagée mais argumentée de ces faits. Ce dossier plaide pour la réforme par le droit, la presse et la mobilisation démocratique — jamais pour la violence, dont il analyse le risque précisément pour qu'il ne se réalise pas.</p>
+  </div>
+</footer>
+
+<script>
+// reveal on scroll
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// bars
+const bio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.bar-fill').forEach(b=>{b.style.width=b.dataset.w+'%'});bio.unobserve(e.target)}})},{threshold:.3});
+document.querySelectorAll('.bars').forEach(el=>bio.observe(el));
+</script>
+</body>
+</html>
