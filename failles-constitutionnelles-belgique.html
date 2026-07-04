@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trois failles neuves dans la Constitution belge — Dossier citoyen</title>
+<meta name="description" content="Dossier citoyen : trois failles constitutionnelles inédites exploitables en contentieux stratégique contre la particratie belge, expliquées simplement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14141a;
+  --ink-soft:#3c3c46;
+  --paper:#f2f1ec;
+  --paper-deep:#e9e7e0;
+  --card:#fbfaf7;
+  --line:#c9c6bc;
+  --marker:#f5c518;          /* surligneur jaune — signature */
+  --marker-soft:#fdeeb3;
+  --seal:#a31621;            /* tampon rouge */
+  --seal-soft:#f6e2e4;
+  --leviervert:#1f6f43;
+  --levier-soft:#e0efe6;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --body:'Public Sans',system-ui,sans-serif;
+  --disp:'Bricolage Grotesque','Public Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--marker);color:var(--ink)}
+a{color:inherit}
+img{max-width:100%}
+
+/* ---------- utilitaires ---------- */
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.mark{background:linear-gradient(180deg,transparent 55%,var(--marker) 55%,var(--marker) 92%,transparent 92%);padding:0 .1em}
+.mono{font-family:var(--mono)}
+.small{font-size:.85rem;color:var(--ink-soft)}
+
+/* ---------- barre de navigation ---------- */
+nav.top{position:sticky;top:0;z-index:60;background:rgba(242,241,236,.92);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--ink)}
+nav.top .wrap{display:flex;align-items:center;gap:18px;height:56px}
+nav.top .brand{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+nav.top .brand b{color:var(--seal)}
+nav.top ul{display:flex;gap:4px;list-style:none;margin-left:auto;overflow-x:auto}
+nav.top a{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:7px 10px;border-radius:3px;white-space:nowrap;color:var(--ink-soft)}
+nav.top a:hover,nav.top a:focus-visible{background:var(--marker-soft);color:var(--ink)}
+:focus-visible{outline:2.5px solid var(--seal);outline-offset:2px}
+
+/* ---------- hero ---------- */
+header.hero{border-bottom:1.5px solid var(--ink);background:
+  repeating-linear-gradient(0deg,transparent,transparent 34px,rgba(20,20,26,.045) 34px,rgba(20,20,26,.045) 35px)}
+header.hero .wrap{padding:64px 22px 54px;position:relative}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:26px}
+.hero-meta span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+h1{font-family:var(--disp);font-weight:750;font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.04;letter-spacing:-.015em;max-width:14ch}
+.hero p.lead{max-width:62ch;margin-top:26px;font-size:1.08rem;color:var(--ink-soft)}
+.hero p.lead strong{color:var(--ink)}
+.stamp{position:absolute;right:22px;top:52px;transform:rotate(7deg);border:3px solid var(--seal);color:var(--seal);font-family:var(--mono);font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;padding:9px 16px;border-radius:6px;opacity:.9;background:rgba(163,22,33,.04)}
+@media(max-width:760px){.stamp{position:static;display:inline-block;transform:rotate(-2deg);margin-bottom:22px}}
+.avertissement{margin-top:34px;border:1.5px solid var(--ink);background:var(--card);padding:14px 18px;max-width:760px;font-size:.9rem}
+.avertissement b{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px;color:var(--seal)}
+
+/* ---------- sommaire ---------- */
+.sommaire{border-bottom:1.5px solid var(--ink);background:var(--paper-deep)}
+.sommaire .wrap{padding:26px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:820px){.sommaire .wrap{grid-template-columns:1fr}}
+.sommaire a{display:block;text-decoration:none;background:var(--card);border:1.5px solid var(--ink);padding:16px 18px;transition:transform .15s ease, box-shadow .15s ease}
+.sommaire a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.sommaire .num{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--seal);text-transform:uppercase}
+.sommaire h3{font-family:var(--disp);font-size:1.06rem;font-weight:650;margin-top:4px;line-height:1.3}
+.sommaire p{font-size:.83rem;color:var(--ink-soft);margin-top:5px}
+
+/* ---------- sections génériques ---------- */
+section{padding:64px 0;border-bottom:1.5px solid var(--line)}
+section h2{font-family:var(--disp);font-weight:720;font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.12;letter-spacing:-.01em;max-width:24ch;margin-bottom:8px}
+section .intro{max-width:66ch;color:var(--ink-soft);margin-top:14px}
+.section-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.section-eyebrow::after{content:"";flex:1;height:1.5px;background:var(--ink);opacity:.25}
+
+/* ---------- contexte : chiffres ---------- */
+.chiffres{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+@media(max-width:820px){.chiffres{grid-template-columns:1fr}}
+.chiffre{background:var(--card);border:1.5px solid var(--ink);padding:22px 20px}
+.chiffre .val{font-family:var(--disp);font-weight:780;font-size:2.6rem;line-height:1;letter-spacing:-.02em}
+.chiffre .val em{font-style:normal;background:linear-gradient(180deg,transparent 58%,var(--marker) 58%,var(--marker) 94%,transparent 94%)}
+.chiffre p{font-size:.87rem;color:var(--ink-soft);margin-top:10px}
+.chiffre .src{display:block;margin-top:8px;font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--ink-soft);opacity:.8}
+
+/* ---------- lexique ---------- */
+.lexique{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+@media(max-width:760px){.lexique{grid-template-columns:1fr}}
+.lex{background:var(--card);border-left:4px solid var(--marker);padding:14px 18px}
+.lex dt{font-family:var(--mono);font-weight:600;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase}
+.lex dd{font-size:.9rem;color:var(--ink-soft);margin-top:5px}
+
+/* ---------- fiches faille ---------- */
+.fiche{background:var(--card);border:2px solid var(--ink);margin-top:44px;box-shadow:8px 8px 0 rgba(20,20,26,.12)}
+.fiche-head{display:flex;gap:22px;align-items:flex-start;padding:26px 28px 22px;border-bottom:1.5px solid var(--ink);position:relative;flex-wrap:wrap}
+.fiche-art{font-family:var(--disp);font-weight:800;font-size:clamp(2.6rem,7vw,4.6rem);line-height:.9;letter-spacing:-.03em;color:var(--ink);min-width:130px}
+.fiche-art small{display:block;font-family:var(--mono);font-weight:500;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+.fiche-titre{flex:1;min-width:260px}
+.fiche-titre .badge{display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:2px solid var(--seal);color:var(--seal);padding:4px 10px;border-radius:4px;transform:rotate(-1.5deg);margin-bottom:12px}
+.fiche-titre h3{font-family:var(--disp);font-weight:700;font-size:clamp(1.35rem,2.8vw,1.9rem);line-height:1.15}
+.fiche-titre .sous{margin-top:10px;color:var(--ink-soft);font-size:.95rem;max-width:60ch}
+.fiche-body{padding:26px 28px 30px}
+@media(max-width:640px){.fiche-head,.fiche-body{padding-left:18px;padding-right:18px}}
+.fiche-body h4{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--seal);margin:30px 0 10px;display:flex;align-items:center;gap:10px}
+.fiche-body h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.fiche-body h4:first-child{margin-top:0}
+.fiche-body p{max-width:70ch;margin-bottom:12px}
+.fiche-body p:last-child{margin-bottom:0}
+.citation{border-left:4px solid var(--marker);background:var(--marker-soft);padding:14px 18px;font-size:.95rem;margin:16px 0;max-width:70ch}
+.citation .ref{display:block;margin-top:8px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-soft)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+@media(max-width:720px){.duo{grid-template-columns:1fr}}
+.duo>div{border:1.5px solid var(--line);padding:16px 18px;background:var(--paper)}
+.duo b.tag{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.duo .texte b.tag{color:var(--leviervert)}
+.duo .realite b.tag{color:var(--seal)}
+.duo p{font-size:.92rem;margin:0}
+ul.points{list-style:none;max-width:70ch}
+ul.points li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed var(--line);font-size:.96rem}
+ul.points li:last-child{border-bottom:none}
+ul.points li::before{content:"§";position:absolute;left:2px;top:8px;font-family:var(--mono);font-weight:600;color:var(--seal)}
+ol.etapes{counter-reset:et;list-style:none;max-width:70ch;margin-top:6px}
+ol.etapes li{counter-increment:et;padding:12px 0 12px 52px;position:relative;border-bottom:1px dashed var(--line);font-size:.96rem}
+ol.etapes li:last-child{border-bottom:none}
+ol.etapes li::before{content:counter(et);position:absolute;left:0;top:10px;width:34px;height:34px;border:2px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:600;font-size:.85rem;background:var(--marker-soft)}
+.meter{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.meter>div{flex:1;min-width:210px;border:1.5px solid var(--ink);padding:14px 16px;background:var(--paper)}
+.meter b{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;color:var(--ink-soft)}
+.dots{display:flex;gap:5px}
+.dots span{width:16px;height:16px;border:1.5px solid var(--ink);border-radius:50%}
+.dots span.on{background:var(--ink)}
+.dots.risk span.on{background:var(--seal);border-color:var(--seal)}
+.meter p{font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+details.plus{border:1.5px solid var(--line);background:var(--paper);margin-top:18px}
+details.plus summary{cursor:pointer;padding:13px 18px;font-family:var(--mono);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;list-style:none;display:flex;align-items:center;gap:10px}
+details.plus summary::-webkit-details-marker{display:none}
+details.plus summary::before{content:"+";font-size:1.1rem;width:22px;height:22px;border:1.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+details.plus[open] summary::before{content:"–"}
+details.plus .inner{padding:4px 18px 18px;border-top:1px dashed var(--line)}
+details.plus .inner p{font-size:.93rem;max-width:70ch;margin:10px 0}
+
+/* ---------- failles secondaires ---------- */
+.grid-sec{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+@media(max-width:820px){.grid-sec{grid-template-columns:1fr}}
+.sec-card{background:var(--card);border:1.5px solid var(--ink);padding:22px 22px 18px}
+.sec-card .art{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--seal)}
+.sec-card h3{font-family:var(--disp);font-weight:680;font-size:1.15rem;margin:8px 0 10px;line-height:1.25}
+.sec-card p{font-size:.9rem;color:var(--ink-soft)}
+.sec-card .verdict{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:.8rem}
+.sec-card .verdict b{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}
+
+/* ---------- parcours citoyen ---------- */
+.parcours{margin-top:36px;max-width:820px}
+.parcours .step{display:flex;gap:20px;padding:22px 0;border-bottom:1.5px dashed var(--line)}
+.parcours .step:last-child{border-bottom:none}
+.parcours .n{flex:none;width:52px;height:52px;border:2px solid var(--ink);border-radius:50%;background:var(--marker);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:750;font-size:1.3rem}
+.parcours h3{font-family:var(--disp);font-weight:680;font-size:1.12rem;margin-bottom:6px}
+.parcours p{font-size:.93rem;color:var(--ink-soft);max-width:64ch}
+.parcours .cout{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--paper-deep);border:1px solid var(--line);padding:3px 9px;border-radius:3px}
+
+/* ---------- risques ---------- */
+.risques .fiche-r{background:var(--seal-soft);border:2px solid var(--seal);padding:24px 26px;margin-top:30px;max-width:860px}
+.risques .fiche-r h3{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--seal);margin-bottom:12px}
+.risques .fiche-r p{font-size:.95rem;max-width:72ch;margin-bottom:10px}
+.risques .fiche-r p:last-child{margin-bottom:0}
+
+/* ---------- sources & pied ---------- */
+.sources ul{list-style:none;columns:2;column-gap:40px;margin-top:26px;max-width:1000px}
+@media(max-width:760px){.sources ul{columns:1}}
+.sources li{font-size:.84rem;color:var(--ink-soft);padding:7px 0;border-bottom:1px dashed var(--line);break-inside:avoid}
+.sources li b{color:var(--ink);font-weight:600}
+footer{padding:44px 0 60px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
+footer p{font-size:.82rem;color:var(--ink-soft);max-width:60ch}
+footer .sceau{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;border:2px solid var(--ink);padding:8px 14px;transform:rotate(-2deg)}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Navigation du dossier">
+  <div class="wrap">
+    <span class="brand">Dossier citoyen <b>·</b> BE</span>
+    <ul>
+      <li><a href="#contexte">Contexte</a></li>
+      <li><a href="#lexique">Lexique</a></li>
+      <li><a href="#faille1">Faille 1</a></li>
+      <li><a href="#faille2">Faille 2</a></li>
+      <li><a href="#faille3">Faille 3</a></li>
+      <li><a href="#secondaires">Autres pistes</a></li>
+      <li><a href="#agir">Agir</a></li>
+      <li><a href="#risques">Risques</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="stamp">Version citoyenne — juillet 2026</div>
+    <div class="hero-meta">
+      <span>Belgique · droit constitutionnel</span>
+      <span>Contentieux stratégique</span>
+      <span>Lecture ± 20 min</span>
+    </div>
+    <h1>Trois failles <span class="mark">neuves</span> dans la Constitution belge</h1>
+    <p class="lead">La démocratie belge est dominée par ses partis — c'est ce qu'on appelle la <strong>particratie</strong>. Les angles d'attaque juridiques classiques (mandat libre, financement des partis, recommandations du GRECO) sont connus et documentés. Ce dossier explique <strong>trois failles moins explorées</strong>, apparues ou consolidées entre 2020 et 2026, qu'un citoyen, une association ou un élu dissident pourrait porter devant un juge. Chaque faille est expliquée simplement : le texte, le problème, qui peut agir, comment, avec quelles chances et quels risques.</p>
+    <div class="avertissement">
+      <b>Avertissement</b>
+      Cette page est un travail d'information et d'éducation civique. Elle ne constitue pas un avis juridique. Avant toute action en justice, consultez un avocat : chaque situation concrète (délais, intérêt à agir, preuves) doit être vérifiée au cas par cas.
+    </div>
+  </div>
+</header>
+
+<div class="sommaire" aria-label="Sommaire des trois failles">
+  <div class="wrap">
+    <a href="#faille1">
+      <span class="num">Faille nº 1 · la plus accessible</span>
+      <h3>Le « secret de stratégie politique »</h3>
+      <p>Une loi de 2024 crée un secret absolu couvrant les échanges entre ministres, cabinets… et partis politiques. Frontalement en tension avec l'article 32 de la Constitution.</p>
+    </a>
+    <a href="#faille2">
+      <span class="num">Faille nº 2 · la plus audacieuse</span>
+      <h3>La Cour constitutionnelle, juge et partie ?</h3>
+      <p>La moitié des juges constitutionnels sont d'anciens politiciens nommés selon une clé partisane. Le droit de l'Union européenne exige l'« apparence d'indépendance ».</p>
+    </a>
+    <a href="#faille3">
+      <span class="num">Faille nº 3 · la plus certifiée</span>
+      <h3>Mugemangango, l'arrêt que la Belgique ignore</h3>
+      <p>Condamnée en 2020 parce que les parlements valident eux-mêmes leur propre élection, la Belgique n'a toujours pas créé de vrai recours indépendant.</p>
+    </a>
+  </div>
+</div>
+
+<main>
+
+<!-- ================= CONTEXTE ================= -->
+<section id="contexte">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">01 · Pourquoi chercher des failles ?</span></div>
+    <h2>Le système ne se réformera pas tout seul</h2>
+    <p class="intro">En Belgique, les partis contrôlent la sélection des candidats, la discipline de vote au Parlement, la formation des gouvernements, la distribution des mandats publics — et les règles qui encadrent tout cela. Ceux qui bénéficient du système détiennent les clés de sa réforme. C'est pourquoi une partie de la doctrine et de la société civile explore la voie du <strong>contentieux stratégique</strong> : utiliser les tribunaux pour forcer le système à se confronter à ses propres contradictions juridiques.</p>
+    <div class="chiffres">
+      <div class="chiffre">
+        <div class="val">≈ <em>99 %</em></div>
+        <p>Taux de cohésion des votes au sein des groupes parlementaires belges — la discipline de parti la plus forte d'Europe occidentale. Le « mandat libre » de l'article 42 est devenu largement théorique.</p>
+        <span class="src">F. Verleden, CRISP, 2019 (indice de Rice)</span>
+      </div>
+      <div class="chiffre">
+        <div class="val"><em>6 / 12</em></div>
+        <p>Nombre de juges de la Cour constitutionnelle qui sont d'anciens parlementaires, nommés en pratique selon une clé de répartition entre partis.</p>
+        <span class="src">Loi spéciale du 6 janvier 1989, art. 34</span>
+      </div>
+      <div class="chiffre">
+        <div class="val">Depuis <em>2011</em></div>
+        <p>La Belgique est en procédure de non-conformité devant le GRECO (l'organe anticorruption du Conseil de l'Europe) pour le financement des partis. Quinze ans de recommandations ignorées.</p>
+        <span class="src">GRECO, 3ᵉ cycle d'évaluation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEXIQUE ================= -->
+<section id="lexique">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">02 · Cinq mots pour tout comprendre</span></div>
+    <h2>Petit lexique avant de plonger</h2>
+    <dl class="lexique">
+      <div class="lex">
+        <dt>Particratie</dt>
+        <dd>Système où les états-majors des partis, et non les élus ou les institutions, prennent les décisions réelles. Le Parlement enregistre ce qui a été négocié ailleurs.</dd>
+      </div>
+      <div class="lex">
+        <dt>Contentieux stratégique</dt>
+        <dd>Utiliser un procès non seulement pour gagner un litige individuel, mais pour obtenir une décision de justice qui change une règle ou expose une contradiction du système.</dd>
+      </div>
+      <div class="lex">
+        <dt>Question préjudicielle</dt>
+        <dd>Quand, au cours d'un procès ordinaire, le juge suspend l'affaire pour demander à une cour supérieure (Cour constitutionnelle belge ou Cour de justice de l'UE) si une loi est valide. C'est la porte d'entrée du citoyen : pas besoin d'attaquer la loi directement, il suffit d'un litige où elle s'applique.</dd>
+      </div>
+      <div class="lex">
+        <dt>Recours en annulation</dt>
+        <dd>Demander directement à la Cour constitutionnelle d'annuler une loi. Puissant, mais enfermé dans un délai de 6 mois après la publication de la loi — souvent déjà expiré.</dd>
+      </div>
+      <div class="lex">
+        <dt>CEDH / CJUE</dt>
+        <dd>Deux cours européennes distinctes. La Cour européenne des droits de l'homme (Strasbourg) juge les États après épuisement des recours internes. La Cour de justice de l'UE (Luxembourg) interprète le droit de l'Union, que les juges belges doivent appliquer immédiatement.</dd>
+      </div>
+      <div class="lex">
+        <dt>CADA</dt>
+        <dd>Commission d'accès aux documents administratifs : l'organe qu'on saisit quand l'administration refuse de communiquer un document. Ses avis ne sont, pour l'instant, pas contraignants.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= FAILLE 1 ================= -->
+<section id="faille1">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">03 · Faille nº 1 — la plus accessible</span></div>
+    <h2>Le « secret de stratégie politique »</h2>
+    <p class="intro">En 2024, sous couvert de moderniser la transparence, le législateur a créé un secret sur mesure protégeant les échanges entre ministres, cabinets ministériels… et partis politiques. C'est probablement la contradiction la plus frontale, la plus récente et la plus datée entre une loi et l'article 32 de la Constitution.</p>
+
+    <article class="fiche">
+      <div class="fiche-head">
+        <div class="fiche-art"><small>Constitution</small>Art. 32</div>
+        <div class="fiche-titre">
+          <span class="badge">Faille identifiée</span>
+          <h3>Une loi qui organise l'opacité au profit des partis, contre un droit constitutionnel à la transparence</h3>
+          <p class="sous">Loi du 12 mai 2024 modifiant la loi du 11 avril 1994 relative à la publicité de l'administration — entrée en vigueur le 15 juillet 2024.</p>
+        </div>
+      </div>
+      <div class="fiche-body">
+        <h4>Ce que dit la Constitution</h4>
+        <div class="duo">
+          <div class="texte">
+            <b class="tag">Le principe (art. 32)</b>
+            <p>Chacun a le droit de consulter chaque document administratif et de s'en faire remettre copie, sauf dans les cas et conditions fixés par la loi. La transparence est la règle, le secret l'exception — et toute exception doit rester interprétée strictement.</p>
+          </div>
+          <div class="realite">
+            <b class="tag">Ce que fait la loi de 2024</b>
+            <p>Elle crée une exception <strong>obligatoire et absolue</strong> (sans aucune mise en balance des intérêts) pour tout document portant sur l'exécution d'une « stratégie politique » — une notion qui n'est <strong>définie nulle part</strong> — échangé entre ministres, entre ministres et cabinets, entre cabinets, ou entre ministres/cabinets et… <strong>un parti politique ou un groupe parlementaire</strong>.</p>
+          </div>
+        </div>
+
+        <h4>Pourquoi c'est une faille</h4>
+        <p>Le paradoxe est documenté noir sur blanc. La loi de 2024 prétendait exécuter une recommandation du GRECO (soumettre enfin les cabinets ministériels à la transparence). Mais l'exception « stratégie politique » couvre précisément le cœur de l'activité des cabinets : leurs échanges avec les ministres et avec les partis. La Ligue des droits humains, l'Association des journalistes professionnels, Transparencia et Cumuleo ont dénoncé une inclusion « vidée de sa substance ».</p>
+        <p>Trois autorités officielles ont elles-mêmes fragilisé la disposition :</p>
+        <ul class="points">
+          <li>Le <strong>Conseil d'État</strong> (avis nº 72.732/2 du 30 janvier 2023) s'est interrogé sur l'utilité même de cette nouvelle exception, les exceptions existantes étant déjà « manifestement suffisantes ».</li>
+          <li>La <strong>CADA fédérale</strong> (avis nº 2025-73 du 6 juin 2025) a jugé que la loi de 2024 « n'est pas allée suffisamment loin » et qu'« une certaine opacité a été maintenue ».</li>
+          <li>Une <strong>proposition de loi</strong> visant à abroger l'exception (DOC 56 0660/001) a été déposée à la Chambre — preuve que même une partie du monde politique reconnaît le problème.</li>
+        </ul>
+        <div class="citation">
+          Fait unique en droit belge de la transparence : le texte désigne <em>nommément</em> les partis politiques — des entités privées, sans personnalité juridique, sans statut constitutionnel — comme bénéficiaires d'un secret d'État. La loi organise ainsi juridiquement ce que la particratie pratiquait officieusement.
+          <span class="ref">Loi du 12 mai 2024, insérant un 5° à l'art. 6, § 2, de la loi du 11 avril 1994</span>
+        </div>
+
+        <h4>Comment l'attaquer concrètement</h4>
+        <p>Le délai de 6 mois pour un recours direct en annulation devant la Cour constitutionnelle est expiré. Mais la <strong>question préjudicielle</strong>, elle, n'a pas de délai. Le scénario type :</p>
+        <ol class="etapes">
+          <li><strong>Demander un document précis</strong> à un cabinet ministériel fédéral (par exemple : les échanges entre un cabinet et un président de parti sur un dossier réglementaire donné). Toute personne peut le faire, gratuitement, sans justifier d'un intérêt.</li>
+          <li><strong>Recevoir un refus</strong> fondé sur l'exception « stratégie politique » — refus quasi certain, c'est précisément ce que la loi permet.</li>
+          <li><strong>Saisir la CADA</strong> (demande de reconsidération + avis), puis contester le refus devant le <strong>Conseil d'État</strong>.</li>
+          <li><strong>Demander au Conseil d'État de poser une question préjudicielle</strong> à la Cour constitutionnelle : l'exception absolue, sans balance d'intérêts et sans définition, est-elle compatible avec l'article 32 de la Constitution, lu avec l'article 10 de la CEDH (droit d'accès aux informations d'intérêt public, arrêt <em>Magyar Helsinki Bizottság</em>, 2016) ?</li>
+        </ol>
+
+        <h4>Qui peut agir</h4>
+        <p>N'importe quel citoyen, journaliste, chercheur ou association (le droit d'accès n'exige pas de justifier d'un intérêt pour les documents à caractère non personnel). Les associations de transparence et de défense de la presse sont les mieux placées pour construire un dossier solide et médiatisé.</p>
+
+        <h4>Chances et risques</h4>
+        <div class="meter">
+          <div>
+            <b>Accessibilité citoyenne</b>
+            <div class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+            <p>Une demande de document coûte un e-mail. Le contentieux qui suit est balisé et peu coûteux comparé à un procès civil.</p>
+          </div>
+          <div>
+            <b>Chances de succès</b>
+            <div class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+            <p>Solides sur le caractère absolu et indéfini de l'exception : la Cour constitutionnelle censure régulièrement les exceptions à la transparence trop larges ou sans balance d'intérêts.</p>
+          </div>
+          <div>
+            <b>Risque de retour de flamme</b>
+            <div class="dots risk"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+            <p>Limité : au pire, la Cour valide l'exception et le statu quo demeure. Le risque de créer une jurisprudence aggravante est faible.</p>
+          </div>
+        </div>
+
+        <details class="plus">
+          <summary>Pour aller plus loin : pourquoi cette faille est « neuve »</summary>
+          <div class="inner">
+            <p>Les stratégies déjà documentées contre la particratie attaquent le financement des partis, le mandat impératif de fait ou l'inaction face au GRECO. Ici, l'angle est différent : on n'attaque pas une pratique ou une omission, mais <strong>un texte de loi précis, daté, publié au Moniteur belge le 6 juin 2024</strong>, dont trois organes officiels ont déjà contesté la nécessité. C'est du contentieux sur pièce, pas sur interprétation.</p>
+            <p>Autre atout : même un échec produit de la matière. Chaque refus motivé par la « stratégie politique » documente publiquement quels documents les cabinets et les partis refusent de montrer — une cartographie de l'opacité, exploitable par les journalistes et le GRECO.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= FAILLE 2 ================= -->
+<section id="faille2">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">04 · Faille nº 2 — la plus audacieuse</span></div>
+    <h2>La Cour constitutionnelle, juge et partie ?</h2>
+    <p class="intro">Le gardien de la Constitution est composé pour moitié d'anciens politiciens, désignés en pratique selon une clé de répartition entre partis. Tant qu'on reste en droit belge, c'est légal : la loi spéciale de 1989 l'organise ainsi. Mais le droit de l'Union européenne a développé, face aux dérives polonaises et hongroises, une exigence qui pourrait tout changer : l'<strong>apparence d'indépendance</strong>.</p>
+
+    <article class="fiche">
+      <div class="fiche-head">
+        <div class="fiche-art"><small>Traité UE</small>Art. 19</div>
+        <div class="fiche-titre">
+          <span class="badge">Faille identifiée</span>
+          <h3>Tester la composition politique de la Cour constitutionnelle à l'aune du droit européen</h3>
+          <p class="sous">Article 19 TUE (protection juridictionnelle effective) · article 47 de la Charte des droits fondamentaux · jurisprudence CJUE sur l'indépendance des juges.</p>
+        </div>
+      </div>
+      <div class="fiche-body">
+        <h4>Le problème en deux phrases</h4>
+        <p>Six des douze juges de la Cour constitutionnelle doivent être d'<strong>anciens parlementaires</strong> (au moins 5 ans de mandat). Ils sont nommés sur des listes présentées par la Chambre et le Sénat à la majorité des deux tiers — ce qui, en pratique, impose un accord entre grands partis et une distribution des sièges selon une clé partisane tacite.</p>
+        <div class="citation">
+          « N'est-il pas troublant pour le citoyen de constater que la loi est jugée — pour moitié ! — par ceux-là mêmes qui l'ont créée ? »
+          <span class="ref">Marc Verdussen, professeur de droit constitutionnel (UCLouvain), Réenchanter la Constitution, 2019</span>
+        </div>
+        <p>Le résultat : la juridiction chargée de contrôler les lois qui organisent la particratie (financement des partis, règles électorales, seuil de 5 %…) est elle-même composée par la particratie. Or c'est cette même Cour qui reçoit toutes les questions préjudicielles des autres stratégies contentieuses. Le verrou garde le verrou.</p>
+
+        <h4>Ce que le droit européen a changé</h4>
+        <p>Depuis 2018, la Cour de justice de l'UE a construit, dans les affaires polonaises et portugaise, une jurisprudence puissante : tout tribunal national susceptible d'appliquer le droit de l'Union doit offrir des <strong>garanties d'indépendance, y compris en apparence</strong> — c'est-à-dire que le mode de nomination des juges ne doit pas faire naître, chez les justiciables, de doute légitime sur leur imperméabilité aux influences des pouvoirs politiques.</p>
+        <ul class="points">
+          <li><em>Associação Sindical dos Juízes Portugueses</em> (2018) : l'article 19 TUE s'applique à toute juridiction nationale pouvant connaître du droit de l'UE — ce qui inclut la Cour constitutionnelle belge.</li>
+          <li><em>Commission c. Pologne</em> (2019 et suivants) : la CJUE examine concrètement les modes de nomination et sanctionne ceux qui créent une dépendance structurelle envers le pouvoir politique.</li>
+          <li>La question inédite : un système où <strong>la moitié des sièges est réservée par la loi à d'anciens politiciens professionnels</strong>, répartis entre partis, satisfait-il ce standard ? Aucune juridiction ne l'a jamais tranché pour la Belgique.</li>
+        </ul>
+
+        <h4>Comment l'attaquer concrètement</h4>
+        <ol class="etapes">
+          <li>Construire un litige comportant un <strong>élément de droit de l'Union</strong> (par exemple : transparence et données personnelles, financement politique et règles UE sur les partis européens, droits électoraux d'un citoyen européen, marché intérieur…).</li>
+          <li>Dans ce litige, lorsque l'affaire arrive devant la Cour constitutionnelle ou qu'un renvoi vers elle est envisagé, <strong>soulever l'incompatibilité de sa composition</strong> avec l'article 19 TUE.</li>
+          <li>Demander au juge ordinaire de poser une <strong>question préjudicielle directement à la CJUE</strong> (Luxembourg) — en contournant donc la Cour constitutionnelle elle-même. Les juges dont la décision n'est pas susceptible de recours y sont en principe <em>obligés</em> lorsque la question est sérieuse.</li>
+        </ol>
+
+        <h4>Qui peut agir</h4>
+        <p>Tout justiciable partie à un litige touchant au droit de l'UE — idéalement épaulé par une association ou une équipe universitaire, car l'argumentaire est technique. Un parlementaire dissident ou un petit parti écarté par une règle électorale serait un requérant particulièrement crédible.</p>
+
+        <h4>Chances et risques</h4>
+        <div class="meter">
+          <div>
+            <b>Accessibilité citoyenne</b>
+            <div class="dots"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+            <p>Exige un litige adéquat, un avocat aguerri au droit de l'UE et de la patience (plusieurs années).</p>
+          </div>
+          <div>
+            <b>Chances de succès</b>
+            <div class="dots"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+            <p>Incertaines : la CJUE distingue les traditions nationales légitimes des dérives. Mais même une question renvoyée à Luxembourg serait un séisme institutionnel.</p>
+          </div>
+          <div>
+            <b>Risque de retour de flamme</b>
+            <div class="dots risk"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+            <p>Réel : un arrêt validant la composition actuelle la légitimerait durablement. À ne tenter qu'avec un dossier très solide.</p>
+          </div>
+        </div>
+
+        <details class="plus">
+          <summary>Pour aller plus loin : pourquoi viser Luxembourg plutôt que Strasbourg</summary>
+          <div class="inner">
+            <p>La CEDH (Strasbourg) exige d'épuiser d'abord tous les recours belges — des années de procédure, avec une large « marge d'appréciation » laissée aux États. La CJUE (Luxembourg), elle, peut être saisie <strong>en cours de procès</strong>, par n'importe quel juge belge, et ses arrêts s'imposent immédiatement avec primauté sur le droit national. C'est l'itinéraire le plus court vers un contrôle externe du système — exactement celui qui a fait plier les réformes judiciaires polonaises.</p>
+            <p>À noter : un avant-projet approuvé en 2025 envisageait de porter à 8 ans l'ancienneté parlementaire requise des juges « politiques » — renforçant le caractère professionnel-politique de la moitié de la Cour, et donc la matière première de cette contestation.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= FAILLE 3 ================= -->
+<section id="faille3">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">05 · Faille nº 3 — la plus certifiée</span></div>
+    <h2>Mugemangango : l'arrêt européen que la Belgique laisse dormir</h2>
+    <p class="intro">En 2020, la Cour européenne des droits de l'homme, réunie en Grande Chambre — sa formation la plus solennelle — a condamné la Belgique à l'unanimité. Motif : quand une élection est contestée, ce sont les élus eux-mêmes qui jugent la contestation, sans aucun recours devant un tribunal. Six ans plus tard, le cœur du problème demeure.</p>
+
+    <article class="fiche">
+      <div class="fiche-head">
+        <div class="fiche-art"><small>Constitution</small>Art. 48</div>
+        <div class="fiche-titre">
+          <span class="badge">Faille identifiée</span>
+          <h3>La vérification des pouvoirs : les parlements restent juges de leur propre élection</h3>
+          <p class="sous">CEDH, Grande Chambre, Mugemangango c. Belgique, 10 juillet 2020 (req. nº 310/15) — violation de l'article 3 du Protocole nº 1 et de l'article 13.</p>
+        </div>
+      </div>
+      <div class="fiche-body">
+        <h4>L'histoire en bref</h4>
+        <p>Élections wallonnes de 2014, circonscription de Charleroi. Germain Mugemangango (PTB) manque un siège pour <strong>14 voix</strong>… alors que <strong>21 385 bulletins</strong> ont été déclarés blancs, nuls ou contestés. La commission du Parlement wallon recommande elle-même un recomptage. Mais en séance plénière, ce sont les députés — dont ses <strong>concurrents directs de la même circonscription</strong> — qui votent, et rejettent sa réclamation. Aucun tribunal ne peut intervenir : l'article 48 de la Constitution réserve ce jugement aux assemblées elles-mêmes.</p>
+        <div class="citation">
+          La Cour de Strasbourg a jugé que l'organe décisionnaire ne présentait pas de garanties suffisantes d'impartialité et que la procédure n'offrait aucune protection contre l'arbitraire : le requérant n'a disposé d'aucun recours effectif.
+          <span class="ref">CEDH (GC), Mugemangango c. Belgique, 10 juillet 2020 — décision rendue à l'unanimité</span>
+        </div>
+
+        <h4>Pourquoi c'est toujours une faille en 2026</h4>
+        <ul class="points">
+          <li>L'article 48 (« Chaque Chambre vérifie les pouvoirs de ses membres et juge les contestations qui s'élèvent à ce sujet ») <strong>n'a pas été révisé</strong> : le principe de l'auto-jugement demeure au niveau fédéral.</li>
+          <li>L'exécution de l'arrêt reste sous la <strong>surveillance du Comité des Ministres du Conseil de l'Europe</strong>, la procédure qui suit les condamnations non pleinement exécutées.</li>
+          <li>Ce n'est pas un cas isolé : dans <em>G.K. c. Belgique</em> (2019), la CEDH avait déjà condamné le Sénat pour avoir validé, sans recours indépendant, la démission d'une sénatrice arrachée sous la pression de son propre parti. L'article 48 sert alors d'outil à la discipline partisane.</li>
+          <li>Chaque scrutin fédéral organisé sans recours juridictionnel effectif reproduit donc, en connaissance de cause, une violation déjà constatée par la plus haute formation de la CEDH.</li>
+        </ul>
+
+        <h4>Comment l'exploiter concrètement</h4>
+        <ol class="etapes">
+          <li><strong>Le candidat lésé</strong> : lors d'un prochain scrutin, tout candidat contestant le comptage, la répartition des sièges ou la validation d'une démission dispose d'un dossier déjà gagné à Strasbourg. Il introduit sa réclamation, se voit opposer l'auto-jugement parlementaire, puis saisit la CEDH avec un précédent de Grande Chambre en poche — un raccourci procédural rare.</li>
+          <li><strong>Le levier interne</strong> : devant les juridictions belges, invoquer la responsabilité de l'État pour son abstention persistante à créer le recours exigé (la Cour de cassation admet depuis 2006 que l'État réponde des fautes du législateur, y compris l'omission de légiférer).</li>
+          <li><strong>Le levier politique et européen</strong> : alimenter la surveillance du Comité des Ministres et les rapports annuels de la Commission européenne sur l'État de droit — des documents que la Belgique ne peut pas récuser puisqu'elle y participe.</li>
+        </ol>
+
+        <h4>Qui peut agir</h4>
+        <p>Principalement un candidat ou un élu directement affecté (ce qui suppose d'attendre un cas concret — ils reviennent à chaque scrutin serré). En dehors d'un cas concret : associations, universitaires et journalistes, sur le terrain du plaidoyer documenté.</p>
+
+        <h4>Chances et risques</h4>
+        <div class="meter">
+          <div>
+            <b>Accessibilité citoyenne</b>
+            <div class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span></div>
+            <p>Il faut un cas concret (candidat lésé). Mais le travail juridique de fond est déjà fait : la CEDH a tranché.</p>
+          </div>
+          <div>
+            <b>Chances de succès</b>
+            <div class="dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+            <p>Maximales à Strasbourg : la violation est certifiée par une Grande Chambre unanime. Un second constat de violation serait accablant.</p>
+          </div>
+          <div>
+            <b>Risque de retour de flamme</b>
+            <div class="dots risk"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+            <p>Quasi nul : difficile de perdre un procès déjà gagné. Le seul risque est la lenteur — plusieurs années de procédure.</p>
+          </div>
+        </div>
+
+        <details class="plus">
+          <summary>Pour aller plus loin : le lien direct avec la particratie</summary>
+          <div class="inner">
+            <p>La vérification des pouvoirs n'est pas un détail technique. C'est le mécanisme qui permet aux partis majoritaires de valider ou d'invalider l'entrée au parlement de leurs concurrents (affaire Mugemangango) et de sceller la sortie forcée de leurs propres élus dissidents (affaire G.K.). Créer un recours indépendant, c'est retirer aux appareils partisans le contrôle de la porte d'entrée et de la porte de sortie du Parlement.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= FAILLES SECONDAIRES ================= -->
+<section id="secondaires">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">06 · Le second rayon</span></div>
+    <h2>Quatre autres pistes, plus incertaines mais réelles</h2>
+    <p class="intro">Ces failles sont moins mûres — soit parce que la voie procédurale est étroite, soit parce que la jurisprudence est hésitante. Elles peuvent néanmoins compléter une stratégie d'ensemble ou attendre le bon cas concret.</p>
+    <div class="grid-sec">
+      <div class="sec-card">
+        <span class="art">Art. 6 CEDH · Loi du 4 juillet 1989</span>
+        <h3>La Commission de contrôle : des parlementaires qui sanctionnent leurs propres partis</h3>
+        <p>Le financement des partis est contrôlé et sanctionné par une commission… composée de parlementaires, donc des partis eux-mêmes. Depuis qu'une loi de 2014 lui a donné un vrai pouvoir de sanction (amendes, retenues sur dotation), la question se pose : un organe politique qui punit peut-il satisfaire l'exigence du tribunal impartial ? Un parti sanctionné (ou jamais sanctionné, au détriment d'un concurrent) pourrait contester la sanction et faire poser la question à la Cour constitutionnelle.</p>
+        <div class="verdict"><b>Verdict :</b> angle sérieux, mais il faut attendre une sanction contestable — le requérant idéal est un petit parti.</div>
+      </div>
+      <div class="sec-card">
+        <span class="art">Art. 174 Constitution</span>
+        <h3>Les douzièmes provisoires à répétition : un budget fantôme</h3>
+        <p>La Constitution impose un budget voté chaque année — c'est le cœur historique du parlementarisme. La pratique des « douzièmes provisoires » (reconduire chaque mois un douzième du budget précédent faute d'accord politique) contourne ce contrôle parlementaire quand elle devient chronique. La difficulté : trouver un requérant dont un droit concret est lésé par cette pratique, condition pour franchir la porte du juge.</p>
+        <div class="verdict"><b>Verdict :</b> faille réelle mais contentieux étroit ; surtout puissante comme argument d'appui dans d'autres recours.</div>
+      </div>
+      <div class="sec-card">
+        <span class="art">Art. 27 Constitution</span>
+        <h3>La liberté de ne pas s'associer : candidat sans parti, mission impossible</h3>
+        <p>La liberté d'association comprend son versant négatif : nul ne peut être contraint de s'affilier. Or l'ensemble des règles électorales (financement réservé aux partis dotés, seuil de 5 %, accès aux médias, case de tête) rend une candidature hors parti pratiquement vouée à l'échec. Un candidat indépendant sérieux pourrait soutenir que le système le contraint, de fait, à rejoindre un parti pour exercer ses droits politiques.</p>
+        <div class="verdict"><b>Verdict :</b> argument neuf et élégant, jamais testé tel quel ; nécessite un candidat indépendant réel comme requérant.</div>
+      </div>
+      <div class="sec-card">
+        <span class="art">Art. 187 Constitution</span>
+        <h3>Les « affaires courantes » sans fin : une Constitution suspendue de fait ?</h3>
+        <p>« La Constitution ne peut être suspendue en tout ni en partie. » Pourtant, lors des crises de formation gouvernementale (541 jours en 2010-2011), le pays est gouverné des mois durant par un exécutif sans confiance parlementaire, selon des règles d'« affaires courantes » qui ne figurent dans aucun texte — et qui sont pilotées par les présidents de partis, organes inconnus de la Constitution. Un acte pris en affaires courantes prolongées peut être contesté au Conseil d'État pour excès de pouvoir.</p>
+        <div class="verdict"><b>Verdict :</b> exploitable au cas par cas, contre des actes précis pris pendant les longues crises — pas contre le système en bloc.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AGIR ================= -->
+<section id="agir">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">07 · Mode d'emploi</span></div>
+    <h2>Par où commencer, concrètement ?</h2>
+    <p class="intro">Toutes les failles ne demandent pas les mêmes moyens. Voici la progression réaliste, du geste accessible à tous jusqu'au contentieux de longue haleine.</p>
+    <div class="parcours">
+      <div class="step">
+        <div class="n">1</div>
+        <div>
+          <h3>Demander des documents (faille nº 1)</h3>
+          <p>Envoyer une demande d'accès à un document précis détenu par un cabinet ministériel fédéral. Formuler la demande par écrit, viser un document identifiable, garder toutes les traces. Chaque refus « stratégie politique » est une pièce du dossier.</p>
+          <span class="cout">Coût : un e-mail · Délai : semaines</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div>
+          <h3>Contester le refus</h3>
+          <p>Saisir la CADA, puis le Conseil d'État. C'est à ce stade qu'un avocat devient utile — et que la question préjudicielle sur la constitutionnalité de l'exception peut être soulevée. Une association (transparence, presse, droits humains) peut porter le dossier pour mutualiser les coûts.</p>
+          <span class="cout">Coût : modéré · Délai : 1 à 2 ans</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div>
+          <h3>Documenter et coaliser</h3>
+          <p>Publier les refus, alimenter les rapports du GRECO et de la Commission européenne sur l'État de droit, nourrir la presse. Le contentieux stratégique gagne rarement seul : c'est la combinaison juge + rapport international + opinion publique qui fait bouger les lignes.</p>
+          <span class="cout">Coût : du temps · Délai : continu</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <div>
+          <h3>Saisir le bon cas quand il se présente (failles nº 2 et 3)</h3>
+          <p>Un candidat lésé à un scrutin serré, un parti sanctionné par la Commission de contrôle, un litige avec un élément de droit européen : ces occasions se présentent à chaque cycle électoral. Les identifier tôt et être prêt — dossier juridique rédigé, avocats mobilisés — fait toute la différence.</p>
+          <span class="cout">Coût : élevé · Délai : 3 à 7 ans</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RISQUES ================= -->
+<section id="risques" class="risques">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">08 · Lucidité obligatoire</span></div>
+    <h2>Ce qu'il faut accepter avant de se lancer</h2>
+    <div class="fiche-r">
+      <h3>Risque nº 1 — Consolider ce qu'on voulait démanteler</h3>
+      <p>Un procès perdu ne laisse pas les choses en l'état : il crée une jurisprudence. Si la Cour constitutionnelle valide l'exception « stratégie politique », ou si la CJUE bénit la composition de la Cour, le système en sortira <em>renforcé</em>, avec un certificat de conformité. C'est pourquoi l'ordre d'attaque compte : commencer par la faille la plus solide (nº 1), garder la plus risquée (nº 2) pour un dossier irréprochable.</p>
+    </div>
+    <div class="fiche-r">
+      <h3>Risque nº 2 — Le temps joue contre l'élan</h3>
+      <p>Entre la première demande de document et un arrêt de la CEDH, il peut s'écouler cinq à dix ans. Les stratégies qui réussissent (comme le contentieux climatique) reposent sur des structures collectives durables — associations, financement, relève — pas sur l'énergie d'une seule personne.</p>
+    </div>
+    <div class="fiche-r">
+      <h3>Risque nº 3 — La riposte du système</h3>
+      <p>Les partis disposent de moyens considérables et n'ont pas hésité, par le passé, à utiliser des procédures judiciaires dissuasives contre leurs critiques, ni à réagir législativement aux arrêts qui les dérangent. Toute démarche doit rester rigoureusement légale, factuelle et transparente : la force de ces failles tient précisément à ce qu'elles s'appuient sur des textes officiels et des condamnations certifiées, pas sur des accusations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SOURCES ================= -->
+<section id="sources" class="sources">
+  <div class="wrap">
+    <div class="section-eyebrow"><span class="eyebrow">09 · Vérifiez tout</span></div>
+    <h2>Sources principales</h2>
+    <p class="intro">Aucune affirmation de ce dossier ne repose sur des documents secrets : tout est vérifiable dans des textes officiels, des arrêts publiés et des travaux académiques.</p>
+    <ul>
+      <li><b>Constitution belge</b>, coordonnée le 17 février 1994 — articles 27, 32, 42, 48, 142, 174, 187 (texte intégral sur senate.be).</li>
+      <li><b>Loi du 12 mai 2024</b> modifiant la loi du 11 avril 1994 relative à la publicité de l'administration, Moniteur belge du 6 juin 2024, entrée en vigueur le 15 juillet 2024.</li>
+      <li><b>Conseil d'État</b>, section de législation, avis nº 72.732/2 du 30 janvier 2023 (Doc. parl., Chambre, DOC 55 3217).</li>
+      <li><b>CADA fédérale</b>, avis nº 2025-73 du 6 juin 2025, sur la proposition d'abrogation de l'exception « stratégie politique » (DOC 56 0660/001).</li>
+      <li><b>CEDH, Grande Chambre</b>, Mugemangango c. Belgique, 10 juillet 2020, req. nº 310/15.</li>
+      <li><b>CEDH</b>, G.K. c. Belgique, 21 mai 2019, req. nº 58302/10.</li>
+      <li><b>CEDH, Grande Chambre</b>, Magyar Helsinki Bizottság c. Hongrie, 8 novembre 2016 (droit d'accès aux informations d'intérêt public).</li>
+      <li><b>CJUE</b>, Associação Sindical dos Juízes Portugueses, aff. C-64/16, 27 février 2018 ; Commission c. Pologne (indépendance des juges), aff. C-619/18, 24 juin 2019.</li>
+      <li><b>Loi spéciale du 6 janvier 1989</b> sur la Cour constitutionnelle, art. 34 (composition de la Cour).</li>
+      <li><b>Loi du 4 juillet 1989</b> relative au contrôle des dépenses électorales et au financement des partis politiques.</li>
+      <li><b>Cour de cassation</b>, 28 septembre 2006 (responsabilité de l'État pour faute du législateur).</li>
+      <li><b>GRECO</b> (Conseil de l'Europe), rapports d'évaluation et de conformité concernant la Belgique, 3ᵉ, 4ᵉ et 5ᵉ cycles (2009-2025).</li>
+      <li><b>F. Verleden</b>, Aux sources de la particratie, CRISP, Courrier hebdomadaire nº 2501-2504, 2019.</li>
+      <li><b>M. Verdussen</b>, Réenchanter la Constitution, Académie royale de Belgique, 2019.</li>
+      <li><b>Commission européenne</b>, Rapports annuels sur l'État de droit, chapitres Belgique, 2024-2025.</li>
+      <li><b>Ligue des droits humains e.a.</b>, « Six propositions pour une véritable transparence administrative au fédéral », communiqué conjoint du 12 juin 2023.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Dossier d'éducation civique établi à partir de sources publiques officielles, arrêté au 4 juillet 2026. Ce document ne constitue pas un conseil juridique. Les délais, conditions de recevabilité et évolutions législatives postérieures doivent être vérifiés avant toute action. Reproduction et diffusion libres avec mention des sources.</p>
+    <div class="sceau">Res publica · à vérifier, contester, compléter</div>
+  </div>
+</footer>
+
+</body>
+</html>
