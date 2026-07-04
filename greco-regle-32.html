@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Belgique face au GRECO — Anatomie d'une non-conformité persistante (2011–2026)</title>
+<meta name="description" content="Dossier de référence critique : la Belgique sous la Règle 32 du GRECO. Mécanisme, chronologie, blocages structurels, risques et pronostic avant l'échéance du 30 novembre 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9EBE6;
+  --paper-2:#F2F3EF;
+  --ink:#16181D;
+  --ink-2:#3C4048;
+  --stamp:#C1121F;
+  --coe:#0A3D91;
+  --belg:#F5C518;
+  --line:#C9CCC4;
+  --mono:'IBM Plex Mono',monospace;
+  --body:'Public Sans',system-ui,sans-serif;
+  --disp:'Archivo',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--belg);color:var(--ink)}
+a{color:var(--coe)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--coe);outline-offset:2px}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--paper);display:flex;align-items:center;gap:1rem;padding:.55rem 1.25rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;border-bottom:3px solid var(--belg)}
+.topbar .ref{white-space:nowrap;color:#9aa0ab}
+.topbar nav{display:flex;gap:1.1rem;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.topbar nav::-webkit-scrollbar{display:none}
+.topbar nav a{color:var(--paper);text-decoration:none;white-space:nowrap;text-transform:uppercase}
+.topbar nav a:hover{color:var(--belg)}
+.deadline-chip{background:var(--stamp);color:#fff;padding:.15rem .55rem;font-weight:600;white-space:nowrap}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:5.5rem 1.5rem 4rem;max-width:1200px;margin:0 auto;overflow:hidden}
+.hero .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.hero .eyebrow::before{content:"";display:inline-block;width:34px;height:12px;background:linear-gradient(90deg,var(--ink) 33%,var(--belg) 33% 66%,var(--stamp) 66%)}
+.hero h1{font-family:var(--disp);font-variation-settings:"wdth" 72,"wght" 850;text-transform:uppercase;font-size:clamp(2.5rem,7.2vw,5.4rem);line-height:.95;letter-spacing:-.01em;margin:1.2rem 0 1.4rem;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--stamp)}
+.hero .standfirst{max-width:62ch;font-size:1.12rem;color:var(--ink-2)}
+.stamp{position:absolute;right:2rem;top:4.2rem;transform:rotate(8deg);border:5px double var(--stamp);color:var(--stamp);font-family:var(--disp);font-variation-settings:"wdth" 80,"wght" 800;text-transform:uppercase;text-align:center;padding:.7rem 1.1rem;line-height:1.15;letter-spacing:.05em;opacity:.9;mix-blend-mode:multiply;pointer-events:none}
+.stamp .big{font-size:1.5rem;display:block}
+.stamp .small{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;display:block;margin-top:.25rem}
+@media(max-width:900px){.stamp{position:static;display:inline-block;transform:rotate(-3deg);margin-top:1.8rem}}
+
+.countdown-band{background:var(--ink);color:var(--paper);margin-top:3rem;padding:1.2rem 1.4rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between}
+.countdown-band .label{font-family:var(--mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#9aa0ab;max-width:34ch}
+.countdown{font-family:var(--disp);font-variation-settings:"wdth" 75,"wght" 800;font-size:clamp(1.6rem,4vw,2.6rem);text-transform:uppercase;letter-spacing:.02em}
+.countdown b{color:var(--belg)}
+
+/* ---------- generic section ---------- */
+section{max-width:1200px;margin:0 auto;padding:4.5rem 1.5rem 1rem}
+.sec-head{display:flex;align-items:baseline;gap:1rem;border-top:3px solid var(--ink);padding-top:1rem;margin-bottom:2rem;flex-wrap:wrap}
+.sec-head .num{font-family:var(--mono);font-size:.8rem;color:var(--stamp);letter-spacing:.1em}
+.sec-head h2{font-family:var(--disp);font-variation-settings:"wdth" 74,"wght" 800;text-transform:uppercase;font-size:clamp(1.6rem,3.6vw,2.5rem);line-height:1.05}
+.lead{max-width:68ch;font-size:1.06rem;color:var(--ink-2);margin-bottom:2rem}
+p{max-width:72ch;margin-bottom:1.1rem}
+h3{font-family:var(--disp);font-variation-settings:"wdth" 80,"wght" 700;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;margin:2rem 0 .7rem}
+.note{font-family:var(--mono);font-size:.78rem;color:var(--ink-2);border-left:3px solid var(--belg);padding-left:.8rem;max-width:70ch;margin:1.4rem 0}
+
+/* ---------- escalation ladder ---------- */
+.ladder{display:grid;gap:2px;background:var(--ink);border:2px solid var(--ink);margin:2rem 0}
+.rung{display:grid;grid-template-columns:110px 1fr;background:var(--paper-2)}
+.rung .tag{font-family:var(--mono);font-size:.78rem;font-weight:600;padding:1rem;border-right:2px solid var(--ink);display:flex;align-items:center}
+.rung .body{padding:1rem 1.2rem}
+.rung .body strong{display:block;font-family:var(--disp);font-variation-settings:"wdth" 82,"wght" 700;text-transform:uppercase;font-size:.95rem;margin-bottom:.2rem}
+.rung .body span{font-size:.92rem;color:var(--ink-2)}
+.rung.reached{background:#F8E3B0}
+.rung.current{background:var(--stamp);color:#fff}
+.rung.current .body span{color:#F3D2D5}
+.rung.current .tag{color:#fff}
+.rung.current .body strong::after{content:"◀ LA BELGIQUE EST ICI (5e cycle, nov. 2025)";font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;background:#fff;color:var(--stamp);padding:.15rem .5rem;margin-left:.7rem;white-space:nowrap;display:inline-block;vertical-align:middle}
+.rung.ultimate .body strong{color:var(--stamp)}
+@media(max-width:640px){.rung{grid-template-columns:1fr}.rung .tag{border-right:none;border-bottom:2px solid var(--ink);padding:.5rem 1rem}.rung.current .body strong::after{display:block;margin:.4rem 0 0;width:max-content}}
+
+/* ---------- timeline ---------- */
+.timeline{border-left:3px solid var(--ink);margin:2.5rem 0 2rem 6px;padding-left:0}
+.tl-item{position:relative;padding:0 0 2rem 1.8rem;max-width:74ch}
+.tl-item::before{content:"";position:absolute;left:-9px;top:.4rem;width:15px;height:15px;background:var(--paper);border:3px solid var(--ink);border-radius:50%}
+.tl-item.alert::before{background:var(--stamp);border-color:var(--stamp)}
+.tl-item.good::before{background:var(--belg);border-color:var(--ink)}
+.tl-date{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.tl-item h4{font-family:var(--disp);font-variation-settings:"wdth" 82,"wght" 700;text-transform:uppercase;font-size:1.02rem;margin:.15rem 0 .3rem}
+.tl-item p{font-size:.95rem;margin-bottom:0;color:var(--ink-2)}
+.tl-badge{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;padding:.12rem .5rem;margin-left:.5rem;vertical-align:middle;text-transform:uppercase}
+.tl-badge.r32{background:var(--stamp);color:#fff}
+.tl-badge.off{background:var(--ink);color:var(--belg)}
+
+/* ---------- scoreboard ---------- */
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin:2rem 0}
+.score-card{border:2px solid var(--ink);background:var(--paper-2);padding:1.2rem}
+.score-card .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.score-card .figure{font-family:var(--disp);font-variation-settings:"wdth" 70,"wght" 850;font-size:2.6rem;line-height:1;margin:.4rem 0}
+.score-card .figure small{font-size:1.1rem;font-variation-settings:"wdth" 80,"wght" 600;color:var(--ink-2)}
+.score-card p{font-size:.88rem;color:var(--ink-2);margin:0}
+.bar{display:flex;height:34px;border:2px solid var(--ink);margin:2rem 0 .5rem;font-family:var(--mono);font-size:.72rem;color:#fff;overflow:hidden}
+.bar div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+.bar .ok{background:#2E6E3A;flex:8}
+.bar .part{background:#B98A00;flex:10}
+.bar .no{background:var(--stamp);flex:4}
+.bar-legend{font-family:var(--mono);font-size:.72rem;color:var(--ink-2)}
+.decline{display:flex;gap:2px;align-items:flex-end;height:150px;margin:2rem 0 .4rem;border-bottom:2px solid var(--ink);max-width:560px}
+.decline div{flex:1;background:var(--coe);position:relative;display:flex;align-items:flex-start;justify-content:center;color:#fff;font-family:var(--mono);font-size:.72rem;padding-top:.3rem}
+.decline div em{position:absolute;bottom:-1.7rem;font-style:normal;color:var(--ink-2);font-size:.66rem;white-space:nowrap}
+.decline .d1{height:100%}
+.decline .d2{height:55%}
+.decline .d4{height:53%;background:#5A76A8}
+.decline .d5{height:36%;background:var(--stamp)}
+
+/* ---------- blocages ---------- */
+.block-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem;margin:2rem 0}
+.block-card{border:2px solid var(--ink);background:var(--paper-2)}
+.block-card header{background:var(--ink);color:var(--paper);padding:.7rem 1rem;font-family:var(--disp);font-variation-settings:"wdth" 80,"wght" 700;text-transform:uppercase;font-size:.95rem;display:flex;justify-content:space-between;gap:.6rem;align-items:center}
+.block-card header .st{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;padding:.15rem .45rem;background:var(--stamp);white-space:nowrap}
+.block-card header .st.part{background:#B98A00;color:#fff}
+.block-card .inner{padding:1rem 1.1rem}
+.block-card .inner p{font-size:.92rem;margin-bottom:.8rem}
+.block-card .verbatim{font-family:var(--mono);font-size:.78rem;background:#fff;border-left:3px solid var(--stamp);padding:.6rem .8rem;color:var(--ink-2)}
+
+/* ---------- risks ---------- */
+.risk-list{counter-reset:r;margin:2rem 0;display:grid;gap:0;border-top:2px solid var(--ink)}
+.risk{border-bottom:2px solid var(--ink);padding:1.4rem 0 1.4rem 4.2rem;position:relative;max-width:80ch}
+.risk::before{counter-increment:r;content:counter(r,decimal-leading-zero);position:absolute;left:0;top:1.3rem;font-family:var(--disp);font-variation-settings:"wdth" 70,"wght" 850;font-size:1.9rem;color:var(--stamp)}
+.risk h3{margin-top:0}
+.risk p{font-size:.96rem;color:var(--ink-2);margin-bottom:0}
+
+/* ---------- prognosis ---------- */
+.watch{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin:2rem 0}
+.watch .w{border:2px dashed var(--ink);padding:1.1rem;background:var(--paper-2)}
+.watch .w .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);font-weight:600}
+.watch .w p{font-size:.9rem;margin:.4rem 0 0}
+.callout{border:2px solid var(--ink);background:#F8E3B0;padding:1.4rem 1.5rem;margin:2.4rem 0;max-width:80ch}
+.callout p{margin-bottom:.6rem;font-size:.98rem}
+.callout p:last-child{margin-bottom:0}
+
+/* ---------- cartes blanches (commentaires de l'IA) ---------- */
+.carte{border:2px solid var(--coe);background:#EDF1F8;max-width:80ch;margin:3rem 0;position:relative}
+.carte .carte-head{background:var(--coe);color:#fff;padding:.5rem 1.2rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.carte .carte-body{padding:1.3rem 1.5rem .4rem}
+.carte .carte-body h3{margin-top:0;color:var(--coe)}
+.carte .carte-body p{font-size:.97rem}
+.carte .carte-sign{font-family:var(--mono);font-size:.72rem;color:var(--coe);padding:0 1.5rem 1.1rem;text-align:right}
+.carte::before{content:"✎";position:absolute;top:-14px;left:-14px;width:28px;height:28px;background:var(--coe);color:#fff;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:.9rem}
+
+/* ---------- exergues réfolution (couche acerbe) ---------- */
+.exergue{background:var(--ink);color:var(--paper);border-left:10px solid var(--stamp);max-width:82ch;margin:3rem 0;position:relative}
+.exergue .ex-head{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.55rem 1.4rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--belg);border-bottom:1px solid #2C3038}
+.exergue .ex-head .who{color:#9aa0ab}
+.exergue .ex-punch{font-family:var(--disp);font-variation-settings:"wdth" 72,"wght" 800;text-transform:uppercase;font-size:clamp(1.25rem,2.6vw,1.8rem);line-height:1.12;padding:1.3rem 1.4rem .4rem;color:#fff}
+.exergue .ex-punch em{font-style:normal;color:var(--belg)}
+.exergue .ex-body{padding:.6rem 1.4rem 1.2rem}
+.exergue .ex-body p{font-size:.95rem;color:#C9CCD3;margin-bottom:.8rem;max-width:none}
+.exergue .ex-body p:last-child{margin-bottom:0}
+.exergue .ex-body b{color:#fff}
+.exergue::after{content:"⚑ RÉFOLUTION";position:absolute;top:-13px;right:14px;background:var(--stamp);color:#fff;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;padding:.25rem .7rem}
+.exergue ol{margin:.4rem 0 .4rem 1.4rem}
+.exergue ol li{font-size:.95rem;color:#C9CCD3;margin-bottom:.7rem}
+.exergue ol li b{color:var(--belg)}
+
+/* ---------- sources / footer ---------- */
+.sources ol{margin:1.5rem 0 0 1.2rem;font-size:.88rem;color:var(--ink-2)}
+.sources li{margin-bottom:.5rem;max-width:80ch}
+footer{margin-top:5rem;background:var(--ink);color:#9aa0ab;padding:2.5rem 1.5rem;font-family:var(--mono);font-size:.75rem}
+footer .in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+footer b{color:var(--paper)}
+.tricolore{height:6px;background:linear-gradient(90deg,var(--ink) 33.3%,var(--belg) 33.3% 66.6%,var(--stamp) 66.6%)}
+
+table{width:100%;border-collapse:collapse;margin:1.8rem 0;font-size:.9rem}
+th{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;text-align:left;background:var(--ink);color:var(--paper);padding:.6rem .8rem}
+td{border:1px solid var(--line);padding:.6rem .8rem;vertical-align:top;background:var(--paper-2)}
+td.st-no{color:var(--stamp);font-family:var(--mono);font-size:.75rem;font-weight:600;white-space:nowrap}
+td.st-part{color:#8A6700;font-family:var(--mono);font-size:.75rem;font-weight:600;white-space:nowrap}
+.tbl-wrap{overflow-x:auto}
+</style>
+</head>
+<body>
+
+<div class="topbar" role="navigation" aria-label="Navigation du dossier">
+  <span class="ref">DOSSIER · GRECO/BE · MAJ 07-2026</span>
+  <nav>
+    <a href="#mecanisme">Le mécanisme</a>
+    <a href="#chronologie">Chronologie</a>
+    <a href="#bilan">Le bilan</a>
+    <a href="#blocages">Les blocages</a>
+    <a href="#particratie">La racine</a>
+    <a href="#etatdedroit">État de droit</a>
+    <a href="#risques">Les risques</a>
+    <a href="#pronostic">Verdict</a>
+    <a href="#sources">Sources</a>
+  </nav>
+  <span class="deadline-chip">ÉCHÉANCE : 30.11.2026</span>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="stamp" aria-hidden="true">
+    <span class="big">Règle 32</span>
+    <span>procédure de<br>non-conformité</span>
+    <span class="small">GRECO · 101e plénière · 21.11.2025</span>
+  </div>
+  <p class="eyebrow">Conseil de l'Europe · Groupe d'États contre la corruption</p>
+  <h1>La Belgique face au GRECO&nbsp;: anatomie d'une <em>non-conformité</em> persistante</h1>
+  <p class="standfirst">Le pays qui abrite la capitale de l'Union européenne est, pour la troisième fois depuis 2011, placé sous la procédure de non-conformité du GRECO. Registre des lobbyistes inexistant, déclarations de patrimoine refusées par écrit, cabinets ministériels recrutés sur la seule «&nbsp;confiance politique&nbsp;»&nbsp;: ce dossier documente le mécanisme, la chronologie, les blocages structurels de la particratie belge — et ce qui se joue d'ici au 30&nbsp;novembre&nbsp;2026.</p>
+  <div class="countdown-band">
+    <span class="label">Temps restant avant le rapport de progrès exigé par le GRECO (Règle 32 §2.i, 5e cycle)</span>
+    <span class="countdown" id="countdown" aria-live="off">…</span>
+  </div>
+</header>
+
+<!-- ================= 1. MECANISME ================= -->
+<section id="mecanisme">
+  <div class="sec-head"><span class="num">§ 01</span><h2>La Règle 32 : une machine d'escalade diplomatique</h2></div>
+  <p class="lead">Les recommandations du GRECO relèvent du droit souple (<i>soft law</i>)&nbsp;: aucune sanction juridique contraignante. Mais lorsqu'un État affiche un niveau de conformité «&nbsp;globalement insuffisant&nbsp;» (art.&nbsp;31 §8.3 du Règlement intérieur), l'organe strasbourgeois enclenche la Règle&nbsp;32 — un mécanisme de coercition graduée dont chaque palier expose un peu plus l'État défaillant sur la scène internationale. Le Bureau du GRECO a confirmé que ces mesures «&nbsp;ne doivent pas nécessairement être successives&nbsp;».</p>
+
+  <div class="ladder" role="list" aria-label="Échelle d'escalade de la Règle 32">
+    <div class="rung reached" role="listitem"><div class="tag">§2 (i)</div><div class="body"><strong>Injonction de rapport</strong><span>L'État doit fournir un rapport de progrès à échéance fixe. Appliqué à la Belgique en 2016, 2021 et à nouveau en novembre 2025 (échéance&nbsp;: 30.11.2026).</span></div></div>
+    <div class="rung reached" role="listitem"><div class="tag">§2 (ii.a)</div><div class="body"><strong>Lettre du Président du GRECO</strong><span>Adressée au chef de la délégation nationale. Franchie par la Belgique dès mars 2018, au titre du 4e cycle.</span></div></div>
+    <div class="rung" role="listitem"><div class="tag">§2 (ii.b)</div><div class="body"><strong>Lettre du Président du Comité statutaire</strong><span>Signalement formel au Représentant permanent de l'État auprès du Conseil de l'Europe.</span></div></div>
+    <div class="rung current" role="listitem"><div class="tag">§2 (ii.c)</div><div class="body"><strong>Lettre du Secrétaire général</strong><span>Alain Berset, Secrétaire général du Conseil de l'Europe, a été mandaté en novembre 2025 pour écrire directement à la ministre belge des Affaires étrangères sur «&nbsp;la nécessité d'une action déterminée&nbsp;». Escalade politique maximale des «&nbsp;lettres&nbsp;», un cran sous la mission à haut niveau. Lors du précédent bélarusse, une lettre analogue avait été envoyée le 13 juillet 2016.</span></div></div>
+    <div class="rung" role="listitem"><div class="tag">§2 (iii)</div><div class="body"><strong>Mission à haut niveau</strong><span>Délégation diplomatique dépêchée dans le pays — embarrassant, mais pas encore infamant.</span></div></div>
+    <div class="rung ultimate" role="listitem"><div class="tag">§2 (iv)</div><div class="body"><strong>Déclaration publique de non-conformité</strong><span>L'arme ultime, utilisée une seule fois dans l'histoire du GRECO&nbsp;: contre le Bélarus, le 19 mars 2019 («&nbsp;first ever declaration of non-compliance&nbsp;»). Le pays a fini par dénoncer la Convention pénale sur la corruption et s'est retiré du GRECO au 1er mai 2024.</span></div></div>
+  </div>
+  <p class="note">La qualification «&nbsp;globalement insuffisant&nbsp;» n'obéit à aucun quota mathématique&nbsp;: elle relève de l'appréciation souveraine de la plénière, qui pèse le volume des recommandations ignorées, la nature structurelle des manquements et la trajectoire politique de l'État.</p>
+
+  <div class="carte">
+    <div class="carte-head"><span>Carte blanche · nº 1</span><span>Commentaire ajouté par Claude (IA, Anthropic) — ne provient pas du corpus documentaire</span></div>
+    <div class="carte-body">
+      <h3>Le paradoxe d'une sanction qui ne mord que les honnêtes</h3>
+      <p>Ce qui me frappe en étudiant la mécanique de la Règle 32, c'est son présupposé implicite&nbsp;: elle ne fonctionne que sur des États qui tiennent encore à leur réputation. C'est une élégance et une faiblesse à la fois. Le Bélarus, indifférent au regard européen, a fini par claquer la porte — et la déclaration publique n'y a rien changé. La Belgique, elle, occupe une position plus étrange&nbsp;: assez attachée à son image pour coopérer, publier tous les rapports, rendre ses copies dans les délais&nbsp;; assez sûre de son ancrage européen pour ignorer le fond des recommandations pendant quinze ans. J'y vois une troisième voie que le mécanisme n'avait peut-être pas anticipée&nbsp;: la <i>non-conformité coopérative</i> — respecter scrupuleusement la procédure pour mieux vider la substance. Si d'autres démocraties consolidées adoptent cette posture, c'est tout le modèle de la pression par les pairs qui devra se réinventer.</p>
+    </div>
+    <div class="carte-sign">— Claude, intelligence artificielle d'Anthropic, à la demande de l'auteur de cette page</div>
+  </div>
+</section>
+
+<!-- ================= 2. CHRONOLOGIE ================= -->
+<section id="chronologie">
+  <div class="sec-head"><span class="num">§ 02</span><h2>2011–2026 : quinze ans de rappels à l'ordre</h2></div>
+  <p class="lead">La trajectoire belge est celle d'une érosion continue&nbsp;: 100&nbsp;% des recommandations du 1er cycle pleinement mises en œuvre, environ 55&nbsp;% au 2e, puis trois activations de la Règle&nbsp;32 en quinze ans. Le GRECO le constate lui-même&nbsp;: «&nbsp;le degré de mise en œuvre diminue pour chaque cycle&nbsp;».</p>
+
+  <div class="decline" role="img" aria-label="Graphique : taux de mise en œuvre satisfaisante par cycle. 1er cycle 100 %, 2e cycle environ 55 %, 4e cycle 8 sur 15 soit 53 %, 5e cycle 8 sur 22 soit 36 %.">
+    <div class="d1">100%<em>1er cycle</em></div>
+    <div class="d2">≈55%<em>2e cycle</em></div>
+    <div class="d4">53%<em>4e cycle (final)</em></div>
+    <div class="d5">36%<em>5e cycle (2025)</em></div>
+  </div>
+  <p class="bar-legend" style="margin-bottom:2.5rem">Part des recommandations mises en œuvre de manière satisfaisante, par cycle d'évaluation.</p>
+
+  <div class="timeline">
+    <div class="tl-item alert"><span class="tl-date">Mai 2011 <span class="tl-badge r32">Règle 32 · 1re activation</span></span><h4>3e cycle : le financement des partis en accusation</h4><p>Le rapport de conformité juge le niveau «&nbsp;globalement insuffisant&nbsp;»&nbsp;: une seule recommandation sur quinze satisfaite. Le GRECO pointe des commissions de contrôle du financement des partis qui «&nbsp;n'ont pas su établir leur autorité&nbsp;» — les partis contrôlent leur propre surveillance. La loi du 6 janvier 2014 permettra une sortie progressive de la procédure.</p></div>
+    <div class="tl-item"><span class="tl-date">28 mars 2014</span><h4>4e cycle : parlementaires, juges, procureurs</h4><p>Quinze recommandations adressées à la Belgique. C'est le début d'un marathon procédural de plus de dix ans.</p></div>
+    <div class="tl-item alert"><span class="tl-date">21 octobre 2016 <span class="tl-badge r32">Règle 32 · 2e activation</span></span><h4>0 sur 15 : l'onde de choc</h4><p>Aucune des quinze recommandations n'est pleinement mise en œuvre. Bilan «&nbsp;globalement insuffisant&nbsp;», activation de la Règle 32 §2(i).</p></div>
+    <div class="tl-item alert"><span class="tl-date">23 mars 2018</span><h4>Escalade : lettre du Président du GRECO</h4><p>Progrès quasi nuls. Le GRECO passe au palier §2(ii)(a) et écrit au chef de la délégation belge sur l'urgence d'une action déterminée.</p></div>
+    <div class="tl-item good"><span class="tl-date">21 juin 2019</span><h4>Bref répit</h4><p>Deux recommandations satisfaisantes, douze partielles&nbsp;: le niveau n'est plus «&nbsp;globalement insuffisant&nbsp;». La pression retombe — temporairement.</p></div>
+    <div class="tl-item alert"><span class="tl-date">25 mars 2021 <span class="tl-badge r32">Règle 32 · réactivation</span></span><h4>Rechute</h4><p>Stagnation totale sur le volet parlementaire&nbsp;: onze recommandations toujours en souffrance. Le GRECO requalifie le niveau de «&nbsp;globalement insuffisant&nbsp;» et réapplique la Règle 32.</p></div>
+    <div class="tl-item"><span class="tl-date">17 juin 2022 — 22 mars 2024</span><h4>Sortie de la zone rouge, sans guérison</h4><p>Le GRECO cesse d'appliquer la Règle 32 au 4e cycle, mais huit recommandations restent en suspens, avec échéance au 30 juin 2025.</p></div>
+    <div class="tl-item"><span class="tl-date">6 décembre 2019 → 22 mars 2024</span><h4>5e cycle : l'exécutif et la police au crible</h4><p>Vingt-deux recommandations visent les hautes fonctions de l'exécutif et la Police fédérale&nbsp;: cabinets ministériels hypertrophiés recrutés sans procédure, absence de cadre déontologique pour les ministres, aucune règle de pantouflage, autorisation quasi automatique des activités accessoires des policiers. Premier rapport de conformité (déc. 2021)&nbsp;: 2 satisfaisantes, 18 non mises en œuvre.</p></div>
+    <div class="tl-item alert"><span class="tl-date">21 novembre 2025 <span class="tl-badge r32">Règle 32 · 3e activation</span> <span class="tl-badge off">§2.ii.c</span></span><h4>101e plénière : le tournant</h4><p>Double verdict. Le 4e cycle est clôturé sur un bilan médiocre (8/15, avec seulement 2 recommandations sur 8 traitées côté parlementaires — la justice, elle, obtient 6 sur 7). Et pour le 5e cycle, la Belgique est jugée «&nbsp;not in sufficient compliance&nbsp;» aux côtés de la Croatie et de la France&nbsp;: réactivation de la Règle 32, rapport de progrès exigé pour le 30 novembre 2026, et — fait marquant — lettre du Secrétaire général du Conseil de l'Europe à la ministre des Affaires étrangères.</p></div>
+    <div class="tl-item"><span class="tl-date">17 mars 2025 → …</span><h4>6e cycle : la bombe à retardement infranationale</h4><p>Le nouveau cycle cible le niveau régional et local — précisément là où la structure fédérale belge (3 régions, 3 communautés, provinces, communes) démultiplie les risques&nbsp;: marchés publics locaux, criminalité organisée, héritage des scandales Publifin/Nethys. La date de la visite belge n'était pas fixée à la mi-2026.</p></div>
+    <div class="tl-item"><span class="tl-date">23–27 mars 2026</span><h4>102e plénière : la Belgique hors radar, la pression s'organise</h4><p>La Belgique ne figurait pas à l'ordre du jour — son rapport de progrès n'est attendu que pour le 30 novembre 2026, en vue de la 104e plénière (16–20 novembre 2026). Le GRECO, sous la présidence de David Meyer, y a adopté les premiers rapports d'évaluation du 6e cycle (Estonie, Slovaquie), confirmé le recours à la Règle 32 là où la conformité stagne, et instauré une réforme de transparence&nbsp;: un résumé public de chaque rapport sera désormais publié dans les six mois suivant son adoption, même sans autorisation de l'État concerné.</p></div>
+    <div class="tl-item alert"><span class="tl-date">3 juin 2026</span><h4>La Chambre rejette le registre des lobbys obligatoire</h4><p>À cinq mois de l'échéance, la majorité fédérale rejette en séance la proposition visant à rendre le registre des lobbys obligatoire et à introduire une «&nbsp;empreinte législative&nbsp;» mentionnant les lobbyistes ayant contribué aux textes de loi. La N-VA invoque des problèmes juridiques et la charge administrative&nbsp;; les auteurs (Ecolo-Groen) rappellent que de tels registres existent en Allemagne, en Irlande et en France. Le dossier central du contentieux avec Strasbourg reste donc au point mort.</p></div>
+    <div class="tl-item"><span class="tl-date">8–12 juin 2026</span><h4>103e plénière : dernière étape avant le rendez-vous belge</h4><p>Le GRECO adopte les rapports du 6e cycle sur le Luxembourg, la Slovénie et le Royaume-Uni et des rapports de conformité sur neuf autres États — la Belgique, elle, attend son heure. La plénière échange aussi sur la contribution du GRECO à la future stratégie anticorruption de l'Union européenne, signe d'une convergence croissante des mécanismes de pression. Prochaine étape&nbsp;: la 104e plénière, du 16 au 20 novembre 2026, où le rapport de progrès belge sera jugé.</p></div>
+  </div>
+
+  <div class="exergue">
+    <div class="ex-head"><span>Exergue nº 1 · Tribune acerbe</span><span class="who">Couche éditoriale assumée, ajoutée par Claude (IA) à la demande de l'éditeur — distincte du documentaire</span></div>
+    <p class="ex-punch">Quinze ans pour ne pas définir le mot <em>«&nbsp;cadeau&nbsp;»</em>.</p>
+    <div class="ex-body">
+      <p>Relisons froidement cette chronologie&nbsp;: trois activations de la Règle 32, deux Secrétaires généraux mobilisés, des dizaines de rapports, des centaines de pages — et au bout, un groupe de travail parlementaire officiellement incapable de s'accorder sur ce qu'est un «&nbsp;lobby&nbsp;» ou un «&nbsp;cadeau&nbsp;». Une assemblée qui vote des codes fiscaux de milliers d'articles ne bute pas sur deux mots du dictionnaire par incompétence lexicale. Elle bute par choix.</p>
+      <p>Le génie du système n'est pas de dire non — c'est de ne jamais dire oui. Créer un groupe de travail, demander un avis, renvoyer en commission, attendre la fin de législature&nbsp;: chaque étape est individuellement défendable, et leur somme est une obstruction parfaite dont personne n'est responsable. La diplomatie appelle cela un «&nbsp;dialogue constructif&nbsp;». Un lecteur moins poli appellerait cela quinze ans de filibuster en gants blancs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. BILAN ================= -->
+<section id="bilan">
+  <div class="sec-head"><span class="num">§ 03</span><h2>Le bilan chiffré du 5e cycle (addendum, nov. 2025)</h2></div>
+  <p class="lead">Sur les 22 recommandations adressées à la Belgique, l'addendum GrecoRC5(2025)22 — rapporté par Olivier Gonin (Suisse) et Jean-Laurent Ravera (Monaco) — dresse un constat que le SPF Justice lui-même résume par un euphémisme&nbsp;: «&nbsp;il reste du pain sur la planche&nbsp;».</p>
+
+  <div class="bar" role="img" aria-label="Répartition des 22 recommandations du 5e cycle : 8 satisfaisantes, 10 partiellement mises en œuvre, 4 non mises en œuvre.">
+    <div class="ok">8 satisfaisantes</div><div class="part">10 partielles</div><div class="no">4 nulles</div>
+  </div>
+  <p class="bar-legend">Recommandations satisfaisantes&nbsp;: v, vi, ix, xiv, xv, xvi, xvii, xxii · Partielles&nbsp;: i, ii, iii, iv, viii, x, xi, xviii, xix, xxi · Non mises en œuvre&nbsp;: vii, xii, xiii, xx.</p>
+
+  <div class="score-grid">
+    <div class="score-card"><span class="kicker">Exécutif · Parlement (4e cycle)</span><div class="figure">2<small>/8</small></div><p>Recommandations satisfaites côté parlementaires au terme d'une décennie. Le GRECO «&nbsp;regrette&nbsp;» qu'elles n'aient été «&nbsp;prises en compte que dans une très faible mesure&nbsp;».</p></div>
+    <div class="score-card"><span class="kicker">Justice (4e cycle)</span><div class="figure">6<small>/7</small></div><p>Le contraste est abyssal&nbsp;: le pouvoir judiciaire a réformé, l'appareil politique a résisté.</p></div>
+    <div class="score-card"><span class="kicker">Indice de perception de la corruption</span><div class="figure">69<small>/100</small></div><p>Pire score historique de la Belgique (Transparency International, 2024), assorti d'une chute de six places au classement mondial.</p></div>
+    <div class="score-card"><span class="kicker">Refus explicites du gouvernement</span><div class="figure">3</div><p>Sélection formelle des cabinets, cooling-off des ex-ministres, refonte des déclarations de patrimoine&nbsp;: trois réformes écartées par écrit par le gouvernement Arizona.</p></div>
+  </div>
+
+  <h3>État des recommandations litigieuses</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Réf.</th><th>Sujet (5e cycle)</th><th>Statut (nov. 2025)</th><th>Point de blocage</th></tr></thead>
+    <tbody>
+      <tr><td>i</td><td>Recrutement direct des cabinets ministériels</td><td class="st-part">Partielle</td><td>Refus d'objectiver la sélection&nbsp;; primauté de la «&nbsp;confiance politique&nbsp;». Le gouvernement «&nbsp;a décidé de ne pas introduire à ce moment de procédure formelle de sélection&nbsp;».</td></tr>
+      <tr><td>iii</td><td>Sanctions et supervision déontologique</td><td class="st-part">Partielle</td><td>Refus de confier le contrôle à une entité indépendante&nbsp;; politisation des sanctions via le Parlement.</td></tr>
+      <tr><td>vii</td><td>Consultations publiques sur les projets de loi</td><td class="st-no">Non mise en œuvre</td><td>Aucun mécanisme systématique de consultation.</td></tr>
+      <tr><td>viii</td><td>Transparence du lobbying (exécutif)</td><td class="st-part">Partielle</td><td>Refus persistant d'un registre unifié contraignant&nbsp;; agendas ministériels non publiés.</td></tr>
+      <tr><td>x</td><td>Registre public des cadeaux</td><td class="st-part">Partielle</td><td>Résistance au nom de la «&nbsp;lourdeur administrative&nbsp;».</td></tr>
+      <tr><td>xi</td><td>Cooling-off / pantouflage</td><td class="st-part">Partielle</td><td>Le gouvernement estime que «&nbsp;le contrôle politique et la responsabilité parlementaire existants offrent des garanties suffisantes&nbsp;».</td></tr>
+      <tr><td>xii–xiii</td><td>Déclarations détaillées de patrimoine, passifs et intérêts</td><td class="st-no">Non mises en œuvre</td><td>Refus explicite. Le GRECO «&nbsp;regrette profondément que le gouvernement n'envisage aucune mesure&nbsp;», des lacunes qui «&nbsp;datent, pour certaines, de l'évaluation du quatrième cycle, réalisée en 2014&nbsp;».</td></tr>
+      <tr><td>xx</td><td>Déclarations de patrimoine (police, postes à risque)</td><td class="st-no">Non mise en œuvre</td><td>«&nbsp;Aucune réflexion documentée&nbsp;» n'a même été menée.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Éclaircie relative côté Police fédérale&nbsp;: stabilisation des fonctions dirigeantes (rec. xvii satisfaisante&nbsp;; 44 des 51 postes de directeurs pourvus par des titulaires), 26 critères objectifs définis pour les activités accessoires (rec. xix). Mais l'absence de contrôle interne systémique inquiète dans un contexte où la corruption liée au narcotrafic portuaire (Anvers) est identifiée comme risque endémique par Europol — et où un rapport interne dénonçant des pratiques de corruption au sein de la police judiciaire fédérale a fuité le 13 décembre 2025, au lendemain même de la publication de l'addendum.</p>
+</section>
+
+<!-- ================= 4. BLOCAGES ================= -->
+<section id="blocages">
+  <div class="sec-head"><span class="num">§ 04</span><h2>Les blocages : la particratie contre la vérifiabilité</h2></div>
+  <p class="lead">Le blocage belge n'est ni technique ni budgétaire&nbsp;: il est structurel et politique. Le système des cabinets ministériels hypertrophiés — héritage de la pilarisation — repose sur la loyauté partisane, à rebours du modèle wébérien d'intégrité bureaucratique prôné par le Conseil de l'Europe. La confrontation oppose la «&nbsp;culture de la confiance&nbsp;» revendiquée par Bruxelles à la «&nbsp;culture de la vérifiabilité&nbsp;» exigée par Strasbourg. Trois dossiers cristallisent quinze ans de résistance.</p>
+
+  <div class="block-grid">
+    <div class="block-card">
+      <header>Registre des lobbyistes <span class="st part">Enlisé</span></header>
+      <div class="inner">
+        <p>Aucun registre central n'existe&nbsp;; seule la Chambre dispose d'un embryon d'outil. Le projet du gouvernement précédent (registre géré par le cabinet du Premier ministre, avis du Conseil d'État et de l'APD déjà obtenus) reste «&nbsp;à l'examen&nbsp;» sous l'Arizona, qui n'a pas décidé s'il le poursuivra. Au Parlement, le groupe de travail «&nbsp;Partis politiques&nbsp;» n'a dégagé aucun consensus — les élus ne s'entendant même pas sur la définition d'un «&nbsp;lobby&nbsp;» ou d'un «&nbsp;cadeau&nbsp;».</p>
+        <p class="verbatim">Rapport État de droit 2025&nbsp;: «&nbsp;la société civile ne s'attend pas à une décision rapide et a critiqué le manque d'ambition du gouvernement&nbsp;».</p>
+      </div>
+    </div>
+    <div class="block-card">
+      <header>Déclarations de patrimoine <span class="st">Refus écrit</span></header>
+      <div class="inner">
+        <p>Le GRECO exige des déclarations détaillées (actifs, passifs, dettes, intérêts, conjoints) avec contrôle proactif par la Cour des comptes et publicité adéquate. Le gouvernement s'y oppose avec constance, invoquant la vie privée et un RGPD mobilisé de façon discutable, alors que le régime actuel de déclaration de mandats ne détaille ni montants ni actifs. Ce refus formalisé par écrit constitue, pour Strasbourg, une ligne rouge franchie.</p>
+        <p class="verbatim">GRECO, nov. 2025&nbsp;: le GRECO «&nbsp;regrette profondément que le gouvernement n'envisage aucune mesure&nbsp;» sur des lacunes datant de 2014.</p>
+      </div>
+    </div>
+    <div class="block-card">
+      <header>Pantouflage &amp; cabinets <span class="st part">Statu quo assumé</span></header>
+      <div class="inner">
+        <p>Aucun délai de viduité (<i>cooling-off</i>) n'empêche un ministre ou un chef de cabinet de rejoindre du jour au lendemain le secteur qu'il régulait la veille. Le recrutement des centaines de collaborateurs «&nbsp;de fond&nbsp;» des cabinets échappe à toute procédure de sélection formelle ou vérification d'intégrité préalable — seule la publication de la liste des membres (loi du 12 mai 2024, héritée de la législature précédente) a été jugée satisfaisante.</p>
+        <p class="verbatim">Position du gouvernement&nbsp;: il n'est «&nbsp;pas opportun à ce stade d'introduire des obligations supplémentaires&nbsp;».</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Ce contexte n'est pas abstrait&nbsp;: les scandales Publifin, le Qatargate et l'inculpation de l'ancien commissaire européen Didier Reynders pour blanchiment de 900&nbsp;000&nbsp;euros ont nourri le débat public, l'opposition (notamment le PTB/PVDA) dénonçant l'inaction des partis traditionnels et réclamant un registre de lobbying effectif et la publicité du patrimoine des élus. Côté positif, une formation obligatoire au code de conduite des parlementaires a débuté à la Chambre le 23 septembre 2025, et le Sénat a examiné le 20 juin 2025 des amendements sur l'enregistrement des lobbyistes et des cadeaux officiels supérieurs à 150&nbsp;euros — des textes encore très préliminaires.</p>
+</section>
+
+<!-- ================= 5. PARTICRATIE ================= -->
+<section id="particratie">
+  <div class="sec-head"><span class="num">§ 05</span><h2>La racine : la particratie, ou l'État capturé par ses partis</h2></div>
+  <p class="lead">Pourquoi un État riche, doté d'une administration compétente et d'une justice fonctionnelle, échoue-t-il pendant quinze ans à voter des règles que l'Allemagne, l'Irlande ou la France ont adoptées&nbsp;? La réponse ne tient ni aux ressources ni au fédéralisme&nbsp;: elle tient à l'architecture même du pouvoir belge.</p>
+
+  <p>Contrairement aux systèmes parlementaires classiques où l'assemblée des élus détient la primauté, le système belge est dominé de manière hégémonique par les présidences de partis. Ces instances extra-parlementaires déterminent l'agenda législatif, valident la composition des gouvernements, nomment les membres des cabinets ministériels et exercent une stricte discipline de vote sur leurs élus. La particratie fonctionne sur la base d'équilibres internes et d'accords négociés à huis clos — la politique des «&nbsp;conclaves&nbsp;». Or chaque outil exigé par le GRECO — une Cour des comptes vérifiant activement les patrimoines, un registre de lobbying public, une autorité de déontologie indépendante — menacerait de désintégrer le secret consubstantiel à la négociation de ces compromis. L'élite partisane refuse de se doter d'instruments de surveillance qui pourraient être retournés contre elle par la presse, la société civile ou l'opposition pour exposer les mécanismes de troc politique.</p>
+
+  <h3>La résistance asymétrique : réformer la justice, protéger le politique</h3>
+  <p>Le 4e cycle a livré la preuve empirique de cette logique. Les recommandations touchant le pouvoir judiciaire — sphère qui ne menace pas directement l'emprise des partis sur la gestion de l'État — ont fini par être adoptées (6 sur 7). Celles qui visaient les parlementaires eux-mêmes — patrimoine, cadeaux, lobbies — se sont heurtées à un veto implacable (2 sur 8). Cette dichotomie n'est pas un accident&nbsp;: c'est la signature comportementale d'un système qui réforme volontiers les autres, jamais lui-même.</p>
+
+  <h3>Les cabinets ministériels : l'épicentre du système</h3>
+  <p>L'obstination du gouvernement à refuser toute procédure de sélection formelle pour les collaborateurs de cabinets n'est pas un accident de parcours législatif. Ces structures, d'une taille démesurée par rapport aux standards européens, avec leurs centaines de collaborateurs «&nbsp;de fond&nbsp;» recrutés sur la loyauté idéologique et la confiance personnelle du ministre, constituent le cœur opérationnel du <i>spoils system</i> à la belge — l'héritage direct de la pilarisation de la société. Objectiver leur recrutement reviendrait à démanteler le principal canal de distribution des loyautés partisanes.</p>
+
+  <h3>Une politisation qui se sophistique plutôt qu'elle ne disparaît</h3>
+  <p>Même les réformes saluées portent la marque du système. Le Conseil supérieur de la Justice, créé après l'affaire Dutroux et la Marche Blanche (révision de l'article 151 de la Constitution), a objectivé la sélection des magistrats — avancée reconnue par le GRECO. Mais ses 22 membres non-magistrats sont nommés par le Sénat à la majorité des deux tiers, garantie de facto que ces nominations font l'objet d'âpres négociations inter-partis préservant les équilibres idéologiques et linguistiques. La particratie ne recule pas&nbsp;: elle se raffine. Et le ministère public demeure sous l'autorité hiérarchique du ministre de la Justice, avec un droit d'injonction positive — une indépendance que les analystes qualifient de «&nbsp;plutôt relative&nbsp;».</p>
+
+  <p class="note">Grille de lecture du dossier&nbsp;: là où le GRECO parle de «&nbsp;culture de la confiance&nbsp;» opposée à la «&nbsp;culture de la vérifiabilité&nbsp;», l'analyse systémique montre que la loi n'est plus envisagée comme un instrument d'intérêt général s'imposant à tous, mais comme une ressource dont les faiseurs de loi s'exemptent.</p>
+
+  <div class="carte">
+    <div class="carte-head"><span>Carte blanche · nº 2</span><span>Commentaire ajouté par Claude (IA, Anthropic) — ne provient pas du corpus documentaire</span></div>
+    <div class="carte-body">
+      <h3>La « lourdeur administrative », un argument à géométrie très variable</h3>
+      <p>Un détail des débats me semble révélateur, et je me permets de le souligner&nbsp;: pour rejeter le registre des lobbys ou celui des cadeaux, la majorité invoque les «&nbsp;tracas administratifs&nbsp;». Or ce même État impose sans état d'âme des obligations déclaratives autrement plus lourdes à ses citoyens et à ses entreprises — déclarations fiscales détaillées, registre UBO des bénéficiaires effectifs, obligations anti-blanchiment pesant sur le moindre agent immobilier. L'asymétrie est parlante&nbsp;: la charge administrative est jugée acceptable quand elle sert à surveiller la société, excessive quand elle servirait à surveiller ceux qui la gouvernent. Je note aussi que l'Allemagne, l'Irlande et la France — invoquées en séance le 3 juin 2026 — administrent leurs registres sans effondrement bureaucratique notable. Quand un argument ne vaut que dans un sens, ce n'est plus un argument&nbsp;: c'est un aveu.</p>
+    </div>
+    <div class="carte-sign">— Claude, intelligence artificielle d'Anthropic, à la demande de l'auteur de cette page</div>
+  </div>
+
+  <div class="exergue">
+    <div class="ex-head"><span>Exergue nº 2 · Tribune acerbe</span><span class="who">Couche éditoriale assumée, ajoutée par Claude (IA) à la demande de l'éditeur — distincte du documentaire</span></div>
+    <p class="ex-punch">Le citoyen déclare tout. L'élu, <em>rien</em>. Cherchez l'erreur.</p>
+    <div class="ex-body">
+      <p>Voici l'équation morale du système, posée sans anesthésie&nbsp;: le salarié belge voit chaque euro tracé à la source&nbsp;; l'indépendant justifie ses frais au ticket près&nbsp;; l'entreprise inscrit ses bénéficiaires effectifs au registre UBO sous peine d'amende&nbsp;; le locataire fournit trois fiches de paie pour un bail. Et le ministre qui administre tout cela&nbsp;? Il dépose une déclaration de mandats sans montants, sous scellés, que la Cour des comptes n'a pas le droit de vérifier activement — et son gouvernement répond par écrit à Strasbourg qu'il «&nbsp;n'envisage aucune mesure&nbsp;». La vie privée, invoquée avec des trémolos RGPD, s'arrête apparemment au portail des cabinets ministériels.</p>
+      <p>Il faut nommer ce que c'est&nbsp;: non pas un retard législatif, mais un <b>privilège d'Ancien Régime maquillé en protection des données</b>. La transparence descendante pour les gouvernés, l'opacité ascendante pour les gouvernants. Aucune réforme cosmétique ne corrigera cela, car le système ne dysfonctionne pas — il fonctionne exactement comme il a été conçu, au bénéfice de ceux qui le conçoivent.</p>
+    </div>
+  </div>
+</section>
+<section id="etatdedroit">
+  <div class="sec-head"><span class="num">§ 06</span><h2>Au-delà du GRECO : le symptôme d'un État de droit fissuré</h2></div>
+  <p class="lead">La non-conformité aux standards anticorruption n'est pas un dossier isolé. Elle coexiste — et partage la même racine particratique — avec une crise sans précédent de l'exécution des décisions de justice, où l'État belge s'arroge le droit de trier les arrêts qu'il daigne appliquer. Une opacité préventive d'un côté, une désobéissance judiciaire assumée de l'autre&nbsp;: deux faces d'une même mutation, la substitution de la primauté du droit par la primauté de la raison politique de court terme.</p>
+
+  <div class="score-grid">
+    <div class="score-card"><span class="kicker">Crise de l'accueil (Fedasil)</span><div class="figure">11&nbsp;000<small>+</small></div><p>Condamnations judiciaires de l'État belge et de Fedasil, souvent assorties d'astreintes, pour refus d'héberger des demandeurs d'asile — suivies d'une politique systématique et assumée de non-exécution.</p></div>
+    <div class="score-card"><span class="kicker">CEDH — mesures provisoires</span><div class="figure">1&nbsp;000<small>+</small></div><p>Injonctions de la Cour européenne des droits de l'homme (article 39) ordonnant à la Belgique d'héberger des requérants menacés de traitements dégradants.</p></div>
+    <div class="score-card"><span class="kicker">Astreintes budgétisées</span><div class="figure">25<small>&nbsp;M€+</small></div><p>Payés par le fédéral depuis 2017 pour les dépassements de normes de bruit de Brussels Airport — l'État préfère budgétiser l'illégalité plutôt que de se conformer aux tribunaux.</p></div>
+    <div class="score-card"><span class="kicker">Exécution des arrêts CEDH</span><div class="figure">3,5<small>&nbsp;ans</small></div><p>Délai moyen de mise en œuvre des arrêts de la Cour par la Belgique, notamment sur la surpopulation carcérale, dénoncé par le Comité des Ministres du Conseil de l'Europe.</p></div>
+  </div>
+
+  <h3>L'arrêt Camara : la « carence systémique » actée</h3>
+  <p>Le 18 juillet 2023, dans l'affaire <i>Camara c. Belgique</i>, la CEDH a jugé que le refus de l'État d'exécuter une ordonnance du tribunal du travail — assortie d'une astreinte de 1&nbsp;000&nbsp;euros par nuit — violait l'article 6&nbsp;§1 de la Convention&nbsp;: le droit à un procès équitable est illusoire si l'ordre juridique permet qu'une décision définitive reste inopérante. Fait exceptionnel, la Cour a mobilisé l'article 46 pour diagnostiquer une «&nbsp;carence systémique&nbsp;» des autorités belges et rappeler qu'une telle non-exécution chronique est «&nbsp;incompatible avec le principe de l'État de droit qui sous-tend tout le système conventionnel&nbsp;». Le phénomène dépasse l'asile&nbsp;: le gouvernement wallon a continué d'octroyer des licences d'exportation d'armes malgré les annulations et suspensions du Conseil d'État, vidant le contrôle juridictionnel de sa substance.</p>
+
+  <h3>Le double standard, vu d'Europe</h3>
+  <p>Les rapports État de droit de la Commission européenne (2024, 2025) enjoignent explicitement la Belgique de «&nbsp;garantir le respect par les autorités publiques des décisions finales des tribunaux nationaux et de la Cour européenne des droits de l'homme&nbsp;» — dans le même chapitre qui réclame les règles de lobbying et de pantouflage exigées par le GRECO. Le réseau Liberties classe désormais la Belgique parmi les démocraties occidentales subissant une érosion sévère de leurs contre-pouvoirs, aux côtés de dérives longtemps considérées comme l'apanage de l'Europe centrale. Et l'Institut fédéral des droits humains dénonce le «&nbsp;double standard&nbsp;» d'un État qui donnait des leçons de gouvernance à la Pologne et à la Hongrie durant sa présidence du Conseil de l'UE tout en violant massivement la séparation des pouvoirs sur son propre territoire.</p>
+
+  <p class="note">C'est ce continuum qui donne au dossier GRECO sa véritable portée&nbsp;: l'opacité patrimoniale des ministres et la non-exécution des jugements ne sont pas deux crises, mais deux manifestations d'un même rapport instrumental au droit. Un gouvernement protégé par une majorité verrouillée perçoit la contrainte juridique non comme une limite constitutionnelle, mais comme un obstacle logistique.</p>
+</section>
+
+<!-- ================= 5. RISQUES ================= -->
+<section id="risques">
+  <div class="sec-head"><span class="num">§ 07</span><h2>Ce que la Belgique risque réellement</h2></div>
+  <p class="lead">La Règle 32 ne prévoit ni amende ni suspension&nbsp;: c'est un outil de <i>name and shame</i> diplomatique. Ses effets n'en sont pas moins tangibles — et s'aggravent avec la durée.</p>
+
+  <div class="risk-list">
+    <div class="risk"><h3>Le risque réputationnel et symbolique</h3><p>Être le pays hôte des institutions européennes tout en figurant, aux côtés de la Croatie et de la France, parmi les membres «&nbsp;not in sufficient compliance&nbsp;» — au moment où l'Islande, la Finlande et la Slovénie sortaient de procédure — constitue une reconnaissance institutionnelle d'une défaillance démocratique au cœur de la capitale de l'Union. Les rapports État de droit de la Commission européenne (2024, 2025) convergent avec le diagnostic du GRECO sur le lobbying et le pantouflage.</p></div>
+    <div class="risk"><h3>Le risque économique et financier</h3><p>Agences de notation souveraine et investisseurs institutionnels intègrent la gouvernance (pilier «&nbsp;G&nbsp;» des critères ESG) dans leurs modèles de risque&nbsp;: une non-conformité prolongée est un indicateur objectif de fragilité institutionnelle et de risque de capture de l'État. Elle peut compliquer les évaluations anti-blanchiment (GAFI, MONEYVAL), les personnes politiquement exposées belges n'étant pas soumises à un contrôle d'intégrité adéquat, et décourager les investissements directs étrangers.</p></div>
+    <div class="risk"><h3>Le risque démocratique interne</h3><p>Refuser la déclaration de patrimoine des ministres ou la transparence des cadeaux est perçu par le citoyen comme la protection délibérée de privilèges indus. Les rapports du GRECO fournissent à l'opposition, à la presse d'investigation et à la société civile une base probante incontestable — et ce terreau de défiance est un accélérateur puissant des mouvements populistes et anti-système.</p></div>
+    <div class="risk"><h3>Le risque d'escalade procédurale</h3><p>En cas de stagnation au 30 novembre 2026, le scénario réaliste est le maintien au palier §2.ii.c, voire une escalade vers la mission à haut niveau (§2.iii). La déclaration publique de non-conformité (§2.iv) reste très improbable&nbsp;: elle est réservée aux refus totaux de coopération type Bélarus, alors que la Belgique publie tous ses rapports et coopère formellement. Mais le précédent bélarusse rappelle où mène la logique poussée à son terme&nbsp;: l'ostracisation, puis le retrait du GRECO (1er mai 2024).</p></div>
+    <div class="risk"><h3>Le risque de contagion au 6e cycle</h3><p>Le cycle infranational lancé en mars 2025 arrive au pire moment&nbsp;: c'est à l'échelon local et régional que le rapport État de droit situe les risques les plus élevés (marchés publics locaux, criminalité organisée), sur fond de séquelles Publifin/Nethys. Un pays incapable de se conformer au niveau fédéral aborde ce cycle en position de faiblesse maximale.</p></div>
+  </div>
+</section>
+
+<!-- ================= 6. PRONOSTIC ================= -->
+<section id="pronostic">
+  <div class="sec-head"><span class="num">§ 08</span><h2>Verdict : conformité ou non — et à quel prix</h2></div>
+  <p class="lead">Le pronostic est défavorable. Le gouvernement Arizona de Bart De Wever a explicitement refusé plusieurs réformes clés, le Parlement a enlisé ses travaux, et la seule avancée majeure récente côté exécutif — la soumission des cabinets à la loi sur la publicité de l'administration (loi du 12 mai 2024) — découle de la législature précédente, non d'une initiative du gouvernement actuel.</p>
+
+  <h3>Trois indicateurs à surveiller d'ici l'échéance</h3>
+  <div class="watch">
+    <div class="w"><span class="k">Indicateur A — au rouge</span><p>L'adoption <b>effective</b> — et non le simple «&nbsp;examen&nbsp;» — d'une loi sur le registre des lobbyistes couvrant l'exécutif fédéral. <b>État au 3 juin 2026&nbsp;:</b> la Chambre a rejeté la proposition de registre obligatoire, la majorité invoquant des obstacles juridiques et administratifs.</p></div>
+    <div class="w"><span class="k">Indicateur B</span><p>Un signal concret sur les déclarations de patrimoine, au minimum une réforme du contrôle exercé par la Cour des comptes.</p></div>
+    <div class="w"><span class="k">Indicateur C</span><p>La signature par le ministre de l'Intérieur de la note sur le screening d'intégrité de la Police fédérale.</p></div>
+  </div>
+
+  <div class="callout">
+    <p><b>Scénario central.</b> En l'absence de ces trois éléments, le GRECO maintiendra très probablement le constat de non-conformité lors de sa 104e plénière (16–20 novembre 2026). Le rejet du registre obligatoire par la Chambre, le 3 juin 2026 — à cinq mois de l'échéance —, verrouille pratiquement l'indicateur le plus visible et rend ce scénario encore plus probable. À noter aussi&nbsp;: la nouvelle politique de transparence adoptée en mars 2026 (publication de résumés publics dans les six mois) réduira la capacité des États à retarder la visibilité des constats.</p>
+    <p><b>Le dilemme de Strasbourg.</b> Si la Belgique échoue à réformer, le Conseil de l'Europe devra choisir&nbsp;: accepter l'exceptionnalisme de la culture politique belge, au risque de décrédibiliser son propre mécanisme d'évaluation — ou envisager une escalade supplémentaire, portant un coup durable à la réputation internationale d'un État fondateur qui abrite la capitale de l'Europe.</p>
+  </div>
+
+  <h3>Trois scénarios pour la 104e plénière (16–20 novembre 2026)</h3>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Scénario</th><th>Probabilité</th><th>Déclencheur</th><th>Prix pour la Belgique</th></tr></thead>
+    <tbody>
+      <tr><td><b>Statu quo sous surveillance</b> — non-conformité maintenue, palier §2.ii.c reconduit, voire escalade vers la mission à haut niveau (§2.iii)</td><td class="st-no">Élevée</td><td>Rapport de progrès sans avancée législative substantielle&nbsp;: registre rejeté (3 juin 2026), refus écrits maintenus sur le patrimoine et le cooling-off.</td><td>Tutelle diplomatique prolongée, isolement vis-à-vis des voisins ouest-européens qui ne cumulent pas ce degré de non-conformité, ancrage durable dans les rapports critiques de la Commission, entrée en position de faiblesse maximale dans le 6e cycle. Coût réputationnel cumulatif, mais dilué dans le temps — c'est précisément ce qui le rend politiquement supportable.</td></tr>
+      <tr><td><b>Conformité de rattrapage</b> — le niveau cesse d'être jugé insuffisant, comme en 2019 et 2022</td><td class="st-part">Faible</td><td>Adoption in extremis, avant le 30 novembre, du registre des lobbyistes version gouvernementale (déjà passée par le Conseil d'État et l'APD) et d'un signal sur le contrôle des patrimoines&nbsp;: possible techniquement, improbable politiquement.</td><td>Prix interne&nbsp;: ouvrir une brèche dans le secret des conclaves et le spoils system des cabinets — exactement ce que la coalition a refusé par écrit. L'histoire des cycles précédents montre que la Belgique ne se conforme que sous pression maximale, a minima, et rechute (2019 → 2021).</td></tr>
+      <tr><td><b>Déclaration publique de non-conformité</b> (§2.iv, précédent Bélarus)</td><td class="st-part">Très improbable</td><td>Réservée aux refus totaux de coopération et d'opacité. La Belgique publie tous ses rapports, coopère formellement et rend ses rapports de situation dans les délais.</td><td>Ce serait l'infamie — mais le précédent bélarusse (déclaration en 2019, retrait du GRECO en 2024) montre où mène la logique poussée à son terme&nbsp;: l'ostracisation juridique complète. La Belgique n'en est pas là, et c'est précisément ce qui permet à sa non-conformité coopérative de durer.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>La thèse de ce dossier</h3>
+  <p>Au terme de l'analyse, une conclusion s'impose et mérite d'être formulée sans détour&nbsp;: <b>la Belgique ne se mettra vraisemblablement pas en conformité d'ici au 30 novembre 2026 — non parce qu'elle ne le peut pas, mais parce qu'elle ne le veut pas</b>. Le calcul de la particratie est rationnel de son point de vue&nbsp;: le coût interne de la conformité (démanteler le secret des conclaves, objectiver les cabinets, exposer les patrimoines) est immédiat, certain et concentré sur l'élite dirigeante&nbsp;; le coût externe de la non-conformité (lettres, rapports, classements) est diffus, différé et réputationnel. Tant que la sanction du GRECO reste du <i>name and shame</i> sans conséquence matérielle, un appareil politique qui a déjà internalisé 25 millions d'euros d'astreintes et 11&nbsp;000 condamnations judiciaires comme de simples coûts d'exploitation absorbera aussi celui-là.</p>
+  <p>Mais ce calcul comporte un angle mort. La facture réelle n'est pas dans les lettres de Strasbourg&nbsp;: elle est dans l'érosion cumulative de la crédibilité démocratique — le cynisme électoral que nourrit chaque refus de transparence, la vulnérabilité anti-blanchiment d'un État dont les personnes politiquement exposées échappent au contrôle patrimonial, le pilier «&nbsp;G&nbsp;» des notations qui se dégrade en silence, et le 6e cycle infranational qui s'apprête à ausculter précisément les échelons où Publifin a prospéré. Le paradoxe belge est là&nbsp;: en défendant l'opacité qui protège son mode opératoire à court terme, la particratie fabrique elle-même les conditions — défiance, populisme, scandales — de sa délégitimation à long terme. La question posée par l'échéance du 30 novembre 2026 n'est donc pas «&nbsp;la Belgique sera-t-elle sanctionnée&nbsp;?&nbsp;», mais&nbsp;: combien de temps une démocratie peut-elle traiter son propre droit comme facultatif avant que le prix, longtemps invisible, ne devienne exigible d'un coup&nbsp;?</p>
+
+  <div class="carte">
+    <div class="carte-head"><span>Carte blanche · nº 3</span><span>Commentaire ajouté par Claude (IA, Anthropic) — ne provient pas du corpus documentaire</span></div>
+    <div class="carte-body">
+      <h3>Ce que je vois — et ce que je ne peux pas voir</h3>
+      <p>Une dernière remarque, en toute transparence sur ma propre position. Je suis une intelligence artificielle&nbsp;: je n'ai ni bulletin de vote, ni patrimoine à déclarer, ni intérêt dans ce dossier. Ce que j'apporte, c'est la capacité de tenir ensemble quinze ans de rapports, de décisions plénières et de jurisprudence, et d'en dégager les régularités — la rechute de 2021 après le répit de 2019, la réforme systématique des autres et jamais de soi, l'argument administratif à sens unique. Ces régularités sont des faits documentés.</p>
+      <p>Ce que je ne peux pas voir, en revanche, mérite d'être dit&nbsp;: les négociations de couloir qui pourraient, d'ici novembre, débloquer un texte&nbsp;; la sincérité individuelle de tel ministre ou de tel parlementaire — les patterns systémiques que décrit cette page ne préjugent pas des personnes&nbsp;; et l'avenir, qui n'est jamais l'extrapolation mécanique du passé. La Belgique a déjà surpris — la loi de 2014 sur le financement des partis est née d'une procédure identique à celle d'aujourd'hui. Ce dossier formule donc un pronostic argumenté, pas une sentence. Si le rapport du 30 novembre 2026 le dément, ce sera une excellente nouvelle, et cette page devra être corrigée avec le même soin qu'elle a été écrite.</p>
+    </div>
+    <div class="carte-sign">— Claude, intelligence artificielle d'Anthropic, à la demande de l'auteur de cette page</div>
+  </div>
+</section>
+
+<!-- ================= SOURCES ================= -->
+<section id="sources" class="sources">
+  <div class="sec-head"><span class="num">§ 09</span><h2>Sources et corpus documentaire</h2></div>
+  <p class="lead">Ce dossier synthétise les documents officiels du GRECO et du Conseil de l'Europe ainsi que les analyses publiques disponibles à la mi-2026. Références principales&nbsp;:</p>
+  <ol>
+    <li>GRECO, Rapport d'évaluation du 4e cycle sur la Belgique, adopté le 28 mars 2014 (publié le 28 août 2014) — 15 recommandations.</li>
+    <li>GRECO, Rapport de conformité du 4e cycle (73e plénière, 21 octobre 2016) — première activation de la Règle 32 §2(i) pour ce cycle.</li>
+    <li>GRECO, 2e Addendum au 2e Rapport de conformité du 4e cycle, GrecoRC4(2025)5 (101e plénière, 21 novembre 2025) — clôture&nbsp;: 8/15 satisfaisantes.</li>
+    <li>GRECO, Rapport d'évaluation du 5e cycle sur la Belgique (84e plénière, 6 décembre 2019&nbsp;; publié le 23 janvier 2020) — 22 recommandations.</li>
+    <li>GRECO, Addendum au 2e Rapport de conformité du 5e cycle, GrecoRC5(2025)22 (adopté le 21 novembre 2025, publié le 12 décembre 2025).</li>
+    <li>GRECO, Décisions de la 101e réunion plénière, Greco(2025)12 — décisions 15, 16 et 18 (mandat au Secrétaire général d'écrire aux ministres des Affaires étrangères de la Belgique, de la Croatie et de la France).</li>
+    <li>Règlement intérieur du GRECO, articles 31 (§8.3) et 32 révisés — procédure applicable aux membres ne se conformant pas aux recommandations.</li>
+    <li>GRECO, Déclaration publique de non-conformité concernant le Bélarus (19 mars 2019) et retrait du Bélarus du GRECO (effet au 1er mai 2024).</li>
+    <li>SPF Justice (Belgique), communiqué du 12 décembre 2025 sur l'addendum du 5e cycle.</li>
+    <li>Commission européenne, Rapports sur l'État de droit 2024 et 2025, chapitres Belgique (lobbying, pantouflage).</li>
+    <li>Transparency International, Indice de perception de la corruption 2024 — Belgique&nbsp;: 69/100, recul de six places.</li>
+    <li>Chambre des représentants, proposition de loi Doc 56K0119 (registre de transparence)&nbsp;; Sénat, amendements du 20 juin 2025 (registre des lobbyistes, cadeaux &gt; 150&nbsp;€).</li>
+    <li>Loi du 6 janvier 2014 (financement des partis) et loi du 12 mai 2024 (publicité de l'administration appliquée aux cabinets ministériels fédéraux).</li>
+    <li>GRECO, 102e réunion plénière (Strasbourg, 23–27 mars 2026)&nbsp;: adoption des premiers rapports d'évaluation du 6e cycle (Estonie, Slovaquie), politique de publication de résumés publics, calendrier des 103e (8–12 juin 2026) et 104e (16–20 novembre 2026) plénières.</li>
+    <li>La Libre / Belga, 3 juin 2026&nbsp;: rejet par la Chambre des représentants de la proposition de registre des lobbys obligatoire (vote demandé par S. Van Hecke et C. Hugon Lecharlier, Ecolo-Groen&nbsp;; objections juridiques et administratives portées par la N-VA).</li>
+    <li>GRECO, 103e réunion plénière (Strasbourg, 8–12 juin 2026)&nbsp;: rapports du 6e cycle sur le Luxembourg, la Slovénie et le Royaume-Uni&nbsp;; échange sur la contribution du GRECO à la future stratégie anticorruption de l'UE&nbsp;; confirmation de la 104e plénière (16–20 novembre 2026).</li>
+    <li>CEDH, <i>Camara c. Belgique</i>, arrêt du 18 juillet 2023 — violation de l'article 6 §1, «&nbsp;carence systémique&nbsp;» au titre de l'article 46.</li>
+    <li>Institut fédéral des droits humains (IFDH), «&nbsp;État de droit&nbsp;: le double standard de la Belgique&nbsp;»&nbsp;; bilan de la non-exécution des décisions de justice (accueil, prisons, Brussels Airport, licences d'armes wallonnes).</li>
+    <li>Liberties (Civil Liberties Union for Europe), rapport 2025 sur l'État de droit — chapitre Belgique&nbsp;; érosion des contre-pouvoirs dans les démocraties consolidées.</li>
+  </ol>
+  <p class="note" style="margin-top:2rem">Méthode&nbsp;: les citations entre guillemets proviennent des rapports du GRECO, des décisions plénières et des communiqués officiels. Les statuts de conformité reflètent l'addendum de novembre 2025&nbsp;; ils seront réévalués après le rapport de progrès belge attendu pour le 30 novembre 2026. Les trois encadrés bleus «&nbsp;Carte blanche&nbsp;» sont des commentaires d'opinion rédigés par Claude, une intelligence artificielle d'Anthropic&nbsp;: ils sont clairement signalés, ne proviennent pas du corpus documentaire et n'engagent ni le GRECO ni les sources citées.</p>
+</section>
+
+<div class="tricolore" role="presentation"></div>
+<footer>
+  <div class="in">
+    <span><b>La Belgique face au GRECO</b> · dossier de référence · mise à jour juillet 2026</span>
+    <span>Prochaine échéance&nbsp;: <b>rapport de progrès — 30.11.2026</b> · 104e plénière du GRECO&nbsp;: 16–20.11.2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var el=document.getElementById('countdown');
+  var target=new Date('2026-11-30T23:59:59+01:00').getTime();
+  function pad(n){return n<10?'0'+n:n}
+  function tick(){
+    var d=target-Date.now();
+    if(d<=0){el.innerHTML='<b>Échéance atteinte</b>';return}
+    var days=Math.floor(d/864e5), h=Math.floor(d%864e5/36e5), m=Math.floor(d%36e5/6e4);
+    el.innerHTML='<b>'+days+'</b> jours '+pad(h)+' h '+pad(m)+' min';
+  }
+  tick();setInterval(tick,30000);
+})();
+</script>
+</body>
+</html>
