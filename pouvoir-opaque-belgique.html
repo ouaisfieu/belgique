@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pouvoir opaque en Belgique — Dossier annoté</title>
+<meta name="description" content="Étude de cas annotée : pouvoir opaque, para-légalité et extra-constitutionnalité en Belgique. Synthèse fidèle du corpus, assortie d'un appareil critique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E8E7E1;
+  --paper-deep:#DEDDD5;
+  --ink:#17181A;
+  --ink-soft:#54555A;
+  --marker:#F5D63D;
+  --stamp:#A6251C;
+  --rule:#C3C1B7;
+  --note-w:280px;
+  --max:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:18px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--marker);color:var(--ink)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+
+/* ---------- utilitaires typographiques ---------- */
+.mono{font-family:'IBM Plex Mono',monospace}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+/* ---------- couverture / hero ---------- */
+header.cover{
+  border-bottom:3px solid var(--ink);
+  padding:36px 0 54px;
+  position:relative;
+  overflow:hidden;
+}
+.cover-meta{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:14px;margin-bottom:52px;
+}
+.cover-meta .ref{color:var(--stamp);font-weight:600}
+h1{
+  font-family:'Archivo',sans-serif;
+  font-weight:900;
+  font-size:clamp(2.6rem,7.2vw,5.4rem);
+  line-height:.98;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  max-width:14ch;
+}
+h1 .redact{
+  position:relative;display:inline-block;white-space:nowrap;
+}
+h1 .redact::after{
+  content:"";position:absolute;inset:6% -2%;
+  background:var(--ink);
+  transform-origin:left center;
+  animation:lift 1s cubic-bezier(.7,0,.2,1) .55s forwards;
+}
+h1 .redact:nth-of-type(2)::after{animation-delay:.85s}
+h1 .redact:nth-of-type(3)::after{animation-delay:1.15s}
+@keyframes lift{to{transform:scaleX(0)}}
+.cover-sub{
+  margin-top:34px;max-width:62ch;
+  font-size:1.15rem;line-height:1.6;color:var(--ink);
+}
+.cover-sub em{font-style:italic}
+.cover-tags{
+  margin-top:30px;display:flex;gap:10px;flex-wrap:wrap;
+}
+.cover-tags span{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--ink);padding:5px 10px;
+}
+.cover-tags span.hot{background:var(--marker);border-color:var(--ink)}
+.stamp{
+  position:absolute;right:28px;bottom:44px;
+  font-family:'IBM Plex Mono',monospace;font-weight:600;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--stamp);border:2.5px solid var(--stamp);
+  padding:8px 14px;transform:rotate(-7deg);
+  opacity:.85;
+}
+@media(max-width:760px){.stamp{position:static;display:inline-block;margin-top:28px}}
+
+/* ---------- avertissement méthodologique ---------- */
+.method{
+  background:var(--ink);color:var(--paper);
+  padding:34px 0;
+}
+.method .wrap{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start}
+.method .tick{width:16px;height:16px;background:var(--marker);margin-top:6px}
+.method p{max-width:78ch;font-size:.98rem;line-height:1.6}
+.method strong{color:var(--marker);font-weight:600}
+@media(max-width:600px){.method .wrap{grid-template-columns:1fr}}
+
+/* ---------- sommaire ---------- */
+nav.toc{border-bottom:1px solid var(--rule);padding:40px 0 46px}
+nav.toc h2{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px}
+nav.toc ol{list-style:none;columns:2;column-gap:60px;max-width:900px}
+nav.toc li{break-inside:avoid;border-top:1px solid var(--rule);padding:10px 0}
+nav.toc a{
+  text-decoration:none;display:flex;gap:14px;align-items:baseline;
+  font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;
+}
+nav.toc a:hover .t{background:var(--marker)}
+nav.toc .n{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.75rem;color:var(--stamp)}
+@media(max-width:700px){nav.toc ol{columns:1}}
+
+/* ---------- sections ---------- */
+section.chap{padding:64px 0 24px;border-bottom:1px solid var(--rule)}
+.chap-head{margin-bottom:40px;max-width:900px}
+.chap-head .eyebrow{display:block;margin-bottom:14px}
+.chap-head h2{
+  font-family:'Archivo',sans-serif;font-weight:800;
+  font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.06;
+  letter-spacing:-.015em;text-transform:uppercase;
+  max-width:24ch;
+}
+.gauge{
+  display:flex;align-items:center;gap:12px;margin-top:18px;
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+}
+.gauge .cells{display:flex;gap:4px}
+.gauge .c{width:14px;height:14px;border:1.5px solid var(--ink)}
+.gauge .c.on{background:var(--ink)}
+
+/* grille prose + marge annotée */
+.block{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) var(--note-w);
+  gap:48px;
+  margin-bottom:36px;
+  align-items:start;
+}
+.block.full{grid-template-columns:1fr}
+.prose{max-width:70ch}
+.prose p{margin-bottom:1.1em}
+.prose p:last-child{margin-bottom:0}
+.prose h3{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:1.12rem;
+  text-transform:uppercase;letter-spacing:.01em;margin:0 0 .8em;
+}
+.prose mark{
+  background:linear-gradient(transparent 45%, var(--marker) 45%);
+  padding:0 2px;
+}
+.prose .lead{font-size:1.14rem;font-weight:500;line-height:1.55}
+.prose ul{margin:0 0 1.1em 1.2em}
+.prose li{margin-bottom:.5em}
+.kw{font-family:'IBM Plex Mono',monospace;font-size:.85em;background:var(--paper-deep);padding:1px 5px;border:1px solid var(--rule)}
+
+aside.note{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.78rem;line-height:1.6;color:var(--ink);
+  border-top:4px solid var(--marker);
+  padding-top:12px;
+  position:sticky;top:24px;
+}
+aside.note .lab{
+  display:inline-block;font-weight:600;font-size:.64rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:8px;color:var(--ink);
+  background:var(--marker);padding:2px 7px;
+}
+aside.note.alert{border-top-color:var(--stamp)}
+aside.note.alert .lab{background:var(--stamp);color:var(--paper)}
+aside.note p{margin-bottom:.7em}
+aside.note p:last-child{margin-bottom:0}
+@media(max-width:900px){
+  .block{grid-template-columns:1fr;gap:18px}
+  aside.note{position:static;border:1px solid var(--rule);border-top:4px solid var(--marker);padding:14px 16px;background:#fff8}
+  aside.note.alert{border-top-color:var(--stamp)}
+}
+
+/* ---------- tableaux ---------- */
+.tbl-wrap{overflow-x:auto;margin:8px 0 14px;border:1.5px solid var(--ink)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem;background:#FDFCF8}
+caption{
+  caption-side:top;text-align:left;
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;
+  letter-spacing:.13em;text-transform:uppercase;
+  padding:10px 14px;background:var(--ink);color:var(--paper);
+}
+th,td{border:1px solid var(--rule);padding:12px 14px;vertical-align:top;text-align:left}
+th{
+  font-family:'Archivo',sans-serif;font-weight:800;font-size:.72rem;
+  text-transform:uppercase;letter-spacing:.06em;background:var(--paper-deep);
+}
+td strong{font-weight:600}
+td .badge{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:2px 6px;border:1px solid var(--ink);
+  display:inline-block;margin-bottom:6px;
+}
+td .badge.defacto{background:var(--marker)}
+td .badge.legal{background:transparent}
+
+/* ---------- pull / citation ---------- */
+.pull{
+  border-left:6px solid var(--ink);
+  padding:6px 0 6px 24px;margin:10px 0 26px;
+  font-size:1.28rem;line-height:1.45;font-weight:500;font-style:italic;
+  max-width:56ch;
+}
+.pull .who{
+  display:block;margin-top:10px;font-style:normal;
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+}
+
+/* ---------- chronologie GRECO ---------- */
+.timeline{list-style:none;margin:6px 0 20px;border-left:2px solid var(--ink);padding-left:0}
+.timeline li{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:10px 0 10px 22px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-6px;top:20px;width:10px;height:10px;background:var(--stamp)}
+.timeline .yr{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.8rem;padding-top:2px}
+.timeline .ev{font-size:.95rem}
+@media(max-width:560px){.timeline li{grid-template-columns:1fr;gap:2px}}
+
+/* ---------- conclusion ---------- */
+section.concl{background:var(--ink);color:var(--paper);padding:72px 0;border-bottom:none}
+section.concl .eyebrow{color:var(--marker)}
+section.concl h2{
+  font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;
+  font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.02;max-width:20ch;margin-bottom:34px;
+}
+section.concl .prose{color:var(--paper)}
+section.concl .prose mark{background:linear-gradient(transparent 45%, var(--marker) 45%);color:var(--ink)}
+section.concl aside.note{color:var(--paper)}
+section.concl aside.note .lab{color:var(--ink)}
+.remedes{list-style:none;margin-top:18px;border-top:1px solid #444;max-width:70ch}
+.remedes li{
+  border-bottom:1px solid #444;padding:14px 0;display:grid;
+  grid-template-columns:34px 1fr;gap:16px;align-items:baseline;font-size:1rem;
+}
+.remedes .n{font-family:'IBM Plex Mono',monospace;color:var(--marker);font-size:.78rem;font-weight:600}
+
+/* ---------- sources ---------- */
+section.src{padding:56px 0 70px}
+section.src h2{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px}
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:var(--rule);border:1px solid var(--rule)}
+.src-grid div{background:var(--paper);padding:14px 16px;font-size:.82rem;line-height:1.5}
+.src-grid .t{font-family:'Archivo',sans-serif;font-weight:700;font-size:.8rem;display:block;margin-bottom:3px}
+.src-grid .o{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+
+footer{border-top:3px solid var(--ink);padding:26px 0 44px;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.06em;color:var(--ink-soft);line-height:1.7}
+
+@media(prefers-reduced-motion:reduce){
+  h1 .redact::after{animation:none;transform:scaleX(0)}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COUVERTURE ============ -->
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-meta">
+      <span class="ref">Dossier — étude de cas</span>
+      <span>Royaume de Belgique</span>
+      <span>Version annotée · juillet 2026</span>
+    </div>
+    <h1>Pouvoir <span class="redact">opaque</span>,<br>para&#8209;légalité &amp;<br><span class="redact">extra&#8209;</span><span class="redact">constitutionnalité</span></h1>
+    <p class="cover-sub">Comment un État formellement constitutionnel gouverne-t-il, dans les faits, par des organes qui n'existent dans aucun texte ? Cette page restitue fidèlement le corpus <em>« Pouvoir opaque en Belgique : étude de cas »</em> et l'assortit d'un appareil critique en marge, qui distingue les faits documentés des interprétations et thèses de l'auteur.</p>
+    <div class="cover-tags">
+      <span class="hot">Particratie</span><span>Kern &amp; DAB</span><span>Affaires courantes</span><span>Comité de concertation</span><span>Gladio / SDRA VIII</span><span>Nethys–Publifin</span><span class="hot">Loi Quintin</span>
+    </div>
+    <div class="stamp">Zone grise</div>
+  </div>
+</header>
+
+<!-- ============ MÉTHODE ============ -->
+<div class="method">
+  <div class="wrap">
+    <div class="tick" aria-hidden="true"></div>
+    <p><strong>Note de méthode.</strong> Le corpus source est un texte engagé : il combine des faits solidement établis (jurisprudence du Conseil d'État, rapports du GRECO, commissions d'enquête parlementaires, littérature du CRISP) et une thèse interprétative forte — l'opacité comme « moteur adaptatif » du système belge. Le texte principal ci-dessous restitue le corpus sans le déformer ; les <strong>notes jaunes</strong> en marge apportent contexte et lecture critique ; les <strong>notes rouges</strong> signalent les points où le corpus glisse du fait vers l'hypothèse ou le jugement de valeur.</p>
+  </div>
+</div>
+
+<!-- ============ SOMMAIRE ============ -->
+<nav class="toc" aria-label="Sommaire">
+  <div class="wrap">
+    <h2>Sommaire du dossier</h2>
+    <ol>
+      <li><a href="#s1"><span class="n">I.</span><span class="t">La particratie et le Parlement neutralisé</span></a></li>
+      <li><a href="#s2"><span class="n">II.</span><span class="t">Kern &amp; DAB : l'exécutif de fait</span></a></li>
+      <li><a href="#s3"><span class="n">III.</span><span class="t">Les affaires courantes, droit sans texte</span></a></li>
+      <li><a href="#s4"><span class="n">IV.</span><span class="t">Le Comité de concertation, État para-fédéral</span></a></li>
+      <li><a href="#s5"><span class="n">V.</span><span class="t">Gladio, SDRA VIII et l'État profond</span></a></li>
+      <li><a href="#s6"><span class="n">VI.</span><span class="t">Nethys–Publifin : la para-légalité économique</span></a></li>
+      <li><a href="#s7"><span class="n">VII.</span><span class="t">La « loi Quintin » et le juge évincé</span></a></li>
+      <li><a href="#s8"><span class="n">VIII.</span><span class="t">Synthèse : le prix démocratique</span></a></li>
+      <li><a href="#s9"><span class="n">IX.</span><span class="t">Réflexivité : le dossier face à lui-même</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ I. PARTICRATIE ============ -->
+<section class="chap" id="s1">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre I — Pouvoir législatif</span>
+      <h2>La particratie et le détournement du pouvoir représentatif</h2>
+      <div class="gauge" aria-label="Indice d'opacité : 3 sur 5">
+        <span>Indice d'opacité</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c"></span><span class="c"></span></span>
+        <span>informel mais public</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">Le système belge repose en théorie sur la primauté du Parlement. En pratique, il fonctionne comme une <mark>« particratie »</mark> : le pouvoir réel se situe dans les appareils de partis, non dans les assemblées élues.</p>
+        <p>L'article 42 de la Constitution (formellement révisé en 1993 ; la règle figurait à l'ancien article 32) dispose que les parlementaires « représentent la Nation, et non uniquement ceux qui les ont élus » — héritage direct du Congrès national de 1831, interdisant le mandat impératif. Le corpus reprend la qualification doctrinale de <span class="kw">« monstre sacré »</span> : un article vénéré en théorie, invoqué dans les discours les plus divers (des Gilets jaunes à Emmanuel Macron), mais neutralisé chaque jour par la discipline de vote imposée par les partis.</p>
+        <p>Le XX<sup>e</sup> siècle a substitué au parlementarisme de notabilités du XIX<sup>e</sup> un <mark>« parlementarisme de groupes »</mark> : le vote d'un projet de loi n'est que la résultante d'arrangements partisans négociés à huis clos. Le corpus y voit une « fabrique du consentement » interne aux institutions, où l'asymétrie d'information joue systématiquement contre l'élu de base, tenu à l'écart des véritables arbitrages.</p>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 01 · Contexte</span>
+        <p>Le terme « particratie » n'est pas polémique en Belgique : c'est une catégorie d'analyse courante en science politique belge, documentée notamment par le CRISP (Verleden, Faniel). La discipline de vote existe dans la plupart des parlements européens ; la spécificité belge est son intensité et le rôle central des présidents de partis.</p>
+      </aside>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <h3>Genèse historique</h3>
+        <p>Selon les travaux cités (CRISP), l'« âge d'or » du Parlement s'achève à la veille de la Première Guerre mondiale. Le XX<sup>e</sup> siècle voit l'ascension des partis organisés, qui confisquent progressivement la fabrique de la loi. La réforme de l'État de 1970 et la scission linguistique des trois familles traditionnelles — le Parti socialiste belge se scinde ainsi en PS francophone et SP flamand (devenu Vooruit) — multiplient les acteurs partisans, désormais dotés de bases sociologiques et de destins électoraux régionalisés, — et renforcent paradoxalement les présidences de partis, devenues négociatrices suprêmes de la cohésion d'un État fragmenté.</p>
+        <h3>La « particratie consulaire »</h3>
+        <p>Le corpus s'appuie sur le professeur Bruno Colmant pour décrire un stade avancé : un <mark>directoire restreint de présidents de partis</mark> — dont certains ne sont pas élus — gouverne de fait. Lors des formations de gouvernement, le Roi consulte ces présidents avant les groupes parlementaires ; les ministres, nommés selon des quotas internes opaques, deviennent les mandataires de l'oligarchie partisane qui les a placés. La politique fiscale illustre la dérive : des lois d'une grande complexité rédigées par des experts non élus, que les députés disent parfois découvrir par voie de presse.</p>
+      </div>
+      <aside class="note alert">
+        <span class="lab">Note 02 · Lecture critique</span>
+        <p>« Particratie consulaire » est un concept d'auteur (Colmant), pas une catégorie juridique établie. Le vocabulaire du corpus (« libido dominandi », « oligarchie », « confiscation ») relève de l'essai engagé.</p>
+        <p>Le fait sous-jacent est toutefois exact et vérifiable : la centralité des présidents de partis dans les formations gouvernementales et la faiblesse du travail d'amendement parlementaire sont largement documentées.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ II. KERN & DAB ============ -->
+<section class="chap" id="s2">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre II — Pouvoir exécutif</span>
+      <h2>Kern &amp; DAB : les organes de fait au sommet de l'État</h2>
+      <div class="gauge" aria-label="Indice d'opacité : 4 sur 5">
+        <span>Indice d'opacité</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c"></span></span>
+        <span>huis clos institutionnalisé</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">La Constitution (art. 99) ne connaît qu'un organe collégial au sommet de l'exécutif fédéral : le Conseil des ministres. Depuis des décennies, il est supplanté par deux entités <mark>sans aucune base constitutionnelle</mark> : le <em>Kern</em> et le <em>DAB</em>.</p>
+        <p>Le <strong>Kern</strong> (comité ministériel restreint, du néerlandais <em>kernkabinet</em>) réunit le Premier ministre et les vice-Premiers ministres, chefs de file de chaque parti de la coalition. Institutionnalisé de manière coutumière depuis les années 1960 — avec des racines dans l'entre-deux-guerres —, pivot absolu depuis les années 1980, il négocie et tranche à huis clos toutes les décisions sensibles ; les vice-Premiers y subissent une double pression, défendre leur parti et sauver le consensus de coalition. Le <strong>DAB</strong> (directeurs de la politique générale) — les chefs de cabinet des vice-Premiers — « pré-digère » chaque dossier avant le Kern, déminant les conflits en amont.</p>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 03 · Précision</span>
+        <p>L'existence du Kern et du DAB n'est ni secrète ni contestée : elle est décrite par la littérature académique (KU Leuven, ULiège, CRISP) citée dans le corpus. L'« opacité » porte sur le contenu des délibérations et l'absence de responsabilité juridique de ces organes, pas sur leur existence.</p>
+      </aside>
+    </div>
+
+    <div class="block full">
+      <div class="tbl-wrap" role="region" aria-label="Comparaison des organes exécutifs" tabindex="0">
+        <table>
+          <caption>Architecture théorique vs. répartition réelle du pouvoir exécutif</caption>
+          <thead>
+            <tr><th>Organe</th><th>Statut juridique</th><th>Composition</th><th>Rôle opérationnel réel</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Conseil des ministres</strong></td>
+              <td><span class="badge legal">De jure</span><br>Organe formel — art. 99 de la Constitution.</td>
+              <td>Premier ministre + ministres fédéraux (15 max.).</td>
+              <td>Chambre d'approbation formelle d'accords conclus en amont ; seul organe portant la responsabilité politique devant le Parlement.</td>
+            </tr>
+            <tr>
+              <td><strong>Kern</strong></td>
+              <td><span class="badge defacto">De facto</span><br>Informel, sans base constitutionnelle ou légale stricte.</td>
+              <td>Premier ministre + vice-Premiers ministres (chefs de file des partis de coalition).</td>
+              <td>Véritable cœur du gouvernement : négocie, arbitre et tranche décisions essentielles, compromis budgétaires, orientations sensibles.</td>
+            </tr>
+            <tr>
+              <td><strong>DAB</strong></td>
+              <td><span class="badge defacto">De facto</span><br>Informel, purement factuel et bureaucratique.</td>
+              <td>Chefs de cabinet des vice-Premiers ministres.</td>
+              <td>Traite tous les dossiers au préalable ; pré-négocie les compromis techniques et politiques avant soumission au Kern.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p>La conséquence en droit public est une rupture majeure : l'organe <em>responsable</em> (le Conseil des ministres, devant la Chambre) n'est plus l'organe qui <em>décide</em>. Le Kern et le DAB, purement factuels, échappent aux contraintes juridiques — une extra-légalité <mark>admise par la doctrine et tolérée par les acteurs</mark>, parce qu'elle est vitale à la production d'accords dans une coalition multipartite.</p>
+        <h3>Les cabinets ministériels et le contournement de l'article 32</h3>
+        <p>L'article 32 de la Constitution garantit l'accès aux documents administratifs. Mais les cabinets ministériels — pléthoriques en Belgique, contrairement aux modèles anglo-saxons ou scandinaves : des centaines de conseillers non élus, souvent affiliés politiquement, qui relèguent l'administration pérenne et neutre à un rôle d'exécution — en sont largement soustraits. Les projets de réforme de la loi du 11 avril 1994 introduisent des exceptions « obligatoires et absolues » pour tout document touchant à <span class="kw">« l'exécution d'une stratégie politique »</span> — notion extensible qui, selon l'AJP, la Ligue des droits humains, Transparencia et Cumuleo, vide la transparence de sa substance.</p>
+        <p>Le GRECO (Conseil de l'Europe) a épinglé la Belgique à répétition :</p>
+        <ul class="timeline" style="list-style:none">
+          <li><span class="yr">Oct. 2016</span><span class="ev">73<sup>e</sup> plénière : <em>aucune</em> des 15 recommandations sur l'intégrité gouvernementale mise en œuvre de façon satisfaisante — conformité « globalement insuffisante ».</span></li>
+          <li><span class="yr">Mars 2018</span><span class="ev">79<sup>e</sup> plénière : constat d'insuffisance réitéré, absence de progrès tangibles.</span></li>
+          <li><span class="yr">Juin 2019</span><span class="ev">83<sup>e</sup> plénière : progrès très légers, opacité structurelle intacte.</span></li>
+        </ul>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 04 · Point d'appui solide</span>
+        <p>Les rapports du GRECO sont la pièce la plus dure du dossier : un organe du Conseil de l'Europe, extérieur au débat belge, documente formellement le déficit de transparence. C'est ici que la thèse du corpus est la mieux étayée.</p>
+        <p>À noter : le corpus lui-même relève que l'État « assume » cette opacité — l'exception « stratégie politique » est une opacité <em>légalisée</em>, pas clandestine.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ III. AFFAIRES COURANTES ============ -->
+<section class="chap" id="s3">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre III — Continuité de l'État</span>
+      <h2>Les affaires courantes : gouverner sans texte ni mandat</h2>
+      <div class="gauge" aria-label="Indice d'opacité : 2 sur 5">
+        <span>Indice d'opacité</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c"></span><span class="c"></span><span class="c"></span></span>
+        <span>prétorien, contrôlé par le juge</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead"><mark>Aucune disposition de la Constitution</mark> ne définit le régime du gouvernement « en affaires courantes ». C'est une construction purement prétorienne et doctrinale, née pour combler un vide : comment l'État fonctionne-t-il quand le gouvernement a démissionné ou perdu la confiance ?</p>
+        <p>En période d'affaires courantes, les compétences de l'exécutif sont en principe amputées — justification démocratique : absence de contrôle parlementaire effectif. La théorie (inspirée notamment de Marcel Waline) et la jurisprudence du Conseil d'État distinguent les <strong>affaires ordinaires</strong> (expédition quotidienne : paiement des fonctionnaires, respect des traités) et les <strong>affaires urgentes</strong> (mesures impérieuses face à un péril grave et imminent).</p>
+        <p>Le contrôle existe et fonctionne : le Conseil d'État a par exemple annulé, par arrêt du 31 mai 1994, un arrêté royal du 21 novembre 1991 sur le statut de la fonction publique, jugé hors du périmètre des affaires courantes. Mais les crises belges — 148 jours en 1987, <mark>541 jours en 2010-2011, record mondial</mark> — ont étiré le concept « jusqu'au point de rupture » : la notion d'urgence s'interprète de manière toujours plus accommodante, conférant à des gouvernements sans mandat renouvelé des prérogatives majeures.</p>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 05 · Nuance</span>
+        <p>Ce chapitre est le moins « opaque » du dossier : la théorie des affaires courantes est publique, enseignée, et soumise à un double contrôle juridictionnel (Conseil d'État + art. 159 de la Constitution pour le juge judiciaire).</p>
+        <p>La formule du corpus — des prérogatives qui « flirtent avec l'anti-constitutionnalité » — est une appréciation, pas un constat juridictionnel : le juge a précisément validé la plupart de ces actes au nom de la continuité de l'État.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IV. COMITÉ DE CONCERTATION ============ -->
+<section class="chap" id="s4">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre IV — Fédéralisme</span>
+      <h2>Le Comité de concertation et l'État para-fédéral</h2>
+      <div class="gauge" aria-label="Indice d'opacité : 4 sur 5">
+        <span>Indice d'opacité</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c"></span></span>
+        <span>le « semi-formel » érigé en gouvernance</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">Créé par les articles 31 à 33bis de la loi ordinaire de réformes institutionnelles (LORI) du 9 août 1980 pour <em>prévenir les conflits d'intérêts</em> entre entités fédérées, le Comité de concertation a muté : d'organe défensif, il est devenu le cœur battant du fédéralisme coopératif — fonctionnant, selon la doctrine citée, dans le <mark>« semi-formel », le « gris » et l'informulé</mark>, outil d'un véritable « État para-fédéral ».</p>
+        <p>Ses « décisions » ne sont juridiquement pas contraignantes — ce n'est pas un législateur. Mais la discipline de parti les fait ratifier systématiquement, sans réel débat d'amendement, par les parlements et exécutifs concernés.</p>
+        <h3>Le révélateur Covid-19</h3>
+        <p>Pendant la pandémie, le Comité — ministres-présidents des entités fédérées et ministres fédéraux clés, réunis à huis clos — s'est érigé en organe décisionnel suprême. Sans assise constitutionnelle pour restreindre des libertés fondamentales, il édictait des directives (confinements, fermetures, couvre-feux) traduites en urgence en arrêtés ministériels. Les parlements, « brutalement mis sur la touche », furent réduits au rôle de spectateurs.</p>
+        <h3>Les pouvoirs spéciaux</h3>
+        <p>S'y ajoute le régime des <strong>pouvoirs spéciaux</strong> : des lois d'habilitation permettant à l'exécutif fédéral — et aux entités fédérées, Wallonie et Bruxelles comprises — de légiférer par arrêtés dans des matières réservées au législateur, en dérogation au principe de séparation des pouvoirs. Le corpus renvoie aux travaux comparatifs de l'APF, qui rapprochent le cas belge du Canada et de l'état d'urgence sanitaire français. Balisé en théorie, ce mécanisme consacre selon le corpus une « extra-constitutionnalité tolérée » et acte la « satellisation » des parlements.</p>
+      </div>
+      <aside class="note alert">
+        <span class="lab">Note 06 · Débat contradictoire</span>
+        <p>La critique de la gestion Covid par arrêtés ministériels est réelle et a été portée jusque devant les tribunaux ; le législateur y a partiellement répondu par la loi « pandémie » de 2021 — que le corpus ne mentionne pas. L'omission renforce la thèse mais affaiblit l'exhaustivité.</p>
+        <p>De même, les pouvoirs spéciaux sont un mécanisme ancien, encadré par la jurisprudence de la Cour constitutionnelle : « extra-constitutionnalité » est ici une qualification militante d'un dispositif que le droit belge considère comme constitutionnel sous conditions.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V. GLADIO ============ -->
+<section class="chap" id="s5">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre V — Appareil sécuritaire</span>
+      <h2>Gladio, SDRA VIII et le spectre de l'État profond</h2>
+      <div class="gauge" aria-label="Indice d'opacité : 5 sur 5">
+        <span>Indice d'opacité</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c on"></span></span>
+        <span>clandestinité d'État, 40 ans</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">Pendant près de quarante ans, la Belgique a hébergé un réseau secret <em>stay-behind</em> affilié à l'opération Gladio de l'OTAN — <mark>hors de tout contrôle parlementaire</mark>, révélé au public seulement en 1990.</p>
+        <p>Mis sur pied dès 1948 avec l'assentiment occulte de Paul-Henri Spaak (Premier ministre) et Paul Struye (Justice), le réseau devait organiser résistance armée, sabotage et renseignement en cas d'invasion soviétique. Sa coordination passait par le Clandestine Planning Committee de l'OTAN, puis l'Allied Coordination Committee — attestée par une correspondance secrète du Premier ministre Jean Van Houtte en 1953. Deux branches : le <strong>SDRA VIII</strong> (renseignement militaire, guerre non conventionnelle, exfiltration du gouvernement) et le <strong>STC-MOB</strong> (branche civile sous la Sûreté de l'État, recrutant des citoyens ordinaires). En temps de guerre, ses organisateurs devaient bénéficier de l'immunité diplomatique pour leurs sabotages.</p>
+        <p>La découverte suit une chaîne internationale : en 1990, les révélations du juge italien <strong>Felice Casson</strong> et les aveux de <strong>Giulio Andreotti</strong> sur la branche italienne, puis les révélations suisses — dont la mort mystérieuse du colonel <strong>Herbert Alboth</strong>, commandant de la P26 — conduisent parlementaires et public belges à découvrir « avec stupeur » l'étendue du réseau sur leur propre sol.</p>
+        <h3>Les tueries du Brabant et la « stratégie de la tension »</h3>
+        <p>Dans les années 1980, de lourdes suspicions ont lié des membres de l'appareil sécuritaire à du terrorisme interne : collusion supposée entre SDRA VIII, gendarmerie, groupuscules d'extrême droite (Westland New Post) et agences américaines (DIA). Le spectre plane sur les tueries du Brabant (28 morts) : selon la théorie de la « stratégie de la tension », ces massacres auraient visé à créer l'effroi pour justifier un virage autoritaire. <mark>Les commissions d'enquête parlementaires n'ont pas établi de preuve pénale d'un complot</mark> — mais n'ont pu exclure des dérives individuelles facilitées par les caches d'armes clandestines.</p>
+        <h3>La réponse institutionnelle : Comités R et P</h3>
+        <p>Le choc a produit la loi organique du 18 juillet 1991, créant le Comité permanent R (renseignement) et le Comité permanent P (police), rattachés au Parlement, chargés de vérifier la conformité des services aux droits constitutionnels. Limite persistante : l'article 458 du Code pénal (secret professionnel) a souvent protégé les agents face aux enquêteurs, et le renseignement militaire a conservé après 1990 des propensions à cibler groupes civils et immigrés.</p>
+      </div>
+      <aside class="note alert">
+        <span class="lab">Note 07 · Fait vs hypothèse</span>
+        <p>Distinguer trois strates :</p>
+        <p>① <strong>Établi</strong> — l'existence du réseau stay-behind belge, sa structure (SDRA VIII / STC-MOB) et son absence de contrôle parlementaire : confirmé par la commission d'enquête du Sénat (1990-1991).</p>
+        <p>② <strong>Non prouvé</strong> — le lien entre ce réseau et les tueries du Brabant : la « stratégie de la tension » reste une hypothèse ; l'enquête judiciaire n'a jamais abouti. Le corpus le reconnaît, mais son cadrage narratif (« État profond ») tire l'ensemble vers la thèse conspirationniste.</p>
+        <p>③ <strong>Établi</strong> — la création des Comités R et P (loi du 18.07.1991) comme réponse directe au scandale.</p>
+      </aside>
+    </div>
+
+    <div class="block full">
+      <blockquote class="pull">La crise de légitimité a contraint l'État à légiférer pour ramener les services de renseignement sous le giron d'un minimum d'État de droit.
+        <span class="who">Corpus, chap. « Deep State belge » — sur la genèse des Comités R et P</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VI. NETHYS ============ -->
+<section class="chap" id="s6">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre VI — Économie para-publique</span>
+      <h2>Nethys–Publifin : la para-légalité économique et la justice négociée</h2>
+      <div class="gauge" aria-label="Indice d'opacité : 4 sur 5">
+        <span>Indice d'opacité</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c"></span></span>
+        <span>opacité corporative organisée</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">À l'intersection du public et du privé, les <strong>intercommunales</strong> — structures publiques regroupant des communes pour des services collectifs — ont engendré des dérives oligarchiques majeures. Cas topique : <mark>Publifin (devenue Enodia) et sa filiale Nethys</mark>, le « système Moreau ».</p>
+        <p>Le montage reposait sur une architecture corporative « délibérément byzantine » : démembrements, filiales à tiroirs, sociétés anonymes de droit privé — pour soustraire des capitaux publics au contrôle des assemblées locales et de la tutelle wallonne. Des entités publiques se sont muées en quasi-multinationales investissant des milliards dans les télécoms, les médias, l'énergie. Les conseils d'administration et « comités de secteur » distribuaient des rémunérations injustifiées ou fictives à des mandataires de tous bords ; Stéphane Moreau percevait jusqu'à 1 million d'euros par an, dont 600 000 € comme « conseiller stratégique », en exploitant la zone grise entre contraintes salariales publiques et liberté du droit des sociétés.</p>
+        <h3>La transaction pénale élargie</h3>
+        <p>Face aux poursuites (fraude fiscale, corruption, abus de biens sociaux), le droit belge offre une porte de sortie : la <span class="kw">transaction pénale élargie</span>, adoptée dans la précipitation au printemps 2011 — le corpus rappelle l'affaire Chodiev, où un milliardaire kazakh a éteint des poursuites de corruption par une amende. Critiquée par de hauts magistrats (le procureur général Christian De Valkeneer), la transaction permet d'éviter procès public, verdict de culpabilité et condamnation symbolique. La société civile y voit un « achat de l'immunité » : montants opaques, aucune vérité judiciaire pour les citoyens spoliés.</p>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 08 · Contexte</span>
+        <p>Le scandale Publifin (révélé fin 2016) a bien débouché sur une commission d'enquête du Parlement wallon et des réformes de la gouvernance des intercommunales — suites que le corpus ne détaille pas.</p>
+        <p>Sur la transaction pénale : la Cour constitutionnelle a censuré en 2016 la version initiale du dispositif (arrêt exigeant un contrôle judiciaire réel), point absent du corpus. Le débat « justice de classe » demeure, mais le cadre légal a évolué.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VII. LOI QUINTIN ============ -->
+<section class="chap" id="s7">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre VII — Actualité 2025-2026</span>
+      <h2>La « loi Quintin » : le juge évincé au profit de l'administration</h2>
+      <div class="gauge" aria-label="Indice d'opacité : 3 sur 5">
+        <span>Indice d'opacité</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c on"></span><span class="c"></span><span class="c"></span></span>
+        <span>débat public, texte contesté</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">L'avant-projet de loi porté par Bernard Quintin (MR), ministre de l'Intérieur du gouvernement « Arizona » formé en 2024-2025 — officiellement une modernisation devant permettre de <span class="kw">« neutraliser activement »</span> les menaces — autoriserait le Conseil des ministres à prononcer la <mark>dissolution administrative</mark> d'associations jugées « radicales » ou « extrémistes », sans passer par un juge.</p>
+        <p>Contexte politique selon le corpus : après la perturbation, le 19 septembre 2025 à Liège, d'une commémoration du MR par plus de 400 militants, le président du parti Georges-Louis Bouchez a exigé des mesures administratives contre les groupes « antifas », sur le modèle français et allemand. Le texte viserait d'abord des collectifs comme Samidoun, mais sa rédaction large engloberait « virtuellement toute contestation sociale musclée ».</p>
+        <p>Or, en droit belge actuel, la dissolution d'une organisation — la « peine de mort » d'une association — relève exclusivement du juge judiciaire, avec procès équitable, droits de la défense et appel, conformément aux standards de la CEDH. L'avant-projet substitue l'administration au magistrat : le ministre devient <span class="kw">« juge et partie »</span>. La section de législation du Conseil d'État a rendu le 31 décembre 2025 un avis particulièrement sévère.</p>
+        <p>Le front d'opposition décrit par le corpus est large : le monde académique (le constitutionnaliste Baptiste Appaerts), syndical (FGTB, CSC), associatif (Centre d'Action Laïque, Amnesty International, Ligue des droits humains) et l'Institut Fédéral des Droits Humains (IFDH), qui théorise le risque de « chilling effect ». Des mouvements écologistes pratiquant la désobéissance civile, comme le collectif <strong>Code Rouge</strong>, dénoncent une manœuvre de criminalisation de l'opposition politique.</p>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 09 · Sources du chapitre</span>
+        <p>Ce chapitre repose principalement sur des sources engagées dans le débat (PTB, FGTB, CSC, Amnesty, Centre d'Action Laïque) et sur l'avis du Conseil d'État. La position gouvernementale (sécurité nationale, modernisation du renseignement) est mentionnée mais peu développée dans le corpus — c'est le chapitre le plus unilatéral du dossier, sur un texte encore en discussion.</p>
+      </aside>
+    </div>
+
+    <div class="block full">
+      <div class="tbl-wrap" role="region" aria-label="Griefs constitutionnels contre la loi Quintin" tabindex="0">
+        <table>
+          <caption>Griefs constitutionnels relevés par le corpus</caption>
+          <thead>
+            <tr><th>Base constitutionnelle</th><th>Droit protégé</th><th>Violation alléguée</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Article 27</strong></td>
+              <td>Liberté d'association — le droit ne peut être soumis à « aucune mesure préventive ».</td>
+              <td>La dissolution discrétionnaire <em>a priori</em> par l'exécutif contournerait l'esprit du Congrès national de 1830 : seuls les crimes commis devaient être punis, judiciairement, sans censure préalable de l'entité associative.</td>
+            </tr>
+            <tr>
+              <td><strong>Article 144</strong></td>
+              <td>Les contestations sur les droits civils relèvent de la compétence <em>exclusive</em> des tribunaux judiciaires.</td>
+              <td>Le recours serait déplacé vers le Conseil d'État (juridiction administrative), dépossédant le citoyen de son juge naturel des libertés.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="block" style="margin-top:26px">
+        <div class="prose">
+          <p>Le corpus souligne enfin deux risques systémiques : le <strong>« chilling effect »</strong> — l'autocensure de toute la société civile face à une prérogative ministérielle quasi arbitraire (interdiction de réunions, confiscation de biens, prohibition de symboles) — et l'extension de l'accès à la <strong>Banque de Données Commune</strong>, réservoir d'informations sensibles jusqu'ici réservé aux magistrats, vers l'administration : un brouillage de la frontière entre renseignement judiciaire et contrôle politique.</p>
+        </div>
+        <aside class="note alert">
+          <span class="lab">Note 10 · Statut du texte</span>
+          <p>Au moment de la rédaction du corpus (juillet 2026), il s'agit d'un <em>avant-projet</em> ayant reçu un avis critique du Conseil d'État — pas d'une loi en vigueur. Un avis sévère de la section de législation entraîne habituellement une réécriture substantielle. Le titre du chapitre du corpus (« offensive contre l'État de droit ») anticipe un résultat que la procédure n'a pas encore tranché.</p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIII. CONCLUSION ============ -->
+<section class="concl chap" id="s8">
+  <div class="wrap">
+    <span class="eyebrow">Chapitre VIII — Synthèse</span>
+    <h2>Le prix démocratique de la survivance institutionnelle</h2>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">La thèse centrale du corpus : l'opacité, la para-légalité et l'extra-constitutionnalité ne sont pas des anomalies du système belge — elles en sont <mark>la condition de survie</mark>.</p>
+        <p>Face à une architecture fédérale conçue pour figer les rapports de force entre communautés, et à un scrutin proportionnel produisant une fragmentation extrême, le droit formel s'est révélé trop rigide pour gouverner. Les élites ont donc bâti une « ingénierie de l'ombre » : Parlement neutralisé par la particratie, exécutif dédoublé dans le Kern et le DAB, affaires courantes étirées au-delà du raisonnable, Comité de concertation mué en État para-fédéral, structures paramilitaires secrètes hier, captation de fonds publics dans les intercommunales et tentation de la dissolution administrative aujourd'hui.</p>
+        <p>Le coût, selon le corpus : une reddition de comptes structurellement faussée — <em>celui qui décide n'est jamais celui qui répond</em> — et un effet dissuasif mortifère pour la société civile. L'ombre qui fut « protectrice de la cohésion nationale » finirait « par engloutir l'État de droit qu'elle prétendait sauvegarder ». Le corpus appelle à un sursaut :</p>
+        <ol class="remedes">
+          <li><span class="n">R.1</span><span>Reparlementarisation du débat public.</span></li>
+          <li><span class="n">R.2</span><span>Clarification stricte du rôle des organes informels (Kern, DAB, Comité de concertation).</span></li>
+          <li><span class="n">R.3</span><span>Éradication des zones grises de la loi de transparence (art. 32, cabinets ministériels).</span></li>
+          <li><span class="n">R.4</span><span>Interdiction absolue de contourner le juge au profit de l'administration répressive.</span></li>
+        </ol>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 11 · Bilan critique</span>
+        <p>Force du corpus : une documentation dense (CRISP, GRECO, Conseil d'État, commissions d'enquête) et une grille de lecture cohérente reliant des phénomènes habituellement traités séparément.</p>
+        <p>Limites : un vocabulaire d'essai qui surqualifie juridiquement (« anti-constitutionnalité », « État profond »), l'omission des contre-mouvements (loi pandémie 2021, censure de la transaction pénale, réformes post-Publifin), et une lecture unidirectionnelle : l'informalité belge est aussi analysée, par une partie de la doctrine, comme un mode de gestion pacifique des conflits communautaires — pas seulement comme une pathologie.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IX. RÉFLEXIVITÉ ============ -->
+<section class="chap" id="s9">
+  <div class="wrap">
+    <div class="chap-head">
+      <span class="eyebrow">Chapitre IX — Appareil critique au second degré</span>
+      <h2>Réflexivité : le dossier face à lui-même</h2>
+      <div class="gauge" aria-label="Indice d'opacité de cette page : 2 sur 5">
+        <span>Indice d'opacité — de cette page</span>
+        <span class="cells"><span class="c on"></span><span class="c on"></span><span class="c"></span><span class="c"></span><span class="c"></span></span>
+        <span>toute mise en lisibilité est un cadrage</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <p class="lead">Un dossier qui dénonce l'opacité n'échappe pas à sa propre question : <mark>qui cadre le cadreur ?</mark> Ce chapitre applique au corpus — et à la présente annotation — la grille critique que le corpus applique à l'État belge.</p>
+        <h3>Le paradoxe de la mise en lisibilité</h3>
+        <p>Rendre l'opaque lisible est un acte de pouvoir éditorial. Choisir huit chapitres, un ordre de présentation qui va du Parlement vers l'appareil répressif, un vocabulaire (« zone grise », « État profond »), c'est déjà construire une intrigue : celle d'une dérive progressive et cohérente. Or rien ne garantit que la particratie, le Kern, Gladio et Nethys relèvent d'un <em>même</em> phénomène — c'est précisément la thèse du corpus, et une thèse n'est pas un fait. L'unité du récit est produite par le texte, pas démontrée par lui.</p>
+        <p>Même remarque pour l'appareil ajouté par cette page : l'« indice d'opacité » en tête de chapitre a l'apparence d'une mesure, mais c'est une <mark>construction éditoriale sans métrique</mark> — utile pour hiérarchiser la lecture, trompeuse si on la prend pour une donnée. Elle est conservée ici en pleine conscience de cette ambiguïté, comme illustration du problème qu'elle pose.</p>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 12 · Mise en abyme</span>
+        <p>Le corpus décrit une « fabrique du consentement » institutionnelle. Toute synthèse — celle-ci comprise — est aussi une fabrique de lecture : sélection, compression, hiérarchie visuelle. Le surlignage jaune attire l'œil sur ce que l'annotateur a jugé saillant ; le lecteur consent d'autant plus facilement qu'il ne voit pas ce qui a été coupé.</p>
+      </aside>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <h3>Épistémologie du corpus : une source n'égale pas une source</h3>
+        <p>Le corpus cite environ soixante références, mais les traite à plat, sans hiérarchie de fiabilité. Or elles n'ont pas le même statut probatoire :</p>
+      </div>
+      <aside class="note alert">
+        <span class="lab">Note 13 · Circularité</span>
+        <p>Risque méthodologique du corpus : établir des faits contestés à partir de sources parties au litige. Le chapitre Quintin cite le PTB, la FGTB et Amnesty — acteurs de l'opposition au texte — pour décrire le texte lui-même. C'est légitime pour documenter <em>la controverse</em>, fragile pour établir <em>le contenu</em> de l'avant-projet, dont le corpus ne cite jamais directement le libellé.</p>
+      </aside>
+    </div>
+
+    <div class="block full">
+      <div class="tbl-wrap" role="region" aria-label="Grille de fiabilité des sources du corpus" tabindex="0">
+        <table>
+          <caption>Grille de fiabilité — les strates de sources du corpus</caption>
+          <thead>
+            <tr><th>Strate</th><th>Exemples dans le corpus</th><th>Statut probatoire</th><th>Précaution de lecture</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Primaires institutionnelles</strong></td>
+              <td>Avis et arrêts du Conseil d'État, rapports GRECO, documents parlementaires (Chambre, Sénat), rapports du Comité R.</td>
+              <td>Élevé — actes officiels vérifiables.</td>
+              <td>Distinguer ce que dit l'acte de ce que le corpus lui fait dire (l'avis du 31.12.2025 est « sévère » : qualification, pas citation).</td>
+            </tr>
+            <tr>
+              <td><strong>Académiques</strong></td>
+              <td>CRISP, Cairn, ORBi (ULiège, UMons), Lirias (KU Leuven), thèses.</td>
+              <td>Élevé — évalué par les pairs ou institutionnel.</td>
+              <td>La doctrine décrit et qualifie ; « État para-fédéral » est un concept d'analyse, pas une catégorie normative.</td>
+            </tr>
+            <tr>
+              <td><strong>Presse &amp; journalisme d'enquête</strong></td>
+              <td>L'Écho (dossier Publifin), Médor.</td>
+              <td>Moyen à élevé selon le travail de vérification.</td>
+              <td>Le journalisme d'enquête a été moteur dans Publifin ; ses conclusions ne valent pas verdict judiciaire.</td>
+            </tr>
+            <tr>
+              <td><strong>Militantes / parties prenantes</strong></td>
+              <td>PTB, FGTB, CSC, Amnesty, Cumuleo, Centre d'Action Laïque, communiqués ministériels (verlinden.belgium.be).</td>
+              <td>Variable — documentent une position.</td>
+              <td>À lire comme pièces du débat, des deux côtés : le communiqué gouvernemental vantant l'« Arizona » n'est pas plus neutre que la carte blanche d'Amnesty.</td>
+            </tr>
+            <tr>
+              <td><strong>Tertiaires incertaines</strong></td>
+              <td>Wikipédia, Grokipedia, Fandom (Military Wiki), blogs (Forum For The Future, riskcompliance.be).</td>
+              <td>Faible — compilation sans garantie éditoriale stable.</td>
+              <td>Le recours à ces strates pour le chapitre Gladio signale la rareté des sources primaires accessibles — symptôme, en soi, de l'opacité étudiée.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="prose">
+        <h3>Une thèse difficilement réfutable ?</h3>
+        <p>La grille de lecture du corpus présente une propriété logique inconfortable : elle est <mark>quasi infalsifiable</mark>. Si un organe de contrôle échoue (Comité R face à l'article 458 du Code pénal), c'est la preuve de l'opacité ; s'il réussit (annulation d'un arrêté par le Conseil d'État en 1994, avis sévère de 2025), c'est la preuve que le système ne tient que par des « béquilles ». Toute observation confirme la thèse. Une lecture rigoureuse doit donc chercher ce qui pourrait la contredire : la loi pandémie de 2021, la censure constitutionnelle de la transaction pénale, les réformes post-Publifin, la publicité même du débat sur la loi Quintin — autant de contre-exemples que le corpus omet et que les notes 06, 08 et 10 réintroduisent.</p>
+        <h3>Critique de l'annotation elle-même</h3>
+        <p>L'appareil de notes de cette page n'est pas neutre non plus. Trois biais assumés : un biais de <strong>symétrie</strong> — ajouter systématiquement « l'autre version » peut produire un faux équilibre et affaiblir des critiques qui, sur le fond, sont solides (le déficit de transparence constaté par le GRECO n'a pas de « deuxième version » sérieuse) ; un biais de <strong>juridisme</strong> — ramener chaque affirmation à son statut en droit positif tend à disqualifier la critique politique légitime, qui n'a pas à attendre un arrêt pour exister ; un biais de <strong>clôture</strong> — présenter le dossier comme complet alors qu'il dérive d'un corpus unique, daté du 4 juillet 2026, non contradictoire. La seule correction honnête est l'invitation : <mark>remonter aux sources primaires</mark> — lire l'avis du Conseil d'État, les rapports GRECO, le rapport de la commission d'enquête Gladio — plutôt que de faire confiance à deux degrés de médiation successifs.</p>
+      </div>
+      <aside class="note">
+        <span class="lab">Note 14 · Règle de sortie</span>
+        <p>Test pratique proposé au lecteur : pour chaque affirmation marquée en jaune dans ce dossier, se demander (1) quelle source primaire la porte, (2) qui aurait intérêt à la formuler ainsi, (3) quel fait, s'il était établi, la réfuterait. Une affirmation qui ne passe pas le test (3) est une grille de lecture — pas une connaissance.</p>
+      </aside>
+    </div>
+
+    <div class="block full">
+      <blockquote class="pull">Un dossier sur l'opacité ne vaut que par la transparence de sa propre fabrication.
+        <span class="who">Appareil éditorial — principe de clôture du chapitre IX</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section class="src">
+  <div class="wrap">
+    <h2>Principales sources citées par le corpus</h2>
+    <div class="src-grid">
+      <div><span class="t">CRISP</span><span class="o">Centre de recherche et d'information socio-politiques</span> — « Aux sources de la particratie » ; « Au cœur du pouvoir : le kern » ; vocabulaire politique (affaires courantes, comité ministériel restreint).</div>
+      <div><span class="t">GRECO — Conseil de l'Europe</span><span class="o">Quatrième cycle d'évaluation</span> — Rapports de conformité sur l'intégrité gouvernementale (2016, 2018, 2019).</div>
+      <div><span class="t">Conseil d'État de Belgique</span><span class="o">Jurisprudence & avis</span> — Arrêt du 31 mai 1994 (affaires courantes) ; avis de la section de législation du 31 décembre 2025 (avant-projet Quintin).</div>
+      <div><span class="t">Universités</span><span class="o">KU Leuven · ULiège · UMons · UCLouvain</span> — Études sur le fonctionnement du Conseil des ministres, du Kern et du DAB ; l'article 42 comme « monstre sacré » ; le fédéralisme coopératif.</div>
+      <div><span class="t">Commissions d'enquête parlementaires</span><span class="o">Chambre & Sénat, 1990-1996</span> — Enquête Gladio / réseau stay-behind ; documents relatifs aux Comités R et P (loi du 18 juillet 1991).</div>
+      <div><span class="t">Presse & société civile</span><span class="o">L'Écho · Médor · Cumuleo · AJP · Amnesty · FGTB · CSC · PTB</span> — Dossiers Publifin/Nethys, transaction pénale, transparence administrative, débat sur la « loi Quintin ».</div>
+      <div><span class="t">Bruno Colmant</span><span class="o">Académie royale de Belgique</span> — « La démocratie belge est silencieusement tuée par une particratie consulaire ».</div>
+      <div><span class="t">Littérature Gladio</span><span class="o">Statewatch · ETH Zürich (PHP) · Crypto Museum</span> — Chronologies et archives du réseau stay-behind belge (SDRA VIII, STC-MOB).</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Page constituée à partir du corpus « Pouvoir opaque, para-légalité et extra-constitutionnalité : analyse critique du cas de la Belgique » (juillet 2026). Le corps du texte (chap. I–VIII) restitue le contenu du corpus ; les notes marginales (jaunes : contexte, rouges : réserves critiques), les indices d'opacité et le chapitre IX — qui applique la grille critique du dossier au dossier lui-même et à sa propre annotation — constituent l'appareil éditorial ajouté. Document d'étude — ne constitue pas un avis juridique.</p>
+  </div>
+</footer>
+
+</main>
+</body>
+</html>
