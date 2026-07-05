@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Page d'accueil -->
   <url>
     <loc>https://ouaisfieu.github.io/belgique/</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://ouaisfieu.github.io/belgique/faire-tenir.html</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ouaisfieu.github.io/belgique/faire-tomber.html</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ouaisfieu.github.io/belgique/le-forage.html</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ouaisfieu.github.io/belgique/le-requisitoire.html</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ouaisfieu.github.io/belgique/democratie-sous-cloche.html</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  
+  <!-- Dossiers (index.html implicites) -->
+  <url><loc>https://ouaisfieu.github.io/belgique/1/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/2/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/separation-pouvoirs/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Pages HTML du site -->
+  <url><loc>https://ouaisfieu.github.io/belgique/Belgique_face_a_sa_Constitution.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/belgique_acte_accusation.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/ceci-n-est-pas-une-democratie.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/democratie-sous-cloche.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/dossier-belgique-fins-2026.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/dossier_reference_particratie.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/etat-belge-bis.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/etat-belge.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/failles-constitutionnelles-belgique.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/faire-tenir.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/faire-tomber.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/greco-regle-32.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/greco.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/grecoo.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/la-belgique-a-deux-etages.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/le-bruit-et-la-machine.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/le-forage.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/le-requisitoire.html</loc><priority>0.8</priority></url>
+  <url><loc>https://ouaisfieu.github.io/belgique/pouvoir-opaque-belgique.html</loc><priority>0.8</priority></url>
 </urlset>
