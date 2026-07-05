@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LE DOSSIER — Contentieux contre la particratie belge · Référence consolidée</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600;700;900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --encre:#14161d;
+  --encre-2:#2a2d38;
+  --papier:#efeee8;
+  --carte:#fbfaf6;
+  --greffe:#1e3250;
+  --jaune:#f2c200;
+  --jaune-pale:#fdf3cc;
+  --rouge:#c8102e;
+  --rouge-pale:#fbe9ec;
+  --vert:#1e7a45;
+  --vert-pale:#e6f4ec;
+  --violet:#5b3a7e;
+  --violet-pale:#f0e9f7;
+  --gris:#6d6f78;
+  --filet:#c9c7bd;
+  --mono:'IBM Plex Mono',monospace;
+  --serif:'Instrument Serif',serif;
+  --sans:'Archivo',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);background:var(--papier);color:var(--encre);line-height:1.55;font-size:16px}
+body::before{
+  content:"";position:fixed;left:0;top:0;bottom:0;width:10px;z-index:60;
+  background:linear-gradient(to bottom,var(--encre) 0 33.4%,var(--jaune) 33.4% 66.7%,var(--rouge) 66.7% 100%);
+}
+::selection{background:var(--jaune);color:var(--encre)}
+
+.topbar{
+  position:sticky;top:0;z-index:50;background:var(--encre);color:#fff;
+  border-bottom:3px solid var(--jaune);padding:0 24px 0 34px;
+  display:flex;align-items:center;gap:18px;height:56px;
+}
+.topbar .cote{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--jaune);white-space:nowrap}
+.topbar .titre-court{font-family:var(--serif);font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .maj{margin-left:auto;font-family:var(--mono);font-size:10px;color:#9aa0ad;white-space:nowrap}
+@media(max-width:720px){.topbar .maj{display:none}}
+
+.layout{display:grid;grid-template-columns:252px 1fr;max-width:1360px;margin:0 auto;gap:0}
+@media(max-width:1020px){.layout{grid-template-columns:1fr}}
+
+nav.sommaire{position:sticky;top:56px;align-self:start;height:calc(100vh - 56px);overflow-y:auto;padding:26px 0 40px 34px}
+nav.sommaire .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--gris);margin-bottom:12px}
+nav.sommaire a{
+  display:block;text-decoration:none;color:var(--encre-2);font-size:12px;font-weight:600;letter-spacing:.02em;
+  padding:7px 12px 7px 12px;margin:2px 0;border-left:3px solid var(--filet);transition:background .15s,border-color .15s;
+}
+nav.sommaire a .n{font-family:var(--mono);font-size:9.5px;color:var(--gris);display:block;letter-spacing:.1em}
+nav.sommaire a:hover{background:var(--carte);border-left-color:var(--encre)}
+nav.sommaire a.actif{background:var(--carte);border-left-color:var(--jaune);box-shadow:inset 0 0 0 1px var(--filet)}
+nav.sommaire a.actif .n{color:var(--rouge)}
+@media(max-width:1020px){
+  nav.sommaire{position:static;height:auto;display:flex;overflow-x:auto;padding:12px 16px 12px 26px;gap:8px;border-bottom:2px solid var(--encre);background:var(--carte)}
+  nav.sommaire .lbl{display:none}
+  nav.sommaire a{white-space:nowrap;border-left:none;border-bottom:3px solid var(--filet);padding:6px 10px}
+  nav.sommaire a.actif{border-bottom-color:var(--jaune);box-shadow:none}
+}
+
+main{padding:0 40px 120px 40px;border-left:1px solid var(--filet);min-width:0}
+@media(max-width:1020px){main{border-left:none;padding:0 20px 90px 28px}}
+
+.hero{padding:52px 0 40px 0;border-bottom:3px double var(--encre)}
+.hero .role{display:flex;flex-wrap:wrap;gap:8px 26px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gris);margin-bottom:24px}
+.hero .role b{color:var(--encre)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5.4vw,62px);line-height:1.02;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--greffe)}
+.hero .sur{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--rouge);margin-bottom:14px;font-weight:600}
+.hero p.chapo{max-width:790px;margin-top:20px;font-size:16.5px;color:var(--encre-2)}
+.hero p.chapo b{background:var(--jaune-pale);padding:0 3px}
+.tampon{
+  display:inline-block;margin:24px 12px 0 0;font-family:var(--mono);font-weight:600;font-size:11.5px;letter-spacing:.14em;
+  color:var(--rouge);border:2.5px solid var(--rouge);padding:6px 13px;transform:rotate(-2deg);text-transform:uppercase;
+}
+.tampon.vert{color:var(--vert);border-color:var(--vert);transform:rotate(1.4deg)}
+
+section.piece{padding:56px 0 8px 0;border-bottom:1px solid var(--filet)}
+.piece-tete{display:flex;align-items:baseline;gap:18px;margin-bottom:8px;flex-wrap:wrap}
+.piece-tete .cote{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;color:#fff;background:var(--encre);padding:5px 10px;white-space:nowrap}
+.piece-tete h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.3vw,37px);line-height:1.05}
+.piece-tete h2 em{font-style:italic;color:var(--greffe)}
+.piece .intro{max-width:790px;color:var(--encre-2);margin:10px 0 28px 0;font-size:15.5px}
+.piece .intro b{font-weight:700}
+
+h3.ss{
+  font-family:var(--sans);font-weight:900;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--greffe);margin:36px 0 14px 0;padding-bottom:8px;border-bottom:2px solid var(--encre);
+  display:flex;align-items:center;gap:10px;
+}
+h3.ss::before{content:"§";font-family:var(--serif);font-size:18px;color:var(--rouge)}
+p.txt{max-width:790px;margin:0 0 14px 0;color:var(--encre-2);font-size:15px}
+p.txt b{color:var(--encre)}
+.ref{font-family:var(--mono);font-size:.85em;color:var(--greffe);background:#e8ecf3;padding:1px 5px;white-space:nowrap}
+
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:1px;background:var(--encre);border:2px solid var(--encre);margin:24px 0}
+.chiffre{background:var(--carte);padding:18px 16px}
+.chiffre .val{font-family:var(--serif);font-size:38px;line-height:1;color:var(--encre)}
+.chiffre .val small{font-size:21px}
+.chiffre .lab{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--gris);margin-top:8px;text-transform:uppercase}
+.chiffre.alerte .val{color:var(--rouge)}
+.chiffre.or .val{color:#a37b00}
+.chiffre.violet .val{color:var(--violet)}
+
+.verrous{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:15px;margin:24px 0}
+.verrou{background:var(--carte);border:1.5px solid var(--encre);padding:18px 18px 16px}
+.verrou .num{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rouge);font-weight:600}
+.verrou h4{font-family:var(--serif);font-size:21px;font-weight:400;margin:6px 0 9px}
+.verrou p{font-size:13.5px;color:var(--encre-2)}
+.verrou .cadenas{float:right;font-size:17px}
+
+.filtres{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 16px}
+.filtres button{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;font-weight:600;background:transparent;
+  border:1.5px solid var(--encre);color:var(--encre);padding:7px 14px;cursor:pointer;text-transform:uppercase;
+}
+.filtres button:hover{background:var(--jaune-pale)}
+.filtres button.on{background:var(--encre);color:var(--jaune)}
+.arsenal{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:13px;margin-bottom:24px}
+.arret{background:var(--carte);border:1px solid var(--filet);border-top:4px solid var(--greffe);padding:15px 17px 14px;transition:border-color .15s}
+.arret:hover{border-color:var(--encre)}
+.arret[data-j="cedh"]{border-top-color:var(--rouge)}
+.arret[data-j="cjue"]{border-top-color:#a37b00}
+.arret[data-j="int"]{border-top-color:var(--greffe)}
+.arret .juri{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--gris);text-transform:uppercase;display:flex;justify-content:space-between;gap:8px}
+.arret h5{font-family:var(--serif);font-size:18.5px;font-weight:400;margin:6px 0 4px;line-height:1.15}
+.arret .porte{font-size:13px;color:var(--encre-2)}
+.arret .usage{margin-top:9px;padding-top:8px;border-top:1px dashed var(--filet);font-size:12px}
+.arret .usage b{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--rouge);text-transform:uppercase;display:block;margin-bottom:3px}
+.arret.masque{display:none}
+
+.front{background:var(--carte);border:2px solid var(--encre);margin:20px 0;position:relative}
+.front.nouveau{border-color:var(--rouge);box-shadow:6px 6px 0 var(--rouge-pale)}
+.front.defensif{border-color:var(--violet);box-shadow:6px 6px 0 var(--violet-pale)}
+.front summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:15px;flex-wrap:wrap;padding:16px 20px;user-select:none}
+.front summary::-webkit-details-marker{display:none}
+.front summary:hover{background:var(--jaune-pale)}
+.front .fnum{font-family:var(--serif);font-size:31px;color:var(--encre);min-width:54px;text-align:center;border-right:2px solid var(--encre);padding-right:15px;line-height:1}
+.front.nouveau .fnum{color:var(--rouge);border-right-color:var(--rouge)}
+.front.defensif .fnum{color:var(--violet);border-right-color:var(--violet)}
+.front .ftit{flex:1;min-width:210px}
+.front .ftit h4{font-family:var(--sans);font-weight:900;font-size:15px;letter-spacing:.03em;text-transform:uppercase}
+.front .ftit .sous{font-size:12.5px;color:var(--gris);margin-top:2px}
+.front .badge{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.12em;padding:5px 9px;border:1.5px solid;text-transform:uppercase;white-space:nowrap}
+.badge.b-actif{color:var(--vert);border-color:var(--vert);background:var(--vert-pale)}
+.badge.b-immediat{color:var(--rouge);border-color:var(--rouge);background:var(--rouge-pale)}
+.badge.b-prep{color:#a37b00;border-color:#a37b00;background:var(--jaune-pale)}
+.badge.b-def{color:var(--violet);border-color:var(--violet);background:var(--violet-pale)}
+.front .chevron{font-family:var(--mono);font-size:14px;color:var(--gris);transition:transform .2s}
+.front[open] .chevron{transform:rotate(90deg)}
+.front .corps{padding:6px 20px 22px;border-top:1px solid var(--filet)}
+.fiche{display:grid;grid-template-columns:148px 1fr;gap:0;border:1px solid var(--filet);margin:15px 0;background:#fff}
+.fiche>div{padding:9px 13px;font-size:13px;border-bottom:1px solid var(--filet)}
+.fiche>div:nth-last-child(-n+2){border-bottom:none}
+.fiche .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);background:var(--papier);border-right:1px solid var(--filet)}
+@media(max-width:640px){.fiche{grid-template-columns:1fr}.fiche .k{border-right:none;border-bottom:none;padding-bottom:2px}}
+.front .corps p{max-width:none;font-size:14px;color:var(--encre-2);margin:11px 0}
+.front .corps p b{color:var(--encre)}
+.front .corps ul{margin:8px 0 12px 20px;font-size:13.5px;color:var(--encre-2)}
+.front .corps li{margin:5px 0}
+.front .corps li b{color:var(--encre)}
+
+.qp{
+  margin:16px 0;padding:16px 20px;background:#e8ecf3;border-left:4px solid var(--greffe);
+  font-family:var(--serif);font-style:italic;font-size:15.5px;line-height:1.5;color:var(--greffe);
+}
+.qp .src{display:block;margin-top:9px;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.1em;color:var(--gris)}
+
+.machoire{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:24px 0}
+@media(max-width:800px){.machoire{grid-template-columns:1fr}}
+.mach{border:2px solid var(--encre);background:var(--carte);padding:19px}
+.mach.haut{border-color:var(--greffe)}
+.mach.bas{border-color:#a37b00}
+.mach .eti{font-family:var(--mono);font-size:10px;letter-spacing:.16em;font-weight:600;text-transform:uppercase;margin-bottom:7px}
+.mach.haut .eti{color:var(--greffe)}
+.mach.bas .eti{color:#a37b00}
+.mach h4{font-family:var(--serif);font-size:21px;font-weight:400;margin-bottom:7px}
+.mach p{font-size:13.5px;color:var(--encre-2)}
+.etau{grid-column:1/-1;text-align:center;background:var(--encre);color:#fff;padding:22px 20px}
+@media(max-width:800px){.etau{grid-column:auto}}
+.etau .eti{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--jaune);text-transform:uppercase}
+.etau h4{font-family:var(--serif);font-size:25px;font-weight:400;margin:7px 0}
+.etau p{font-size:13.5px;color:#c9cdd6;max-width:660px;margin:0 auto}
+
+.timeline{margin:28px 0;border-left:3px solid var(--encre)}
+.jalon{position:relative;padding:0 0 28px 32px}
+.jalon::before{content:"";position:absolute;left:-9px;top:5px;width:15px;height:15px;background:var(--carte);border:3px solid var(--encre)}
+.jalon.now::before{background:var(--rouge);border-color:var(--rouge)}
+.jalon .quand{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;font-weight:600;color:var(--rouge);text-transform:uppercase}
+.jalon h4{font-family:var(--serif);font-size:20px;font-weight:400;margin:4px 0 6px}
+.jalon p{font-size:13.5px;color:var(--encre-2);max-width:740px}
+.jalon ul{margin:8px 0 0 18px;font-size:13.5px;color:var(--encre-2)}
+.jalon li{margin:4px 0}
+.jalon li b{color:var(--encre)}
+
+table.req{width:100%;border-collapse:collapse;margin:20px 0;background:var(--carte);font-size:13px}
+table.req th{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:var(--encre);color:var(--jaune);text-align:left;padding:10px 11px;font-weight:600}
+table.req td{padding:10px 11px;border-bottom:1px solid var(--filet);vertical-align:top}
+table.req tr:hover td{background:var(--jaune-pale)}
+table.req td:first-child{font-weight:700}
+@media(max-width:780px){
+  table.req thead{display:none}
+  table.req,table.req tbody,table.req tr,table.req td{display:block;width:100%}
+  table.req tr{border:1px solid var(--filet);margin-bottom:12px}
+  table.req td{border-bottom:none}
+  table.req td::before{content:attr(data-l);display:block;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--gris);text-transform:uppercase;margin-bottom:2px}
+}
+
+.risques{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:22px 0}
+@media(max-width:800px){.risques{grid-template-columns:1fr}}
+.risque{background:var(--carte);border:1px solid var(--filet);padding:16px}
+.risque .r{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--rouge);font-weight:600;text-transform:uppercase}
+.risque h5{font-family:var(--serif);font-size:18px;font-weight:400;margin:5px 0 6px}
+.risque p{font-size:13px;color:var(--encre-2)}
+.risque .parade{margin-top:9px;padding:9px 11px;background:var(--vert-pale);border-left:3px solid var(--vert);font-size:12.5px}
+.risque .parade b{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--vert);text-transform:uppercase;display:block;margin-bottom:2px}
+
+.regle{margin:32px 0;background:var(--encre);color:#fff;padding:28px;border-left:8px solid var(--jaune)}
+.regle .eti{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--jaune);text-transform:uppercase}
+.regle p{font-family:var(--serif);font-size:clamp(18px,2.3vw,24px);line-height:1.35;margin-top:9px}
+.regle p em{color:var(--jaune);font-style:italic}
+
+.eco{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:15px;margin:24px 0}
+.eco .bloc{background:var(--carte);border:1px solid var(--filet);border-left:4px solid var(--greffe);padding:17px}
+.eco .bloc h4{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:7px}
+.eco .bloc p{font-size:13px;color:var(--encre-2)}
+.eco .bloc .lev{margin-top:9px;padding-top:8px;border-top:1px dashed var(--filet);font-size:12px}
+.eco .bloc .lev b{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--vert);text-transform:uppercase;display:block;margin-bottom:2px}
+
+footer{margin-top:56px;padding:26px 0 10px;border-top:3px double var(--encre)}
+footer .avert{background:var(--carte);border:1px dashed var(--gris);padding:15px 17px;font-size:12px;color:var(--gris);max-width:840px}
+footer .src{margin-top:18px;font-family:var(--mono);font-size:10px;color:var(--gris);line-height:2}
+footer .src b{color:var(--encre-2)}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rv.vu{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--jaune);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="cote">RÉF. PB-2026/ARIZONA · v2 CONSOLIDÉE</span>
+  <span class="titre-court">Contentieux contre la particratie belge — page de référence</span>
+  <span class="maj">MISE À JOUR : JUILLET 2026 · USAGE INTERNE</span>
+</div>
+
+<div class="layout">
+
+<nav class="sommaire" aria-label="Sommaire du dossier">
+  <div class="lbl">SOMMAIRE DU DOSSIER</div>
+  <a href="#diagnostic" class="actif"><span class="n">PIÈCE 01</span>Le diagnostic</a>
+  <a href="#cout-humain"><span class="n">PIÈCE 02</span>Le coût humain</a>
+  <a href="#verrous"><span class="n">PIÈCE 03</span>Les six verrous</a>
+  <a href="#ecosysteme"><span class="n">PIÈCE 04</span>L'écosystème d'opacité</a>
+  <a href="#arsenal"><span class="n">PIÈCE 05</span>L'arsenal jurisprudentiel</a>
+  <a href="#fronts"><span class="n">PIÈCE 06</span>Les sept fronts</a>
+  <a href="#transversal"><span class="n">PIÈCE 07</span>Instruments transversaux</a>
+  <a href="#machoire"><span class="n">PIÈCE 08</span>La convergence</a>
+  <a href="#calendrier"><span class="n">PIÈCE 09</span>Calendrier opérationnel</a>
+  <a href="#requerants"><span class="n">PIÈCE 10</span>Requérants &amp; coalition</a>
+  <a href="#risques"><span class="n">PIÈCE 11</span>Risques &amp; parades</a>
+</nav>
+
+<main>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="role">
+    <span>OBJET · <b>Démantèlement contentieux des mécanismes particratiques</b></span>
+    <span>JURIDICTIONS · <b>C. const. — Trib. civ. Bxl — C.E. — CEDH — CJUE — APPF — CEDS</b></span>
+    <span>HORIZON · <b>2026 → 2030</b></span>
+  </div>
+  <div class="sur">DOSSIER CONSOLIDÉ — STRATÉGIE JURIDIQUE INTÉGRÉE — VERSION 2</div>
+  <h1>Retourner les armes du système<br><em>contre le système.</em></h1>
+  <p class="chapo">
+    La particratie belge n'est pas une opinion : c'est une architecture juridique documentée, condamnée par la Grande Chambre de la CEDH,
+    épinglée par le GRECO depuis 2009, financée par <b>188,3 millions d'euros publics par an</b> — et dont le coût humain se mesure en
+    taux de non-recours aux droits de 37 à 59 %. Cette page consolide l'intégralité du corpus : le diagnostic et son coût social,
+    les six verrous et l'écosystème d'opacité qui les protège, l'arsenal de quinze décisions de justice, les <b>sept fronts contentieux</b>
+    (dont le circuit <b>art. 258 TFUE / art. 47 Charte</b> et le levier <b>APPF / Règlement 2025/2445</b>), la coalition nominative des
+    requérants et le calendrier 2026-2030.
+  </p>
+  <div class="tampon">Mugemangango : inexécuté depuis 6 ans</div>
+  <div class="tampon vert">Étage 1 : activable immédiatement</div>
+</header>
+
+<!-- ═══════ PIÈCE 01 — DIAGNOSTIC ═══════ -->
+<section class="piece" id="diagnostic">
+  <div class="piece-tete"><span class="cote">PIÈCE 01</span><h2>Le diagnostic : <em>une capture chiffrée</em></h2></div>
+  <p class="intro">
+    Tout contentieux repose sur un dossier de fait. Le nôtre est constitué de sources incontestables : rapports de la KU Leuven
+    (Maddens, Smulders, Vanden Eynde), audits de la Cour des comptes, cycles GRECO, rapports État de droit de la Commission,
+    arrêts de la CEDH, données Sciensano et IWEPS. Ces chiffres ne se plaident pas — ils se constatent.
+  </p>
+
+  <div class="chiffres rv">
+    <div class="chiffre alerte"><div class="val">188,3&nbsp;<small>M€</small></div><div class="lab">Coût public annuel total du système partisan (dotations + personnel parlementaire, 2024)</div></div>
+    <div class="chiffre"><div class="val">77&nbsp;<small>%</small></div><div class="lab">Part des subventions publiques dans les revenus des partis (83,7 M€ sur 108,7 M€, exercice 2024)</div></div>
+    <div class="chiffre or"><div class="val">162&nbsp;<small>M€</small></div><div class="lab">Patrimoine net consolidé des partis fin 2022 — 26 % immobilier, 68 % placements financiers</div></div>
+    <div class="chiffre"><div class="val">~99&nbsp;<small>%</small></div><div class="lab">Indice de cohésion de vote (Rice) — le mandat libre de l'art. 42 est une fiction statistique</div></div>
+    <div class="chiffre alerte"><div class="val">84,4&nbsp;<small>M€</small></div><div class="lab">Masse salariale de 1 008 collaborateurs parlementaires travaillant largement pour les sièges de partis (2021)</div></div>
+    <div class="chiffre"><div class="val">60-70&nbsp;<small>%</small></div><div class="lab">Taux de rétrocession de l'indemnité exigé au PTB — 40 % Écolo, 25 % Groen, 15 % VB, ~10 % PS/Vooruit</div></div>
+    <div class="chiffre or"><div class="val">16<small>/22</small></div><div class="lab">Recommandations GRECO 5ᵉ cycle non mises en œuvre — Règle 32 activée, addendum déc. 2025</div></div>
+    <div class="chiffre alerte"><div class="val">0</div><div class="lab">Sanction jamais prononcée par la Commission de contrôle contre un parti — l'auto-jugement en chiffre</div></div>
+    <div class="chiffre violet"><div class="val">15,1&nbsp;<small>M€</small></div><div class="lab">Publicité politique en ligne des 13 partis aux élections 2024 — 5,5× le montant de 2019</div></div>
+    <div class="chiffre violet"><div class="val">&gt;200&nbsp;<small>M€</small></div><div class="lab">Coût annuel des cabinets ministériels (2 800-3 200 collaborateurs), dont ~la moitié invisible aux budgets</div></div>
+    <div class="chiffre"><div class="val">69<small>/100</small></div><div class="lab">Indice de perception de la corruption 2024 (Transparency) — plus bas historique, 22ᵉ rang mondial</div></div>
+    <div class="chiffre alerte"><div class="val">&gt;10&nbsp;000</div><div class="lab">Condamnations judiciaires non exécutées par l'État — « carence systémique » (CEDH, Camara)</div></div>
+  </div>
+
+  <h3 class="ss">La qualification qui structure tout le dossier</h3>
+  <p class="txt">
+    La CEDH a fourni elle-même le concept opératoire : la <b>« carence systémique »</b> (<span class="ref">Camara c. Belgique, 18.07.2023</span>,
+    confirmé par <span class="ref">M.V. e.a., 09.04.2026</span>). Plus de 10 000 condamnations non exécutées, ~170 M€ d'astreintes impayées,
+    un arrêt de Grande Chambre sur le contentieux électoral ignoré depuis six ans. La Belgique n'est pas un État qui viole occasionnellement
+    le droit : c'est un État dont l'appareil partisan a organisé sa propre immunité — la doctrine parle de <b>« para-légalité d'État »</b> :
+    non pas la violation du droit, mais sa neutralisation par construction institutionnelle. C'est cette qualification — systémique, pas
+    accidentelle — qui fonde la faute aquilienne de l'État-législateur (<span class="ref">art. 1382 a.C.civ.</span>) et articule chaque front aux autres.
+  </p>
+</section>
+
+<!-- ═══════ PIÈCE 02 — COÛT HUMAIN ═══════ -->
+<section class="piece" id="cout-humain">
+  <div class="piece-tete"><span class="cote">PIÈCE 02</span><h2>Le coût humain : <em>pourquoi ce combat</em></h2></div>
+  <p class="intro">
+    Le contentieux n'est pas un exercice de style constitutionnel. La capture particratique a un coût social mesuré : un État qui
+    consacre 188 M€/an à ses partis pendant que le non-recours aux droits sociaux atteint des taux de 37 à 59 % pratique une
+    <b>asymétrie contrôle/protection</b> qui est le cœur de l'argument civique — et la source de requérants légitimes.
+  </p>
+
+  <div class="chiffres rv">
+    <div class="chiffre alerte"><div class="val">37-51&nbsp;<small>%</small></div><div class="lab">Non-recours au revenu d'intégration sociale</div></div>
+    <div class="chiffre alerte"><div class="val">42-59&nbsp;<small>%</small></div><div class="lab">Non-recours à la GRAPA (garantie de revenus aux personnes âgées)</div></div>
+    <div class="chiffre alerte"><div class="val">39-52&nbsp;<small>%</small></div><div class="lab">Non-recours au statut BIM (intervention majorée)</div></div>
+    <div class="chiffre"><div class="val">40&nbsp;<small>%</small></div><div class="lab">Belges de 16-74 ans en vulnérabilité numérique — la digitalisation forcée fabrique l'exclusion</div></div>
+    <div class="chiffre violet"><div class="val">17,8&nbsp;<small>%</small></div><div class="lab">Troubles anxieux et/ou dépressifs (Sciensano 2023-24 ; 14,4 % en 2018) — gradient social net</div></div>
+    <div class="chiffre"><div class="val">~320&nbsp;000</div><div class="lab">Exclusions du chômage à terme (limitation à 2 ans, réforme Arizona) — ~30 % basculent au CPAS</div></div>
+  </div>
+
+  <h3 class="ss">La jonction juridique : violence institutionnelle et dépossession démocratique</h3>
+  <p class="txt">
+    Le corpus établit la chaîne causale : la « fabrique du non-recours » (complexité procédurale, digitalisation forcée, contrôle punitif —
+    base GAOCIT contestée par l'APD) épuise la bande passante cognitive des administrés, produit détresse psychique et
+    <b>« sécession civique »</b> — abstention, votes blancs, désinvestissement associatif que l'IWEPS mesure désormais comme 13ᵉ pilier
+    de l'exclusion (ISADF 2025). La pauvreté tue la démocratie ; la particratie finance son propre confort avec l'argent qui manque à la protection.
+  </p>
+  <p class="txt">
+    <b>Traduction contentieuse :</b> une <b>plainte collective devant le Comité européen des droits sociaux (CEDS)</b> a déjà été initiée
+    contre la Belgique pour inégalité numérique — précédent direct pour une réclamation collective élargie au non-recours structurel
+    (Charte sociale européenne, art. 12-13 et 30). C'est le front social du dossier, et il fournit aux fronts politiques leur
+    légitimation narrative : on n'attaque pas la rente des partis par jalousie budgétaire, mais parce qu'elle est financée par le
+    démantèlement de l'État protecteur.
+  </p>
+</section>
+
+<!-- ═══════ PIÈCE 03 — VERROUS ═══════ -->
+<section class="piece" id="verrous">
+  <div class="piece-tete"><span class="cote">PIÈCE 03</span><h2>Les six verrous <em>du système</em></h2></div>
+  <p class="intro">Chaque front contentieux vise un verrou précis. Les identifier, c'est comprendre pourquoi la voie politique est structurellement bloquée — et pourquoi seul le contentieux, interne et européen, peut faire sauter la serrure.</p>
+
+  <div class="verrous rv">
+    <div class="verrou"><span class="cadenas">🔒</span><div class="num">VERROU N° 1</div><h4>Article 195 — l'otage constituant</h4>
+      <p>Toute révision exige déclaration préalable, dissolution et majorité des deux tiers. La particratie contrôle chaque étape : elle ne votera jamais sa propre dissolution. Les articles 48 et 142, al. 5 figurent dans les déclarations de révision depuis 2019 — sans suite.</p></div>
+    <div class="verrou"><span class="cadenas">🔒</span><div class="num">VERROU N° 2</div><h4>Article 48 — l'auto-jugement électoral</h4>
+      <p>« Chaque Chambre vérifie les pouvoirs de ses membres. » Les élus valident leur propre élection, sans recours juridictionnel. Condamné par la Grande Chambre (<em>Mugemangango</em>, 2020), maintenu tel quel pour les scrutins du 9 juin 2024 — européennes comprises.</p></div>
+    <div class="verrou"><span class="cadenas">🔒</span><div class="num">VERROU N° 3</div><h4>Loi du 4 juillet 1989 — la rente</h4>
+      <p>Dotation réservée aux partis représentés ; dons privés étranglés (500 €/parti, personnes morales interdites) ; contrôle confié à une Commission composée des bénéficiaires. L'art. 15ter sanctionne l'hostilité à la CEDH mais ignore l'anéantissement du mandat libre : c'est la lacune attaquable.</p></div>
+    <div class="verrou"><span class="cadenas">🔒</span><div class="num">VERROU N° 4</div><h4>Article 42 — la fiction du mandat libre</h4>
+      <p>Statuts, chartes de loyauté, rétrocessions (60-70 % au PTB, non-réinvestiture ailleurs) organisent un mandat impératif de fait. Le règlement du Parlement wallon (art. 4.2) interdit pourtant explicitement toute instruction. Aucun tribunal belge ne s'est jamais prononcé sur la licéité de ces conventions — possible « cause illicite » (anc. art. 6 C.civ.).</p></div>
+    <div class="verrou"><span class="cadenas">🔒</span><div class="num">VERROU N° 5</div><h4>Les circuits parallèles de financement</h4>
+      <p>Fractietoelagen non plafonnés, collaborateurs parlementaires centralisés aux sièges (84,4 M€), détachements « gratuits » dans les cabinets (14,8 M€/an en Wallonie, non budgétés), ASBL et fondations satellites (Centre Jean Gol, IEV, CEPESS…), transferts intra-parti hors plafond — le plafond de 500 € devient pratiquement illimité au niveau du parti. Auditables par l'APPF depuis décembre 2025.</p></div>
+    <div class="verrou"><span class="cadenas">🔒</span><div class="num">VERROU N° 6</div><h4>L'immunité de structure — l'association de fait</h4>
+      <p>Les partis sont des associations de fait sans personnalité juridique, couplées à des ASBL de gestion : ni recours en annulation contre leurs statuts, ni responsabilité civile classique, ni compétence de la Cour constitutionnelle sur leurs actes internes. « L'État de droit s'arrête là où commencent les intérêts internes des partis » (CRISP). Ce verrou impose les stratégies de contournement (fronts I, IV, V, VI).</p></div>
+  </div>
+</section>
+
+<!-- ═══════ PIÈCE 04 — ÉCOSYSTÈME ═══════ -->
+<section class="piece" id="ecosysteme">
+  <div class="piece-tete"><span class="cote">PIÈCE 04</span><h2>L'écosystème <em>d'opacité</em></h2></div>
+  <p class="intro">
+    Les verrous ne tiennent pas seuls : ils sont protégés par un écosystème — organes extra-constitutionnels, capture réglementaire,
+    médias concentrés, ingérences hybrides. Chaque bloc de cet écosystème est à la fois un obstacle et une cible documentée, avec son levier propre.
+  </p>
+
+  <div class="eco rv">
+    <div class="bloc"><h4>Le Kern — para-légalité d'État</h4>
+      <p>Le Comité ministériel restreint arbitre tout, sans existence constitutionnelle (art. 99-101 organisent le Conseil des ministres, pas le Kern), sans base légale depuis l'abrogation de 1992, sans procès-verbaux. Le Conseil des ministres formel n'est plus qu'une chambre d'enregistrement — le juge ne contrôle que l'acte final, jamais le processus occulte.</p>
+      <div class="lev"><b>Levier</b>Art. 32 Const. + test Magyar Helsinki (CEDH GC, 2016) + Convention d'Aarhus (art. 4 et 6, jurisprudence Flachglas Torgau et Inter-Environnement Wallonie C-411/17) pour les décisions à incidence environnementale prises en Kern. L'absence structurelle de documents est elle-même la preuve de l'opacité.</div></div>
+    <div class="bloc"><h4>Cabinets ministériels — le financement occulte</h4>
+      <p>2 800-3 200 collaborateurs, &gt;200 M€/an dont la moitié invisible (détachés « à titre gratuit » non budgétés — 56 % du personnel des cabinets wallons). La doctrine documente des cabinets servant de « covert means of party financing ». La loi du 12 mai 2024 a intégré les cabinets à la publicité… en créant l'exception « exécution d'une stratégie politique » (art. 6 §1, 5°) qui neutralise l'avancée.</p>
+      <div class="lev"><b>Levier</b>L'exception « stratégie politique » est attaquable (art. 32 Const. + recommandations GRECO) ; le délai d'annulation directe est passé, mais la question préjudicielle reste ouverte. Chaque refus CADA documenté nourrit le dossier.</div></div>
+    <div class="bloc"><h4>Intercommunales &amp; ASBL para-publiques</h4>
+      <p>Publifin/Nethys (2,5 M€ de jetons pour comités fantômes, mandats d'arrêt 2021), Samusocial (renvoi correctionnel de Mayeur et Peraïta le 27.02.2026), Kazakhgate (transaction pénale élargie votée en « période suspecte »), inculpation Reynders pour blanchiment (04.11.2025). ~2 700 mandats dérivés malgré les décrets post-Publifin de 2018.</p>
+      <div class="lev"><b>Levier</b>Ces scandales prouvent le caractère systémique de la capture — matière première des mémoires de fait, des plaintes GRECO et des plaintes pénales avec constitution de partie civile en cas d'éléments précis.</div></div>
+    <div class="bloc"><h4>Lobbying — la capture réglementaire</h4>
+      <p>Bruxelles, 2ᵉ place mondiale du lobbying (&gt;13 000 entités, &gt;3 Mds €/an) ; registre fédéral volontaire et sans sanction (~180 inscrits à la Chambre contre ~12 500 à l'UE), rien dans les entités fédérées. Composition néo-corporatiste des régulateurs (pharma à la CRM, producteurs à la CREG). Pas d'équivalent de la HATVP française.</p>
+      <div class="lev"><b>Levier</b>Recommandations GRECO et Rule of Law Report (registre, empreinte législative, pantouflage) comme standards opposables ; documentation systématique pour le récit contentieux de la capture.</div></div>
+    <div class="bloc"><h4>Médias — concentration et asymétrie</h4>
+      <p>Fusion Rossel-IPM formalisée le 13 avril 2026 : un acteur unique domine la presse quotidienne francophone. Écart de confiance de 16 points entre Flandre (51 %) et Wallonie (35 %) ; évitement d'actualité à 64 % en Flandre. Le clivage linguistique est une vulnérabilité stratégique exploitée séparément par les acteurs d'influence.</p>
+      <div class="lev"><b>Levier</b>European Media Freedom Act (EMFA) + Media Pluralism Monitor comme référentiels ; pressions documentées sur la RTBF signalées au Conseil de l'Europe (plateforme sécurité des journalistes).</div></div>
+    <div class="bloc"><h4>Guerre narrative &amp; ingérences hybrides</h4>
+      <p>Voice of Europe (eurodéputés payés, confirmation De Croo 28.03.2024), Doppelganger, affaires Creyelman/MSS et Dewinter/Shao, drones sur Kleine-Brogel et Florennes (nov. 2025), menaces SVR liées aux avoirs Euroclear. La loi du 8 avril 2024 criminalise enfin l'ingérence (5 ans) et l'espionnage (10 ans).</p>
+      <div class="lev"><b>Levier</b>La défaillance démocratique interne (Qatargate, opacité) est réinjectée par les opérations FIMI — argument décisif : réparer la particratie est une question de sécurité nationale, pas d'idéologie. Cadre FIMI/SEAE + DSA art. 34-35 mobilisables.</div></div>
+  </div>
+</section>
+
+<!-- ═══════ PIÈCE 05 — ARSENAL ═══════ -->
+<section class="piece" id="arsenal">
+  <div class="piece-tete"><span class="cote">PIÈCE 05</span><h2>L'arsenal <em>jurisprudentiel</em></h2></div>
+  <p class="intro">Quinze décisions forment la colonne vertébrale du dossier. Chacune est une arme forgée par le système lui-même — filtrer par juridiction.</p>
+
+  <div class="filtres" role="group" aria-label="Filtrer la jurisprudence">
+    <button class="on" data-f="tous">Tous</button>
+    <button data-f="cedh">CEDH</button>
+    <button data-f="cjue">CJUE</button>
+    <button data-f="int">Juridictions belges</button>
+  </div>
+
+  <div class="arsenal">
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH · GRANDE CHAMBRE</span><span>10.07.2020</span></div>
+      <h5>Mugemangango c. Belgique</h5>
+      <p class="porte">Req. n° 310/15. L'auto-jugement parlementaire des contestations électorales viole l'art. 3 P1 et l'art. 13. Élu manqué à 14 voix, 21 385 bulletins litigieux, recomptage refusé par les concurrents directs.</p>
+      <div class="usage"><b>Usage stratégique</b>Clé de voûte. Fonde le Front IV (transposition UE), la soumission Règle 9.2, et par analogie l'attaque de la Commission de contrôle (même vice d'impartialité).</div>
+    </article>
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH</span><span>21.05.2019</span></div>
+      <h5>G.K. c. Belgique</h5>
+      <p class="porte">Vérification des pouvoirs au Sénat, démission forcée d'une sénatrice sous pression partisane : l'autonomie parlementaire cède devant la primauté du droit dans le contentieux électoral.</p>
+      <div class="usage"><b>Usage stratégique</b>Précédent jumeau de Mugemangango côté « pressions internes du parti » — pont entre contentieux électoral et mandat libre.</div>
+    </article>
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH</span><span>2025</span></div>
+      <h5>Tomenko c. Ukraine</h5>
+      <p class="porte">Le retrait forcé du mandat d'un élu par son parti pour dissidence politique est contraire aux principes d'élections libres.</p>
+      <div class="usage"><b>Usage stratégique</b>Munition directe des Fronts I et VI : la discipline belge (exclusion, non-réinvestiture, rétrocession) reproduit le mécanisme condamné.</div>
+    </article>
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH</span><span>02.03.1987</span></div>
+      <h5>Mathieu-Mohin et Clerfayt c. Belgique</h5>
+      <p class="porte">L'article 3 P1 garantit des droits subjectifs de vote et d'éligibilité — pas une simple obligation institutionnelle abstraite.</p>
+      <div class="usage"><b>Usage stratégique</b>Fondement de la qualité de victime individuelle dans toutes les requêtes strasbourgeoises du dossier ; déjà un précédent belge.</div>
+    </article>
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH · GRANDE CHAMBRE</span><span>22.12.2020</span></div>
+      <h5>Selahattin Demirtaş c. Turquie (n° 2)</h5>
+      <p class="porte">Violation de l'art. 18 combiné : usage des restrictions dans un but inavoué « d'étouffer le pluralisme et de limiter la liberté du débat politique ». Les immunités protègent le Parlement, non les députés individuellement.</p>
+      <div class="usage"><b>Usage stratégique</b>L'art. 18 est l'arme contre le détournement politique d'instruments légaux — notamment contre la loi Quintin et l'article 103 FWB (Front VII).</div>
+    </article>
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH · GC</span><span>08.11.2016</span></div>
+      <h5>Magyar Helsinki Bizottság c. Hongrie</h5>
+      <p class="porte">Test en quatre critères ouvrant un droit d'accès à l'information publique au titre de l'art. 10 : but, intérêt public, rôle de « chien de garde », information disponible. Effet direct en Belgique (Le Ski) ; « ensemble indissociable » avec l'art. 32 Const.</p>
+      <div class="usage"><b>Usage stratégique</b>Perce l'opacité du Kern, des cabinets et des documents partisans non publiés (Code de bonne conduite MR) — Pièce 04 et Front VI.</div>
+    </article>
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH</span><span>18.07.2023 / 09.04.2026</span></div>
+      <h5>Camara &amp; M.V. c. Belgique</h5>
+      <p class="porte">« Carence systémique » des autorités belges à exécuter les décisions de justice définitives ; astreintes impayées constatées par la Cour elle-même.</p>
+      <div class="usage"><b>Usage stratégique</b>Établit le caractère systémique — élément constitutif de la faute de l'État-législateur et argument de contexte devant toute juridiction.</div>
+    </article>
+    <article class="arret rv" data-j="cedh">
+      <div class="juri"><span>CEDH</span><span>08.04.2014</span></div>
+      <h5>Dhahbi c. Italie</h5>
+      <p class="porte">Le refus non motivé, par une juridiction de dernière instance, de poser une question préjudicielle à la CJUE viole l'art. 6 §1.</p>
+      <div class="usage"><b>Usage stratégique</b>Filet de sécurité du Front IV : si les juges belges refusent le renvoi à Luxembourg, le refus lui-même ouvre Strasbourg.</div>
+    </article>
+    <article class="arret rv" data-j="cjue">
+      <div class="juri"><span>CJUE · GRANDE CHAMBRE</span><span>02.03.2021</span></div>
+      <h5>A.B. e.a. (C-824/18)</h5>
+      <p class="porte">Le juge national doit laisser inappliquée toute disposition — y compris de rang constitutionnel — supprimant le contrôle juridictionnel effectif dans le champ du droit de l'Union.</p>
+      <div class="usage"><b>Usage stratégique</b>L'arme absolue du Front IV : l'article 48 est écartable pour les élections européennes. Confirmé par RS (C-430/21) sur la primauté.</div>
+    </article>
+    <article class="arret rv" data-j="cjue">
+      <div class="juri"><span>CJUE · GRANDE CHAMBRE</span><span>19.12.2019</span></div>
+      <h5>Junqueras Vies (C-502/19)</h5>
+      <p class="porte">La qualité de membre du Parlement européen découle du droit de l'Union ; les États ne peuvent y faire obstacle par leurs procédures internes.</p>
+      <div class="usage"><b>Usage stratégique</b>Établit que le contentieux des élections européennes est dans le champ du droit UE — condition d'applicabilité de l'art. 47 de la Charte.</div>
+    </article>
+    <article class="arret rv" data-j="cjue">
+      <div class="juri"><span>CJUE</span><span>30.04.2009 / 06.10.2021</span></div>
+      <h5>Donnici &amp; Consorzio Italian Management</h5>
+      <p class="porte">Donnici (C-393/07, C-9/08) : la vérification des pouvoirs au PE n'échappe pas au droit de l'Union. Consorzio (C-561/19) : encadrement strict du refus de renvoi préjudiciel en dernière instance.</p>
+      <div class="usage"><b>Usage stratégique</b>Le premier ouvre le champ matériel ; le second verrouille l'obligation de renvoi. Ensemble : le juge belge ne peut pas esquiver.</div>
+    </article>
+    <article class="arret rv" data-j="cjue">
+      <div class="juri"><span>CJUE · GC</span><span>04.07.2023 / 29.07.2019</span></div>
+      <h5>Meta Platforms (C-252/21) &amp; Inter-Environnement Wallonie (C-411/17)</h5>
+      <p class="porte">Meta : les opinions politiques inférées tombent sous l'art. 9 RGPD. Inter-Environnement : les arbitrages pris en Kern sans participation préalable violent les directives EIE/Habitats (suite : C. const. n° 34/2020).</p>
+      <div class="usage"><b>Usage stratégique</b>Le premier arme le Front II (micro-ciblage) ; le second est le cas d'école contre l'opacité décisionnelle du Kern (Pièce 04).</div>
+    </article>
+    <article class="arret rv" data-j="int">
+      <div class="juri"><span>CASS. / C.E. BELGIQUE</span><span>27.05.1971 / 05.11.1996</span></div>
+      <h5>Le Ski &amp; Orfinger</h5>
+      <p class="porte">Le Ski : primauté du droit international conventionnel d'effet direct. Orfinger : le Conseil d'État accepte, via l'art. 34 Const., la primauté du droit de l'Union sur la Constitution elle-même.</p>
+      <div class="usage"><b>Usage stratégique</b>Les fondations de l'ordre juridique belge, célébrées par l'establishment, deviennent les clés internes qui déverrouillent l'article 48.</div>
+    </article>
+    <article class="arret rv" data-j="int">
+      <div class="juri"><span>CASS. BELGIQUE</span><span>19.12.1991 / 28.09.2006</span></div>
+      <h5>Anca &amp; Ferrara</h5>
+      <p class="porte">Responsabilité de l'État pour le fait du pouvoir judiciaire (Anca), puis du pouvoir législatif (Ferrara) : la carence normative inconstitutionnelle est une faute aquilienne indemnisable. Nuance : Cass. 30.04.2015 sur l'identité faute/inconstitutionnalité.</p>
+      <div class="usage"><b>Usage stratégique</b>Le véhicule procédural des Fronts I, IV et VI : l'action 1382 contre l'État ouvre le litige dans lequel se posent les questions préjudicielles.</div>
+    </article>
+    <article class="arret rv" data-j="int">
+      <div class="juri"><span>C. APP. BRUXELLES / C. CONST.</span><span>30.11.2023 / 07.02.2001</span></div>
+      <h5>Klimaatzaak &amp; arrêt n° 10/2001</h5>
+      <p class="porte">Klimaatzaak : condamnation de l'État pour carence fautive systémique, 70 000+ co-demandeurs — mais refus d'injonction chiffrée (séparation des pouvoirs). Arrêt 10/2001 : validation du principe de conditionnalité démocratique du financement (15ter).</p>
+      <div class="usage"><b>Usage stratégique</b>Gabarit méthodologique du contentieux de masse + point d'appui du Front I : le principe d'une dotation conditionnelle est acquis, reste à plaider son asymétrie. Calibrer les demandes : constat de faute oui, injonction de légiférer non.</div>
+    </article>
+  </div>
+</section>
+
+<!-- ═══════ PIÈCE 06 — LES SEPT FRONTS ═══════ -->
+<section class="piece" id="fronts">
+  <div class="piece-tete"><span class="cote">PIÈCE 06</span><h2>Les sept fronts <em>contentieux</em></h2></div>
+  <p class="intro">
+    Trois fronts internes issus du corpus (I-III), deux fronts européens nouveaux (IV-V), un cas d'application nominatif (VI)
+    et un front défensif (VII). Ils ne sont pas alternatifs : ils sont <b>cumulatifs et séquencés</b>, chaque front produisant
+    le dossier de fait ou la contrainte juridique dont le suivant a besoin. Ouvrir chaque pièce pour le détail opérationnel.
+  </p>
+
+  <!-- FRONT I -->
+  <details class="front rv" open>
+    <summary>
+      <span class="fnum">I</span>
+      <span class="ftit"><h4>La lacune de l'article 15ter</h4><span class="sous">Question préjudicielle interne · inconstitutionnalité par omission</span></span>
+      <span class="badge b-actif">Corpus · prêt</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="corps">
+      <div class="fiche">
+        <div class="k">Cible</div><div>Loi du 4 juillet 1989, art. 15ter — le cœur financier de la particratie (75-108 M€/an ; indexation gelée jusqu'en 2029 par la loi de décembre 2025)</div>
+        <div class="k">Fondement</div><div>Art. 10, 11 et 42 Const. combinés · art. 3 P1 CEDH · lacune extrinsèque / incompétence négative du législateur</div>
+        <div class="k">Véhicule</div><div>Action en responsabilité civile (art. 1382 a.C.civ., jurisprudence Anca-Ferrara) devant le TPI francophone de Bruxelles → question préjudicielle à la Cour constitutionnelle (art. 26 L.S. 06.01.1989) ; en cas de refus de transmission, appel (le refus arbitraire est exclu par l'art. 26 §2)</div>
+        <div class="k">Requérants</div><div>Triangulation : LDH (demanderesse principale) + parlementaires dissidents PTB/MR + partis outsiders (voir Pièce 10)</div>
+        <div class="k">Horizon</div><div>30-36 mois jusqu'à l'arrêt de la Cour constitutionnelle</div>
+      </div>
+      <p><b>La thèse :</b> l'article 15ter permet de priver de dotation un parti hostile aux droits garantis par la CEDH — la « démocratie militante » contre l'ennemi extérieur — mais reste muet sur les partis qui anéantissent de l'intérieur le mandat libre de l'article 42 par leurs statuts, chartes de loyauté et rétrocessions obligatoires. Cette asymétrie constitue une discrimination entre deux atteintes équivalentes à l'ordre constitutionnel. Argument complémentaire : la convention de rétrocession comme <b>convention à cause illicite</b> (anc. art. 6 C.civ.) — vide jurisprudentiel total, révélateur en soi.</p>
+      <div class="qp">
+        « L'article 15ter de la loi du 4 juillet 1989 viole-t-il les articles 10 et 11 de la Constitution, lus en combinaison avec l'article 42 et l'article 3 du Protocole n° 1, en ce qu'il ne prévoit aucune privation de dotation pour un parti qui impose à ses mandataires une rétrocession statutaire de leur indemnité ou une obligation contraignante de discipline de vote sous peine de sanctions — établissant ainsi de facto un mandat impératif prohibé — alors qu'il sanctionne l'hostilité aux droits garantis par la CEDH ? »
+        <span class="src">FORMULATION CONSOLIDÉE — DOSSIER REFONDATION, ANNEXE A (VERSION ABRÉGÉE)</span>
+      </div>
+      <p><b>Ce que produit ce front même en cas de rejet :</b> la Cour constitutionnelle est contrainte, pour la première fois, de se prononcer explicitement sur le rapport entre le droit constitutionnel et la réalité particratique. Chaque attendu devient une pièce pour les fronts IV, V et VI et pour Strasbourg. Objectif final revendiqué par le corpus : contraindre à une <b>Loi organique des partis politiques</b>.</p>
+    </div>
+  </details>
+
+  <!-- FRONT II -->
+  <details class="front rv">
+    <summary>
+      <span class="fnum">II</span>
+      <span class="ftit"><h4>La publicité politique</h4><span class="sous">TTPA · RGPD · DSA — assécher la machine de propagande numérique</span></span>
+      <span class="badge b-actif">Corpus · actif depuis 10.2025</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="corps">
+      <div class="fiche">
+        <div class="k">Cible</div><div>Les 15,1 M€ de micro-ciblage des partis belges en 2024 — parmi les plus gros dépensiers d'Europe (VB : ~1,5 M€ sur Meta ; réseaux TikTok fantômes documentés par VRT NWS)</div>
+        <div class="k">Fondement</div><div>Règlement (UE) 2024/900 (TTPA, applicable depuis le 10.10.2025) · art. 9 RGPD (Meta Platforms, C-252/21 : opinions inférées = données sensibles) · art. 34-35 DSA (risques systémiques pour le débat civique)</div>
+        <div class="k">Véhicule</div><div>Audit Meta Ad Library / Google Transparency corrélé aux comptes des partis → plaintes IBPT + APD + réclamations citoyennes de masse (art. 25 TTPA, campagne « 10 000 réclamations ») · signalement EDPB si inaction · plainte Commission (art. 258) · QP CJUE sur l'art. 25 TTPA en action en cessation</div>
+        <div class="k">Levier inédit</div><div>Art. 15ter : la violation systématique du TTPA comme « hostilité » aux droits CEDH (art. 8, vie privée) — jonction avec le Front I, saisine du Conseil d'État pour suppression de dotation. Plaidable mais inédit.</div>
+        <div class="k">Signal de marché</div><div>Meta a suspendu la publicité politique dans l'UE (25.07.2025) en invoquant le TTPA — la contrainte est réelle ; précédent Chez Nous : astreintes prononcées par le tribunal de Liège (mai 2024)</div>
+      </div>
+      <p><b>La logique :</b> les partis établis ont converti leur rente publique en saturation publicitaire numérique. Le TTPA interdit le ciblage sur données politiques inférées même avec consentement (art. 19) et impose marquage et transparence. Chaque annonce non conforme depuis octobre 2025 est une infraction documentable par simple extraction, corrélée aux rapports financiers.</p>
+    </div>
+  </details>
+
+  <!-- FRONT III -->
+  <details class="front rv">
+    <summary>
+      <span class="fnum">III</span>
+      <span class="ftit"><h4>Le mandat citoyen contractuel</h4><span class="sous">Retourner l'article 42 — l'engagement volontaire du candidat</span></span>
+      <span class="badge b-prep">Corpus · ingénierie</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="corps">
+      <div class="fiche">
+        <div class="k">Cible</div><div>Le monopole partisan sur les engagements des élus</div>
+        <div class="k">Fondement</div><div>L'art. 42 interdit le mandat impératif imposé par la collectivité — il laisse intact le champ des obligations volontairement contractées par le candidat lui-même (doctrine Verdussen, Delpérée ; divergence Bourgaux à anticiper)</div>
+        <div class="k">Véhicule</div><div>Charte d'engagement publique signée par les candidats (transparence des votes, refus de rétrocession, reddition de comptes), opposable sur le terrain du droit des obligations</div>
+        <div class="k">Effet miroir</div><div>Si les chartes de loyauté partisanes sont licites, la charte citoyenne l'est a fortiori ; si la charte citoyenne est jugée contraire à l'art. 42, alors les chartes partisanes tombent avec elle</div>
+      </div>
+      <p><b>Le piège logique :</b> ce front place la particratie devant un dilemme sans issue. Contester le mandat citoyen contractuel, c'est fournir le précédent qui invalide les chartes de loyauté internes des partis — dont les rétrocessions et la discipline. Le tolérer, c'est ouvrir la représentation à la concurrence des engagements.</p>
+    </div>
+  </details>
+
+  <!-- FRONT IV — NOUVEAU -->
+  <details class="front nouveau rv" open>
+    <summary>
+      <span class="fnum">IV</span>
+      <span class="ftit"><h4>Le circuit européen contentieux</h4><span class="sous">Art. 258 TFUE × art. 47 Charte — contourner l'article 48 par Luxembourg</span></span>
+      <span class="badge b-immediat">Nouveau · activable</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="corps">
+      <div class="fiche">
+        <div class="k">Cible</div><div>L'article 48 de la Constitution — le verrou que ni la Cour constitutionnelle ni Strasbourg ne peuvent faire sauter</div>
+        <div class="k">Fondement</div><div>Art. 14 §3 TUE · art. 39 et 47 Charte · Acte électoral de 1976 · primauté (A.B. C-824/18, RS C-430/21) · art. 52 §3 Charte alignant le standard sur Mugemangango · relais internes : art. 34 et 145 Const., Le Ski, Orfinger</div>
+        <div class="k">Fait générateur</div><div>Les élections du 9 juin 2024 — européennes comprises — validées sous le régime condamné ; le plan d'action belge au Conseil de l'Europe (DH-DD(2022)1430) admet lui-même que l'élection des membres belges du PE est concernée</div>
+        <div class="k">Véhicules</div><div>① Plainte CHAP à la Commission (art. 258) · ② Pétition PETI (art. 227) · ③ Action 1382 d'un candidat PE 2024 → question préjudicielle CJUE · ④ Kit pré-positionné 2029</div>
+        <div class="k">Arme d'exécution</div><div>Ce qui manque à Strasbourg : arrêt en manquement + astreinte journalière (art. 260 TFUE) + responsabilité Köbler du juge récalcitrant</div>
+        <div class="k">Prescription</div><div>Action 1382 : 5 ans — un candidat de juin 2024 peut agir jusqu'en 2029</div>
+      </div>
+      <p><b>Le mécanisme :</b> les élections du Parlement européen relèvent du champ du droit de l'Union. L'article 47 de la Charte y garantit un recours devant un <b>tribunal</b> — pas devant une assemblée de concurrents élus. Or la CJUE impose au juge national d'écarter toute norme, <b>même constitutionnelle</b>, qui supprime ce contrôle (<span class="ref">A.B., C-824/18</span>). L'article 48 est donc constitutionnellement transparent pour ce contentieux.</p>
+      <div class="qp">
+        « L'article 14, §3 TUE, les articles 39 et 47 de la Charte, lus conjointement avec l'Acte portant élection des membres du Parlement européen, s'opposent-ils à une réglementation nationale qui confie exclusivement aux assemblées composées de membres élus lors du scrutin contesté la compétence de statuer sur les réclamations postélectorales relatives à l'élection des membres du Parlement européen, sans recours devant un organe juridictionnel indépendant ? »
+        <span class="src">QUESTION PRÉJUDICIELLE CJUE — PROJET DE FORMULATION (FRONT IV)</span>
+      </div>
+      <p><b>L'effet retour — le coin dans la Constitution :</b> le jour où un juge crée le recours pour le bulletin européen, la discrimination avec le bulletin fédéral (même électeur, même isoloir, même journée) devient intenable : nouvelle QP interne sur les articles 10-11, et pression politique insoutenable. On ne demande plus la révision de l'article 48 — on crée le précédent qui la rend inévitable.</p>
+      <p><b>Filet de sécurité :</b> refus de renvoi non motivé en dernière instance (<span class="ref">Consorzio, C-561/19</span>) → requête à Strasbourg (<span class="ref">Dhahbi c. Italie</span>) dans les 4 mois. La boucle se referme sur eux quel que soit le chemin.</p>
+    </div>
+  </details>
+
+  <!-- FRONT V — NOUVEAU -->
+  <details class="front nouveau rv" open>
+    <summary>
+      <span class="fnum">V</span>
+      <span class="ftit"><h4>Le levier APPF</h4><span class="sous">Règlement (UE, Euratom) 2025/2445 — la pression descendante des familles européennes</span></span>
+      <span class="badge b-immediat">Nouveau · activable</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="corps">
+      <div class="fiche">
+        <div class="k">Cible</div><div>Les partis politiques européens auxquels sont affiliés les partis belges (PS→PES, MR→Renew/ALDE, CD&V &amp; Les Engagés→PPE, N-VA→ECR, Vooruit→PES…)</div>
+        <div class="k">Fondement</div><div>Règlement 2025/2445 (refonte, en vigueur depuis le 28.12.2025) : interdiction du financement direct ou indirect de partis nationaux · documentation obligatoire des dépenses communes · vérification du respect des valeurs de l'art. 2 TUE</div>
+        <div class="k">Fait générateur</div><div>Campagnes communes des européennes 2024 : porosité documentée entre financement européen, fractietoelagen et personnel parlementaire travaillant aux sièges (84,4 M€/an)</div>
+        <div class="k">Véhicule</div><div>Plainte documentée à l'APPF fondée sur les données publiques KU Leuven / Vives Briefing, visant un audit formel des dépenses communes belgo-européennes</div>
+        <div class="k">Levier financier</div><div>~50 M€/an de dotations UE aux partis européens : le comportement d'un membre national devient un risque financier pour toute la famille politique</div>
+        <div class="k">Coût / délai</div><div>Quasi nul — dossier documentaire existant, formulaire APPF</div>
+      </div>
+      <p><b>La logique de la mâchoire :</b> ce front ne demande rien aux partis belges — il crée un intérêt institutionnel propre chez leurs affiliés européens à les discipliner. Perdre une fraction de sa dotation UE à cause des pratiques d'un membre national est un argument que les secrétaires généraux du PES, du PPE ou de Renew comprennent immédiatement. La pression vient de l'intérieur de la famille politique, hors de portée de l'article 195.</p>
+      <p><b>Jonction avec le Front IV :</b> la non-exécution de Mugemangango — violation constatée des standards démocratiques du Conseil de l'Europe — alimente le grief « valeurs de l'article 2 TUE » ; réciproquement, tout audit APPF produit des pièces comptables exploitables devant les juridictions nationales.</p>
+    </div>
+  </details>
+
+  <!-- FRONT VI — CAS D'APPLICATION -->
+  <details class="front rv">
+    <summary>
+      <span class="fnum">VI</span>
+      <span class="ftit"><h4>Le cas d'application : la présidence MR</h4><span class="sous">Dossier Bouchez — la « présidencratie » comme laboratoire probatoire</span></span>
+      <span class="badge b-actif">Corpus · dossier constitué</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="corps">
+      <div class="fiche">
+        <div class="k">Cible</div><div>La concentration du pouvoir présidentiel sans encadrement opposable — le MR comme cas le plus densément documenté (le PTB étant plus contraignant, mais par des règles écrites)</div>
+        <div class="k">Faits documentés</div><div>Démission contrainte de J.-L. Crucke (10.01.2022) · affiliation unilatérale Pozzi contre les instances (01.2025) · interdiction de plateau imposée à M. De Maegd (03.09.2025) puis départ et dénonciation d'une « présidencratie » (06.01.2026) · exclusion du bureau de S. Wilmès (543 821 voix de préférence) · sanctions informelles (Wahl, M. Michel) · réélection à 95,76 %</div>
+        <div class="k">Vices statutaires</div><div>Art. 27 : Conseil de conciliation et d'arbitrage 100 % politique, sanctions non énumérées (contraire à la prévisibilité, Rec(2003)4 CdE) · art. 20 §2 : adhésion obligatoire aux décisions du groupe vs art. 42 Const. · statuts post-2021 et « Code de bonne conduite » non publiés</div>
+        <div class="k">Voies séquencées</div><div>① Demande formelle des statuts à jour ; refus = constat d'huissier + art. 32 Const. par analogie (fonds publics) + test Magyar Helsinki · ② Plainte GRECO (déficit de transparence statutaire, organes disciplinaires non indépendants) · ③ Recours C.E. contre toute décision de la Commission de contrôle relative au MR (incompatibilité art. 27 statuts / art. 42 Const. + art. 3 P1) · ④ CEDH après épuisement (lignes Refah Partisi / Ždanoka : libre expression de l'opinion du peuple)</div>
+        <div class="k">Valeur stratégique</div><div>Ce dossier fournit la matière probatoire concrète et médiatisable dont les Fronts I et V ont besoin — noms, dates, citations publiques, statuts comparés (art. 79 PS vs art. 27 MR)</div>
+      </div>
+      <p><b>Prudences du corpus :</b> pas de précédent direct art. 42 contre la discipline de parti ; sources anonymes (« tyran », « maniaque du contrôle ») à faible valeur probatoire sans déposition ; frontière délicate entre comportement personnel d'un président et structure du parti ; dossier à actualiser tous les trois mois. L'argument se construit par <b>combinaison art. 42 + art. 3 P1</b>, jamais sur l'art. 42 isolé.</p>
+    </div>
+  </details>
+
+  <!-- FRONT VII — DÉFENSIF -->
+  <details class="front defensif rv" open>
+    <summary>
+      <span class="fnum">VII</span>
+      <span class="ftit"><h4>Le front défensif</h4><span class="sous">Loi Quintin · article 103 FWB — protéger l'infrastructure citoyenne du contentieux</span></span>
+      <span class="badge b-def">Défensif · urgent</span>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="corps">
+      <div class="fiche">
+        <div class="k">Menace 1</div><div><b>Loi Quintin</b> (dissolution/interdiction administrative des organisations « radicales ») : définitions floues de l'atteinte à l'ordre public, pouvoirs de police administrative aux bourgmestres — « arme idéologique au service de l'exécutif ». Risque direct pour toute ASBL anti-particratie.</div>
+        <div class="k">Menace 2</div><div><b>Article 103 du décret-programme FWB (17.12.2025)</b> : 8 critères de « proximité politique » ; 4 critères sur 5 ans = renouvellement d'un an au lieu de cinq, définancement total visé en 2027. Rétroactivité, critères vagues (symboles, événements conjoints, personnel partagé) — filtrage idéologique de l'éducation permanente, pilier du décret du 17.07.2003.</div>
+        <div class="k">Fondement du recours</div><div>Art. 27 Const. (liberté d'association) · art. 10-11 CEDH · art. 18 CEDH (détournement de but — ligne Demirtaş) · principe de sécurité juridique (rétroactivité) · pluralisme (art. 11bis, standards Venise)</div>
+        <div class="k">Véhicules</div><div>Recours en annulation à la Cour constitutionnelle contre l'art. 103 (porté par la FESEFA — en cours) et contre la loi Quintin dès promulgation (délai : 6 mois) · référé + mesure provisoire art. 39 CEDH si dommage imminent · Observatoire de la liberté associative (2026) pour le monitoring · protection lanceurs d'alerte (lois de 2022, IFDH) pour les sources internes</div>
+        <div class="k">Arsenal préparé</div><div>Le corpus contient un plan complet (« arsenal Quintin ») : phases, juridictions, mesures d'urgence, saisines internationales (Rapporteurs spéciaux ONU liberté d'association, Commission de Venise, EPU)</div>
+      </div>
+      <p><b>Pourquoi c'est un front à part entière :</b> toute la stratégie repose sur une infrastructure — ASBL porteuses, associations d'éducation permanente, coalition de co-demandeurs. L'État l'a compris : Quintin et l'article 103 visent précisément cette infrastructure. Défendre l'éducation permanente et la liberté associative n'est pas un combat annexe, c'est <b>protéger les lignes de ravitaillement du contentieux</b>. Et chaque attaque contre les contradicteurs documente la thèse : un État qui dissout ou définance ses critiques valide publiquement le diagnostic de dérive.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ═══════ PIÈCE 07 — TRANSVERSAL ═══════ -->
+<section class="piece" id="transversal">
+  <div class="piece-tete"><span class="cote">PIÈCE 07</span><h2>Instruments <em>transversaux</em></h2></div>
+  <p class="intro">
+    Huit mécanismes irriguent l'ensemble des fronts. Ils ne tranchent rien — ils construisent le dossier international et documentaire
+    qui pèse sur chaque juge, chaque rapporteur, chaque négociation.
+  </p>
+
+  <div class="verrous">
+    <div class="verrou rv" style="border-color:var(--greffe)"><div class="num" style="color:var(--greffe)">INSTRUMENT A</div><h4>Règle 9.2 — Comité des Ministres</h4>
+      <p>Toute ONG peut déposer une communication écrite dans la surveillance de l'exécution de <em>Mugemangango</em> (publiée sur HUDOC-EXEC) : documenter que les scrutins de 2024 se sont tenus sous le régime condamné, demander le passage en surveillance soutenue et une résolution intérimaire. Coût nul, trace officielle au Conseil de l'Europe.</p></div>
+    <div class="verrou rv" style="border-color:var(--greffe)"><div class="num" style="color:var(--greffe)">INSTRUMENT B</div><h4>GRECO — Règle 32</h4>
+      <p>Belgique en procédure de non-conformité depuis le 3ᵉ cycle (2009) sur le financement des partis ; 5ᵉ cycle : 16/22 recommandations non mises en œuvre, addendum de décembre 2025. Plaintes documentées à alimenter (Fronts I et VI) ; chaque rapport nourrit la faute systémique et les rapports État de droit.</p></div>
+    <div class="verrou rv" style="border-color:var(--greffe)"><div class="num" style="color:var(--greffe)">INSTRUMENT C</div><h4>Transparence — art. 32 Const. / CADA</h4>
+      <p>Test Magyar Helsinki + art. 32 en « ensemble indissociable ». La CADA fédérale reste purement consultative (seule CADA belge sans pouvoir décisionnel — les CADA wallonne, FWB, bruxelloise et flamande décident) ; proposition de loi fin 2025 pour la rendre contraignante. Chaque refus documenté devient une pièce d'opacité opposable.</p></div>
+    <div class="verrou rv" style="border-color:var(--greffe)"><div class="num" style="color:var(--greffe)">INSTRUMENT D</div><h4>Pétition PETI &amp; plainte CHAP</h4>
+      <p>Pétition au Parlement européen (art. 227 TFUE) — le PE est directement lésé : ce sont ses membres dont l'élection est validée par un organe condamné. Plainte formelle à la Commission (registre CHAP) avec, en pièce maîtresse, l'aveu écrit du gouvernement belge dans son propre plan d'action.</p></div>
+    <div class="verrou rv" style="border-color:var(--violet)"><div class="num" style="color:var(--violet)">INSTRUMENT E</div><h4>CEDS — réclamations collectives</h4>
+      <p>La Belgique a accepté le protocole des réclamations collectives : une plainte pour inégalité numérique est déjà initiée. Extension possible au non-recours structurel (Charte sociale, art. 12-13, 30) — le front social sans exigence d'épuisement des voies internes ni de victime individuelle.</p></div>
+    <div class="verrou rv" style="border-color:var(--violet)"><div class="num" style="color:var(--violet)">INSTRUMENT F</div><h4>Lanceurs d'alerte — lois de 2022</h4>
+      <p>Transposition de la directive 2019/1937 (secteurs privé et public, fraude fiscale et sociale incluses) ; &gt;200 plaintes fédérales fin 2025 ; canaux internes obligatoires. Fragmentation et absence de fonds de soutien critiquées par l'IFDH — mais l'inversion de la charge de la preuve protège les sources internes des partis, cabinets et intercommunales.</p></div>
+    <div class="verrou rv" style="border-color:var(--violet)"><div class="num" style="color:var(--violet)">INSTRUMENT G</div><h4>Aarhus — l'angle environnemental</h4>
+      <p>Convention d'effet direct partiel (art. 4, 6) : toute décision à incidence environnementale arbitrée en Kern sans participation préalable est irrégulière (précédent Inter-Environnement Wallonie C-411/17 → C. const. n° 34/2020, Doel 1-2). Standing élargi des ASBL — le seul contentieux belge où l'intérêt à agir est souple.</p></div>
+    <div class="verrou rv" style="border-color:var(--violet)"><div class="num" style="color:var(--violet)">INSTRUMENT H</div><h4>La boîte à outils citoyenne</h4>
+      <p>Le guide citoyen du corpus cartographie les portes gratuites : médiateurs (fédéral, régionaux), CADA, APD, Comité P, CSJ, aide juridique, tribunal du travail sans avocat, questions parlementaires, pétitions (droit de pétition électronique, commissions délibératives bruxelloises). L'éducation permanente ajoute la dimension collective : « seul tu écris au Médiateur ; à 500, tu déposes une pétition à la Chambre ; à 5 000, tu fais bouger une loi ».</p></div>
+  </div>
+</section>
+
+<!-- ═══════ PIÈCE 08 — CONVERGENCE ═══════ -->
+<section class="piece" id="machoire">
+  <div class="piece-tete"><span class="cote">PIÈCE 08</span><h2>La convergence : <em>anatomie de la mâchoire</em></h2></div>
+  <p class="intro">
+    Aucun front, pris isolément, ne suffit — le corpus le dit explicitement : « aucun de ces leviers, pris isolément, ne suffit ;
+    leur combinaison séquencée est la stratégie ». Les fronts internes produisent le <b>constat</b>, les fronts européens produisent
+    la <b>contrainte</b>, les instruments transversaux produisent la <b>pression</b>, le front défensif protège l'<b>infrastructure</b>.
+  </p>
+
+  <div class="machoire rv">
+    <div class="mach haut">
+      <div class="eti">Mâchoire supérieure — le droit</div>
+      <h4>Fronts I · II · IV · VI</h4>
+      <p>Question préjudicielle interne (lacune 15ter), infractions TTPA documentées, procédure en manquement et renvoi CJUE sur l'article 48, dossier probatoire MR. Chaque décision — même de rejet — force le système à écrire noir sur blanc ce qu'il préférerait laisser tacite.</p>
+    </div>
+    <div class="mach bas">
+      <div class="eti">Mâchoire inférieure — l'argent et la légitimité</div>
+      <h4>Fronts III · V · VII + GRECO + CEDS</h4>
+      <p>Conditionnalité de la dotation nationale (15ter réformé), risque de dotation européenne (APPF), coût réputationnel international (Règle 32, rapports État de droit), front social (CEDS), concurrence des engagements (mandat citoyen), défense de l'infrastructure associative.</p>
+    </div>
+    <div class="etau">
+      <div class="eti">Le point de compression</div>
+      <h4>L'auto-jugement devient indéfendable</h4>
+      <p>Validation des élections, contrôle du financement, subsides de groupes, discipline interne : tout repose sur le même vice — les partis juges de leurs propres affaires. Mugemangango a fissuré la clé de voûte ; les sept fronts élargissent la fissure jusqu'à l'effondrement contrôlé du mécanisme.</p>
+    </div>
+  </div>
+
+  <div class="regle rv">
+    <div class="eti">Règle d'or de la stratégie</div>
+    <p>Ne jamais demander au système de se réformer lui-même. <em>Créer les conditions dans lesquelles des acteurs extérieurs — CJUE, Commission, APPF, CEDS, familles politiques européennes — ont un intérêt institutionnel propre à imposer la réforme.</em></p>
+  </div>
+</section>
+
+<!-- ═══════ PIÈCE 09 — CALENDRIER ═══════ -->
+<section class="piece" id="calendrier">
+  <div class="piece-tete"><span class="cote">PIÈCE 09</span><h2>Calendrier <em>opérationnel</em></h2></div>
+  <p class="intro">
+    Séquençage consolidé 2026-2030, fusionnant le plan 0-36 mois du corpus (Front I) et les étages européens nouveaux.
+    Contexte : pas d'élection nationale avant 2029, communales en 2030 — la fenêtre contentieuse est ouverte. Budget de référence
+    (méthode Klimaatzaak) : 5-8 ans, ≥ 500 000 €, crowdfunding et co-demandeurs gratuits.
+  </p>
+
+  <div class="timeline rv">
+    <div class="jalon now">
+      <div class="quand">Étage 1 — Semaines 1 à 4 · coût quasi nul</div>
+      <h4>La salve documentaire</h4>
+      <ul>
+        <li><b>Plainte APPF</b> (Front V) : défaut de documentation des dépenses communes 2024, risque de financement indirect via fractietoelagen — pièces : rapports KU Leuven 2024-2025, Vives Briefing 2022/04.</li>
+        <li><b>Soumission Règle 9.2</b> au Comité des Ministres (Mugemangango) : élections 2024 tenues sous régime condamné ; demande de surveillance soutenue.</li>
+        <li><b>Plainte CHAP</b> à la Commission européenne : manquement art. 14 §3 TUE + art. 47 Charte — pièce maîtresse : DH-DD(2022)1430.</li>
+        <li><b>Pétition PETI</b> (art. 227 TFUE) au Parlement européen.</li>
+        <li><b>Veille défensive</b> (Front VII) : suivi du recours FESEFA contre l'art. 103 ; arsenal Quintin en pré-alerte.</li>
+      </ul>
+    </div>
+    <div class="jalon">
+      <div class="quand">Phase 1 — Mois 0 à 6</div>
+      <h4>Dossier probatoire</h4>
+      <ul>
+        <li>Compilation des statuts, règlements et chartes de loyauté <b>PTB et MR</b> (versions comparées) ; demande formelle des documents non publiés (Code de bonne conduite MR, statuts post-2021) — refus = constat d'huissier + art. 32 par analogie.</li>
+        <li>Chronologie horodatée des témoignages publics des défectionnaires (Handichi, Dupont, Aït Alouha, De Maegd, Crucke) — privilégier le public pour la force probatoire.</li>
+        <li>Étude empirique de la cohésion partisane (Depauw, Verleden, de Vet) ; <b>plainte GRECO</b> documentée.</li>
+        <li><b>Audit TTPA</b> : extraction Meta/Google, corrélation avec les comptes 2024-2025 ; premières plaintes IBPT/APD (Front II).</li>
+      </ul>
+    </div>
+    <div class="jalon">
+      <div class="quand">Phase 2 — Mois 6 à 12</div>
+      <h4>Coalition et requérants</h4>
+      <ul>
+        <li>Recrutement des requérants (1 à 3 profils combinés <b>PTB + MR</b> pour blinder le caractère structurel) + <b>candidat PE 2024</b> (Front IV).</li>
+        <li>Comité de soutien interdisciplinaire : constitutionnalistes (Verdussen, Dumont, Bouhon, Uyttendaele), juristes (AVOCATS.BE, LDH, IFDH), ONG (We Need To Talk, Collectif21, Anticor Belgique).</li>
+        <li>Financement : crowdfunding juridique, fondations, co-demandeurs de masse ; stratégie médiatique coordonnée (Le Vif, La Libre, Le Soir, Apache, Médor, RTBF Investigation).</li>
+      </ul>
+    </div>
+    <div class="jalon">
+      <div class="quand">Phase 3 — Mois 12 à 18</div>
+      <h4>Assignations</h4>
+      <ul>
+        <li>Citations en responsabilité civile contre l'État devant le TPI francophone de Bruxelles — <b>deux litiges distincts, deux questions préjudicielles</b> (Front I : Cour constitutionnelle ; Front IV : CJUE).</li>
+        <li>Conclusions intégrant la demande formelle de transmission, formulations pré-rédigées, pièces GRECO/CEDH.</li>
+      </ul>
+    </div>
+    <div class="jalon">
+      <div class="quand">Phase 4 — Mois 18 à 36</div>
+      <h4>Les questions préjudicielles</h4>
+      <ul>
+        <li>Transmission de la QP interne à la <b>Cour constitutionnelle</b> (lacune 15ter) — arrêt attendu à 30-36 mois. Si refus de transmission : appel (le refus arbitraire est exclu).</li>
+        <li>Renvoi préjudiciel à la <b>CJUE</b> (article 48 / élections européennes) — réponse à 12-18 mois du renvoi ; refus non motivé en dernière instance = requête CEDH (Dhahbi) sous 4 mois.</li>
+        <li>Suivi APPF / CHAP ; alimentation continue des rapports État de droit et GRECO ; réclamation collective CEDS élargie au non-recours.</li>
+      </ul>
+    </div>
+    <div class="jalon">
+      <div class="quand">Étage final — Horizon 2029-2030</div>
+      <h4>Le kit électoral pré-positionné</h4>
+      <ul>
+        <li>Réclamation type déposée <b>le soir du scrutin</b> de 2029, assignation prête, QP rédigée, candidats identifiés dès 2027.</li>
+        <li>Quel que soit l'état des réformes : soit le recours juridictionnel existe (victoire), soit sa privation est immédiatement contentieuse devant Luxembourg et Strasbourg (victoire différée).</li>
+        <li>Réplication communale 2030 le cas échéant.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PIÈCE 10 — REQUÉRANTS ═══════ -->
+<section class="piece" id="requerants">
+  <div class="piece-tete"><span class="cote">PIÈCE 10</span><h2>Requérants &amp; <em>coalition — la triangulation</em></h2></div>
+  <p class="intro">
+    L'intérêt à agir est le premier champ de bataille de tout contentieux belge. Le corpus a dépassé les profils abstraits :
+    il propose une <b>triangulation nominative</b> articulant société civile, élus dissidents et partis outsiders — chaque
+    pointe du triangle couvrant la faiblesse procédurale des deux autres.
+  </p>
+
+  <table class="req rv">
+    <thead><tr><th>Profil</th><th>Front(s)</th><th>Rôle dans la triangulation</th><th>Point d'attention</th></tr></thead>
+    <tbody>
+      <tr>
+        <td data-l="Profil">Ligue des droits humains (ASBL)</td>
+        <td data-l="Fronts">I · VII · instruments</td>
+        <td data-l="Rôle">Demanderesse principale : stabilité structurelle et financière de l'action collective ; argumentaire doctrinal (État de droit, Quintin, GRECO)</td>
+        <td data-l="Attention">Cible potentielle de la loi Quintin — le Front VII la protège</td>
+      </tr>
+      <tr>
+        <td data-l="Profil">Parlementaires dissidents : R. Aït Alouha, E. Ampe, J. Dupont, Y. Handichi</td>
+        <td data-l="Fronts">I · VI · CEDH</td>
+        <td data-l="Rôle">Intérêt personnel, direct et actuel le plus robuste ; preuves matérielles de la coercition (statuts PTB de rétrocession, courriers, retraits de commissions au MR) ; préjudice financier = recevabilité de l'action 1382</td>
+        <td data-l="Attention">Combiner des profils PTB <em>et</em> MR pour blinder le caractère structurel du grief ; la CEDH exclut l'actio popularis (Le Mailloux, 2020)</td>
+      </tr>
+      <tr>
+        <td data-l="Profil">Défectionnaires MR documentés : De Maegd, Crucke (+ Wilmès, Wahl, Nikolic comme témoins)</td>
+        <td data-l="Fronts">VI</td>
+        <td data-l="Rôle">Matière probatoire publique et horodatée du mandat impératif présidentialisé — citations, dates, sanctions</td>
+        <td data-l="Attention">Sources anonymes de presse à faible valeur sans déposition ; actualisation trimestrielle du dossier</td>
+      </tr>
+      <tr>
+        <td data-l="Profil">Partis outsiders : Vista, Oxygène, Volt (Pro)</td>
+        <td data-l="Fronts">I · V</td>
+        <td data-l="Rôle">Co-demandeurs ou tiers-intervenants : matérialisent la distorsion de concurrence (dotation réservée aux sortants, dons à 500 €) — la rente s'auto-alimente contre le pluralisme</td>
+        <td data-l="Attention">Coordonner sans dépendre d'un seul mouvement ; fragilité organisationnelle</td>
+      </tr>
+      <tr>
+        <td data-l="Profil">Candidat aux européennes du 9 juin 2024</td>
+        <td data-l="Fronts">IV</td>
+        <td data-l="Rôle">Privation directe d'un recours garanti par l'art. 47 Charte ; prescription 1382 courant jusqu'en 2029</td>
+        <td data-l="Attention">Documenter la réclamation introduite (ou son inutilité manifeste au sens de Mugemangango)</td>
+      </tr>
+      <tr>
+        <td data-l="Profil">Secteur de l'éducation permanente (FESEFA et associations)</td>
+        <td data-l="Fronts">VII</td>
+        <td data-l="Rôle">Recours en annulation contre l'art. 103 déjà porté à la Cour constitutionnelle ; Observatoire de la liberté associative (2026) pour le monitoring</td>
+        <td data-l="Attention">Ne pas laisser isoler le front culturel du front politique — même adversaire, même logique</td>
+      </tr>
+      <tr>
+        <td data-l="Profil">Coalition de co-demandeurs (masse) + comité scientifique</td>
+        <td data-l="Fronts">I · IV</td>
+        <td data-l="Rôle">Modèle Klimaatzaak (70 000+ co-demandeurs) ; comité : Verdussen, Dumont, Bouhon, Uyttendaele ; relais : We Need To Talk, Collectif21, Anticor Belgique, IFDH</td>
+        <td data-l="Attention">Budget 5-8 ans / ≥ 500 000 € ; gouvernance de coalition à verrouiller dès le départ</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════ PIÈCE 11 — RISQUES ═══════ -->
+<section class="piece" id="risques">
+  <div class="piece-tete"><span class="cote">PIÈCE 11</span><h2>Risques &amp; <em>parades</em></h2></div>
+  <p class="intro">Un dossier honnête nomme ses faiblesses avant que l'adversaire ne le fasse.</p>
+
+  <div class="risques rv">
+    <div class="risque">
+      <div class="r">Risque 01 · Front I</div>
+      <h5>La Cour rejette la comparabilité</h5>
+      <p>La Cour constitutionnelle peut juger que l'hostilité à la CEDH et le mandat impératif de fait ne sont pas comparables au sens des art. 10-11 ; la doctrine est divisée (Verdussen/Velu vs Bourgaux : l'art. 42 comme interdiction stricte ou simple « exhortation »).</p>
+      <div class="parade"><b>Parade</b>Même un rejet force la Cour à motiver le statut constitutionnel de la discipline partisane — pièce inédite pour Strasbourg. Anticiper la divergence doctrinale dans la requête même.</div>
+    </div>
+    <div class="risque">
+      <div class="r">Risque 02 · Fronts I &amp; II</div>
+      <h5>La séparation des pouvoirs</h5>
+      <p>Aucun juge belge n'imposera de réforme du financement ni n'invalidera la discipline par injonction — Klimaatzaak l'a montré (refus d'objectifs chiffrés, jugement du 17.06.2021). Réflexe conservateur documenté.</p>
+      <div class="parade"><b>Parade</b>Calibrer : constat de faute et déclaration d'illégalité (accessibles), jamais d'injonction de légiférer. Le bénéfice maximal est le constat instrumentalisable — et il suffit.</div>
+    </div>
+    <div class="risque">
+      <div class="r">Risque 03 · Front IV</div>
+      <h5>La Commission n'ouvre pas le manquement</h5>
+      <p>Le déclenchement de l'art. 258 est discrétionnaire ; la Commission peut temporiser politiquement.</p>
+      <div class="parade"><b>Parade</b>Le contentieux national contourne cette discrétion (renvoi d'office possible) ; PETI et rapports État de droit rendent l'inaction coûteuse. Trois chemins, un seul suffit.</div>
+    </div>
+    <div class="risque">
+      <div class="r">Risque 04 · Front IV</div>
+      <h5>L'autonomie procédurale nationale</h5>
+      <p>La CJUE pourrait juger que l'organisation du contentieux électoral relève des États (art. 8 de l'Acte de 1976).</p>
+      <div class="parade"><b>Parade</b>A.B. c. Pologne a refusé que l'autonomie supprime tout contrôle juridictionnel dans le champ UE ; l'art. 52 §3 Charte importe le standard Mugemangango. L'autonomie règle le « comment », pas le « si ».</div>
+    </div>
+    <div class="risque">
+      <div class="r">Risque 05 · Front V</div>
+      <h5>L'APPF classe la plainte</h5>
+      <p>Institution de taille réduite, marge d'appréciation réelle, procédure autant politique que juridique.</p>
+      <div class="parade"><b>Parade</b>Ancrer la plainte sur des faits comptables publics (KU Leuven, Vives), pas sur des griefs idéologiques. Une plainte chiffrée est difficile à classer sans motivation — et la motivation est elle-même exploitable.</div>
+    </div>
+    <div class="risque">
+      <div class="r">Risque 06 · Front VII</div>
+      <h5>Quintin &amp; art. 103 contre l'infrastructure</h5>
+      <p>Dissolution administrative des ASBL « radicales » ; définancement rétroactif des associations d'éducation permanente sur critères flous — l'État vise les lignes de ravitaillement du contentieux.</p>
+      <div class="parade"><b>Parade</b>Arsenal Quintin prêt (recours C. const. sous 6 mois, référé, art. 39 CEDH, art. 18 CEDH ligne Demirtaş, Rapporteurs ONU, Venise, EPU) ; recours FESEFA en cours contre l'art. 103. La menace elle-même valide la thèse.</div>
+    </div>
+    <div class="risque">
+      <div class="r">Risque 07 · Général</div>
+      <h5>Le réflexe conservateur du juge et le refus de renvoi</h5>
+      <p>Tradition de réserve ; risque de refus de poser les questions préjudicielles ; conflit jurisprudentiel non résolu sur la faute de l'État-législateur (Cass. 2006 vs Cass. 30.04.2015).</p>
+      <div class="parade"><b>Parade</b>Obligation de renvoi en dernière instance (art. 267 al. 3, Consorzio) ; responsabilité Köbler ; refus non motivé = requête CEDH (Dhahbi). Le refus de juger devient lui-même un fait générateur. Anticiper le conflit Cass. dans les conclusions.</div>
+    </div>
+    <div class="risque">
+      <div class="r">Risque 08 · Narratif</div>
+      <h5>La récupération et la disqualification</h5>
+      <p>Le dossier peut être disqualifié comme « anti-système », récupéré par des acteurs d'influence (les défaillances réelles sont réinjectées par les opérations FIMI — précédent Qatargate), ou réduit à un règlement de comptes partisan.</p>
+      <div class="parade"><b>Parade</b>Triangulation multi-partis (PTB <em>et</em> MR), ancrage dans les standards du Conseil de l'Europe et de l'UE, front social (CEDS) comme légitimation, transparence totale de la démarche — et rappel constant : réparer la particratie est une question de sécurité démocratique, documentée par la VSSE elle-même.</div>
+    </div>
+  </div>
+
+  <div class="regle rv" style="border-left-color:var(--rouge)">
+    <div class="eti" style="color:var(--rouge)">Ligne rouge du dossier</div>
+    <p>Aucun front ne promet l'annulation du système par un juge : le bénéfice contentieux maximal est le <em>constat officiel, motivé et irrévocable</em> — l'arme que la politique ne peut plus désamorcer.</p>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="avert">
+    ⚠ AVERTISSEMENT — Ce document est une synthèse stratégique de travail, pas un avis juridique. Tout engagement contentieux
+    requiert l'intervention d'avocats spécialisés (droit constitutionnel belge, droit de l'Union, droit de la CEDH, droit social).
+    Délais de prescription, recevabilité et état des dossiers en cours (révision art. 48, exécution Mugemangango, recours FESEFA,
+    loi Quintin, réclamation CEDS, instructions pénales citées — présomption d'innocence pour toutes les personnes mises en cause)
+    doivent être vérifiés à jour au moment de chaque dépôt. Le dossier Front VI s'actualise tous les trois mois.
+  </div>
+  <div class="src">
+    <b>SOURCES PRINCIPALES</b> · CEDH : Mugemangango GC (n° 310/15, 10.07.2020) · G.K. (2019) · Tomenko (2025) · Camara (2023) / M.V. e.a. (2026) ·
+    Mathieu-Mohin et Clerfayt (1987) · Demirtaş n° 2 GC (2020) · Magyar Helsinki GC (2016) · Dhahbi (2014) · Le Mailloux (2020) —
+    CJUE : A.B. C-824/18 · RS C-430/21 · Junqueras C-502/19 · Donnici C-393/07 &amp; C-9/08 · Consorzio C-561/19 · Meta C-252/21 · Inter-Environnement C-411/17 —
+    Belgique : Cass. Le Ski (1971) · C.E. Orfinger (1996) · Cass. Anca (1991) / Ferrara (2006) / 30.04.2015 · C. const. n° 10/2001, n° 34/2020 · C. app. Bxl Klimaatzaak (2023) —
+    Textes : Règlement (UE, Euratom) 2025/2445 · Règlement (UE) 2024/900 (TTPA) · DSA · loi 04.07.1989 (art. 15ter) · lois lanceurs d'alerte 2022 · loi 12.05.2024 · décret-programme FWB 17.12.2025 (art. 103) · loi 08.04.2024 (ingérence) —
+    Données : DH-DD(2022)1430 · GRECO 3ᵉ-5ᵉ cycles + addendum 12.2025 · KU Leuven (Maddens, Smulders, Vanden Eynde 2024-2025) · Vives Briefing 2022/04 · Cour des comptes (cabinets 2022-2023) ·
+    Sciensano 2023-2024 · IWEPS ISADF 2025 · TAKE/BELMOD · Transparency CPI 2024 · Reuters DNR 2025 · SEAE FIMI 2025-2026 · VSSE 2021-2025.
+    <br><b>ARCHITECTURE</b> · Fronts I-III, VI-VII : corpus (Dossier Refondation · Triple-Front 2026-2030 · Contesting Belgian Particracy · Recherche candidats QP ·
+    Dossier Bouchez/MR · Arsenal Quintin · Éducation permanente · Non-recours &amp; violence institutionnelle · Para-Legality · Guerre narrative · Guide citoyen) —
+    Fronts IV-V et instruments A/D : extension juillet 2026.
+  </div>
+</footer>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var liens=[].slice.call(document.querySelectorAll('nav.sommaire a'));
+  var cibles=liens.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function maj(){
+    var y=window.scrollY+120,i=0;
+    for(var k=0;k<cibles.length;k++){if(cibles[k]&&cibles[k].offsetTop<=y)i=k}
+    liens.forEach(function(a,k){a.classList.toggle('actif',k===i)});
+  }
+  window.addEventListener('scroll',maj,{passive:true});maj();
+})();
+(function(){
+  var btns=document.querySelectorAll('.filtres button');
+  var cartes=document.querySelectorAll('.arret');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+      var f=b.dataset.f;
+      cartes.forEach(function(c){c.classList.toggle('masque',f!=='tous'&&c.dataset.j!==f)});
+    });
+  });
+})();
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.rv').forEach(function(e){e.classList.add('vu')});return;
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');io.unobserve(e.target)}});
+  },{threshold:.06});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
