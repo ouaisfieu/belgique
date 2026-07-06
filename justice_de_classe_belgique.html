@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Une justice, deux vitesses — La justice de classe en Belgique</title>
+<meta name="description" content="Dossier complet : transaction pénale, régularisations fiscales, aide juridique sous-financée et détention des précaires — anatomie d'une asymétrie judiciaire belge.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400;1,500&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDEFF2;
+  --paper-2:#E3E6EB;
+  --ink:#161B22;
+  --ink-soft:#3A4250;
+  --brass:#9A7B2D;
+  --brass-deep:#6E571B;
+  --brass-tint:#F3ECDA;
+  --steel:#46586A;
+  --steel-deep:#26313D;
+  --steel-tint:#DDE3E9;
+  --line:rgba(22,27,34,.16);
+  --line-strong:rgba(22,27,34,.34);
+  --max:1120px;
+  --serif:'Spectral', Georgia, serif;
+  --sans:'Archivo', system-ui, sans-serif;
+  --narrow:'Archivo Narrow', 'Archivo', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  font-family:var(--serif);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:18px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--brass);color:#fff}
+
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(237,239,242,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.7rem 1.5rem;gap:1rem;
+}
+.nav-mark{
+  font-family:var(--narrow);font-weight:700;font-size:.85rem;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  display:flex;align-items:center;gap:.6rem;white-space:nowrap;
+}
+.nav-mark .split{
+  display:inline-block;width:18px;height:18px;border-radius:2px;
+  background:linear-gradient(135deg,var(--brass) 0 50%,var(--steel-deep) 50% 100%);
+}
+.nav-links{display:flex;gap:1.4rem;flex-wrap:wrap;justify-content:flex-end}
+.nav-links a{
+  font-family:var(--narrow);font-size:.8rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink-soft);
+  border-bottom:2px solid transparent;padding-bottom:2px;
+}
+.nav-links a:hover{color:var(--ink);border-color:var(--brass)}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{
+  border-bottom:1px solid var(--line-strong);
+  background:
+    linear-gradient(to right, transparent calc(50% - .5px), var(--line-strong) calc(50% - .5px), var(--line-strong) calc(50% + .5px), transparent calc(50% + .5px)),
+    var(--paper);
+}
+.hero-inner{max-width:var(--max);margin:0 auto;padding:4.5rem 1.5rem 0}
+.hero-eyebrow{
+  font-family:var(--narrow);font-weight:600;font-size:.85rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);
+  text-align:center;margin-bottom:2rem;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(2.6rem,7vw,5.4rem);
+  line-height:1.02;text-align:center;
+  letter-spacing:-.015em;
+  max-width:20ch;margin:0 auto 1.4rem;
+  background:var(--paper);position:relative;
+}
+.hero h1 em{font-style:italic;font-weight:500}
+.hero-standfirst{
+  max-width:62ch;margin:0 auto;text-align:center;
+  font-size:clamp(1.02rem,1.6vw,1.2rem);color:var(--ink-soft);
+  background:var(--paper);padding:0 .8rem;
+}
+.hero-tracks{
+  max-width:var(--max);margin:3.5rem auto 0;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.track{padding:2.2rem 2rem 2.6rem;color:#fff;position:relative}
+.track h2{
+  font-family:var(--narrow);font-size:.85rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.track h2::before{content:"";width:26px;height:2px;background:currentColor;display:inline-block}
+.track p{font-size:1rem;line-height:1.6;opacity:.94;max-width:46ch}
+.track .big{
+  font-family:var(--serif);font-weight:800;font-size:clamp(2rem,4vw,3.1rem);
+  line-height:1;margin:.9rem 0 .4rem;display:block;letter-spacing:-.01em;
+}
+.track .big small{font-size:.42em;font-weight:500;letter-spacing:0}
+.track-pay{background:linear-gradient(160deg,#7d6322,#9A7B2D 55%,#856a24)}
+.track-jail{background:linear-gradient(200deg,#31404f,var(--steel-deep) 60%,#1d2833)}
+.track .src{font-family:var(--narrow);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;opacity:.65;margin-top:.8rem}
+@media(max-width:760px){
+  .hero-tracks{grid-template-columns:1fr}
+  .hero{background:var(--paper)}
+}
+
+/* ---------- LAYOUT COMMONS ---------- */
+.section{max-width:var(--max);margin:0 auto;padding:4.5rem 1.5rem}
+.section-head{margin-bottom:2.6rem;max-width:70ch}
+.kicker{
+  font-family:var(--narrow);font-weight:700;font-size:.8rem;
+  letter-spacing:.2em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1rem;
+}
+.kicker::before{content:"";width:34px;height:3px;display:inline-block}
+.kicker.pay{color:var(--brass-deep)}.kicker.pay::before{background:var(--brass)}
+.kicker.jail{color:var(--steel-deep)}.kicker.jail::before{background:var(--steel)}
+.kicker.both{color:var(--ink-soft)}
+.kicker.both::before{background:linear-gradient(90deg,var(--brass) 0 50%,var(--steel-deep) 50% 100%)}
+h2.title{
+  font-family:var(--serif);font-weight:800;
+  font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.12;letter-spacing:-.01em;
+  margin-bottom:.9rem;
+}
+.lede{font-size:1.12rem;color:var(--ink-soft);max-width:66ch}
+.prose{max-width:70ch}
+.prose p{margin-bottom:1.25rem}
+.prose p:last-child{margin-bottom:0}
+.prose strong{font-weight:700}
+.prose .lead-in{
+  font-family:var(--narrow);font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;font-size:.82em;
+}
+.footref{font-size:.78rem;vertical-align:super;color:var(--brass-deep);font-family:var(--sans)}
+
+/* ---------- EN BREF ---------- */
+.brief{background:var(--ink);color:#EDEFF2}
+.brief .section{padding-top:4rem;padding-bottom:4rem}
+.brief-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:2.4rem}
+.brief-item{border-top:3px solid;padding-top:1.2rem}
+.brief-item:nth-child(1){border-color:var(--brass)}
+.brief-item:nth-child(2){border-color:#8DA2B5}
+.brief-item:nth-child(3){border-color:#EDEFF2}
+.brief-item h3{font-family:var(--serif);font-size:1.25rem;font-weight:700;margin-bottom:.7rem;line-height:1.3}
+.brief-item p{font-size:.98rem;line-height:1.6;opacity:.85}
+.brief .kicker{color:#B9C3CE}
+.brief .kicker::before{background:var(--brass)}
+@media(max-width:820px){.brief-grid{grid-template-columns:1fr}}
+
+/* ---------- STAT BAND ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
+.stats-grid{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(6,1fr);
+}
+.stat{padding:1.8rem 1.2rem;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none}
+.stat .n{font-family:var(--serif);font-weight:800;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1;letter-spacing:-.01em}
+.stat .n.pay{color:var(--brass-deep)}
+.stat .n.jail{color:var(--steel-deep)}
+.stat .l{font-family:var(--narrow);font-size:.74rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);margin-top:.5rem;line-height:1.4}
+@media(max-width:1000px){.stats-grid{grid-template-columns:repeat(3,1fr)}.stat:nth-child(4){border-left:none}}
+@media(max-width:640px){.stats-grid{grid-template-columns:repeat(2,1fr)}.stat{border-left:none;border-top:1px solid var(--line)}.stat:nth-child(-n+2){border-top:none}}
+
+/* ---------- TIMELINE ---------- */
+.timeline{margin-top:3rem;border-left:3px solid var(--brass);padding-left:0;list-style:none}
+.timeline li{position:relative;padding:0 0 2.2rem 2rem}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{
+  content:"";position:absolute;left:-10px;top:.42em;
+  width:16px;height:16px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--brass);
+}
+.timeline li.dark::before{border-color:var(--steel-deep)}
+.timeline .date{
+  font-family:var(--narrow);font-weight:700;font-size:.85rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--brass-deep);
+  display:block;margin-bottom:.3rem;
+}
+.timeline li.dark .date{color:var(--steel-deep)}
+.timeline h3{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:.35rem}
+.timeline p{font-size:.98rem;color:var(--ink-soft);max-width:62ch}
+
+/* ---------- DISPOSITIF CARDS ---------- */
+.devices{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2.6rem}
+.device{
+  background:#fff;border:1px solid var(--line);
+  padding:1.8rem 1.7rem;position:relative;
+}
+.device::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+}
+.device.pay::before{background:var(--brass)}
+.device.jail::before{background:var(--steel-deep)}
+.device .tag{
+  font-family:var(--narrow);font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:.22rem .55rem;border-radius:2px;display:inline-block;margin-bottom:.9rem;
+}
+.device.pay .tag{background:var(--brass-tint);color:var(--brass-deep)}
+.device.jail .tag{background:var(--steel-tint);color:var(--steel-deep)}
+.device h3{font-family:var(--serif);font-size:1.3rem;font-weight:700;margin-bottom:.6rem;line-height:1.25}
+.device p{font-size:.97rem;color:var(--ink-soft);line-height:1.6;margin-bottom:.8rem}
+.device p:last-child{margin-bottom:0}
+.device .key{
+  font-family:var(--narrow);font-size:.85rem;font-weight:600;
+  color:var(--ink);border-top:1px dashed var(--line-strong);
+  padding-top:.8rem;margin-top:auto;
+}
+@media(max-width:820px){.devices{grid-template-columns:1fr}}
+
+/* ---------- TABLES ---------- */
+.tbl-wrap{overflow-x:auto;margin-top:2.4rem;border:1px solid var(--line);background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:640px}
+caption{
+  text-align:left;font-family:var(--narrow);font-weight:700;
+  font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:1rem 1.2rem .6rem;color:var(--ink-soft);
+}
+th{
+  font-family:var(--narrow);font-weight:700;font-size:.78rem;
+  letter-spacing:.08em;text-transform:uppercase;text-align:left;
+  padding:.8rem 1.2rem;background:var(--ink);color:#EDEFF2;
+}
+td{padding:.85rem 1.2rem;border-top:1px solid var(--line);vertical-align:top}
+td.num{font-family:var(--sans);font-weight:600;white-space:nowrap}
+tr:hover td{background:var(--paper-2)}
+.tbl-note{font-size:.85rem;color:var(--ink-soft);padding:.9rem 1.2rem;border-top:1px solid var(--line);font-style:italic}
+
+/* ---------- AFFAIRES ---------- */
+.dark-band{background:var(--steel-deep);color:#E8ECF0}
+.dark-band .kicker{color:#C4CFDA}
+.dark-band .kicker::before{background:var(--brass)}
+.dark-band .lede{color:#B9C3CE}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.8rem}
+.case{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.14);
+  padding:1.6rem 1.5rem;display:flex;flex-direction:column;
+}
+.case .amount{
+  font-family:var(--serif);font-weight:800;font-size:1.9rem;
+  color:#D8B65A;line-height:1;letter-spacing:-.01em;margin-bottom:.2rem;
+}
+.case .amount small{font-size:.5em;font-weight:500}
+.case h3{font-family:var(--serif);font-size:1.12rem;font-weight:700;margin:.5rem 0 .55rem;line-height:1.3}
+.case p{font-size:.92rem;line-height:1.58;opacity:.82;flex:1}
+.case .year{
+  font-family:var(--narrow);font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:#8DA2B5;
+}
+@media(max-width:960px){.cases{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.cases{grid-template-columns:1fr}}
+
+/* ---------- PULL QUOTE ---------- */
+.pull{
+  margin:3.2rem auto;max-width:52ch;
+  text-align:center;position:relative;padding:0 1rem;
+}
+.pull blockquote{
+  font-family:var(--serif);font-style:italic;font-weight:500;
+  font-size:clamp(1.35rem,2.6vw,1.85rem);line-height:1.4;
+}
+.pull blockquote::before{content:"« "}
+.pull blockquote::after{content:" »"}
+.pull cite{
+  display:block;margin-top:1.1rem;font-style:normal;
+  font-family:var(--narrow);font-weight:600;font-size:.82rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+}
+.dark-band .pull cite{color:#8DA2B5}
+.pull::before,.pull::after{
+  content:"";display:block;width:60px;height:3px;margin:0 auto;
+  background:linear-gradient(90deg,var(--brass) 0 50%,var(--steel) 50% 100%);
+}
+.pull::before{margin-bottom:1.6rem}
+.pull::after{margin-top:1.6rem}
+
+/* ---------- VS DEBATE ---------- */
+.debate{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:2.8rem;border:1px solid var(--line)}
+.debate-col{padding:2rem 1.8rem;background:#fff}
+.debate-col+.debate-col{border-left:1px solid var(--line)}
+.debate-col h3{
+  font-family:var(--narrow);font-size:.85rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.4rem;
+  padding-bottom:.7rem;border-bottom:3px solid;
+}
+.debate-col.for h3{border-color:var(--steel);color:var(--steel-deep)}
+.debate-col.against h3{border-color:var(--brass);color:var(--brass-deep)}
+.debate-col ul{list-style:none}
+.debate-col li{padding:.85rem 0;border-bottom:1px dashed var(--line);font-size:.96rem;line-height:1.55}
+.debate-col li:last-child{border-bottom:none}
+.debate-col li strong{font-family:var(--narrow);font-weight:700;font-size:.85em;letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:.15rem;color:var(--ink)}
+.debate-col li{color:var(--ink-soft)}
+@media(max-width:760px){.debate{grid-template-columns:1fr}.debate-col+.debate-col{border-left:none;border-top:1px solid var(--line)}}
+
+/* ---------- COMPARATEUR ---------- */
+.compare{
+  margin-top:3rem;border:1px solid var(--line-strong);
+  display:grid;grid-template-columns:1fr 1fr;background:#fff;
+}
+.compare-side{padding:2rem 1.8rem}
+.compare-side.a{background:var(--brass-tint)}
+.compare-side.b{background:var(--steel-tint)}
+.compare-side h3{
+  font-family:var(--narrow);font-size:.8rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;
+}
+.compare-side.a h3{color:var(--brass-deep)}
+.compare-side.b h3{color:var(--steel-deep)}
+.compare-side dl{font-size:.94rem}
+.compare-side dt{font-family:var(--narrow);font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:1rem}
+.compare-side dt:first-child{margin-top:0}
+.compare-side dd{margin-top:.15rem;line-height:1.5}
+@media(max-width:760px){.compare{grid-template-columns:1fr}}
+
+/* ---------- REFORMES ---------- */
+.reforms{counter-reset:ref;list-style:none;margin-top:2.6rem;display:grid;gap:1.1rem}
+.reforms li{
+  counter-increment:ref;background:#fff;border:1px solid var(--line);
+  padding:1.5rem 1.6rem 1.5rem 5rem;position:relative;
+}
+.reforms li::before{
+  content:counter(ref,decimal-leading-zero);
+  position:absolute;left:1.4rem;top:1.3rem;
+  font-family:var(--serif);font-weight:800;font-size:1.7rem;
+  color:var(--brass);line-height:1;
+}
+.reforms h3{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:.35rem}
+.reforms p{font-size:.95rem;color:var(--ink-soft);line-height:1.6;max-width:72ch}
+
+/* ---------- CAVEATS ---------- */
+.caveats{
+  margin-top:3rem;background:var(--paper-2);
+  border:1px solid var(--line);border-left:5px solid var(--steel);
+  padding:1.8rem 1.8rem;
+}
+.caveats h3{
+  font-family:var(--narrow);font-size:.82rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--steel-deep);
+  margin-bottom:1rem;
+}
+.caveats ul{list-style:none}
+.caveats li{padding:.5rem 0 .5rem 1.4rem;position:relative;font-size:.94rem;color:var(--ink-soft);line-height:1.55}
+.caveats li::before{content:"—";position:absolute;left:0;color:var(--steel)}
+
+/* ---------- SOURCES / FOOTER ---------- */
+.sources{background:var(--ink);color:#B9C3CE}
+.sources .section{padding-top:3.6rem;padding-bottom:2.4rem}
+.sources h2{font-family:var(--narrow);font-size:.85rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#EDEFF2;margin-bottom:1.6rem}
+.src-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 2.5rem;font-size:.86rem;line-height:1.5}
+.src-grid p{padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.09)}
+.src-grid a{color:#D8B65A;text-decoration:none}
+.src-grid a:hover{text-decoration:underline}
+.colophon{
+  margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.14);
+  font-family:var(--narrow);font-size:.78rem;letter-spacing:.06em;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem;
+}
+@media(max-width:760px){.src-grid{grid-template-columns:1fr}}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top"><span class="split" aria-hidden="true"></span>Justice de classe · Belgique</a>
+    <div class="nav-links">
+      <a href="#dispositifs">Dispositifs</a>
+      <a href="#affaires">Affaires</a>
+      <a href="#constitution">Constitution</a>
+      <a href="#sans-moyens">Sans les moyens</a>
+      <a href="#prison">Prison</a>
+      <a href="#debat">Débat</a>
+      <a href="#reformes">Réformes</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Dossier · État de droit belge · 1935 – 2026</p>
+    <h1>Une justice, <em>deux vitesses</em></h1>
+    <p class="hero-standfirst">En Belgique, la loi pénale est la même pour tous. Son parcours, non. Selon les moyens dont on dispose, la même infraction mène à un accord financier négocié dans le feutré des cabinets du parquet — ou à la détention préventive. Anatomie documentée d'une asymétrie.</p>
+  </div>
+  <div class="hero-tracks">
+    <div class="track track-pay">
+      <h2>La voie payante</h2>
+      <span class="big">727&nbsp;M€ <small>au moins</small></span>
+      <p>C'est ce qu'ont rapporté à l'État les 512 transactions pénales élargies homologuées entre 2019 et 2022 : des poursuites éteintes contre paiement, sans procès, sans aveu de culpabilité, sans casier.</p>
+      <p class="src">Audit du Conseil supérieur de la Justice, 12 déc. 2024</p>
+    </div>
+    <div class="track track-jail">
+      <h2>La voie carcérale</h2>
+      <span class="big">36,2&nbsp;% <small>de préventive</small></span>
+      <p>Part des détenus belges incarcérés sans jugement au 1<sup>er</sup> janvier 2023 — contre une médiane européenne de 24,7&nbsp;%. Leur profil socio-économique est massivement précaire. Et dans les prisons belges, résume un fiscaliste, «&nbsp;il n'y a aucun fraudeur&nbsp;».</p>
+      <p class="src">Conseil pénitentiaire · statistiques SPACE, Conseil de l'Europe</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ EN BREF ============ -->
+<section class="brief">
+  <div class="section">
+    <p class="kicker">L'essentiel en trois points</p>
+    <div class="brief-grid">
+      <div class="brief-item reveal">
+        <h3>Oui, l'asymétrie existe — dans les faits</h3>
+        <p>Transaction pénale élargie, plaider-coupable, régularisations fiscales (DLU), accords avec le fisc : les justiciables solvables peuvent éteindre des poursuites par un paiement. La délinquance de rue et la petite fraude sociale, elles, alimentent des prisons peuplées de personnes précarisées.</p>
+      </div>
+      <div class="brief-item reveal">
+        <h3>Mais pas de « justice de classe » au sens strict</h3>
+        <p>Ces dispositifs sont théoriquement ouverts à tous, et le pouvoir de transiger appartient au parquet, pas au prévenu. Il faut distinguer l'égalité <strong>de droit</strong> (préservée sur le papier) de l'égalité <strong>de fait</strong> (rompue dans l'usage) : c'est là tout le débat.</p>
+      </div>
+      <div class="brief-item reveal">
+        <h3>Un débat vif, non tranché</h3>
+        <p>La Ligue des droits humains dénonce une « justice à deux vitesses », l'avocat Bruno Dayez un « scandale éthique » ; des universitaires comme Marie-Aude Beernaert nuancent, et les défenseurs invoquent efficacité, recouvrement et désengorgement. Le CSJ lui-même admet que la procédure peut donner l'impression « d'une justice de riche ».</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAT BAND ============ -->
+<div class="stats" role="group" aria-label="Chiffres clés">
+  <div class="stats-grid">
+    <div class="stat"><div class="n pay">294,4&nbsp;M€</div><div class="l">Transaction record — HSBC Private Bank, 2019</div></div>
+    <div class="stat"><div class="n pay">13&nbsp;Mds€+</div><div class="l">Avoirs rapatriés via les DLU depuis 2004</div></div>
+    <div class="stat"><div class="n pay">443,6&nbsp;M€</div><div class="l">Rapportés par 773 transactions, 2021–2025</div></div>
+    <div class="stat"><div class="n jail">115,3</div><div class="l">Détenus pour 100 places de prison (1/1/2023)</div></div>
+    <div class="stat"><div class="n jail">1 500&nbsp;→&nbsp;4 000</div><div class="l">Détenus en préventive, de 1980 à 2022</div></div>
+    <div class="stat"><div class="n jail">1 612&nbsp;€</div><div class="l">Plafond de revenus pour un avocat pro deo gratuit (isolé, 2025)</div></div>
+  </div>
+</div>
+
+<!-- ============ SECTION 1 : DISPOSITIFS ============ -->
+<section class="section" id="dispositifs">
+  <div class="section-head">
+    <p class="kicker pay">01 · La voie payante</p>
+    <h2 class="title">Payer pour ne pas être jugé : l'arsenal légal</h2>
+    <p class="lede">Quatre mécanismes permettent, en Belgique, d'éteindre ou d'éviter des poursuites moyennant paiement. Aucun n'est officiellement réservé aux riches. Tous sont, dans leur usage effectif, taillés pour la délinquance économique et financière.</p>
+  </div>
+
+  <div class="prose reveal">
+    <p><span class="lead-in">La transaction pénale</span> (article 216bis du Code d'instruction criminelle) est le cœur du dispositif. Le principe : le ministère public propose l'extinction définitive de l'action publique contre le paiement d'une somme d'argent. Pas de procès public, pas de reconnaissance de culpabilité, pas d'inscription au casier judiciaire — donc réputation commerciale préservée, capacité de contracter avec les autorités publiques intacte, carrière politique sauve, règles de la récidive neutralisées. Le mécanisme est ancien (arrêté royal du 10 janvier 1935) et massivement banal : tout automobiliste qui paie une amende de roulage conclut, techniquement, une transaction. Seule sa version « élargie » fait polémique.</p>
+    <p>Le basculement s'opère en <strong>2011</strong>. Votée à la hâte par un Parlement alors que le gouvernement est en affaires courantes — sous la pression conjuguée de la complexité des dossiers de fraude, des lobbys économiques et notamment du secteur diamantaire anversois, dont les avocats rédigent littéralement des amendements —, la loi du 14 avril 2011 crée la <strong>transaction pénale élargie</strong>. Double extension radicale : matérielle (tous les faits pour lesquels le parquet estime ne pas devoir requérir plus de 2 ans de prison, sans atteinte grave à l'intégrité physique — ce qui englobe blanchiment, corruption, escroquerie et méga-fraudes fiscales, théoriquement punissables jusqu'à 20 ans) et procédurale (on peut désormais transiger <em>même quand un juge d'instruction est saisi ou qu'un procès est en cours</em>, tant qu'aucun jugement définitif n'est rendu).</p>
+    <p>La loi de 2011 instaure au passage une hiérarchie des victimes : l'indemnisation complète et préalable de l'administration fiscale ou sociale devient une condition <em>sine qua non</em> — l'État s'érige en victime super-privilégiée — tandis que les victimes ordinaires se contentent de règles d'indemnisation plus souples et précaires.</p>
+  </div>
+
+  <ol class="timeline reveal" aria-label="Chronologie de la transaction pénale">
+    <li><span class="date">1935</span><h3>Naissance discrète</h3><p>Arrêté royal du 10 janvier : la transaction est confinée à la petite délinquance (contraventions, tribunal de police). Objectif purement gestionnaire : désengorger les tribunaux.</p></li>
+    <li><span class="date">Avril 2011</span><h3>La transaction élargie</h3><p>Loi votée sous gouvernement en affaires courantes. Extension à la quasi-totalité de la délinquance financière, même après saisine d'un juge. Le 17 juin 2011, Patokh Chodiev en devient le premier grand bénéficiaire.</p></li>
+    <li class="dark"><span class="date">2 juin 2016</span><h3>Censure constitutionnelle</h3><p>Arrêt n° 83/2016 : la Cour constitutionnelle juge l'article 216bis §2 contraire aux articles 10 et 11 de la Constitution — le parquet ne peut éteindre l'action publique sans contrôle juridictionnel effectif.</p></li>
+    <li><span class="date">2016 – 2018</span><h3>Lois réparatrices</h3><p>« Pot-pourri II » (5 février 2016) puis loi du 18 mars 2018 : le juge doit désormais homologuer la transaction en contrôlant sa légalité, sa proportionnalité et le caractère libre et éclairé du consentement.</p></li>
+    <li><span class="date">2023 – 2024</span><h3>Fin du huis clos</h3><p>Les homologations sont prononcées en audience publique (loi du 7 avril 2023, décision Van Quickenborne). Jusque-là, montants et négociations restaient secrets.</p></li>
+    <li class="dark"><span class="date">Déc. 2024</span><h3>L'audit du CSJ</h3><p>512 transactions élargies pour « au moins » 727 millions d'euros (2019-2022). Le Conseil supérieur de la Justice pointe l'absence de statistiques fiables et une procédure qui peut donner l'impression « d'une justice de riche ».</p></li>
+  </ol>
+
+  <div class="devices">
+    <div class="device pay reveal">
+      <span class="tag">Extinction contre paiement</span>
+      <h3>Les régularisations fiscales (DLU)</h3>
+      <p>Depuis 2004, cinq cycles quasi ininterrompus (DLU 9&nbsp;%, DLUbis 11&nbsp;%, DLUter 2013, DLUquater 2016-2023, DLUquinquies permanente depuis août 2025 à 30/45&nbsp;%) permettent de régulariser des avoirs cachés contre un prélèvement, avec <strong>immunité fiscale et pénale</strong> — le risque de poursuites pour fraude et blanchiment s'éteint.</p>
+      <p>Plus de 13 milliards d'euros officiellement rapatriés depuis 2004 ; la seule DLUquater a collecté 1,15 milliard pour l'État. Profil type des bénéficiaires : comptes suisses ou luxembourgeois, sociétés offshore.</p>
+      <p class="key">Qui peut en profiter ? Celui qui a un patrimoine à régulariser.</p>
+    </div>
+    <div class="device pay reveal">
+      <span class="tag">Peine négociée</span>
+      <h3>Le plaider-coupable (2016)</h3>
+      <p>La reconnaissance préalable de culpabilité (art. 216 CIC, loi « Pot-pourri II ») permet au procureur de proposer une peine réduite contre un aveu, pour des faits punissables <em>in concreto</em> de moins de 5 ans, avec avocat obligatoire, 10 jours de réflexion et homologation judiciaire.</p>
+      <p>Conçue « quel que soit l'état de fortune du prévenu », la procédure connaît un succès limité : le premier plaider-coupable en matière de drogue n'a eu lieu qu'en janvier 2024.</p>
+      <p class="key">Différence clé avec la transaction : il y a aveu et condamnation.</p>
+    </div>
+    <div class="device jail reveal">
+      <span class="tag">Le miroir inversé</span>
+      <h3>La transaction pénale immédiate</h3>
+      <p>Pendant que les banques négocient des mois durant, un dispositif miroir cible les classes populaires : depuis les circulaires COL 06/2020 et COL 09/2021 — <strong>sans intervention du législateur</strong> —, la police peut proposer au suspect de payer sur-le-champ, par terminal bancaire ou QR code, lors d'une interpellation de rue (vol à l'étalage, détention de stupéfiants, armes blanches).</p>
+      <p>L'Institut fédéral des droits humains (avis 12/2022) en réclame l'abolition : absence de base légale, violation de la séparation des pouvoirs (l'extinction de l'action publique est actée par la police, sans magistrat), et consentement extorqué à des personnes interpellées, stressées, sans avocat.</p>
+      <p class="key">Une justice de guichet automatique, expéditive et privative de droits.</p>
+    </div>
+    <div class="device jail reveal">
+      <span class="tag">L'angle mort</span>
+      <h3>La transaction « simple », toujours sans contrôle</h3>
+      <p>La censure constitutionnelle de 2016 ne visait que la transaction <em>élargie</em>. Le législateur n'a jamais étendu l'exigence de contrôle juridictionnel à la transaction <em>simple</em>, conclue au stade de l'information judiciaire secrète.</p>
+      <p>L'IFDH y voit un incitatif systémique dangereux : le parquet est encouragé à transiger tôt et à huis clos, en amont de toute instruction, précisément pour échapper au regard du juge — contournant l'esprit de l'arrêt de 2016.</p>
+      <p class="key">La faille est connue, documentée, et toujours ouverte.</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap reveal">
+    <table>
+      <caption>Ce que rapportent les voies payantes — repères chiffrés</caption>
+      <thead><tr><th>Mécanisme / période</th><th>Volume</th><th>Montant</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Transactions élargies homologuées, 2019–2022</td><td class="num">512 (par prévenu)</td><td class="num">≥ 727 M€</td><td>Audit CSJ, déc. 2024</td></tr>
+        <tr><td>Transactions (communication du ministère public), 2021–2025</td><td class="num">773</td><td class="num">443,6 M€</td><td>Collège du ministère public</td></tr>
+        <tr><td>Transactions pénales, toutes formes, 2018</td><td class="num">—</td><td class="num">114 M€</td><td>Presse / SPF Justice</td></tr>
+        <tr><td>DLU–DLUquinquies, avoirs rapatriés depuis 2004</td><td class="num">5 cycles</td><td class="num">&gt; 13 Mds€</td><td>La Libre, 21 juin 2018</td></tr>
+        <tr><td>DLUquater, recettes pour l'État, 2016–2023</td><td class="num">—</td><td class="num">1,15 Md€</td><td>Cabinet Tiberghien</td></tr>
+        <tr><td>Budget total de la Justice belge, 2026 (comparaison)</td><td class="num">—</td><td class="num">2,92 Mds€</td><td>Budget fédéral</td></tr>
+      </tbody>
+    </table>
+    <p class="tbl-note">Le CSJ souligne lui-même l'absence de statistiques fiables et détaillées : le total de 727 M€ est un « au moins », massivement tiré par deux dossiers bancaires (HSBC 2019, UBS 2021), et le décompte se fait par prévenu, non par dossier.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 : AFFAIRES ============ -->
+<section class="dark-band" id="affaires">
+  <div class="section">
+    <div class="section-head">
+      <p class="kicker">02 · Les affaires</p>
+      <h2 class="title">La justice de classe en action : les dossiers qui ont fait le débat</h2>
+      <p class="lede">Des oligarques aux banques systémiques, des CEO aux ministres d'État : la transaction élargie a servi dans les dossiers les plus sensibles du pays — parfois après avoir été écrite, littéralement, pour eux.</p>
+    </div>
+
+    <div class="cases">
+      <article class="case reveal">
+        <span class="year">2011 · Le cas fondateur</span>
+        <div class="amount">3,49&nbsp;M€<small> (volet pénal)</small></div>
+        <h3>Kazakhgate — Patokh Chodiev et le « trio kazakh »</h3>
+        <p>Poursuivi depuis dix ans pour faux et blanchiment (dossier Tractebel, commissions suspectes de 55 M€), l'oligarque belgo-kazakh devient le 17 juin 2011 le premier grand bénéficiaire de la loi votée deux mois plus tôt. Les sept inculpés paient ensemble 3,49 M€ (522 500 € chacun pour les principaux). Dix jours plus tard, le contrat franco-kazakh des 45 hélicoptères Eurocopter est signé à Astana. Un courriel des émissaires de l'Élysée se félicite de l'implication d'Armand De Decker et de Didier Reynders dans une loi « organisée et suscitée ». La commission d'enquête parlementaire (2018) dénonce l'immixtion française et épingle De Decker pour conflit d'intérêts, sans conclure que ces influences ont déterminé le vote.</p>
+      </article>
+      <article class="case reveal">
+        <span class="year">2019 · Le record</span>
+        <div class="amount">294,4&nbsp;M€</div>
+        <h3>HSBC Private Bank Suisse</h3>
+        <p>La plus grosse transaction de l'histoire belge éteint des poursuites pour fraude fiscale grave, faux, blanchiment et exercice illégal d'intermédiaire financier. La banque avait aidé environ 1 000 clients belges fortunés — dont des diamantaires anversois — à dissimuler leurs avoirs via des sociétés offshore. Ironie de l'histoire : la première CJIP française (2017) visait déjà la même banque, pour 300 M€.</p>
+      </article>
+      <article class="case reveal">
+        <span class="year">2021</span>
+        <div class="amount">Montant&nbsp;<small>secret alors</small></div>
+        <h3>UBS</h3>
+        <p>Deuxième dossier bancaire majeur réglé par transaction élargie, qui domine avec HSBC le total de 727 M€ relevé par le CSJ. Les audiences se tenaient encore à huis clos : le grand public n'a longtemps rien su des termes de l'accord.</p>
+      </article>
+      <article class="case reveal">
+        <span class="year">Anvers</span>
+        <div class="amount">160&nbsp;M€</div>
+        <h3>Omega Diamonds</h3>
+        <p>Accord conclu avec l'Inspection spéciale des impôts et le parquet d'Anvers dans un dossier de fraude du secteur diamantaire — ce même secteur dont les avocats avaient contribué à façonner la loi de 2011.</p>
+      </article>
+      <article class="case reveal">
+        <span class="year">Délit d'initié</span>
+        <div class="amount">107&nbsp;000&nbsp;€</div>
+        <h3>Dominique Leroy, ex-CEO de Proximus</h3>
+        <p>La dirigeante éteint par transaction les poursuites pour délit d'initié liées à la vente de ses actions avant l'annonce de son départ. Pas de procès, pas de casier — et une carrière internationale qui se poursuit.</p>
+      </article>
+      <article class="case reveal">
+        <span class="year">Mai 2026</span>
+        <div class="amount">1,6&nbsp;M€</div>
+        <h3>ING dans l'affaire Reynders</h3>
+        <p>La banque paie le maximum légal pour blanchiment et éteint les poursuites relatives à son silence sur 245 dépôts en liquide et 779 transferts e-Lotto de Didier Reynders (plus d'un million d'euros au total), client pourtant « personne politiquement exposée ». Aucun procès ne disséquera les manquements anti-blanchiment. Le procureur Julien Moinil souligne qu'un procès n'aurait de toute façon pas produit d'amende supérieure — c'est précisément ce plafond que dénoncent les critiques. L'ironie est complète : Reynders, soupçonné d'avoir facilité la loi de 2011, pourrait théoriquement en bénéficier pour son propre dossier.</p>
+      </article>
+    </div>
+
+    <div class="pull reveal">
+      <blockquote>C'est de la justice de classe : celui qui est assez riche peut acheter l'abandon de son affaire.</blockquote>
+      <cite>Julien Ribaudo, député (PTB), à propos de la transaction ING/Reynders</cite>
+    </div>
+
+    <div class="prose reveal" style="max-width:70ch">
+      <p>D'autres dossiers nourrissent la même controverse : le « Footbelgate » (10 des 56 inculpés ont transigé), un groupe bancaire marocain (175 M€, 2026), Joëlle Milquet (recherche d'une transaction dans l'affaire des emplois présumés fictifs), et surtout <strong>Stéphane Moreau</strong> : fin 2025, le parquet général de Liège négociait avec l'ex-CEO de Nethys une transaction dans le dossier des 18,6 M€ d'indemnités illégales (dont 11,6 M€ pour lui seul) — négociation entachée d'une polémique supplémentaire quand La Libre a révélé, en février 2026, que son avocat aurait cherché à suggérer une magistrate favorable pour l'homologation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 : CONSTITUTION ============ -->
+<section class="section" id="constitution">
+  <div class="section-head">
+    <p class="kicker both">03 · La contre-offensive</p>
+    <h2 class="title">Quand la Constitution reprend la main — à moitié</h2>
+    <p class="lede">Le dessaisissement d'un juge par simple accord financier entre le parquet et un prévenu puissant a provoqué une crise constitutionnelle. Elle a été partiellement résolue. Partiellement seulement.</p>
+  </div>
+  <div class="prose reveal">
+    <p><span class="lead-in">L'arrêt n° 83/2016 du 2 juin 2016</span> est le tournant. Saisie de questions préjudicielles par la chambre des mises en accusation de Gand, la Cour constitutionnelle censure l'article 216bis §2 : permettre au ministère public — placé sous l'autorité du ministre de la Justice — de mettre fin à l'action publique après sa mise en mouvement, <em>sans contrôle juridictionnel effectif</em>, viole les articles 10 et 11 de la Constitution combinés au droit à un procès équitable. Le juge de 2011 était réduit à un rôle de guichet : constater que l'amende était payée. La Cour rappelle que ni la célérité ni le désencombrement des greffes ne justifient de priver la société du contrôle d'un magistrat du siège, indépendant et impartial. Elle valide en revanche le pouvoir discrétionnaire du parquet : nul n'a le <em>droit</em> d'exiger une transaction.</p>
+    <p>Les lois réparatrices (« Pot-pourri II » de 2016, loi du 18 mars 2018) réintroduisent la transaction élargie assortie d'une <strong>homologation judiciaire obligatoire</strong> : le juge vérifie les conditions légales, l'indemnisation complète des victimes et des administrations, le consentement libre et éclairé du suspect, et — clef de voûte — la <strong>proportionnalité</strong> de la somme à la gravité des faits et à la personnalité du délinquant, dans une décision motivée. La proposition de transaction suspend désormais la prescription, fermant la faille qui permettait de faire traîner les négociations jusqu'à l'extinction des poursuites par écoulement du temps. Depuis 2023-2024, les homologations sont publiques. Selon l'audit du CSJ, 91&nbsp;% des magistrats du siège estiment disposer d'outils suffisants pour identifier les risques de violation des droits, et 70&nbsp;% des membres du parquet jugent que ce contrôle renforce la confiance.</p>
+    <p>Mais deux angles morts subsistent. La <strong>transaction simple</strong>, conclue au stade de l'information secrète, échappe toujours à tout contrôle juridictionnel et à toute motivation — l'IFDH y voit une incitation structurelle à transiger tôt et à huis clos pour contourner le juge, et demande la généralisation de l'homologation, tout en pointant le paradoxe : imposer ce contrôle à des tribunaux exsangues risque de le transformer en validation automatique. Et la <strong>transaction immédiate</strong> de rue, créée par circulaires, fait l'objet d'une demande d'abolition pure et simple (avis IFDH 12/2022), au nom de la séparation des pouvoirs et de la jurisprudence européenne sur le consentement contraint (<em>Deweer c. Belgique</em>).</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 : SANS LES MOYENS ============ -->
+<section style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)" id="sans-moyens">
+  <div class="section">
+    <div class="section-head">
+      <p class="kicker jail">04 · Et si on n'a pas les moyens ?</p>
+      <h2 class="title">Le parcours du combattant : l'accès à la justice des précaires</h2>
+      <p class="lede">Face à l'agilité des dispositifs d'évitement, l'autre versant du système : une aide juridique sous-financée, des seuils d'exclusion, des barrières bureaucratiques — et un non-recours aux droits massif.</p>
+    </div>
+
+    <div class="prose reveal">
+      <p>L'article 23 de la Constitution garantit le droit à l'aide juridique. La loi du 23 novembre 1998 l'organise en deux lignes : la <strong>première ligne</strong> (information, premier conseil) est gratuite et sans condition ; la <strong>deuxième ligne</strong> — l'avocat « pro deo » qui vous représente réellement — est soumise à des plafonds de revenus. Dans son rapport de janvier 2024, la <strong>Cour des comptes</strong> dresse un bilan sévère : les seuils excluent une large frange de travailleurs pauvres et de classe moyenne inférieure, et l'indexation des allocations sociales produit un effet pervers redoutable — une personne isolée peut franchir mécaniquement le plafond sans gagner un euro de pouvoir d'achat réel, et perdre son droit à un avocat au moment précis où elle en a le plus besoin.</p>
+      <p>Le financement repose sur une <strong>« enveloppe fermée »</strong> et une rémunération à l'acte par points (90,36 € le point en 2023) : le livre <em>Pauvreté et Justice en Belgique</em> (SPF Justice, 2022) montre que ce modèle « judicare » pousse économiquement les avocats pro deo à traiter un maximum de dossiers en un minimum de temps — au détriment de la qualité de la défense, quand un avocat privé facture de 90 à 200 € de l'heure. L'histoire récente a même vu l'État ériger des barrières directes : le <strong>ticket modérateur</strong> de 2016 (20 € pour la désignation d'un avocat, 30 € par instance) a dû être annulé par la Cour constitutionnelle le 21 juin 2018. De même, la Cour a partiellement annulé, le 10 juin 2021, la hausse des droits de greffe de 2018, saisie par la plateforme « Justice pour tous », en rappelant que « la pression financière sur les procédures judiciaires a systématiquement augmenté depuis plus de dix ans ».</p>
+      <p>La politique de substitution par l'<strong>assurance protection juridique</strong> privée, encouragée par une réduction d'impôt, est un échec social documenté par la Cour des comptes : cette niche fiscale profite à 80&nbsp;% aux ménages aisés, et — architecture perverse — toute personne assurée est <em>d'office exclue</em> de l'aide de deuxième ligne, même sous les plafonds d'indigence. Enfin, les barrières sont aussi sociocognitives : prouver son indigence exige un arsenal documentaire (composition de ménage, attestations de revenus, extraits de rôle, historiques bancaires) infranchissable pour des personnes en survie, victimes de la fracture numérique ou méfiantes envers une institution qu'elles ne connaissent que sous son visage répressif. D'où un <strong>non-recours aux droits</strong> massif — que des initiatives pluridisciplinaires comme l'ASBL Casa Legal (avocats, assistants sociaux, psychologues) tentent de compenser.</p>
+    </div>
+
+    <div class="tbl-wrap reveal">
+      <table>
+        <caption>Plafonds de revenus nets pour l'aide juridique de deuxième ligne</caption>
+        <thead><tr><th>Année</th><th>Bénéficiaire</th><th>Gratuité totale</th><th>Gratuité partielle</th></tr></thead>
+        <tbody>
+          <tr><td class="num">Avant 2020</td><td>Personne isolée</td><td class="num">&lt; ± 1 026 €</td><td>— <em>(seuil sous le seuil de pauvreté)</em></td></tr>
+          <tr><td class="num">2022</td><td>Personne isolée</td><td class="num">&lt; 1 426 €</td><td class="num">1 426 € – 1 717 €</td></tr>
+          <tr><td class="num">2022</td><td>Cohabitant / ménage</td><td class="num">&lt; 1 717 €</td><td class="num">1 717 € – 2 007 €</td></tr>
+          <tr><td class="num">2025</td><td>Personne isolée</td><td class="num">&lt; 1 612 €</td><td class="num">1 612 € – 1 920 €</td></tr>
+          <tr><td class="num">2025</td><td>Cohabitant / ménage</td><td class="num">&lt; 1 920 €</td><td class="num">1 920 € – 2 226 €</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">Sources : Cour des comptes (Accessibilité financière à la justice, 2024) et arrêtés d'indexation. Selon Ecolo, le relèvement de 2020 devait faire passer la population éligible de 10 % à 30 %. Le SPF Finances adresse par ailleurs de plus en plus de demandes de récupération des frais d'assistance judiciaire aux justiciables pro deo — un effet dissuasif supplémentaire.</p>
+    </div>
+
+    <div class="pull reveal">
+      <blockquote>Un accusé disposant d'un vocabulaire de deux mille mots serait sorti à peu près indemne de ce procès.</blockquote>
+      <cite>Jean Giono, à propos du procès Dominici — la justice comme épreuve de capital culturel</cite>
+    </div>
+
+    <div class="prose reveal">
+      <p>Car l'inégalité n'est pas que financière. La sociologie du droit — de Bourdieu à Carla Nagels (ULB) et Pierre Lascoumes (<em>Sociologie des élites délinquantes</em>) — montre que le tribunal est un espace de codes, de rituels et de langue technique qui désavantage structurellement les classes populaires : mutisme ou maladresse perçus comme désinvolture ou absence de repentir, quand les élites s'offrent une ingénierie juridique dont l'objet même est d'éviter que l'audience publique ait lieu. L'asymétrie est aussi genrée : la pension moyenne des femmes est inférieure de 26 % à celle des hommes, près de la moitié des retraitées touchent moins de 1 000 € par mois — une dépendance économique qui limite concrètement la capacité de fuir des violences par la voie judiciaire, lente et coûteuse.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 : PRISON ============ -->
+<section class="dark-band" id="prison" style="background:var(--ink)">
+  <div class="section">
+    <div class="section-head">
+      <p class="kicker">05 · L'autre bout de la chaîne</p>
+      <h2 class="title">La prison des pauvres</h2>
+      <p class="lede">Pendant que la délinquance financière se règle « de manière financière », qui remplit les prisons belges ? Les chiffres du Conseil de l'Europe et de l'INCC dessinent un portrait sans ambiguïté.</p>
+    </div>
+    <div class="prose reveal" style="color:#D5DBE2">
+      <p>Au 1<sup>er</sup> janvier 2023, la Belgique comptait <strong>36,2&nbsp;% de détenus en détention préventive</strong> — c'est-à-dire présumés innocents, incarcérés sans jugement — contre une médiane européenne de 24,7&nbsp;%, ce qui la place parmi les pays y recourant le plus. La population en préventive est passée d'environ <strong>1 500 personnes en 1980 à près de 4 000 en 2022</strong>, une explosion que n'expliquent ni la démographie ni la criminalité, en baisse depuis le début du siècle. Les étrangers sont massivement surreprésentés : 28&nbsp;% des Belges détenus sont en préventive, contre <strong>47&nbsp;% des étrangers</strong> — l'absence de domicile légal étant lue comme un risque de fuite, ce que confirme la recherche de l'INCC sur les personnes nées hors de Belgique et sans domicile. Le tout dans des prisons en surpopulation chronique : <strong>115,3 détenus pour 100 places</strong>, dénoncée par l'Observatoire international des prisons et la Ligue des droits humains pour ses effets aggravants sur les plus fragiles.</p>
+      <p>Le profil socio-économique du détenu belge, en amont de l'incarcération, est massivement précaire. Et le contraste avec le col blanc est brutal : les mouvements sociaux le dénoncent de longue date — actions de protestation lourdement sanctionnées au nom de l'ordre public, quand la criminalité financière bénéficie de transactions opaques ou de classements sans suite faute d'effectifs. La détention préventive fonctionne ainsi comme le <strong>principal facteur d'inégalité socio-économique en amont même du jugement</strong>.</p>
+    </div>
+    <div class="pull reveal">
+      <blockquote>Il n'y a, dans les prisons belges, aucun fraudeur.</blockquote>
+      <cite>Christophe Goosens, avocat fiscaliste — « les affaires financières se règlent de manière financière »</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 : DEBAT ============ -->
+<section class="section" id="debat">
+  <div class="section-head">
+    <p class="kicker both">06 · Le débat</p>
+    <h2 class="title">« Justice de classe » : accusation fondée ou slogan réducteur ?</h2>
+    <p class="lede">Le concept est autant militant qu'analytique. Voici, loyalement, les deux lectures — et ce que dit la comparaison européenne.</p>
+  </div>
+
+  <div class="debate reveal">
+    <div class="debate-col for">
+      <h3>Ce que disent les défenseurs</h3>
+      <ul>
+        <li><strong>Efficacité et réalisme</strong>Recouvrement rapide et certain pour le Trésor, évitement de procès longs, coûteux et à l'issue incertaine, prescriptions déjouées. L'ex-procureur du Roi de Bruxelles Jean-Marc Meilleur défend « un principe de réalisme » et « un outil efficace pour rendre la justice rapidement ».</li>
+        <li><strong>Proportionnalité de fait</strong>En Belgique, les affaires fiscales et financières ne mènent quasi jamais à de la prison ferme : seules des sanctions financières sont de toute façon envisageables. Michel Claise, ex-juge d'instruction et artisan de l'accord HSBC, a lui-même porté cette logique.</li>
+        <li><strong>Ce n'est pas un droit du riche</strong>Marie-Aude Beernaert (UCLouvain) rappelle que « ce n'est pas un droit du suspect, c'est le parquet qui décide », que la transaction est contrôlée par un juge depuis 2016-2018, que l'immense majorité des transactions concernent le roulage, et que l'émotion vient surtout « des montants et des grands noms ».</li>
+        <li><strong>Désengorgement</strong>Argument historique du législateur depuis 1935 — même si l'audit du CSJ relativise : le volume des transactions élargies est trop modeste pour un impact « significatif » sur la charge des tribunaux.</li>
+      </ul>
+    </div>
+    <div class="debate-col against">
+      <h3>Ce que disent les critiques</h3>
+      <ul>
+        <li><strong>Rupture d'égalité</strong>Bruno Dayez, avocat : un « scandale éthique dans la mesure où l'on reconnaît officiellement que la justice est foncièrement inégalitaire ». La Ligue des droits humains (Manuel Lambert) parle d'une « défaite de notre système judiciaire » et d'une « justice à deux vitesses ».</li>
+        <li><strong>Marchandisation</strong>Le droit pénal économique devient une « taxe sur le risque », un surcoût opérationnel prévisible qui annule la fonction dissuasive, rétributive et infamante de la peine — le ministère public mué en collecteur de fonds.</li>
+        <li><strong>Opacité et évitement du procès public</strong>Huis clos et montants secrets jusqu'en 2023 ; le prévenu fortuné achète surtout l'absence d'opprobre médiatique. Le CSJ pointe aussi le « droit de veto » des administrations fiscale et sociale comme un risque pour l'indépendance du parquet.</li>
+        <li><strong>Capture législative</strong>Le Kazakhgate documente comment la loi de 2011 a été votée sous influence — diplomatie française, lobby diamantaire — puis utilisée dix jours avant la signature d'un contrat d'État. Le CSJ lui-même admet l'impression « d'une justice de riche ».</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare reveal">
+    <div class="compare-side a">
+      <h3>Belgique — transaction pénale élargie</h3>
+      <dl>
+        <dt>Base</dt><dd>Art. 216bis CIC (1935, élargi 2011, corrigé 2016-2018)</dd>
+        <dt>Qui</dt><dd>Personnes physiques et morales</dd>
+        <dt>Culpabilité</dt><dd>Aucune reconnaissance ; casier vierge</dd>
+        <dt>Contrôle</dt><dd>Homologation judiciaire (légalité, proportionnalité, consentement) ; audience publique depuis 2023-2024 — sauf transaction simple, sans contrôle</dd>
+        <dt>Transparence</dt><dd>Faible : pas de publication systématique, statistiques lacunaires (constat CSJ)</dd>
+      </dl>
+    </div>
+    <div class="compare-side b">
+      <h3>France — CJIP (loi Sapin II, 2016)</h3>
+      <dl>
+        <dt>Base</dt><dd>Convention judiciaire d'intérêt public ; étendue à la fraude fiscale (2018) et à l'environnement (2020)</dd>
+        <dt>Qui</dt><dd>Personnes morales uniquement</dd>
+        <dt>Culpabilité</dt><dd>Sans reconnaissance de culpabilité ; amende jusqu'à 30 % du chiffre d'affaires + programme de conformité</dd>
+        <dt>Bilan</dt><dd>3,98 Mds€ d'amendes pour les 20 CJIP validées (bilan 2024 du PNF) ; CJIP Airbus : 2,08 Mds€ (2020)</dd>
+        <dt>Transparence</dt><dd>Publication systématique sur le site de l'Agence française anticorruption — mais mêmes critiques de « justice à deux vitesses »</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="prose reveal" style="margin-top:2.6rem">
+    <p><span class="lead-in">Le verdict raisonnable</span> tient en une distinction : l'égalité <strong>de droit</strong> est préservée — aucun texte ne réserve ces mécanismes aux fortunés, et le parquet garde la main. Mais l'égalité <strong>de fait</strong> est rompue : seuls ceux qui disposent d'un patrimoine peuvent payer pour éteindre des poursuites, s'offrir l'ingénierie juridique qui y mène, et éviter la détention préventive qui frappe d'abord les sans-domicile et les étrangers. Le sentiment de « justice de classe » est donc <strong>empiriquement fondé dans ses effets, même s'il est juridiquement imprécis</strong>. Ce n'est pas une succession d'accidents : c'est une architecture — Code d'instruction criminelle, circulaires du Collège des procureurs généraux, arbitrages budgétaires — qui administre une répression sévère pour les déviances de survie et organise la sortie tarifée des désordres financiers.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 : REFORMES ============ -->
+<section style="background:var(--paper-2);border-top:1px solid var(--line)" id="reformes">
+  <div class="section">
+    <div class="section-head">
+      <p class="kicker both">07 · Et maintenant ?</p>
+      <h2 class="title">Sept chantiers pour réduire l'asymétrie</h2>
+      <p class="lede">Pistes issues du débat public belge — CSJ, IFDH, Cour des comptes, propositions parlementaires — par ordre de faisabilité.</p>
+    </div>
+    <ol class="reforms">
+      <li class="reveal"><h3>Transparence et données</h3><p>Mettre en œuvre les recommandations du CSJ : enregistrement informatique a priori des transactions, statistiques nationales ventilées par matière, partie et stade de procédure, publication annuelle. Si rien n'est disponible dans les deux ans, le Parlement devrait légiférer.</p></li>
+      <li class="reveal"><h3>Généraliser le contrôle du juge</h3><p>Étendre à la transaction <em>simple</em> l'exigence d'homologation, de motivation et de contrôle de proportionnalité imposée par la Cour constitutionnelle pour la transaction élargie — en dotant les tribunaux des moyens d'exercer ce contrôle autrement que comme une validation automatique (recommandation IFDH).</p></li>
+      <li class="reveal"><h3>Abolir la transaction pénale immédiate</h3><p>Supprimer le paiement par QR code lors d'interpellations de rue, créé par circulaires sans base légale : rétablir la séparation des pouvoirs et le contrôle juridictionnel de toute extinction de l'action publique (avis IFDH 12/2022).</p></li>
+      <li class="reveal"><h3>Encadrer l'accès des personnes politiquement exposées</h3><p>Durcir les conditions d'accès à la transaction pour les titulaires de fonctions publiques et leurs facilitateurs institutionnels (propositions DéFI/Sophie Rohonyi et PTB après l'affaire ING/Reynders), afin de garantir la publicité des débats sur la probité publique.</p></li>
+      <li class="reveal"><h3>Refinancer l'aide juridique</h3><p>Sortir du modèle « judicare » à enveloppe fermée, relever les plafonds au moins au niveau du seuil de pauvreté réel, corriger l'effet pervers de l'indexation, revoir l'exclusion automatique des assurés protection juridique, et financer des maisons de justice pluridisciplinaires de première ligne.</p></li>
+      <li class="reveal"><h3>Réduire la détention préventive</h3><p>Suivre l'avis du Conseil pénitentiaire : mécanisme de régulation carcérale et baisse du recours à la préventive — principal facteur d'inégalité socio-économique en amont du jugement — pour revenir sous la médiane européenne.</p></li>
+      <li class="reveal"><h3>Un parquet financier fort</h3><p>Consolider les moyens d'enquête sur la criminalité financière (débat sur un parquet national financier) pour que la transaction redevienne un choix de politique criminelle — et non un aveu d'impuissance face à la complexité des dossiers.</p></li>
+    </ol>
+
+    <div class="caveats reveal">
+      <h3>Précautions de lecture</h3>
+      <ul>
+        <li><strong>Qualité des données :</strong> le CSJ souligne lui-même l'absence de statistiques fiables ; 727 M€ est un « au moins », dominé par HSBC et UBS, et le décompte de 512 se fait par prévenu, non par dossier.</li>
+        <li><strong>Affaires en cours :</strong> les dossiers Reynders, Moreau/Nethys et la DLUquinquies évoluent (état des connaissances : juillet 2026). Les transactions Moreau n'étaient, à la dernière information disponible, pas conclues — la présomption d'innocence s'applique.</li>
+        <li><strong>Concept contesté :</strong> « justice de classe » est une notion militante autant qu'analytique ; l'immense majorité des transactions concernent des faits mineurs du quotidien (roulage). Cette page présente les deux lectures sans les confondre.</li>
+        <li><strong>Comparaisons internationales :</strong> CJIP française et deferred prosecution agreements anglo-saxons ne sont pas strictement équivalents au dispositif belge et se lisent avec prudence.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<footer class="sources">
+  <div class="section">
+    <h2>Sources principales</h2>
+    <div class="src-grid">
+      <p>Conseil supérieur de la Justice, <a href="https://csj.be/admin/storage/hrj/20241212-rapport-audit-transaction-penale-elargie.pdf" rel="noopener">Audit — la transaction pénale élargie</a>, 12 décembre 2024</p>
+      <p>Cour constitutionnelle, arrêt n° 83/2016 du 2 juin 2016 (art. 216bis §2 CIC) ; arrêts du 21 juin 2018 (ticket modérateur) et du 10 juin 2021 (droits de greffe)</p>
+      <p>Cour des comptes, <a href="https://www.ccrek.be/sites/default/files/Docs/2024_06_AccessibiliteFinanciereJustice.pdf" rel="noopener">Accessibilité financière à la justice</a>, janvier 2024</p>
+      <p>SPF Justice / SPP Intégration sociale, <a href="https://justice.belgium.be/sites/default/files/Livre%20Pauvret%C3%A9%20et%20Justice_Web_DEF_FR.pdf" rel="noopener">Pauvreté et Justice en Belgique</a>, 2022</p>
+      <p>Institut fédéral pour les droits humains (IFDH), avis 12/2022 sur la transaction pénale immédiate et le contrôle juridictionnel</p>
+      <p>Conseil pénitentiaire, Avis n° 1 (détention préventive) ; statistiques SPACE, Conseil de l'Europe</p>
+      <p>Commission d'enquête parlementaire « Kazakhgate », rapport 2018, Chambre des représentants</p>
+      <p>ORBi ULiège, <a href="https://orbi.uliege.be/bitstream/2268/204465/1/jlmb2016_39p1847_certified.pdf" rel="noopener">La transaction pénale élargie face au contrôle de la Cour constitutionnelle</a>, JLMB 2016</p>
+      <p>UCLouvain (mémoire), <a href="https://thesis.dial.uclouvain.be/bitstreams/26952960-5d4c-45c8-9b83-9b30029ea848/download" rel="noopener">La transaction pénale en Belgique : vers une « justice de classes » ?</a></p>
+      <p>e-legal (ULB), <a href="https://e-legal.ulb.be/medias/pdfs/144-la-justice-de-classe-a-l-ecran-comment-le-peuple-est-il-represente.pdf" rel="noopener">La justice de classe à l'écran</a> ; C. Nagels &amp; P. Lascoumes, <em>Sociologie des élites délinquantes</em></p>
+      <p>Propositions de loi, Chambre : <a href="https://www.lachambre.be/FLWB/PDF/55/3329/55K3329001.pdf" rel="noopener">doc. 55-3329</a> et <a href="https://www.dekamer.be/FLWB/PDF/55/1125/55K1125001.pdf" rel="noopener">doc. 55-1125</a> (encadrement de la transaction)</p>
+      <p>Presse de référence : Le Soir, La Libre (DLU, affaire Moreau), Le Vif/L'Express &amp; De Standaard (Kazakhgate), RTBF (détention préventive), justice-en-ligne.be ; bilan CJIP 2024 du Parquet national financier (France)</p>
+    </div>
+    <div class="colophon">
+      <span>Dossier de synthèse citoyen — état des connaissances : juillet 2026</span>
+      <span>Palette : <span style="color:#D8B65A">■</span> voie payante · <span style="color:#8DA2B5">■</span> voie carcérale</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
