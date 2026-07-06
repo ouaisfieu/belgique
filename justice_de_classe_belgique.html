@@ -384,6 +384,31 @@ tr:hover td{background:var(--paper-2)}
 }
 @media(max-width:760px){.src-grid{grid-template-columns:1fr}}
 
+/* ---------- MISE EN EXERGUE ---------- */
+mark.hl{
+  background:linear-gradient(transparent 58%,rgba(154,123,45,.30) 0);
+  color:inherit;padding:0 .12em;font-weight:600;
+}
+mark.hl.j{background:linear-gradient(transparent 58%,rgba(70,88,106,.30) 0)}
+.dark-band mark.hl{background:linear-gradient(transparent 58%,rgba(216,182,90,.38) 0)}
+.dark-band mark.hl.j{background:linear-gradient(transparent 58%,rgba(141,162,181,.35) 0)}
+.takeaway{
+  margin-top:2.8rem;border:1px solid var(--line-strong);background:#fff;
+  padding:1.5rem 1.7rem 1.5rem 2rem;position:relative;max-width:78ch;
+}
+.takeaway::before{
+  content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:6px;
+  background:linear-gradient(180deg,var(--brass) 0 50%,var(--steel-deep) 50% 100%);
+}
+.takeaway .tk-label{
+  font-family:var(--narrow);font-weight:700;font-size:.74rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--brass-deep);
+  display:block;margin-bottom:.5rem;
+}
+.takeaway p{font-family:var(--serif);font-size:1.08rem;line-height:1.55;font-weight:500;margin:0}
+.dark-band .takeaway{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.22);color:#E8ECF0}
+.dark-band .takeaway .tk-label{color:#D8B65A}
+
 /* ---------- REVEAL ---------- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
@@ -400,6 +425,7 @@ tr:hover td{background:var(--paper-2)}
       <a href="#constitution">Constitution</a>
       <a href="#sans-moyens">Sans les moyens</a>
       <a href="#prison">Prison</a>
+      <a href="#administratif">Administratif</a>
       <a href="#debat">Débat</a>
       <a href="#reformes">Réformes</a>
     </div>
@@ -471,8 +497,8 @@ tr:hover td{background:var(--paper-2)}
   </div>
 
   <div class="prose reveal">
-    <p><span class="lead-in">La transaction pénale</span> (article 216bis du Code d'instruction criminelle) est le cœur du dispositif. Le principe : le ministère public propose l'extinction définitive de l'action publique contre le paiement d'une somme d'argent. Pas de procès public, pas de reconnaissance de culpabilité, pas d'inscription au casier judiciaire — donc réputation commerciale préservée, capacité de contracter avec les autorités publiques intacte, carrière politique sauve, règles de la récidive neutralisées. Le mécanisme est ancien (arrêté royal du 10 janvier 1935) et massivement banal : tout automobiliste qui paie une amende de roulage conclut, techniquement, une transaction. Seule sa version « élargie » fait polémique.</p>
-    <p>Le basculement s'opère en <strong>2011</strong>. Votée à la hâte par un Parlement alors que le gouvernement est en affaires courantes — sous la pression conjuguée de la complexité des dossiers de fraude, des lobbys économiques et notamment du secteur diamantaire anversois, dont les avocats rédigent littéralement des amendements —, la loi du 14 avril 2011 crée la <strong>transaction pénale élargie</strong>. Double extension radicale : matérielle (tous les faits pour lesquels le parquet estime ne pas devoir requérir plus de 2 ans de prison, sans atteinte grave à l'intégrité physique — ce qui englobe blanchiment, corruption, escroquerie et méga-fraudes fiscales, théoriquement punissables jusqu'à 20 ans) et procédurale (on peut désormais transiger <em>même quand un juge d'instruction est saisi ou qu'un procès est en cours</em>, tant qu'aucun jugement définitif n'est rendu).</p>
+    <p><span class="lead-in">La transaction pénale</span> (article 216bis du Code d'instruction criminelle) est le cœur du dispositif. Le principe : le ministère public propose l'extinction définitive de l'action publique contre le paiement d'une somme d'argent. <mark class="hl">Pas de procès public, pas de reconnaissance de culpabilité, pas d'inscription au casier judiciaire</mark> — donc réputation commerciale préservée, capacité de contracter avec les autorités publiques intacte, carrière politique sauve, règles de la récidive neutralisées. Le mécanisme est ancien (arrêté royal du 10 janvier 1935) et massivement banal : tout automobiliste qui paie une amende de roulage conclut, techniquement, une transaction. Seule sa version « élargie » fait polémique.</p>
+    <p>Le basculement s'opère en <strong>2011</strong>. Votée à la hâte par un Parlement alors que le gouvernement est en affaires courantes — sous la pression conjuguée de la complexité des dossiers de fraude, des lobbys économiques et notamment du secteur diamantaire anversois, dont les avocats rédigent littéralement des amendements —, la loi du 14 avril 2011 crée la <strong>transaction pénale élargie</strong>. Double extension radicale : matérielle (tous les faits pour lesquels le parquet estime ne pas devoir requérir plus de 2 ans de prison, sans atteinte grave à l'intégrité physique — ce qui englobe blanchiment, corruption, escroquerie et méga-fraudes fiscales, théoriquement punissables jusqu'à 20 ans) et procédurale (on peut désormais transiger <mark class="hl">même quand un juge d'instruction est saisi ou qu'un procès est en cours</mark>, tant qu'aucun jugement définitif n'est rendu).</p>
     <p>La loi de 2011 instaure au passage une hiérarchie des victimes : l'indemnisation complète et préalable de l'administration fiscale ou sociale devient une condition <em>sine qua non</em> — l'État s'érige en victime super-privilégiée — tandis que les victimes ordinaires se contentent de règles d'indemnisation plus souples et précaires.</p>
   </div>
 
@@ -531,6 +557,11 @@ tr:hover td{background:var(--paper-2)}
     </table>
     <p class="tbl-note">Le CSJ souligne lui-même l'absence de statistiques fiables et détaillées : le total de 727 M€ est un « au moins », massivement tiré par deux dossiers bancaires (HSBC 2019, UBS 2021), et le décompte se fait par prévenu, non par dossier.</p>
   </div>
+
+  <div class="takeaway reveal">
+    <span class="tk-label">À retenir</span>
+    <p>Un carrousel TVA ou un blanchiment massif n'implique, par définition, aucune « atteinte grave à l'intégrité physique » : la quasi-totalité de la délinquance financière entre donc dans le champ de la transaction — jusqu'à des faits théoriquement punissables de 20 ans de prison. Et l'État lui-même ignore combien, pour qui, à quel stade : le CSJ constate qu'aucune statistique fiable n'existe.</p>
+  </div>
 </section>
 
 <!-- ============ SECTION 2 : AFFAIRES ============ -->
@@ -547,7 +578,7 @@ tr:hover td{background:var(--paper-2)}
         <span class="year">2011 · Le cas fondateur</span>
         <div class="amount">3,49&nbsp;M€<small> (volet pénal)</small></div>
         <h3>Kazakhgate — Patokh Chodiev et le « trio kazakh »</h3>
-        <p>Poursuivi depuis dix ans pour faux et blanchiment (dossier Tractebel, commissions suspectes de 55 M€), l'oligarque belgo-kazakh devient le 17 juin 2011 le premier grand bénéficiaire de la loi votée deux mois plus tôt. Les sept inculpés paient ensemble 3,49 M€ (522 500 € chacun pour les principaux). Dix jours plus tard, le contrat franco-kazakh des 45 hélicoptères Eurocopter est signé à Astana. Un courriel des émissaires de l'Élysée se félicite de l'implication d'Armand De Decker et de Didier Reynders dans une loi « organisée et suscitée ». La commission d'enquête parlementaire (2018) dénonce l'immixtion française et épingle De Decker pour conflit d'intérêts, sans conclure que ces influences ont déterminé le vote.</p>
+        <p>Poursuivi depuis dix ans pour faux et blanchiment (dossier Tractebel, commissions suspectes de 55 M€), l'oligarque belgo-kazakh devient le 17 juin 2011 le premier grand bénéficiaire de la loi votée deux mois plus tôt. Longtemps présentée comme un record de 22,5 M€, la transaction du volet pénal s'élève en réalité, selon Le Vif et De Standaard, à 3,49 M€ pour les sept inculpés (522 500 € chacun pour les principaux). Dix jours plus tard, le contrat franco-kazakh des 45 hélicoptères Eurocopter est signé à Astana. Un courriel des émissaires de l'Élysée se félicite de l'implication d'Armand De Decker et de Didier Reynders dans une loi <mark class="hl">« organisée et suscitée »</mark> pour sauver Chodiev. La commission d'enquête parlementaire (2018) dénonce l'immixtion française et épingle De Decker pour conflit d'intérêts, sans conclure que ces influences ont déterminé le vote.</p>
       </article>
       <article class="case reveal">
         <span class="year">2019 · Le record</span>
@@ -589,6 +620,11 @@ tr:hover td{background:var(--paper-2)}
     <div class="prose reveal" style="max-width:70ch">
       <p>D'autres dossiers nourrissent la même controverse : le « Footbelgate » (10 des 56 inculpés ont transigé), un groupe bancaire marocain (175 M€, 2026), Joëlle Milquet (recherche d'une transaction dans l'affaire des emplois présumés fictifs), et surtout <strong>Stéphane Moreau</strong> : fin 2025, le parquet général de Liège négociait avec l'ex-CEO de Nethys une transaction dans le dossier des 18,6 M€ d'indemnités illégales (dont 11,6 M€ pour lui seul) — négociation entachée d'une polémique supplémentaire quand La Libre a révélé, en février 2026, que son avocat aurait cherché à suggérer une magistrate favorable pour l'homologation.</p>
     </div>
+
+    <div class="takeaway reveal">
+      <span class="tk-label">À retenir</span>
+      <p>Le schéma se répète d'affaire en affaire : plus le dossier est lourd, médiatique et patrimonial, plus la sortie transactionnelle est probable. Le cas fondateur (Kazakhgate) montre même le mécanisme à l'état pur — <mark class="hl">la loi a été façonnée sous influence, puis utilisée par ceux pour qui elle avait été taillée</mark>, dix jours avant la signature d'un contrat d'État.</p>
+    </div>
   </div>
 </section>
 
@@ -602,7 +638,12 @@ tr:hover td{background:var(--paper-2)}
   <div class="prose reveal">
     <p><span class="lead-in">L'arrêt n° 83/2016 du 2 juin 2016</span> est le tournant. Saisie de questions préjudicielles par la chambre des mises en accusation de Gand, la Cour constitutionnelle censure l'article 216bis §2 : permettre au ministère public — placé sous l'autorité du ministre de la Justice — de mettre fin à l'action publique après sa mise en mouvement, <em>sans contrôle juridictionnel effectif</em>, viole les articles 10 et 11 de la Constitution combinés au droit à un procès équitable. Le juge de 2011 était réduit à un rôle de guichet : constater que l'amende était payée. La Cour rappelle que ni la célérité ni le désencombrement des greffes ne justifient de priver la société du contrôle d'un magistrat du siège, indépendant et impartial. Elle valide en revanche le pouvoir discrétionnaire du parquet : nul n'a le <em>droit</em> d'exiger une transaction.</p>
     <p>Les lois réparatrices (« Pot-pourri II » de 2016, loi du 18 mars 2018) réintroduisent la transaction élargie assortie d'une <strong>homologation judiciaire obligatoire</strong> : le juge vérifie les conditions légales, l'indemnisation complète des victimes et des administrations, le consentement libre et éclairé du suspect, et — clef de voûte — la <strong>proportionnalité</strong> de la somme à la gravité des faits et à la personnalité du délinquant, dans une décision motivée. La proposition de transaction suspend désormais la prescription, fermant la faille qui permettait de faire traîner les négociations jusqu'à l'extinction des poursuites par écoulement du temps. Depuis 2023-2024, les homologations sont publiques. Selon l'audit du CSJ, 91&nbsp;% des magistrats du siège estiment disposer d'outils suffisants pour identifier les risques de violation des droits, et 70&nbsp;% des membres du parquet jugent que ce contrôle renforce la confiance.</p>
-    <p>Mais deux angles morts subsistent. La <strong>transaction simple</strong>, conclue au stade de l'information secrète, échappe toujours à tout contrôle juridictionnel et à toute motivation — l'IFDH y voit une incitation structurelle à transiger tôt et à huis clos pour contourner le juge, et demande la généralisation de l'homologation, tout en pointant le paradoxe : imposer ce contrôle à des tribunaux exsangues risque de le transformer en validation automatique. Et la <strong>transaction immédiate</strong> de rue, créée par circulaires, fait l'objet d'une demande d'abolition pure et simple (avis IFDH 12/2022), au nom de la séparation des pouvoirs et de la jurisprudence européenne sur le consentement contraint (<em>Deweer c. Belgique</em>).</p>
+    <p>Mais deux angles morts subsistent. La <strong>transaction simple</strong>, conclue au stade de l'information secrète, échappe toujours à tout contrôle juridictionnel et à toute motivation — l'IFDH y voit <mark class="hl j">une incitation structurelle à transiger tôt et à huis clos pour contourner le juge</mark>, et demande la généralisation de l'homologation, tout en pointant le paradoxe : imposer ce contrôle à des tribunaux exsangues risque de le transformer en validation automatique. Et la <strong>transaction immédiate</strong> de rue, créée par circulaires, fait l'objet d'une demande d'abolition pure et simple (avis IFDH 12/2022), au nom de la séparation des pouvoirs et de la jurisprudence européenne sur le consentement contraint (<em>Deweer c. Belgique</em>).</p>
+  </div>
+
+  <div class="takeaway reveal">
+    <span class="tk-label">À retenir</span>
+    <p>La Cour constitutionnelle a rétabli le juge dans la transaction élargie — légalité, proportionnalité, consentement, motivation, audience publique. Mais la réparation est incomplète : la transaction simple et la transaction de rue restent hors de tout contrôle juridictionnel. La faille n'est pas un oubli récent : elle est documentée, dénoncée par l'IFDH, et toujours ouverte.</p>
   </div>
 </section>
 
@@ -642,7 +683,12 @@ tr:hover td{background:var(--paper-2)}
     </div>
 
     <div class="prose reveal">
-      <p>Car l'inégalité n'est pas que financière. La sociologie du droit — de Bourdieu à Carla Nagels (ULB) et Pierre Lascoumes (<em>Sociologie des élites délinquantes</em>) — montre que le tribunal est un espace de codes, de rituels et de langue technique qui désavantage structurellement les classes populaires : mutisme ou maladresse perçus comme désinvolture ou absence de repentir, quand les élites s'offrent une ingénierie juridique dont l'objet même est d'éviter que l'audience publique ait lieu. L'asymétrie est aussi genrée : la pension moyenne des femmes est inférieure de 26 % à celle des hommes, près de la moitié des retraitées touchent moins de 1 000 € par mois — une dépendance économique qui limite concrètement la capacité de fuir des violences par la voie judiciaire, lente et coûteuse.</p>
+      <p>Car l'inégalité n'est pas que financière. La sociologie du droit — de Bourdieu à Carla Nagels (ULB) et Pierre Lascoumes (<em>Sociologie des élites délinquantes</em>) — montre que le tribunal est un espace de codes, de rituels et de langue technique qui désavantage structurellement les classes populaires : mutisme ou maladresse perçus comme désinvolture ou absence de repentir, quand les élites s'offrent une ingénierie juridique dont l'objet même est <mark class="hl">d'éviter que l'audience publique ait lieu</mark>. L'asymétrie est aussi genrée, et parfois mortelle : la pension moyenne des femmes est inférieure de 26 % à celle des hommes, près de la moitié des retraitées touchent moins de 1 000 € par mois — une dépendance économique qui limite concrètement la capacité de fuir des violences par une voie judiciaire lente et coûteuse. En 2023, la Belgique déplorait 24 féminicides à la mi-novembre, dont une part alarmante de femmes pensionnées ou proches de la pension : le lien entre pauvreté, inaccessibilité de la justice protectrice et violences mortelles n'est pas une abstraction.</p>
+    </div>
+
+    <div class="takeaway reveal">
+      <span class="tk-label">À retenir</span>
+      <p>Pendant que la loi organise des portes de sortie pour les patrimoines, elle a laissé se construire des barrières à l'entrée pour les pauvres : plafonds d'exclusion, enveloppe fermée, ticket modérateur et hausses de greffe (censurés par la Cour constitutionnelle en 2018 et 2021), assurance privée captée à 80 % par les aisés. <mark class="hl j">Deux fois en trois ans, il a fallu la Cour constitutionnelle pour empêcher l'État de renchérir l'accès au juge.</mark></p>
     </div>
   </div>
 </section>
@@ -656,20 +702,64 @@ tr:hover td{background:var(--paper-2)}
       <p class="lede">Pendant que la délinquance financière se règle « de manière financière », qui remplit les prisons belges ? Les chiffres du Conseil de l'Europe et de l'INCC dessinent un portrait sans ambiguïté.</p>
     </div>
     <div class="prose reveal" style="color:#D5DBE2">
-      <p>Au 1<sup>er</sup> janvier 2023, la Belgique comptait <strong>36,2&nbsp;% de détenus en détention préventive</strong> — c'est-à-dire présumés innocents, incarcérés sans jugement — contre une médiane européenne de 24,7&nbsp;%, ce qui la place parmi les pays y recourant le plus. La population en préventive est passée d'environ <strong>1 500 personnes en 1980 à près de 4 000 en 2022</strong>, une explosion que n'expliquent ni la démographie ni la criminalité, en baisse depuis le début du siècle. Les étrangers sont massivement surreprésentés : 28&nbsp;% des Belges détenus sont en préventive, contre <strong>47&nbsp;% des étrangers</strong> — l'absence de domicile légal étant lue comme un risque de fuite, ce que confirme la recherche de l'INCC sur les personnes nées hors de Belgique et sans domicile. Le tout dans des prisons en surpopulation chronique : <strong>115,3 détenus pour 100 places</strong>, dénoncée par l'Observatoire international des prisons et la Ligue des droits humains pour ses effets aggravants sur les plus fragiles.</p>
-      <p>Le profil socio-économique du détenu belge, en amont de l'incarcération, est massivement précaire. Et le contraste avec le col blanc est brutal : les mouvements sociaux le dénoncent de longue date — actions de protestation lourdement sanctionnées au nom de l'ordre public, quand la criminalité financière bénéficie de transactions opaques ou de classements sans suite faute d'effectifs. La détention préventive fonctionne ainsi comme le <strong>principal facteur d'inégalité socio-économique en amont même du jugement</strong>.</p>
+      <p>Au 1<sup>er</sup> janvier 2023, la Belgique comptait <strong>36,2&nbsp;% de détenus en détention préventive</strong> — c'est-à-dire présumés innocents, incarcérés sans jugement — contre une médiane européenne de 24,7&nbsp;%, ce qui la place parmi les pays y recourant le plus. La population en préventive est passée d'environ <strong>1 500 personnes en 1980 à près de 4 000 en 2022</strong>, une explosion que n'expliquent <mark class="hl">ni la démographie ni la criminalité, en baisse depuis le début du siècle</mark>. Les étrangers sont massivement surreprésentés : 28&nbsp;% des Belges détenus sont en préventive, contre <strong>47&nbsp;% des étrangers</strong> — l'absence de domicile légal étant lue comme un risque de fuite, ce que confirme la recherche de l'INCC sur les personnes nées hors de Belgique et sans domicile. Les données récentes confirment la tendance : <strong>12 130 détenus pour 10 773 places en 2024</strong>, puis <strong>12 883 détenus au 1<sup>er</sup> mai 2025</strong>, dont environ 47&nbsp;% de non-Belges et près d'un tiers (± 4 077) sans droit de séjour — dans des prisons en surpopulation chronique dénoncée par l'Observatoire international des prisons et la Ligue des droits humains pour ses effets aggravants sur les plus fragiles.</p>
+      <p>Le profil socio-économique du détenu belge, en amont de l'incarcération, est massivement précaire. Et le contraste avec le col blanc est brutal : les mouvements sociaux le dénoncent de longue date — actions de protestation lourdement sanctionnées au nom de l'ordre public, quand la criminalité financière bénéficie de transactions opaques ou de classements sans suite faute d'effectifs. La détention préventive fonctionne ainsi comme <mark class="hl">le principal facteur d'inégalité socio-économique en amont même du jugement</mark>.</p>
     </div>
     <div class="pull reveal">
       <blockquote>Il n'y a, dans les prisons belges, aucun fraudeur.</blockquote>
       <cite>Christophe Goosens, avocat fiscaliste — « les affaires financières se règlent de manière financière »</cite>
     </div>
+    <div class="takeaway reveal">
+      <span class="tk-label">À retenir</span>
+      <p>La prison belge sanctionne moins la gravité des faits que la position sociale de leur auteur : on y entre plus sûrement pour être pauvre, étranger et sans domicile — souvent avant tout jugement — que pour avoir fraudé des millions.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============ SECTION 6 : DEBAT ============ -->
+<!-- ============ SECTION 6 : JUSTICE ADMINISTRATIVE ============ -->
+<section class="section" id="administratif">
+  <div class="section-head">
+    <p class="kicker both">06 · Le complément invisible</p>
+    <h2 class="title">Les amendes administratives : deux justices parallèles, sans juge</h2>
+    <p class="lede">À côté du pénal s'est développée une justice administrative massive, qui contourne les tribunaux. Elle aussi est à deux vitesses : la voie fiscale négociée pour la fraude patrimoniale, la sanction communale expéditive pour les incivilités de rue.</p>
+  </div>
+
+  <div class="prose reveal">
+    <p>L'Institut fédéral des droits humains identifie, dans son rapport « rule of law » d'octobre 2025, le <strong>recours croissant aux sanctions administratives sans intervention judiciaire</strong> comme l'une des quatre vulnérabilités structurelles de l'État de droit belge. Le phénomène complète exactement l'asymétrie pénale décrite plus haut : pour la délinquance patrimoniale, l'administratif est une <em>voie de sortie</em> négociée ; pour les comportements de rue, il est une <em>voie d'entrée</em> répressive, plus rapide et moins garantie que le tribunal.</p>
+  </div>
+
+  <div class="devices">
+    <div class="device pay reveal">
+      <span class="tag">Voie de sortie · fraude fiscale</span>
+      <h3>« Una via » : la fraude fiscale aiguillée hors du pénal</h3>
+      <p>Depuis la loi du 20 septembre 2012, le principe <em>una via</em> organise une concertation entre le fisc et le parquet pour choisir <strong>une seule voie</strong> de traitement de la fraude fiscale : administrative (accroissements d'impôt, amendes fiscales) ou pénale — la première étant, de très loin, la règle. La Cour constitutionnelle a partiellement annulé ce régime (arrêt n° 61/2014, au nom du principe <em>non bis in idem</em>), avant qu'une loi du 5 mai 2019 ne le réorganise : le pénal est réservé à la fraude « grave », le reste se règle par voie administrative.</p>
+      <p>Concrètement, l'immense majorité des dossiers de fraude se soldent par des <strong>accroissements et accords amiables avec l'administration</strong> (dont l'Inspection spéciale des impôts), coordonnés au niveau du Collège pour la lutte contre la fraude fiscale et sociale : pas de procès, pas de casier, un simple coût. Combinée aux DLU et à la transaction, cette voie complète le triptyque de la sortie payante.</p>
+      <p class="key">Le CSJ pointe d'ailleurs le « droit de veto » de fait des administrations fiscale et sociale sur les transactions — un risque pour l'indépendance du parquet.</p>
+    </div>
+    <div class="device jail reveal">
+      <span class="tag">Voie d'entrée · incivilités de rue</span>
+      <h3>Les SAC : la commune qui édicte, constate et juge</h3>
+      <p>Les sanctions administratives communales (loi du 24 juin 2013) permettent à un fonctionnaire sanctionnateur d'infliger des amendes — jusqu'à 350 € pour les adultes, 175 € pour les mineurs <strong>dès 14 ans</strong> — pour des « incivilités » : affichage, mendicité, rassemblements, présence jugée indésirable dans l'espace public. Le tout en court-circuitant le tribunal pénal : le recours devant le tribunal de police existe, mais il est payant, sans avocat gratuit, et rarement exercé.</p>
+      <p>Dans un avis de mars 2026, l'<strong>IFDH enjoint au gouvernement de réformer d'urgence la loi SAC</strong> : la commune édicte la règle, la constate via ses propres agents, juge le citoyen et encaisse l'amende — au mépris de la séparation des pouvoirs, du débat contradictoire et des droits de la défense. La Ligue des droits humains documente un ciblage de fait des jeunes, des sans-abri et des militants ; l'accord de gouvernement Arizona prévoit, lui, une <strong>extension</strong> du dispositif.</p>
+      <p class="key">Qui reçoit des SAC ? Ceux qui vivent dans l'espace public — c'est-à-dire d'abord ceux qui n'ont pas d'espace privé.</p>
+    </div>
+  </div>
+
+  <div class="prose reveal" style="margin-top:2.6rem">
+    <p><span class="lead-in">L'asymétrie de la traque elle-même.</span> Le contraste se prolonge en amont, dans le choix de ce que l'État cherche activement : la <strong>fraude sociale</strong> fait l'objet d'un contrôle outillé (croisements de données, datamining des allocataires, visites domiciliaires pour vérifier la cohabitation) débouchant sur des sanctions d'exclusion qui frappent des personnes déjà précaires — l'un des moteurs documentés du non-recours aux droits —, tandis que la <strong>fraude fiscale</strong>, dont les estimations académiques se comptent en milliards d'euros par an, se heurte à des services d'enquête sous-dotés et se résout massivement par la voie administrative négociée décrite ci-dessus. Même les protections varient : le fraudeur fiscal négocie avec un conseil spécialisé ; l'allocataire sanctionné, lui, relève de l'aide juridique sous-financée de la section précédente. La boucle est bouclée.</p>
+    <p>Dernier étage de cette justice parallèle : la <strong>transaction pénale immédiate</strong> par terminal bancaire lors d'interpellations de rue (voir section 01) et les amendes administratives sectorielles (roulage via les « SAC 5 » pour petits excès de vitesse, environnement, urbanisme) achèvent de déplacer des pans entiers du contentieux hors du juge — un glissement que la société civile résume d'une formule : <mark class="hl j">de l'État de droit vers un « État d'ordre »</mark>.</p>
+  </div>
+
+  <div class="takeaway reveal">
+    <span class="tk-label">À retenir</span>
+    <p>Le même mot — « administratif » — recouvre deux réalités opposées : pour le fraudeur fiscal, une négociation discrète avec conseil spécialisé qui remplace le procès ; pour le jeune, le sans-abri ou le manifestant, une amende infligée sans juge par l'autorité qui a elle-même édicté la règle et qui encaisse le produit.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 : DEBAT ============ -->
 <section class="section" id="debat">
   <div class="section-head">
-    <p class="kicker both">06 · Le débat</p>
+    <p class="kicker both">07 · Le débat</p>
     <h2 class="title">« Justice de classe » : accusation fondée ou slogan réducteur ?</h2>
     <p class="lede">Le concept est autant militant qu'analytique. Voici, loyalement, les deux lectures — et ce que dit la comparaison européenne.</p>
   </div>
@@ -719,7 +809,12 @@ tr:hover td{background:var(--paper-2)}
   </div>
 
   <div class="prose reveal" style="margin-top:2.6rem">
-    <p><span class="lead-in">Le verdict raisonnable</span> tient en une distinction : l'égalité <strong>de droit</strong> est préservée — aucun texte ne réserve ces mécanismes aux fortunés, et le parquet garde la main. Mais l'égalité <strong>de fait</strong> est rompue : seuls ceux qui disposent d'un patrimoine peuvent payer pour éteindre des poursuites, s'offrir l'ingénierie juridique qui y mène, et éviter la détention préventive qui frappe d'abord les sans-domicile et les étrangers. Le sentiment de « justice de classe » est donc <strong>empiriquement fondé dans ses effets, même s'il est juridiquement imprécis</strong>. Ce n'est pas une succession d'accidents : c'est une architecture — Code d'instruction criminelle, circulaires du Collège des procureurs généraux, arbitrages budgétaires — qui administre une répression sévère pour les déviances de survie et organise la sortie tarifée des désordres financiers.</p>
+    <p><span class="lead-in">Le verdict raisonnable</span> tient en une distinction : l'égalité <strong>de droit</strong> est préservée — aucun texte ne réserve ces mécanismes aux fortunés, et le parquet garde la main. Mais l'égalité <strong>de fait</strong> est rompue : seuls ceux qui disposent d'un patrimoine peuvent payer pour éteindre des poursuites, s'offrir l'ingénierie juridique qui y mène, et éviter la détention préventive qui frappe d'abord les sans-domicile et les étrangers. Le sentiment de « justice de classe » est donc <mark class="hl">empiriquement fondé dans ses effets, même s'il est juridiquement imprécis</mark>.</p>
+  </div>
+
+  <div class="takeaway reveal">
+    <span class="tk-label">À retenir</span>
+    <p>Ce n'est pas une succession d'accidents : c'est une architecture — Code d'instruction criminelle, circulaires du Collège des procureurs généraux, arbitrages budgétaires — qui administre une répression sévère pour les déviances de survie et organise la sortie tarifée des désordres financiers.</p>
   </div>
 </section>
 
@@ -727,8 +822,8 @@ tr:hover td{background:var(--paper-2)}
 <section style="background:var(--paper-2);border-top:1px solid var(--line)" id="reformes">
   <div class="section">
     <div class="section-head">
-      <p class="kicker both">07 · Et maintenant ?</p>
-      <h2 class="title">Sept chantiers pour réduire l'asymétrie</h2>
+      <p class="kicker both">08 · Et maintenant ?</p>
+      <h2 class="title">Huit chantiers pour réduire l'asymétrie</h2>
       <p class="lede">Pistes issues du débat public belge — CSJ, IFDH, Cour des comptes, propositions parlementaires — par ordre de faisabilité.</p>
     </div>
     <ol class="reforms">
@@ -739,6 +834,7 @@ tr:hover td{background:var(--paper-2)}
       <li class="reveal"><h3>Refinancer l'aide juridique</h3><p>Sortir du modèle « judicare » à enveloppe fermée, relever les plafonds au moins au niveau du seuil de pauvreté réel, corriger l'effet pervers de l'indexation, revoir l'exclusion automatique des assurés protection juridique, et financer des maisons de justice pluridisciplinaires de première ligne.</p></li>
       <li class="reveal"><h3>Réduire la détention préventive</h3><p>Suivre l'avis du Conseil pénitentiaire : mécanisme de régulation carcérale et baisse du recours à la préventive — principal facteur d'inégalité socio-économique en amont du jugement — pour revenir sous la médiane européenne.</p></li>
       <li class="reveal"><h3>Un parquet financier fort</h3><p>Consolider les moyens d'enquête sur la criminalité financière (débat sur un parquet national financier) pour que la transaction redevienne un choix de politique criminelle — et non un aveu d'impuissance face à la complexité des dossiers.</p></li>
+      <li class="reveal"><h3>Réformer les sanctions administratives communales</h3><p>Suivre l'avis IFDH de mars 2026 : réintroduire de vraies garanties juridictionnelles dans le régime des SAC (juge indépendant, contradictoire, aide juridique accessible), revoir la sanction des mineurs dès 14 ans, et évaluer l'usage réel du dispositif — qui il frappe, pour quels comportements — avant toute extension.</p></li>
     </ol>
 
     <div class="caveats reveal">
@@ -762,7 +858,8 @@ tr:hover td{background:var(--paper-2)}
       <p>Cour constitutionnelle, arrêt n° 83/2016 du 2 juin 2016 (art. 216bis §2 CIC) ; arrêts du 21 juin 2018 (ticket modérateur) et du 10 juin 2021 (droits de greffe)</p>
       <p>Cour des comptes, <a href="https://www.ccrek.be/sites/default/files/Docs/2024_06_AccessibiliteFinanciereJustice.pdf" rel="noopener">Accessibilité financière à la justice</a>, janvier 2024</p>
       <p>SPF Justice / SPP Intégration sociale, <a href="https://justice.belgium.be/sites/default/files/Livre%20Pauvret%C3%A9%20et%20Justice_Web_DEF_FR.pdf" rel="noopener">Pauvreté et Justice en Belgique</a>, 2022</p>
-      <p>Institut fédéral pour les droits humains (IFDH), avis 12/2022 sur la transaction pénale immédiate et le contrôle juridictionnel</p>
+      <p>Institut fédéral pour les droits humains (IFDH), avis 12/2022 sur la transaction pénale immédiate ; rapport « rule of law » octobre 2025 ; avis de mars 2026 sur la réforme des sanctions administratives communales</p>
+      <p>Loi du 24 juin 2013 relative aux sanctions administratives communales ; loi du 20 septembre 2012 (« una via ») ; Cour constitutionnelle, arrêt n° 61/2014 ; loi du 5 mai 2019 (réforme du traitement pénal de la fraude fiscale)</p>
       <p>Conseil pénitentiaire, Avis n° 1 (détention préventive) ; statistiques SPACE, Conseil de l'Europe</p>
       <p>Commission d'enquête parlementaire « Kazakhgate », rapport 2018, Chambre des représentants</p>
       <p>ORBi ULiège, <a href="https://orbi.uliege.be/bitstream/2268/204465/1/jlmb2016_39p1847_certified.pdf" rel="noopener">La transaction pénale élargie face au contrôle de la Cour constitutionnelle</a>, JLMB 2016</p>
