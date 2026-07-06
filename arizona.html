@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arizona — Le rapport de forces</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEDE6;
+    --paper-2:#E7E4DA;
+    --card:#F4F2EC;
+    --ink:#17191E;
+    --ink-2:#40434C;
+    --grey:#847E6E;
+    --line:#D6D2C6;
+    --line-2:#C7C2B4;
+    --night:#0F1620;
+    --night-2:#182231;
+
+    --nva:#E8A317;
+    --mr:#1F5FA8;
+    --eng:#0FAAA0;
+    --cdv:#EA7B22;
+    --voo:#DA1E32;
+
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'IBM Plex Sans',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none!important;transition:none!important;}
+  }
+
+  a{color:inherit;}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.08;margin:0;letter-spacing:-.01em;}
+  .mono{font-family:var(--mono);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(239,237,230,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:20px;}
+  .brand{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.02em;white-space:nowrap;}
+  .brand .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--voo);margin-right:8px;vertical-align:middle;}
+  .nav-links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{
+    font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--ink-2);
+    padding:6px 10px;border-radius:6px;white-space:nowrap;letter-spacing:.02em;
+  }
+  .nav-links a:hover{background:var(--paper-2);color:var(--ink);}
+  @media(max-width:820px){.nav-links{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:64px 0 40px;overflow:hidden;}
+  .hero .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--grey);margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(38px,7.2vw,86px);font-weight:700;
+    line-height:.98;letter-spacing:-.025em;
+  }
+  .hero h1 .flag{display:inline-flex;gap:6px;vertical-align:baseline;margin:0 2px;}
+  .hero h1 .flag span{width:clamp(10px,1.9vw,20px);height:clamp(30px,5.6vw,66px);border-radius:2px;display:inline-block;transform:translateY(.09em);}
+  .hero .lede{
+    max-width:660px;font-size:clamp(17px,2.1vw,20px);color:var(--ink-2);margin-top:26px;line-height:1.55;
+  }
+  .hero .lede b{color:var(--ink);font-weight:600;}
+  .kickstat{
+    display:flex;flex-wrap:wrap;gap:0;margin-top:40px;border-top:1px solid var(--line-2);
+  }
+  .kickstat .k{
+    flex:1 1 150px;padding:18px 20px 16px 0;border-right:1px solid var(--line);
+  }
+  .kickstat .k:last-child{border-right:none;}
+  .kickstat .k .n{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,34px);letter-spacing:-.02em;}
+  .kickstat .k .l{font-family:var(--mono);font-size:11.5px;color:var(--grey);letter-spacing:.03em;margin-top:4px;line-height:1.35;}
+  @media(max-width:620px){.kickstat .k{flex:1 1 45%;padding-right:16px;}}
+
+  /* ---------- BANDS ---------- */
+  .band{padding:66px 0;border-top:1px solid var(--line);}
+  .band.dark{background:var(--night);color:#EBE7DE;border-top:none;}
+  .band.dark .sec-kicker{color:#9DA7B4;}
+  .band.dark h2{color:#F3F0E8;}
+  .band.dark .sec-intro{color:#B9C0C9;}
+  .sec-kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:14px;}
+  .band h2{font-size:clamp(28px,4.4vw,44px);letter-spacing:-.02em;max-width:16ch;}
+  .sec-intro{max-width:660px;color:var(--ink-2);margin-top:18px;font-size:17.5px;}
+
+  /* ---------- DECOR / two levels ---------- */
+  .levels{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;}
+  @media(max-width:760px){.levels{grid-template-columns:1fr;}}
+  .lvl{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;}
+  .lvl .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);}
+  .lvl h3{font-size:22px;margin:8px 0 12px;}
+  .lvl p{margin:0 0 12px;color:var(--ink-2);font-size:15.5px;line-height:1.55;}
+  .lvl .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:4px 9px;border-radius:20px;border:1px solid var(--line-2);color:var(--ink-2);}
+  .chip.hot{border-color:transparent;color:#fff;background:var(--ink);}
+
+  /* ---------- PARTY CARDS ---------- */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;margin-top:44px;}
+  .pcard{
+    position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:22px 20px 20px;overflow:hidden;
+  }
+  .pcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--c);}
+  .pcard .pc-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+  .pcard .abbr{font-family:var(--display);font-weight:700;font-size:23px;letter-spacing:-.01em;color:var(--c);}
+  .pcard .seats{font-family:var(--mono);font-size:12px;color:var(--grey);}
+  .pcard .full{font-size:13px;color:var(--ink-2);margin-top:3px;min-height:34px;}
+  .pcard .role{font-family:var(--display);font-weight:500;font-size:15.5px;margin:14px 0 6px;line-height:1.25;}
+  .pcard .who{font-size:13.5px;color:var(--ink-2);line-height:1.5;}
+  .pcard .who b{color:var(--ink);font-weight:600;}
+  .pcard .redline{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line-2);font-size:13px;color:var(--ink-2);}
+  .pcard .redline .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c);display:block;margin-bottom:3px;}
+
+  /* ---------- FORCE FIELD ---------- */
+  .ff-shell{margin-top:14px;}
+  .ff-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:26px;align-items:stretch;}
+  @media(max-width:900px){.ff-grid{grid-template-columns:1fr;}}
+  .ff-stage{
+    background:linear-gradient(180deg,#131D2B 0%,#0C121C 100%);
+    border-radius:16px;padding:8px;position:relative;border:1px solid #223145;
+  }
+  .ff-stage svg{width:100%;height:auto;display:block;}
+  .ff-hint{position:absolute;left:16px;bottom:12px;font-family:var(--mono);font-size:11px;color:#7C8798;letter-spacing:.02em;}
+  .node{cursor:pointer;}
+  .node circle.body{stroke:#0C121C;stroke-width:2.5;transition:all .28s ease;}
+  .node text{font-family:var(--mono);font-weight:600;pointer-events:none;}
+  .node .plabel{font-family:var(--display);font-weight:600;fill:#EAE6DD;pointer-events:none;}
+  .node .plead{font-family:var(--mono);fill:#93A0B2;pointer-events:none;}
+  .edge{stroke-linecap:round;transition:opacity .28s ease,stroke-width .28s ease;}
+  .edge.alliance{stroke:#3C4B60;stroke-width:2;}
+  .edge.tension{stroke:#5A6B82;stroke-width:2;stroke-dasharray:2 6;}
+  .edge.tension.high{stroke:#8593A6;stroke-width:2.5;}
+  .spoke{stroke:#26344A;stroke-width:1.2;stroke-dasharray:1 5;}
+  .ghost-zone text{font-family:var(--mono);fill:#5C6A7D;}
+  .core-lbl{font-family:var(--display);fill:#C9CFD8;font-weight:600;}
+  .core-sub{font-family:var(--mono);fill:#6E7C90;}
+
+  .edge.dim,.node.dim,.spoke.dim{opacity:.16;}
+  .edge.lit{opacity:1;}
+  .edge.lit.tension{stroke:#E6A93B;}
+  .node.sel circle.body{stroke:#EFEDE6;stroke-width:4;}
+  @keyframes strain{0%{stroke-dashoffset:0;}100%{stroke-dashoffset:-16;}}
+  .edge.tension.high{animation:strain 1.4s linear infinite;}
+
+  /* panel */
+  .ff-panel{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;
+    display:flex;flex-direction:column;min-height:100%;
+  }
+  .ff-panel .ph{display:flex;align-items:center;gap:12px;}
+  .ff-panel .pbadge{width:15px;height:38px;border-radius:3px;background:var(--sel,#999);flex:none;}
+  .ff-panel .ptitle{font-family:var(--display);font-weight:700;font-size:20px;line-height:1.05;}
+  .ff-panel .psub{font-family:var(--mono);font-size:11.5px;color:var(--grey);margin-top:2px;}
+  .ff-panel .pbody{margin-top:16px;font-size:14.5px;color:var(--ink-2);line-height:1.55;}
+  .ff-panel .pbody b{color:var(--ink);font-weight:600;}
+  .ff-panel h5{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin:18px 0 8px;font-weight:600;}
+  .ff-panel .tlist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px;}
+  .ff-panel .tlist li{display:flex;gap:9px;font-size:13.5px;color:var(--ink-2);line-height:1.4;align-items:flex-start;}
+  .ff-panel .tlist li .vs{font-family:var(--mono);font-size:10px;flex:none;margin-top:3px;padding:1px 5px;border-radius:4px;color:#fff;font-weight:600;}
+  .ff-panel .empty{color:var(--grey);font-size:14px;margin-top:26px;font-style:italic;}
+  .ff-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--grey);}
+  .ff-legend span{display:inline-flex;align-items:center;gap:7px;}
+  .ll{width:22px;height:0;border-top:2px solid #6b7a90;display:inline-block;}
+  .ll.dash{border-top:2px dashed #6b7a90;}
+
+  /* ---------- ISSUES ---------- */
+  .issues{display:flex;flex-direction:column;gap:14px;margin-top:44px;}
+  .issue{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;}
+  .issue-h{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .issue-h h3{font-size:19px;}
+  .verdict{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+  .v-open{background:#F3E3C4;color:#7a5a12;}
+  .v-force{background:#E9D3D3;color:#8a2b2b;}
+  .v-compromis{background:#D8E7E4;color:#1f5f57;}
+  .v-lock{background:#DDD9CC;color:#5b5647;}
+  .issue p{color:var(--ink-2);font-size:15px;margin:12px 0 0;line-height:1.55;}
+  .poles{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-top:18px;}
+  @media(max-width:620px){.poles{grid-template-columns:1fr;}}
+  .pole{border-radius:10px;padding:13px 15px;font-size:13.5px;line-height:1.45;border:1px solid var(--line);background:var(--paper);}
+  .pole .p-who{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+  .pole .p-who .sw{width:9px;height:9px;border-radius:2px;display:inline-block;}
+  .pole.left{border-left:4px solid var(--pa,#999);}
+  .pole.right{border-left:4px solid var(--pb,#999);}
+  .vs-mid{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;color:var(--grey);font-size:14px;padding:0 4px;}
+  @media(max-width:620px){.vs-mid{padding:2px 0;}}
+
+  /* ---------- BRUSSELS SAGA ---------- */
+  .saga{position:relative;margin-top:40px;padding-left:26px;}
+  .saga::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--mr),var(--eng),var(--mr));}
+  .step{position:relative;padding:0 0 30px 8px;}
+  .step:last-child{padding-bottom:0;}
+  .step::before{content:"";position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:3px solid var(--dotc,var(--ink));}
+  .step .date{font-family:var(--mono);font-size:12px;color:var(--grey);letter-spacing:.02em;}
+  .step h4{font-size:17.5px;margin:3px 0 7px;}
+  .step p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.55;}
+  .step .q{margin-top:10px;padding:10px 14px;border-left:3px solid var(--line-2);background:var(--card);font-size:14px;font-style:italic;color:var(--ink-2);border-radius:0 8px 8px 0;}
+
+  /* ---------- SEISMOGRAPH ---------- */
+  .seismo-wrap{margin-top:12px;}
+  .seismo{background:var(--night-2);border-radius:14px;padding:6px 6px 2px;border:1px solid #223145;overflow:hidden;}
+  .seismo svg{width:100%;height:auto;display:block;}
+  .tl{margin-top:34px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+  .ev{border:1px solid var(--line);border-radius:11px;padding:16px 18px;background:var(--card);}
+  .ev .d{font-family:var(--mono);font-size:11.5px;color:var(--voo);letter-spacing:.03em;font-weight:600;}
+  .ev h4{font-size:16px;margin:5px 0 6px;line-height:1.2;}
+  .ev p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.5;}
+
+  /* ---------- OUTSIDE FORCES ---------- */
+  .outside{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;}
+  @media(max-width:760px){.outside{grid-template-columns:1fr;}}
+  .obox{background:var(--night-2);border:1px solid #223145;border-radius:12px;padding:24px;color:#E6E2D9;}
+  .obox h3{font-size:20px;color:#F2EFE7;}
+  .obox p{color:#B9C0C9;font-size:14.5px;line-height:1.55;margin:12px 0 0;}
+  .obox .big{font-family:var(--display);font-weight:600;font-size:30px;color:#fff;margin-top:10px;letter-spacing:-.02em;}
+  .obox .rows{margin-top:16px;display:flex;flex-direction:column;gap:9px;}
+  .obox .r{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:12.5px;border-bottom:1px solid #22304400;padding-bottom:2px;}
+  .obox .r span:first-child{color:#AEB6C1;}
+  .obox .r span:last-child{color:#fff;font-weight:500;}
+  .obox .r .up{color:#6FCF97;}
+  .obox .r .dn{color:#F0876B;}
+
+  /* ---------- SYNTHESIS ---------- */
+  .synth{max-width:760px;}
+  .synth p{font-size:18px;color:var(--ink-2);line-height:1.62;margin:0 0 20px;}
+  .synth p b{color:var(--ink);font-weight:600;}
+  .pull{font-family:var(--display);font-weight:500;font-size:clamp(22px,3.4vw,30px);line-height:1.24;letter-spacing:-.01em;color:var(--ink);margin:34px 0;padding-left:20px;border-left:4px solid var(--voo);}
+  .breakbox{margin-top:38px;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .breakbox .bh{background:var(--ink);color:#F2EFE7;padding:14px 20px;font-family:var(--display);font-weight:600;font-size:16px;}
+  .breakbox .bi{padding:16px 20px;border-top:1px solid var(--line);display:flex;gap:14px;align-items:flex-start;}
+  .breakbox .bi:first-of-type{border-top:none;}
+  .breakbox .bi .num{font-family:var(--mono);font-size:12px;color:var(--grey);flex:none;padding-top:2px;}
+  .breakbox .bi div b{font-weight:600;}
+  .breakbox .bi p{margin:4px 0 0;font-size:14px;color:var(--ink-2);}
+
+  /* ---------- FOOTER ---------- */
+  .foot{border-top:1px solid var(--line);background:var(--paper-2);padding:40px 0 60px;}
+  .foot .fnote{font-size:13.5px;color:var(--ink-2);max-width:820px;line-height:1.6;}
+  .foot .fmeta{font-family:var(--mono);font-size:11.5px;color:var(--grey);margin-top:20px;line-height:1.7;letter-spacing:.02em;}
+  .foot .src{margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--grey);line-height:1.8;}
+  .disc{margin-top:16px;padding:14px 16px;border:1px dashed var(--line-2);border-radius:8px;font-size:12.5px;color:var(--ink-2);line-height:1.55;max-width:820px;}
+
+  ::selection{background:var(--nva);color:var(--ink);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="brand"><span class="dot"></span>ARIZONA · Rapport de forces</div>
+    <div class="nav-links">
+      <a href="#decor">Le décor</a>
+      <a href="#forces">Les 5 forces</a>
+      <a href="#champ">Champ de forces</a>
+      <a href="#bataille">Champs de bataille</a>
+      <a href="#bruxelles">Bruxelles</a>
+      <a href="#azur">L'axe Azur</a>
+      <a href="#sismo">Sismographe</a>
+      <a href="#synthese">Synthèse</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Belgique fédérale · gouvernement De&nbsp;Wever · 2025 – 2026</div>
+    <h1>Cinq partis,
+      <span class="flag">
+        <span style="background:var(--nva)"></span>
+        <span style="background:var(--mr)"></span>
+        <span style="background:var(--eng)"></span>
+        <span style="background:var(--cdv)"></span>
+        <span style="background:var(--voo)"></span>
+      </span>
+      un équilibre qui tremble.</h1>
+    <p class="lede">La coalition <b>Arizona</b> réunit des partis que presque tout oppose : un nationaliste flamand comme Premier ministre, deux droites, deux centres et une seule gauche. Officiellement soudés autour d'un vaste plan d'économies, ils passent leur temps à se disputer <b>qui paiera l'addition</b>. Voici, en clair, qui pèse quoi, qui affronte qui, et pourquoi ce gouvernement gouverne au bord de la rupture.</p>
+
+    <div class="kickstat">
+      <div class="k"><div class="n">5</div><div class="l">partis dans la coalition fédérale</div></div>
+      <div class="k"><div class="n">83<span style="font-size:.55em;color:var(--grey)"> / 150</span></div><div class="l">sièges à la Chambre</div></div>
+      <div class="k"><div class="n">239 j</div><div class="l">de négociations avant l'accord</div></div>
+      <div class="k"><div class="n">~23 Md€</div><div class="l">d'efforts budgétaires prévus</div></div>
+      <div class="k"><div class="n">16 mois</div><div class="l">de « négociation perpétuelle »</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- DECOR -->
+<section class="band" id="decor">
+  <div class="wrap">
+    <div class="sec-kicker">01 — Le décor</div>
+    <h2>Un même bloc de centre-droit, sur deux étages</h2>
+    <p class="sec-intro">Après les élections de juin 2024, la Belgique bascule à droite, au nord comme au sud. Le même noyau de partenaires gouverne à deux niveaux distincts — et c'est à la jonction des deux que naissent la plupart des tensions.</p>
+
+    <div class="levels">
+      <div class="lvl">
+        <div class="tag">Étage 1 · Fédéral</div>
+        <h3>La coalition « Arizona »</h3>
+        <p>Formée le 31&nbsp;janvier 2025, elle prête serment le 3&nbsp;février sous le premier Premier ministre nationaliste flamand de l'histoire, <b>Bart&nbsp;De&nbsp;Wever</b> (N-VA). Son nom vient des couleurs des partis, qui rappellent le drapeau de l'Arizona.</p>
+        <p>Pour la première fois depuis 1988, <b>le PS est écarté du fédéral</b>. La feuille de route : assainir les finances publiques sous pression européenne (déficit à ramener sous 3&nbsp;% du PIB d'ici 2030).</p>
+        <div class="chips">
+          <span class="chip" style="border-color:var(--nva)">N-VA</span>
+          <span class="chip" style="border-color:var(--mr)">MR</span>
+          <span class="chip" style="border-color:var(--eng)">Les Engagés</span>
+          <span class="chip" style="border-color:var(--cdv)">CD&V</span>
+          <span class="chip" style="border-color:var(--voo)">Vooruit</span>
+        </div>
+      </div>
+      <div class="lvl">
+        <div class="tag">Étage 2 · Francophone</div>
+        <h3>L'axe « Azur » (MR + Les Engagés)</h3>
+        <p>Dès l'été 2024, <b>MR</b> et <b>Les Engagés</b> raflent la Wallonie et la Fédération Wallonie-Bruxelles avec une vitesse inédite. À Bruxelles, en revanche, ce sera le blocage le plus long jamais vu.</p>
+        <p>Les deux partis se sont rapprochés idéologiquement : Les Engagés (ex-cdH) ont viré vers le centre-droit sous Maxime&nbsp;Prévot, chassant sur les mêmes terres électorales que le MR. D'alliés, ils sont devenus <b>concurrents intimes</b>.</p>
+        <div class="chips">
+          <span class="chip hot">Wallonie</span>
+          <span class="chip hot">Fédération Wallonie-Bruxelles</span>
+          <span class="chip hot">Bruxelles (dès février 2026)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTY CARDS -->
+<section class="band" id="forces">
+  <div class="wrap">
+    <div class="sec-kicker">02 — Les cinq forces</div>
+    <h2>Qui est qui autour de la table</h2>
+    <p class="sec-intro">Dans le système belge, le vrai pouvoir se joue moins au Parlement qu'entre présidents de parti. Voici les cinq formations, leur poids, leur rôle dans l'attelage et la « ligne rouge » que chacune défend bec et ongles.</p>
+
+    <div class="cards">
+      <article class="pcard" style="--c:var(--nva)">
+        <div class="pc-top"><span class="abbr">N-VA</span><span class="seats">≈24 sièges</span></div>
+        <div class="full">Nouvelle Alliance flamande — droite nationaliste flamande</div>
+        <div class="role">Le pivot qui tient la barre</div>
+        <div class="who"><b>Bart De Wever</b>, Premier ministre. Première force du pays, stable au nord. Décrit par la RTBF et le CRISP comme le <b>stabilisateur</b> de la coalition.</div>
+        <div class="redline"><span class="lbl">Ligne rouge</span>Rigueur budgétaire et réforme de l'État ; pousse une hausse de la TVA pour boucler le budget.</div>
+      </article>
+
+      <article class="pcard" style="--c:var(--mr)">
+        <div class="pc-top"><span class="abbr">MR</span><span class="seats">≈20 sièges</span></div>
+        <div class="full">Mouvement Réformateur — libéraux francophones</div>
+        <div class="role">Le turbo libéral</div>
+        <div class="who"><b>Georges-Louis Bouchez</b>, président (en « campagne permanente » depuis l'extérieur du gouvernement). <b>David Clarinval</b>, vice-Premier (Emploi). Ligne : libéralisme de droite assumé.</div>
+        <div class="redline"><span class="lbl">Ligne rouge</span>Zéro nouvel impôt. L'effort doit venir des dépenses et de l'activation des chômeurs, pas de la fiscalité.</div>
+      </article>
+
+      <article class="pcard" style="--c:var(--eng)">
+        <div class="pc-top"><span class="abbr">Les Engagés</span><span class="seats">≈14 sièges</span></div>
+        <div class="full">Centristes humanistes (ex-cdH)</div>
+        <div class="role">La conscience sociale — et le poil à gratter</div>
+        <div class="who"><b>Yvan Verougstraete</b>, président (succède à <b>Maxime Prévot</b>, devenu ministre des Affaires étrangères). Se veut garant d'un « capitalisme tempéré ».</div>
+        <div class="redline"><span class="lbl">Ligne rouge</span>Répartition « équitable » de l'effort : ouvert à taxer les gros patrimoines, refuse de sacrifier les CPAS et les services sociaux.</div>
+      </article>
+
+      <article class="pcard" style="--c:var(--cdv)">
+        <div class="pc-top"><span class="abbr">CD&V</span><span class="seats">≈11 sièges</span></div>
+        <div class="full">Démocrates-chrétiens flamands</div>
+        <div class="role">Le modérateur discret</div>
+        <div class="who"><b>Sammy Mahdi</b>, président. <b>Vincent Van Peteghem</b>, vice-Premier (Finances). Cherche à stabiliser les recettes et à sanctuariser les services publics.</div>
+        <div class="redline"><span class="lbl">Ligne rouge</span>Préserver le filet social ; a proposé de relever la taxe sur les plus-values — au grand dam du MR.</div>
+      </article>
+
+      <article class="pcard" style="--c:var(--voo)">
+        <div class="pc-top"><span class="abbr">Vooruit</span><span class="seats">≈13 sièges</span></div>
+        <div class="full">Socialistes flamands</div>
+        <div class="role">La seule gauche à bord</div>
+        <div class="who"><b>Conner Rousseau</b>, président. <b>Frank Vandenbroucke</b>, vice-Premier (Affaires sociales &amp; Santé). Justifie sa présence par le « sans nous, ce serait pire ».</div>
+        <div class="redline"><span class="lbl">Ligne rouge</span>Faire contribuer le capital (taxe sur les banques, plus-values) ; ligne dure sur Gaza, avec menaces de retrait.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FORCE FIELD -->
+<section class="band" id="champ">
+  <div class="wrap">
+    <div class="sec-kicker">03 — Le champ de forces</div>
+    <h2>Cliquez sur un parti pour voir ses tensions</h2>
+    <p class="sec-intro">Placés selon deux axes — gauche/droite sur l'horizontale, Flandre (haut) / francophones (bas) sur la verticale — les cinq partis tirent l'attelage chacun de leur côté. Les traits pleins marquent des affinités, les pointillés des lignes de friction. Notez le grand vide en bas à gauche : la gauche francophone est dans l'opposition.</p>
+
+    <div class="ff-shell">
+      <div class="ff-grid">
+        <div class="ff-stage">
+          <svg viewBox="0 0 640 560" role="img" aria-label="Diagramme interactif des forces de la coalition Arizona">
+            <defs>
+              <marker id="none"></marker>
+            </defs>
+            <!-- axes labels -->
+            <text x="320" y="24" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#4C5A6E" letter-spacing="2">FLANDRE</text>
+            <text x="320" y="548" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#4C5A6E" letter-spacing="2">FRANCOPHONES</text>
+            <text x="20" y="285" font-family="IBM Plex Mono" font-size="11" fill="#4C5A6E" letter-spacing="2" transform="rotate(-90 20 285)" text-anchor="middle">← GAUCHE</text>
+            <text x="624" y="285" font-family="IBM Plex Mono" font-size="11" fill="#4C5A6E" letter-spacing="2" transform="rotate(90 624 285)" text-anchor="middle">← DROITE</text>
+
+            <!-- ghost opposition zone -->
+            <g class="ghost-zone">
+              <rect x="46" y="360" width="210" height="150" rx="12" fill="none" stroke="#26344A" stroke-width="1.4" stroke-dasharray="4 6"/>
+              <text x="151" y="430" text-anchor="middle" font-size="12" font-weight="600">OPPOSITION</text>
+              <text x="151" y="450" text-anchor="middle" font-size="10.5">PS · PTB · Ecolo</text>
+              <text x="151" y="470" text-anchor="middle" font-size="9">(gauche francophone,</text>
+              <text x="151" y="483" text-anchor="middle" font-size="9">hors coalition)</text>
+            </g>
+
+            <!-- EDGES (drawn first) -->
+            <!-- spokes to core -->
+            <line class="spoke" data-a="nva" x1="470" y1="150" x2="320" y2="285"/>
+            <line class="spoke" data-a="cdv" x1="320" y1="120" x2="320" y2="285"/>
+            <line class="spoke" data-a="voo" x1="150" y1="160" x2="320" y2="285"/>
+            <line class="spoke" data-a="mr" x1="500" y1="430" x2="320" y2="285"/>
+            <line class="spoke" data-a="eng" x1="330" y1="450" x2="320" y2="285"/>
+
+            <!-- alliances / tensions -->
+            <line class="edge alliance" data-a="nva" data-b="cdv" x1="470" y1="150" x2="320" y2="120"/>
+            <line class="edge alliance" data-a="nva" data-b="mr" x1="470" y1="150" x2="500" y2="430"/>
+            <line class="edge tension" data-a="nva" data-b="voo" x1="470" y1="150" x2="150" y2="160"/>
+            <line class="edge tension high" data-a="mr" data-b="eng" x1="500" y1="430" x2="330" y2="450"/>
+            <line class="edge tension" data-a="mr" data-b="voo" x1="500" y1="430" x2="150" y2="160"/>
+            <line class="edge tension" data-a="mr" data-b="cdv" x1="500" y1="430" x2="320" y2="120"/>
+            <line class="edge alliance" data-a="eng" data-b="cdv" x1="330" y1="450" x2="320" y2="120"/>
+            <line class="edge alliance" data-a="eng" data-b="voo" x1="330" y1="450" x2="150" y2="160"/>
+
+            <!-- CORE -->
+            <circle cx="320" cy="285" r="30" fill="#0C121C" stroke="#37475D" stroke-width="1.6" stroke-dasharray="3 4"/>
+            <text class="core-lbl" x="320" y="282" text-anchor="middle" font-size="12">COALITION</text>
+            <text class="core-sub" x="320" y="298" text-anchor="middle" font-size="9">83 / 150</text>
+
+            <!-- NODES -->
+            <g class="node" data-party="nva" tabindex="0" role="button" aria-label="N-VA">
+              <circle class="body" cx="470" cy="150" r="46" fill="#E8A317"/>
+              <text x="470" y="156" text-anchor="middle" font-size="13" fill="#1a1200">N-VA</text>
+              <text class="plabel" x="470" y="212" text-anchor="middle" font-size="12">De Wever · PM</text>
+            </g>
+            <g class="node" data-party="cdv" tabindex="0" role="button" aria-label="CD&V">
+              <circle class="body" cx="320" cy="120" r="31" fill="#EA7B22"/>
+              <text x="320" y="125" text-anchor="middle" font-size="12" fill="#fff">CD&amp;V</text>
+              <text class="plabel" x="320" y="70" text-anchor="middle" font-size="12">Mahdi</text>
+            </g>
+            <g class="node" data-party="voo" tabindex="0" role="button" aria-label="Vooruit">
+              <circle class="body" cx="150" cy="160" r="34" fill="#DA1E32"/>
+              <text x="150" y="165" text-anchor="middle" font-size="11.5" fill="#fff">Vooruit</text>
+              <text class="plabel" x="150" y="112" text-anchor="middle" font-size="12">Rousseau</text>
+            </g>
+            <g class="node" data-party="mr" tabindex="0" role="button" aria-label="MR">
+              <circle class="body" cx="500" cy="430" r="42" fill="#1F5FA8"/>
+              <text x="500" y="436" text-anchor="middle" font-size="14" fill="#fff">MR</text>
+              <text class="plabel" x="500" y="488" text-anchor="middle" font-size="12">Bouchez</text>
+            </g>
+            <g class="node" data-party="eng" tabindex="0" role="button" aria-label="Les Engagés">
+              <circle class="body" cx="330" cy="450" r="35" fill="#0FAAA0"/>
+              <text x="330" y="448" text-anchor="middle" font-size="10.5" fill="#fff">Les</text>
+              <text x="330" y="461" text-anchor="middle" font-size="10.5" fill="#fff">Engagés</text>
+              <text class="plabel" x="330" y="505" text-anchor="middle" font-size="12">Verougstraete</text>
+            </g>
+          </svg>
+          <div class="ff-hint">Sélectionnez un parti · tab + entrée au clavier</div>
+        </div>
+
+        <aside class="ff-panel" id="ffPanel" aria-live="polite">
+          <div class="ph">
+            <div class="pbadge" id="pBadge" style="--sel:#37475D"></div>
+            <div>
+              <div class="ptitle" id="pTitle">Le champ de forces</div>
+              <div class="psub" id="pSub">Une phalange qui se divise dès qu'il faut partager les sacrifices</div>
+            </div>
+          </div>
+          <div class="pbody" id="pBody">
+            <p style="margin-top:0">La coalition tient ensemble tant qu'il s'agit de <b>réformer</b> et de <b>résister à l'opposition de gauche</b>. Mais dès qu'on entre dans le concret — qui paie, combien, comment — les cinq forces tirent dans des directions opposées.</p>
+            <p class="empty">Cliquez sur un parti pour voir son moteur, sa ligne rouge et ses conflits.</p>
+          </div>
+        </aside>
+      </div>
+
+      <div class="ff-legend">
+        <span><i class="ll"></i> Affinité / alliance</span>
+        <span><i class="ll dash"></i> Ligne de friction</span>
+        <span style="color:#c98a1f">━ Tension vive (surlignée à la sélection)</span>
+        <span>◯ Taille = nombre de sièges</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAMPS DE BATAILLE -->
+<section class="band" id="bataille">
+  <div class="wrap">
+    <div class="sec-kicker">04 — Les champs de bataille</div>
+    <h2>Sept dossiers où l'attelage se déchire</h2>
+    <p class="sec-intro">Chaque grand chantier oppose deux camps. Voici les fronts principaux, les positions de chacun et où en est le bras de fer.</p>
+
+    <div class="issues">
+
+      <div class="issue">
+        <div class="issue-h"><h3>Budget 2026 : de 7 à 10 milliards à trouver</h3><span class="verdict v-open">Reporté à l'automne 2026</span></div>
+        <p>C'est le cœur du réacteur — et la panne permanente. La Cour des comptes prévient que sans mesures structurelles, la dette belge culminerait à <b>122,3&nbsp;% du PIB en 2031</b>, deuxième pire score de la zone euro après l'Italie. L'accord global espéré pour le 21&nbsp;juillet a été repoussé à octobre. C'est la fiscalité qui bloque tout.</p>
+        <div class="poles">
+          <div class="pole left" style="--pa:var(--nva)">
+            <div class="p-who"><span class="sw" style="background:var(--nva)"></span>N-VA · De Wever</div>
+            Relève la <b>TVA de 21 à 22&nbsp;%</b> et fusionne les taux réduits vers 9&nbsp;% pour dégager des recettes.
+          </div>
+          <div class="vs-mid">⇄</div>
+          <div class="pole right" style="--pb:var(--mr)">
+            <div class="p-who"><span class="sw" style="background:var(--mr)"></span>MR · Bouchez</div>
+            <b>Veto absolu</b> sur la TVA : cela raboterait le pouvoir d'achat. L'effort doit venir des dépenses, point.
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-h"><h3>Taxer le capital ou pas ?</h3><span class="verdict v-open">Ligne de fracture ouverte</span></div>
+        <p>La grande question de justice fiscale. La taxe sur les plus-values à <b>10&nbsp;%</b> est entrée en vigueur au 1er&nbsp;janvier 2026, après de longs mois de blocage et une pluie d'exemptions pour rassurer les libéraux. Mais le débat sur « les épaules larges » reste explosif.</p>
+        <div class="poles">
+          <div class="pole left" style="--pa:var(--eng)">
+            <div class="p-who"><span class="sw" style="background:var(--eng)"></span>Les Engagés · Vooruit · CD&V</div>
+            Contribution de crise sur les <b>patrimoines &gt; 500&nbsp;000&nbsp;€</b> ; taxe sur les banques ; relèvement des plus-values.
+          </div>
+          <div class="vs-mid">⇄</div>
+          <div class="pole right" style="--pb:var(--mr)">
+            <div class="p-who"><span class="sw" style="background:var(--mr)"></span>MR</div>
+            Idée jugée « <b>complètement folle</b> » : cela ferait fuir les entrepreneurs. (Le patron d'Odoo a menacé de s'exiler.)
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-h"><h3>Chômage limité à 2 ans → les CPAS en première ligne</h3><span class="verdict v-force">Appliqué dès mars 2026</span></div>
+        <p>Mesure emblématique : fin de l'indemnisation illimitée. Dès le 1er&nbsp;mars 2026, les allocations sont plafonnées à <b>24 mois</b>. Selon les estimations, <b>jusqu'à 160&nbsp;000 personnes</b> pourraient perdre leurs droits (≈120&nbsp;000 déjà exclues au printemps 2026). La Cour des comptes juge le scénario optimiste : le report vers les CPAS pourrait atteindre 40 à 50&nbsp;% dans les grandes villes.</p>
+        <div class="poles">
+          <div class="pole left" style="--pa:var(--mr)">
+            <div class="p-who"><span class="sw" style="background:var(--mr)"></span>MR</div>
+            Activer vite les chômeurs. La responsabilisation individuelle avant tout.
+          </div>
+          <div class="vs-mid">⇄</div>
+          <div class="pole right" style="--pb:var(--eng)">
+            <div class="p-who"><span class="sw" style="background:var(--eng)"></span>Les Engagés · Verougstraete</div>
+            Précipiter sans refinancer les CPAS ? « <b>Imprudent</b> ». Les Engagés comptent de nombreux bourgmestres — ce sont leurs communes qui encaisseront.
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-h"><h3>La « chasse aux malades »</h3><span class="verdict v-force">En vigueur, front social contre</span></div>
+        <p>Objectif affiché : ramener <b>100&nbsp;000 malades de longue durée au travail</b> d'ici 2029 (≈1,9&nbsp;Md€ d'économies). Contrôles médicaux renforcés, sanctions financières, certificats limités. Un front inédit — de la Mutualité chrétienne à la FGTB, en passant par la Ligue des droits humains — dénonce une « chasse aux malades ». Pilotée par Vandenbroucke (Vooruit) et Clarinval (MR), elle met mal à l'aise Les Engagés, proches des réseaux mutualistes.</p>
+        <div class="poles">
+          <div class="pole left" style="--pa:var(--nva)">
+            <div class="p-who"><span class="sw" style="background:var(--nva)"></span>Coalition (majorité)</div>
+            « Le bâton » : contrôles et sanctions pour faire baisser l'incapacité de longue durée.
+          </div>
+          <div class="vs-mid">⇄</div>
+          <div class="pole right" style="--pb:var(--voo)">
+            <div class="p-who"><span class="sw" style="background:var(--voo)"></span>Syndicats · mutualités · Cour des comptes</div>
+            Économies « purement théoriques » (personnel de contrôle pas recruté), et un coût humain lourd.
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-h"><h3>Indexation des salaires plafonnée</h3><span class="verdict v-compromis">Compromis contesté</span></div>
+        <p>L'indexation automatique — exception belge — est préservée dans son principe, mais rabotée : au-delà de <b>4&nbsp;000&nbsp;€ brut/mois</b>, la part supérieure n'est plus (ou presque plus) indexée dans plusieurs secteurs. Les syndicats calculent des pertes pouvant atteindre 45&nbsp;400&nbsp;€ sur une carrière. Voka et les syndicats avaient proposé une alternative (neutraliser l'énergie dans l'indice)…</p>
+        <div class="poles">
+          <div class="pole left" style="--pa:var(--mr)">
+            <div class="p-who"><span class="sw" style="background:var(--mr)"></span>MR · CD&V</div>
+            Séduits par l'alternative des partenaires sociaux — plus souple pour la compétitivité.
+          </div>
+          <div class="vs-mid">⇄</div>
+          <div class="pole right" style="--pb:var(--voo)">
+            <div class="p-who"><span class="sw" style="background:var(--voo)"></span>N-VA · Vooruit</div>
+            Rejet net. Vandenbroucke : le gouvernement ne changera pas son plan. Blocages parlementaires à la clé.
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-h"><h3>Défense &amp; diplomatie : deux visions du monde</h3><span class="verdict v-lock">Consensus militaire, choc diplomatique</span></div>
+        <p>Sur le réarmement, l'accord est solide : <b>2&nbsp;% du PIB pour la Défense d'ici 2029</b> (2,5&nbsp;% en 2034), F-35, drones, cyberdéfense, service militaire volontaire. Mais sur la politique étrangère, le fossé est béant.</p>
+        <div class="poles">
+          <div class="pole left" style="--pa:var(--mr)">
+            <div class="p-who"><span class="sw" style="background:var(--mr)"></span>MR · Bouchez</div>
+            Modèle « Thatcher » : couper encore l'aide au développement, « remettre l'accent sur l'Afrique », sécuriser les matières premières critiques.
+          </div>
+          <div class="vs-mid">⇄</div>
+          <div class="pole right" style="--pb:var(--eng)">
+            <div class="p-who"><span class="sw" style="background:var(--eng)"></span>Les Engagés · Prévot</div>
+            Coupes supplémentaires « <b>intenables</b> ». « La Belgique n'est pas le 51ᵉ État des États-Unis. » Priorité au multilatéralisme.
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-h"><h3>Gaza : la ligne rouge de Vooruit</h3><span class="verdict v-open">Menaces de rupture récurrentes</span></div>
+        <p>La position belge sur le Proche-Orient a menacé plusieurs fois la coalition. Vooruit, poussé par les déclarations de Conner&nbsp;Rousseau, exige une ligne ferme et brandit régulièrement le retrait. La Belgique a annoncé à l'ONU une reconnaissance politique conditionnelle de la Palestine (septembre 2025).</p>
+        <div class="poles">
+          <div class="pole left" style="--pa:var(--voo)">
+            <div class="p-who"><span class="sw" style="background:var(--voo)"></span>Vooruit</div>
+            Ligne dure, sanctions, reconnaissance — sous peine de quitter l'attelage.
+          </div>
+          <div class="vs-mid">⇄</div>
+          <div class="pole right" style="--pb:var(--nva)">
+            <div class="p-who"><span class="sw" style="background:var(--nva)"></span>N-VA · MR</div>
+            Réserve atlantiste et prudence sur les sanctions extraterritoriales.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BRUSSELS -->
+<section class="band dark" id="bruxelles">
+  <div class="wrap">
+    <div class="sec-kicker">05 — La crise bruxelloise</div>
+    <h2>615 jours de blocage : le jour où l'axe Azur a failli exploser</h2>
+    <p class="sec-intro">Si le fédéral est tendu, c'est à Bruxelles que tout a bien failli casser. La formation du gouvernement régional a battu un « bien triste record mondial » — et provoqué la pire crise de confiance entre MR et Les Engagés.</p>
+
+    <div class="saga">
+      <div class="step" style="--dotc:var(--mr)">
+        <div class="date">Juin 2024 → 2025</div>
+        <h4>Le MR devient premier parti francophone… et s'enlise</h4>
+        <p>David Leisterh (MR) réclame les commandes pour tourner la page de 20 ans de gestion PS-écolo. Mais Bruxelles est la seule région bilingue : il faut une majorité <b>dans chaque groupe linguistique</b>. Vetos croisés, impasse totale.</p>
+      </div>
+      <div class="step" style="--dotc:var(--mr)">
+        <div class="date">Octobre 2025 · après 500 jours</div>
+        <h4>Leisterh jette l'éponge</h4>
+        <p>Coup de tonnerre : le chef de file libéral se retire de la vie politique régionale.</p>
+        <div class="q">« Un environnement violent, toxique et nocif » — des nuits où les négociateurs « se tapaient presque dessus ».</div>
+      </div>
+      <div class="step" style="--dotc:var(--eng)">
+        <div class="date">11 décembre 2025</div>
+        <h4>Le coup de force de Verougstraete</h4>
+        <p>Le président des Engagés publie une lettre ouverte, s'auto-désigne formateur et tente de bâtir une majorité <b>sans le MR</b> : une coalition à 7 partis ancrée à gauche (PS, Ecolo, DéFI, Engagés + Groen, Vooruit, CD&V). Motif : la Région perdait 100 millions par mois d'inactivité.</p>
+      </div>
+      <div class="step" style="--dotc:var(--mr)">
+        <div class="date">Décembre 2025 · la riposte</div>
+        <h4>La fureur de Bouchez : « trahison »</h4>
+        <p>Le MR vit la manœuvre comme une trahison personnelle. Bouchez prévient que ça « laissera des traces », refuse d'être « insulté et humilié » et menace : désormais, le MR agira « comme des <b>freelances</b> » dans les gouvernements partagés.</p>
+        <div class="q">« Je n'apprécierais pas que ma femme aille dormir dans le lit d'un autre certaines nuits. »</div>
+      </div>
+      <div class="step" style="--dotc:var(--voo)">
+        <div class="date">Mi-février 2026 · le dénouement</div>
+        <h4>Échec du pari, retour au MR — et gouvernement Dilliès</h4>
+        <p>Faute de majorité côté flamand (Anders/De Gucht refuse), Les Engagés doivent revenir négocier. Accord à 7 partis. Le MR obtient sa revanche : <b>Boris Dilliès (MR) devient ministre-président</b>, une première pour les libéraux depuis 22 ans. Au menu : équilibre budgétaire visé pour 2029, fusion de 25 structures en 4 piliers, fin du plan « Good Move », métro 3 suspendu.</p>
+      </div>
+    </div>
+    <p class="sec-intro" style="margin-top:34px;color:#AEB6C1">Bilan : des cicatrices durables. Le MR a compris que Les Engagés se voient comme des partenaires <b style="color:#F2EFE7">indépendants</b>, prêts à s'allier à gauche si l'intransigeance libérale mène à l'impasse. Cette méfiance contamine désormais le fédéral.</p>
+  </div>
+</section>
+
+<!-- AZUR -->
+<section class="band" id="azur">
+  <div class="wrap">
+    <div class="sec-kicker">06 — L'axe Azur</div>
+    <h2>MR contre Les Engagés : le duel de frères ennemis</h2>
+    <p class="sec-intro">Au niveau francophone, MR et Les Engagés sont condamnés à gouverner ensemble tout en se disputant le même électorat. Résultat : une guerre d'usure faite de recadrages publics — mais aussi de fronts communs quand la gauche attaque.</p>
+
+    <div class="levels" style="margin-top:40px">
+      <div class="lvl">
+        <div class="tag">Épisode · Médias de proximité</div>
+        <h3>Le recadrage par voie de presse</h3>
+        <p>Fin mai 2026, la ministre MR Jacqueline Galant présente un plan réduisant les télés locales de douze à huit. La réaction des Engagés est cinglante : la députée <b>Armelle Gysen</b> torpille le projet dans <i>Le Soir</i>, accusant la ministre d'avoir travaillé seule.</p>
+        <p style="font-style:italic;color:var(--ink);border-left:3px solid var(--eng);padding-left:12px;margin-top:14px;">« La réforme ne respecte ni la lettre ni l'esprit de la déclaration de politique commune. »</p>
+      </div>
+      <div class="lvl">
+        <div class="tag">Épisode · Enseignement (FWB)</div>
+        <h3>L'incendie du « décret-programme »</h3>
+        <p>Pour éponger une dette de la Fédération projetée à <b>41 milliards</b>, la majorité impose une cure de rigueur à l'école : deux heures de cours en plus pour les profs, minerval à 1&nbsp;200&nbsp;€, coupes dans les réseaux. Grèves massives, élèves dans la rue, interventions policières.</p>
+        <p>Face à l'obstruction de l'opposition, le président du Parlement <b>Benoît Dispa (Les Engagés)</b> contourne le délai réglementaire de 84&nbsp;heures pour faire passer le texte en force. PS et Ecolo réclament sa démission.</p>
+      </div>
+    </div>
+
+    <div class="issue" style="margin-top:22px;border-left:4px solid var(--ink)">
+      <div class="issue-h"><h3>Le paradoxe : ennemis le lundi, alliés le mardi</h3><span class="verdict v-lock">Front commun</span></div>
+      <p>Sur l'enseignement, malgré tous leurs différends, Bouchez et Verougstraete publient un <b>communiqué conjoint</b> pour défendre Dispa et dénoncer « l'obstruction parlementaire » de la gauche. La leçon est limpide : l'axe Azur se déchire sur le partage des sacrifices, mais se ressoude instantanément dès que l'opposition menace sa capacité à réformer. Céder sur l'école — premier poste du budget francophone — ferait s'effondrer toute leur crédibilité de « réformateurs ».</p>
+    </div>
+
+    <div class="issue" style="margin-top:14px;border-left:4px solid var(--mr)">
+      <div class="issue-h"><h3>En toile de fond : le facteur Bouchez</h3><span class="verdict v-open">Débat sur la « présidencratie »</span></div>
+      <p>Le style du président du MR pèse sur tous les rapports de force. Réélu à <b>95,76&nbsp;%</b> en juillet 2024, Georges-Louis Bouchez concentre un pouvoir que ses propres partenaires jugent hors norme. Plusieurs figures ont claqué la porte ou été marginalisées (Crucke, De Maegd, l'éviction de Sophie Wilmès du bureau en janvier 2026). Ces critiques émanent de rivaux et d'ex-membres, mais elles nourrissent un vrai débat public.</p>
+      <div class="poles" style="margin-top:16px">
+        <div class="pole left" style="--pa:var(--nva)">
+          <div class="p-who"><span class="sw" style="background:var(--nva)"></span>Bart De Wever (N-VA)</div>
+          « Il a le caractère de Napoléon. Il était déjà insupportable… »
+        </div>
+        <div class="pole right" style="--pb:var(--mr)">
+          <div class="p-who"><span class="sw" style="background:var(--mr)"></span>Michel De Maegd (ex-MR)</div>
+          « Le libéralisme se fonde sur la démocratie et non sur une présidencratie. »
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEISMOGRAPH -->
+<section class="band dark" id="sismo">
+  <div class="wrap">
+    <div class="sec-kicker">07 — Le sismographe</div>
+    <h2>La ligne de vie d'une coalition sous tension</h2>
+    <p class="sec-intro">Deux ans de secousses. Chaque pic marque une crise qui a fait vaciller — sans jamais rompre — l'attelage Arizona.</p>
+
+    <div class="seismo-wrap">
+      <div class="seismo">
+        <svg viewBox="0 0 1000 200" role="img" aria-label="Sismographe des crises de la coalition, 2024-2026">
+          <line x1="0" y1="120" x2="1000" y2="120" stroke="#2A3A50" stroke-width="1"/>
+          <polyline fill="none" stroke="#E8A317" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"
+            points="0,120 70,120 95,118 120,122 150,60 175,175 200,120 260,120 300,118 330,122 360,120 420,120 450,95 470,150 490,120 540,120 575,45 600,190 625,120 680,120 705,110 730,130 760,120 800,120 835,72 858,168 880,120 930,120 960,108 985,120 1000,120"/>
+          <!-- event dots -->
+          <g font-family="IBM Plex Mono" font-size="10" fill="#93A0B2">
+            <circle cx="120" cy="122" r="4" fill="#DA1E32"/><text x="120" y="150" text-anchor="middle">fév. 25</text>
+            <circle cx="330" cy="122" r="4" fill="#DA1E32"/><text x="330" y="150" text-anchor="middle">été 25</text>
+            <circle cx="470" cy="150" r="4" fill="#DA1E32"/><text x="470" y="176" text-anchor="middle">nov. 25</text>
+            <circle cx="600" cy="190" r="4.5" fill="#fff"/><text x="600" y="176" text-anchor="middle" fill="#fff">déc. 25</text>
+            <circle cx="858" cy="168" r="4" fill="#DA1E32"/><text x="858" y="190" text-anchor="middle">printemps 26</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="tl">
+        <div class="ev"><div class="d">31 jan – 3 fév 2025</div><h4>Naissance de l'Arizona</h4><p>Accord de 206 pages ; serment après 239 jours. ~23 Md€ d'efforts, chômage à 24 mois, plus-values à 10&nbsp;%, Défense à 2&nbsp;% du PIB. Le PS écarté du fédéral.</p></div>
+        <div class="ev"><div class="d">13 février 2025</div><h4>Grève générale</h4><p>60 000 à 100 000 personnes dans la rue contre le programme Arizona — le début d'un mouvement social d'une intensité inédite depuis dix ans.</p></div>
+        <div class="ev"><div class="d">Juillet 2025</div><h4>Accord d'été aux forceps</h4><p>Trois nuits de kern successives pour arracher un compromis budgétaire. La « négociation perpétuelle » s'installe.</p></div>
+        <div class="ev"><div class="d">14 octobre 2025</div><h4>Manifestation monstre</h4><p>80 000 à 140 000 personnes. La pression de la rue devient une force à part entière dans les arbitrages.</p></div>
+        <div class="ev"><div class="d">6 → 24 novembre 2025</div><h4>De Wever au bord de la démission</h4><p>Le Premier ministre se fixe une date butoir pour aller chez le Roi, démission en poche. Sauvé in extremis par l'accord du 24 novembre, au terme de 3 jours de grève.</p></div>
+        <div class="ev"><div class="d">11 décembre 2025</div><h4>Le séisme bruxellois</h4><p>Verougstraete tente une majorité sans le MR. Bouchez crie à la trahison et menace d'opérer en « freelance ». Le pic le plus violent de la législature.</p></div>
+        <div class="ev"><div class="d">1er janvier 2026</div><h4>Les réformes mordent</h4><p>Taxe sur les plus-values en vigueur ; ~25 000 chômeurs de très longue durée perdent leurs droits. Les mesures quittent le papier pour la vie réelle.</p></div>
+        <div class="ev"><div class="d">Mi-février 2026</div><h4>Gouvernement Dilliès</h4><p>Bruxelles enfin dotée d'un exécutif ; le MR récupère la ministre-présidence après 22 ans.</p></div>
+        <div class="ev"><div class="d">Printemps 2026</div><h4>L'école s'embrase</h4><p>Décret-programme en FWB, grèves, forçage parlementaire. Bouchez et Verougstraete font front commun contre la gauche.</p></div>
+        <div class="ev"><div class="d">Automne 2026</div><h4>Le rendez-vous à haut risque</h4><p>Le budget 2026, repoussé faute d'accord, doit enfin être bouclé (7 à 10 Md€). Le prochain vrai test de survie.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTSIDE FORCES -->
+<section class="band" id="outside">
+  <div class="wrap">
+    <div class="sec-kicker">08 — Les forces extérieures</div>
+    <h2>La rue et les urnes pèsent sur la table</h2>
+    <p class="sec-intro">Les rapports de force ne se jouent pas qu'entre ministres. Deux pressions externes cadrent en permanence les marges de manœuvre de la coalition.</p>
+
+    <div class="outside">
+      <div class="obox">
+        <h3>↳ La rue</h3>
+        <p>Depuis février 2025, la Belgique connaît, selon <i>Basta!</i>, « un mouvement social comme elle n'en a pas connu depuis au moins dix ans ». Grèves générales, manifestations nationales à répétition (FGTB, CSC, CGSLB), colère des enseignants.</p>
+        <div class="big">jusqu'à 140 000</div>
+        <p style="margin-top:4px">manifestants lors des plus grands rassemblements (octobre 2025). Une nouvelle manif nationale a rassemblé des dizaines de milliers de personnes en mai 2026.</p>
+      </div>
+      <div class="obox">
+        <h3>↳ Les urnes (sondage mars 2026)</h3>
+        <p>Le réalignement est net : les partenaires francophones de la coalition s'érodent au profit de l'opposition de gauche. Pas de scrutin national avant 2029 — mais la nervosité électorale nourrit les sorties médiatiques.</p>
+        <div class="rows">
+          <div class="r"><span>Wallonie · PS (opposition)</span><span class="up">1er — 27,9 %</span></div>
+          <div class="r"><span>Wallonie · MR</span><span class="dn">2e — 21,0 %</span></div>
+          <div class="r"><span>Wallonie · Les Engagés</span><span>19,4 %</span></div>
+          <div class="r"><span>Bruxelles · PTB (opposition)</span><span class="up">1er — 25,5 %</span></div>
+          <div class="r"><span>Flandre · Vlaams Belang (opp.)</span><span class="up">en tête</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYNTHESIS -->
+<section class="band" id="synthese">
+  <div class="wrap">
+    <div class="sec-kicker">09 — Synthèse</div>
+    <h2>Un pacte de non-agression, renégocié au bord du précipice</h2>
+
+    <div class="synth" style="margin-top:26px">
+      <p>Au fond, l'Arizona repose sur une contradiction. <b>Ce n'est pas un mariage d'amour</b> : c'est un attelage de partis que presque tout sépare, unis par un objectif froid — assainir les finances et tourner la page de décennies de social-démocratie au pouvoir.</p>
+
+      <p>Deux logiques cohabitent, en tension permanente. D'un côté, une <b>solidarité de fer face à la gauche</b> et à la rue : quand l'opposition attaque leur capacité à réformer, les cinq partis (et surtout le duo MR–Engagés) se transforment en phalange soudée. De l'autre, une <b>fracture immédiate</b> dès qu'il faut décider qui, concrètement, paiera l'addition.</p>
+
+      <div class="pull">« Essayer cent fois la même chose en espérant un résultat différent, c'est une pure folie. » Chacun tente de marquer des points auprès de son électorat sans être celui qui fera tomber l'édifice.</div>
+
+      <p>Chaque parti joue une partition distincte. <b>De Wever</b> stabilise depuis le sommet ; <b>Bouchez</b> fait campagne en permanence depuis l'extérieur ; <b>Les Engagés</b> refusent d'endosser le rôle de caution sociale d'un programme qu'ils jugent trop dur ; <b>le CD&V</b> amortit ; et <b>Vooruit</b>, seule gauche à bord, retient sa base avec le vieil argument « sans nous, ce serait pire ».</p>
+
+      <div class="breakbox">
+        <div class="bh">Ce qui pourrait faire tomber l'édifice</div>
+        <div class="bi"><span class="num">01</span><div><b>Le budget d'automne 2026.</b><p>7 à 10 milliards à trouver, sur fond de veto MR contre la TVA et de refus libéral de taxer le capital. Le test de survie le plus concret.</p></div></div>
+        <div class="bi"><span class="num">02</span><div><b>Gaza et la politique étrangère.</b><p>Vooruit brandit régulièrement le retrait ; le fossé avec la ligne atlantiste ne se referme pas.</p></div></div>
+        <div class="bi"><span class="num">03</span><div><b>Un nouveau coup régional.</b><p>La méfiance née de l'épisode bruxellois peut ressurgir à tout moment. Le MR n'a pas oublié le mot « freelance ».</p></div></div>
+        <div class="bi"><span class="num">04</span><div><b>La rue et les CPAS.</b><p>Si les exclusions du chômage submergent les communes et si la mobilisation sociale s'intensifie, le point de rupture social se rapproche.</p></div></div>
+      </div>
+
+      <p style="margin-top:32px">La survie de l'Arizona ne tient pas à une vision commune — il n'y en a pas. Elle tient à un calcul partagé : <b>tomber ensemble coûterait plus cher que rester ensemble</b>. Jusqu'à la prochaine ligne rouge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <p class="fnote">Cette page est une synthèse pédagogique des rapports de force au sein de la coalition fédérale belge (gouvernement De Wever, dit « Arizona ») et de l'axe francophone MR–Les Engagés, pour la période 2025-2026. Elle vise à rendre lisible un jeu politique complexe, sans prendre parti : les positions de chaque formation sont présentées telles qu'elles se défendent, et les qualifications polémiques (« chasse aux malades », « présidencratie », « thatchérien »…) sont attribuées à leurs auteurs — opposition, syndicats, société civile, rivaux internes ou organes de contrôle — et non présentées comme des faits établis.</p>
+
+    <div class="disc">Note de fiabilité — Plusieurs événements décrits sont récents (fin 2025 – 2026). Les chiffres de sièges sont indicatifs (Chambre 2024) ; le total de la coalition est de 83 sur 150. Certaines dates précises varient légèrement selon les sources (p. ex. formation du gouvernement bruxellois mi-février 2026). Pour toute décision ou usage officiel, vérifiez auprès des sources primaires citées.</div>
+
+    <div class="src">Sources principales agrégées : accord de coalition fédérale 2025-2029 (belgium.be) · Cour des comptes · CRISP · RTBF · Le Vif / Trends-Tendances · Le Soir · La Libre · The Brussels Times · 21News · BX1 · De Standaard · Ligue des droits humains · sondage Grand Baromètre Ipsos (mars 2026) · ainsi que le dossier documentaire fourni.</div>
+
+    <div class="fmeta">Document d'analyse citoyenne · situation arrêtée à la mi-2026 · à but informatif et éducatif.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var data = {
+    nva:{
+      color:'#E8A317', name:'N-VA', sub:'Nouvelle Alliance flamande · Bart De Wever, Premier ministre',
+      body:'<b>La force centrale.</b> Première du pays, stable au nord, la N-VA détient le poste de Premier ministre. De Wever y joue le rôle de <b>stabilisateur</b> : il tient la coalition ensemble et arbitre. Sur le budget, il pousse une hausse de la TVA — ce qui le met frontalement face au MR.',
+      moteur:'Rigueur budgétaire, réforme de l\'État, autorité. Objectif : ramener le déficit sous contrôle sans effrayer la Flandre.',
+      tensions:[
+        {w:'voo', c:'#DA1E32', t:'Vooruit — sur la fiscalité du capital et l\'indexation.'},
+        {w:'mr', c:'#1F5FA8', t:'MR — allié sur la rigueur, mais veto libéral sur sa TVA à 22 %.'},
+        {w:'cdv', c:'#EA7B22', t:'CD&V — allié flamand, plus soucieux du social.'}
+      ]
+    },
+    mr:{
+      color:'#1F5FA8', name:'MR', sub:'Mouvement Réformateur · Georges-Louis Bouchez, président',
+      body:'<b>Le turbo libéral — et le plus imprévisible.</b> Bouchez fait « campagne permanente » depuis l\'extérieur du gouvernement (il n\'est pas ministre) et impose ses lignes rouges par la presse. Sa concentration du pouvoir interne (réélu à 95,76 %) alimente un débat sur la « présidencratie ».',
+      moteur:'Libéralisme de droite décomplexé : baisse des dépenses, activation des chômeurs, aucun nouvel impôt, compétitivité.',
+      tensions:[
+        {w:'eng', c:'#0FAAA0', t:'Les Engagés — LA rivalité clé : même électorat, épisode bruxellois vécu comme une trahison.'},
+        {w:'voo', c:'#DA1E32', t:'Vooruit — opposé sur la taxe du capital et l\'index.'},
+        {w:'cdv', c:'#EA7B22', t:'CD&V — recalé quand il propose de relever les plus-values.'},
+        {w:'nva', c:'#E8A317', t:'N-VA — allié de rigueur, mais veto sur la TVA.'}
+      ]
+    },
+    eng:{
+      color:'#0FAAA0', name:'Les Engagés', sub:'Centristes humanistes (ex-cdH) · Yvan Verougstraete, président',
+      body:'<b>La conscience sociale et le poil à gratter.</b> Héritiers de la démocratie chrétienne, virés vers le centre-droit, Les Engagés refusent d\'être la simple caution sociale d\'un programme trop dur. Ils n\'hésitent pas à recadrer publiquement le MR — et ont tenté, à Bruxelles, de gouverner sans lui.',
+      moteur:'« Capitalisme tempéré » : réformer, oui, mais avec un partage équitable de l\'effort et sans casser les filets sociaux.',
+      tensions:[
+        {w:'mr', c:'#1F5FA8', t:'MR — concurrence électorale directe + méfiance née de Bruxelles.'},
+        {w:'voo', c:'#DA1E32', t:'Vooruit — affinités sociales (défense des CPAS, justice fiscale).'},
+        {w:'cdv', c:'#EA7B22', t:'CD&V — cousin centriste, allié naturel sur le social.'}
+      ]
+    },
+    cdv:{
+      color:'#EA7B22', name:'CD&V', sub:'Démocrates-chrétiens flamands · Sammy Mahdi, président',
+      body:'<b>Le modérateur discret.</b> Moins bruyant que les autres, le CD&V joue les amortisseurs : il cherche à sanctuariser les services publics et à stabiliser les recettes. Sa proposition de relever la taxe sur les plus-values lui a valu une fin de non-recevoir agressive du MR.',
+      moteur:'Stabilité, préservation du modèle social flamand, recettes durables d\'ici 2029.',
+      tensions:[
+        {w:'mr', c:'#1F5FA8', t:'MR — frictions sur la fiscalité (plus-values).'},
+        {w:'nva', c:'#E8A317', t:'N-VA — allié flamand de gouvernement.'},
+        {w:'eng', c:'#0FAAA0', t:'Les Engagés — famille centriste, réflexes communs.'}
+      ]
+    },
+    voo:{
+      color:'#DA1E32', name:'Vooruit', sub:'Socialistes flamands · Conner Rousseau, président',
+      body:'<b>La seule gauche à bord.</b> Seul parti de gauche de la coalition, Vooruit doit justifier sa présence dans un attelage dominé par la droite. Il exige des contreparties (contribution du capital) et durcit le ton sur Gaza, allant jusqu\'à menacer de partir. Rousseau : « sans nous, ce serait pire ».',
+      moteur:'Faire payer le capital (banques, plus-values), préserver la santé et le social, ligne ferme au Proche-Orient.',
+      tensions:[
+        {w:'mr', c:'#1F5FA8', t:'MR — opposition frontale sur la fiscalité et l\'index.'},
+        {w:'nva', c:'#E8A317', t:'N-VA — désaccord sur le capital ; ensemble contre l\'alternative des partenaires sociaux.'},
+        {w:'eng', c:'#0FAAA0', t:'Les Engagés — alliés objectifs sur la justice sociale.'}
+      ]
+    }
+  };
+
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('.node'));
+  var edges = Array.prototype.slice.call(document.querySelectorAll('.edge'));
+  var spokes = Array.prototype.slice.call(document.querySelectorAll('.spoke'));
+  var panel = {
+    badge: document.getElementById('pBadge'),
+    title: document.getElementById('pTitle'),
+    sub: document.getElementById('pSub'),
+    body: document.getElementById('pBody')
+  };
+  var current = null;
+
+  function clearHL(){
+    edges.forEach(function(e){e.classList.remove('dim','lit');});
+    spokes.forEach(function(s){s.classList.remove('dim');});
+    nodes.forEach(function(n){n.classList.remove('dim','sel');});
+  }
+
+  function select(id){
+    if(current === id){ // toggle off
+      current = null; clearHL(); reset(); return;
+    }
+    current = id;
+    clearHL();
+    var d = data[id];
+
+    nodes.forEach(function(n){
+      if(n.getAttribute('data-party') === id){ n.classList.add('sel'); }
+      else { n.classList.add('dim'); }
+    });
+    // find neighbours from tensions list
+    var neigh = d.tensions.map(function(t){return t.w;});
+    nodes.forEach(function(n){
+      var p = n.getAttribute('data-party');
+      if(neigh.indexOf(p) > -1){ n.classList.remove('dim'); }
+    });
+
+    edges.forEach(function(e){
+      var a = e.getAttribute('data-a'), b = e.getAttribute('data-b');
+      if(a === id || b === id){ e.classList.add('lit'); }
+      else { e.classList.add('dim'); }
+    });
+    spokes.forEach(function(s){
+      if(s.getAttribute('data-a') !== id){ s.classList.add('dim'); }
+    });
+
+    // panel
+    panel.badge.style.setProperty('--sel', d.color);
+    panel.title.textContent = d.name;
+    panel.sub.textContent = d.sub;
+    var html = '<p style="margin-top:0">'+d.body+'</p>';
+    html += '<h5>Son moteur</h5><p style="margin:0;color:var(--ink-2);font-size:14px">'+d.moteur+'</p>';
+    html += '<h5>Ses lignes de force &amp; de friction</h5><ul class="tlist">';
+    d.tensions.forEach(function(t){
+      html += '<li><span class="vs" style="background:'+t.c+'">'+t.w.toUpperCase()+'</span><span>'+t.t+'</span></li>';
+    });
+    html += '</ul>';
+    panel.body.innerHTML = html;
+  }
+
+  function reset(){
+    panel.badge.style.setProperty('--sel', '#37475D');
+    panel.title.textContent = 'Le champ de forces';
+    panel.sub.textContent = 'Une phalange qui se divise dès qu\'il faut partager les sacrifices';
+    panel.body.innerHTML = '<p style="margin-top:0">La coalition tient ensemble tant qu\'il s\'agit de <b>réformer</b> et de <b>résister à l\'opposition de gauche</b>. Mais dès qu\'on entre dans le concret — qui paie, combien, comment — les cinq forces tirent dans des directions opposées.</p><p class="empty">Cliquez sur un parti pour voir son moteur, sa ligne rouge et ses conflits.</p>';
+  }
+
+  nodes.forEach(function(n){
+    n.addEventListener('click', function(){ select(n.getAttribute('data-party')); });
+    n.addEventListener('keydown', function(ev){
+      if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); select(n.getAttribute('data-party')); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
