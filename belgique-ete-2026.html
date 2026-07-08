@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'été des deux 21 juillet — Grand format · Politique belge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papier:#F1F2EE;        /* papier administratif recyclé */
+    --papier-2:#E9EAE4;
+    --encre:#1B1D26;         /* encre d'imprimerie */
+    --encre-70:#4A4D59;
+    --encre-40:#9A9CA6;
+    --cachet:#C8102E;        /* rouge cachet officiel */
+    --signal:#E8B60C;        /* jaune signalétique */
+    --noir:#111318;
+    --ligne:#C9CBC3;
+    --max:720px;
+    --wide:1060px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    background:var(--papier);
+    color:var(--encre);
+    font-family:'Newsreader', Georgia, serif;
+    font-size:1.155rem;
+    line-height:1.72;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--signal);color:var(--noir)}
+
+  /* ————— Signature : le liseré tricolore ————— */
+  .tricolore{display:flex;height:5px;width:100%}
+  .tricolore span{flex:1}
+  .tricolore .n{background:var(--noir)}
+  .tricolore .j{background:var(--signal)}
+  .tricolore .r{background:var(--cachet)}
+
+  #progress{position:fixed;top:0;left:0;height:5px;width:100%;z-index:100;background:transparent}
+  #progress .bar{height:100%;width:0%;display:flex;overflow:hidden}
+  #progress .bar span{flex:1;height:100%}
+
+  /* ————— Typo ————— */
+  .kicker{
+    font-family:'Archivo',sans-serif;
+    font-variation-settings:'wdth' 110;
+    font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+    font-size:.72rem;color:var(--cachet);
+  }
+  h1,h2,h3{font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 88;letter-spacing:-.015em;line-height:1.02}
+  h1{font-weight:900;font-size:clamp(2.6rem,7.2vw,5.4rem);text-transform:uppercase}
+  h2{font-weight:900;font-size:clamp(1.9rem,4.4vw,3rem);text-transform:uppercase;line-height:1.05}
+  h3{font-weight:800;font-size:1.28rem;margin:2.2rem 0 .7rem}
+  .lede{font-size:clamp(1.25rem,2.4vw,1.5rem);line-height:1.55;font-weight:300;font-style:italic;color:var(--encre-70)}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+  .wrap-wide{max-width:var(--wide);margin:0 auto;padding:0 22px}
+  p{margin:0 0 1.35rem}
+  a{color:var(--cachet);text-decoration:none;border-bottom:1px solid rgba(200,16,46,.35)}
+  a:hover{border-bottom-color:var(--cachet)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--cachet);outline-offset:3px;border-radius:2px}
+  strong{font-weight:600}
+
+  /* ————— Hero ————— */
+  header.hero{padding:96px 0 64px;border-bottom:1px solid var(--ligne);position:relative;overflow:hidden}
+  .dateline{font-family:'Archivo',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--encre-70);margin:1.4rem 0 2.4rem}
+  .dateline b{color:var(--encre)}
+  .hero h1 .contra{color:var(--cachet)}
+  .hero .lede{margin-top:2.2rem;max-width:640px}
+  .byline{margin-top:2.6rem;display:flex;gap:1.6rem;flex-wrap:wrap;font-family:'Archivo',sans-serif;font-size:.78rem;letter-spacing:.06em;color:var(--encre-70)}
+  .byline span b{color:var(--encre);font-weight:700}
+
+  /* ————— Sommaire ————— */
+  nav.sommaire{border-bottom:1px solid var(--ligne);background:var(--papier-2)}
+  nav.sommaire .wrap-wide{display:flex;gap:0;flex-wrap:wrap}
+  nav.sommaire a{
+    flex:1 1 200px;padding:18px 16px;border-bottom:none;border-right:1px solid var(--ligne);
+    font-family:'Archivo',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--encre);display:block;
+  }
+  nav.sommaire a:last-child{border-right:none}
+  nav.sommaire a em{display:block;font-style:normal;color:var(--cachet);font-size:.68rem;letter-spacing:.2em;margin-bottom:4px}
+  nav.sommaire a:hover{background:var(--papier)}
+
+  /* ————— Sections ————— */
+  section{padding:84px 0}
+  .chap-head{margin-bottom:2.6rem}
+  .chap-head .tricolore{width:88px;margin:1.1rem 0 1.5rem}
+  .chap-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:.9rem;letter-spacing:.3em;color:var(--encre-40)}
+
+  /* ————— Cachet (chiffre-tampon) ————— */
+  .cachet{
+    display:inline-block;transform:rotate(-2deg);
+    border:3px double var(--cachet);color:var(--cachet);
+    padding:14px 22px;margin:1.4rem 0 1.8rem;background:rgba(200,16,46,.03);
+    font-family:'Archivo',sans-serif;text-align:center;border-radius:3px;
+  }
+  .cachet .val{font-weight:900;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.02em;line-height:1;display:block}
+  .cachet .lab{font-weight:700;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;display:block;margin-top:6px}
+
+  .cachet-row{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start;margin:1rem 0 1.4rem}
+  .cachet-row .cachet{margin:0}
+  .cachet-row .cachet:nth-child(2){transform:rotate(1.4deg)}
+  .cachet-row .cachet:nth-child(3){transform:rotate(-1deg)}
+
+  /* ————— Encadrés ————— */
+  .encadre{
+    background:var(--papier-2);border-left:5px solid var(--noir);
+    padding:26px 28px;margin:2.2rem 0;font-size:1.02rem;line-height:1.65;
+  }
+  .encadre .kicker{color:var(--encre);display:block;margin-bottom:.7rem}
+  .encadre p:last-child{margin-bottom:0}
+  .encadre.contre{border-left-color:var(--signal)}
+  .encadre.alerte{border-left-color:var(--cachet)}
+
+  blockquote{
+    margin:2.4rem 0;padding:0 0 0 26px;border-left:3px solid var(--cachet);
+    font-size:1.45rem;line-height:1.45;font-weight:300;font-style:italic;color:var(--encre)
+  }
+  blockquote footer{font-family:'Archivo',sans-serif;font-style:normal;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--encre-70);margin-top:.9rem}
+
+  /* ————— Tableaux ————— */
+  .tbl{width:100%;border-collapse:collapse;margin:1.8rem 0 2.4rem;font-size:.95rem;font-family:'Archivo',sans-serif}
+  .tbl caption{font-family:'Archivo',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;text-align:left;padding-bottom:12px;color:var(--encre-70)}
+  .tbl th{font-weight:800;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;text-align:left;padding:10px 12px;border-bottom:3px solid var(--noir)}
+  .tbl td{padding:11px 12px;border-bottom:1px solid var(--ligne);vertical-align:top}
+  .tbl td.num{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tbl tr:hover td{background:rgba(232,182,12,.08)}
+
+  /* ————— Chapitre sombre ————— */
+  section.sombre{background:var(--noir);color:#E8E9E4}
+  section.sombre .chap-num{color:#5A5D68}
+  section.sombre h2,section.sombre h3{color:#F4F5F0}
+  section.sombre .lede{color:#B9BBC2}
+  section.sombre p{color:#D4D5D0}
+  section.sombre .encadre{background:#1E2129;border-left-color:var(--signal)}
+  section.sombre .encadre p{color:#C9CBC4}
+  section.sombre .encadre .kicker{color:var(--signal)}
+  section.sombre .tbl th{border-bottom-color:#E8E9E4;color:#F4F5F0}
+  section.sombre .tbl td{border-bottom-color:#33363F;color:#D4D5D0}
+  section.sombre .tbl tr:hover td{background:rgba(232,182,12,.07)}
+  section.sombre .tbl caption{color:#8A8D97}
+  section.sombre .cachet{border-color:var(--signal);color:var(--signal);background:rgba(232,182,12,.04)}
+  section.sombre blockquote{border-left-color:var(--signal);color:#EDEEE9}
+  section.sombre blockquote footer{color:#8A8D97}
+  section.sombre a{color:#F0C33C;border-bottom-color:rgba(240,195,60,.4)}
+
+  /* ————— Chronologie ————— */
+  .timeline{list-style:none;margin:2.4rem 0;position:relative}
+  .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--ligne)}
+  .timeline li{position:relative;padding:0 0 2rem 40px}
+  .timeline li:last-child{padding-bottom:0}
+  .timeline li::before{
+    content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;
+    background:var(--papier);border:3px solid var(--noir)
+  }
+  .timeline li.rouge::before{border-color:var(--cachet)}
+  .timeline li.jaune::before{border-color:var(--signal)}
+  .timeline .tdate{font-family:'Archivo',sans-serif;font-weight:800;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cachet);display:block;margin-bottom:4px}
+  .timeline .tbody{font-size:1.02rem;line-height:1.6}
+  .timeline .tbody b{font-weight:600}
+
+  /* ————— Dossier deux colonnes ————— */
+  .duel{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2.2rem 0;border:1px solid var(--ligne)}
+  .duel > div{padding:24px 26px}
+  .duel > div:first-child{border-right:1px solid var(--ligne)}
+  .duel h4{font-family:'Archivo',sans-serif;font-weight:900;font-size:.95rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.8rem}
+  .duel h4 small{display:block;font-weight:700;font-size:.64rem;letter-spacing:.2em;color:var(--encre-40);margin-bottom:5px}
+  .duel p{font-size:.98rem;line-height:1.6;margin-bottom:.8rem}
+  .duel p:last-child{margin-bottom:0}
+  @media(max-width:700px){
+    .duel{grid-template-columns:1fr}
+    .duel > div:first-child{border-right:none;border-bottom:1px solid var(--ligne)}
+  }
+
+  /* ————— Sources ————— */
+  .sources{background:var(--papier-2);padding:70px 0;border-top:1px solid var(--ligne)}
+  .sources h2{font-size:1.5rem;margin-bottom:1.6rem}
+  .sources ol{margin:0 0 0 1.2rem;font-size:.92rem;line-height:1.8;color:var(--encre-70)}
+  .sources li{margin-bottom:.35rem}
+  .methodo{font-size:.92rem;color:var(--encre-70);border-top:1px solid var(--ligne);margin-top:2rem;padding-top:1.4rem;line-height:1.7}
+
+  footer.fin{padding:44px 0;background:var(--noir);color:#8A8D97;font-family:'Archivo',sans-serif;font-size:.76rem;letter-spacing:.08em}
+  footer.fin .wrap-wide{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  .lettrine::first-letter{
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:4.2rem;line-height:.82;
+    float:left;padding:6px 12px 0 0;color:var(--cachet)
+  }
+
+  /* reveal doux */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.vu{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"><div class="bar"><span style="background:var(--noir)"></span><span style="background:var(--signal)"></span><span style="background:var(--cachet)"></span></div></div>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="wrap-wide">
+    <span class="kicker">Grand format · Politique belge · Enquête &amp; analyse</span>
+    <div class="dateline">Bruxelles — <b>mardi 7 juillet 2026</b> · lecture ≈ 18 min</div>
+    <h1>L'été des deux <span class="contra">21 juillet</span></h1>
+    <p class="lede">Le jour de la Fête nationale, la Belgique jouera deux parties en même temps : au fédéral, Bart De Wever s'est fixé le 21 juillet pour boucler un effort budgétaire de 6,7 milliards ; à Bruxelles, une commission d'enquête sur le clientélisme dans le logement social doit rendre son rapport à la même date — sauf si elle explose avant. Derrière ces deux comptes à rebours, un même diagnostic que la littérature institutionnelle documente depuis quinze ans : un État piloté par ses partis plus que par ses parlements.</p>
+    <div class="byline">
+      <span><b>Dossier</b> · rédigé à partir d'un corpus documentaire de 120+ sources</span>
+      <span><b>Données</b> · Cour des comptes, Bureau fédéral du Plan, GRECO, CRISP</span>
+      <span><b>Actualité</b> · presse belge, arrêtée au 7 juillet 2026</span>
+    </div>
+  </div>
+</header>
+
+<nav class="sommaire" aria-label="Sommaire du dossier">
+  <div class="wrap-wide">
+    <a href="#ch1"><em>Chapitre I</em>Le mur budgétaire</a>
+    <a href="#ch2"><em>Chapitre II</em>Le laboratoire bruxellois</a>
+    <a href="#ch3"><em>Chapitre III</em>La machine particratique</a>
+    <a href="#ch4"><em>Chapitre IV</em>Ce que l'été va trancher</a>
+    <a href="#chrono"><em>Repères</em>Chronologie 2024–2026</a>
+  </div>
+</nav>
+
+<!-- ==================== CHAPITRE 1 ==================== -->
+<section id="ch1">
+  <div class="wrap">
+    <div class="chap-head reveal">
+      <span class="chap-num">CHAPITRE I</span>
+      <div class="tricolore"><span class="n"></span><span class="j"></span><span class="r"></span></div>
+      <h2>Le mur budgétaire</h2>
+      <p class="lede">Dix-sept mois après sa prestation de serment, la coalition Arizona vit dans ce que la RTBF et le CRISP appellent une « négociation perpétuelle ». Chaque conclave en annonce un autre.</p>
+    </div>
+
+    <p class="lettrine reveal">Rappel des faits. Le 3 février 2025, au terme de 239 jours de négociations, Bart De Wever (N-VA) devient le premier nationaliste flamand à diriger le gouvernement fédéral belge, à la tête d'une coalition à cinq — N-VA, MR, Les Engagés, Vooruit, CD&amp;V — qui contrôle 81 sièges sur 150. L'accord de gouvernement, 206 pages, promet un assainissement historique : environ 23 milliards d'euros d'efforts, la limitation du chômage dans le temps, une réforme des pensions, le retour du nucléaire, la trajectoire OTAN à 2 % du PIB — atteinte dès fin 2025.</p>
+
+    <p class="reveal">Depuis, le gouvernement survit de crise en crise. Il a fallu attendre le <strong>24 novembre 2025</strong> — après que De Wever eut brandi la menace d'une démission chez le Roi — pour arracher un accord sur le budget 2026, si laborieux que le Premier ministre lui-même l'a qualifié de « deuxième accord de gouvernement ». Ce budget prévoit un nouvel effort de 9,2 milliards d'ici 2029. Il n'a pas suffi.</p>
+
+    <div class="cachet-row reveal">
+      <div class="cachet"><span class="val">6,7 Mds €</span><span class="lab">Effort restant · budget 2027<br>et trajectoire 2029</span></div>
+      <div class="cachet"><span class="val">122,3 %</span><span class="lab">Dette / PIB projetée en 2031<br>sans mesures (Cour des comptes)</span></div>
+      <div class="cachet"><span class="val">21 juillet</span><span class="lab">Date butoir que s'est fixée<br>le gouvernement fédéral</span></div>
+    </div>
+
+    <p class="reveal">Car le vrai mur est devant : le budget 2027 et la trajectoire pluriannuelle. La dernière estimation de l'effort à fournir est de 6,7 milliards d'euros, et le gouvernement espère conclure « d'ici le 21 juillet ». Pour nourrir le conclave, le Bureau fédéral du Plan, appuyé par 28 experts, a remis un catalogue de <strong>264 mesures possibles</strong> : rabotage des niches fiscales à l'impôt des personnes physiques (près de 10 milliards de coût en 2023, voitures-salaires et chèques-repas en tête), soins de santé, subsides aux entreprises, TVA. Un inventaire sans hiérarchie : au politique de « faire son marché ».</p>
+
+    <p class="reveal">L'arrière-plan est connu de tous les négociateurs. La Belgique est sous procédure européenne de déficit excessif depuis juillet 2024 ; le déficit atteignait 5,2 % du PIB en 2025 pour une dette à 107,9 %. Et la Cour des comptes a douché les optimismes : sans mesures structurelles supplémentaires, la dette culminerait à <strong>122,3 % du PIB en 2031</strong> — le pire ratio de la zone euro après l'Italie. Le budget de l'État se répartit en 2026 entre 293,5 milliards de dépenses et 267,4 milliards de recettes : le déséquilibre est structurel, pas conjoncturel.</p>
+
+    <h3 class="reveal">Une coalition, deux orthodoxies</h3>
+    <p class="reveal">La paralysie n'est pas technique, elle est doctrinale. Sur chaque arbitrage, la ligne de fracture est la même : qui paie ?</p>
+
+    <div class="duel reveal">
+      <div>
+        <h4><small>Bloc A</small>N-VA · MR</h4>
+        <p>Refus de toute nouvelle taxe, opposition à la hausse de la TVA comme à l'extension de la taxe sur les plus-values. Priorité aux économies dans les dépenses, plafonnement de l'indexation salariale (« centenindex »), refinancement accéléré de la Défense.</p>
+      </div>
+      <div>
+        <h4><small>Bloc B</small>Vooruit · Les Engagés · CD&amp;V</h4>
+        <p>Exigence d'une contribution des « épaules les plus larges » : plus-values, patrimoines, superprofits. Défense du pouvoir d'achat et de l'indexation, réticence à ralentir la santé et le social pour financer les F-35.</p>
+      </div>
+    </div>
+
+    <p class="reveal">S'y ajoute une asymétrie électorale déstabilisante : la N-VA reste stable en Flandre et De Wever consolide sa popularité personnelle, tandis que les partenaires francophones — MR en tête — s'érodent dans les sondages au profit du PS et du PTB. Résultat : des alliés nerveux, enclins aux sorties médiatiques pour réaffirmer leurs lignes rouges, et un président de parti, Georges-Louis Bouchez, décrit par les analystes comme « en campagne permanente depuis l'extérieur du gouvernement ».</p>
+
+    <div class="encadre contre reveal">
+      <span class="kicker">L'autre lecture</span>
+      <p>Le gouvernement revendique, lui, des résultats tangibles : trajectoire OTAN de 2 % atteinte dès fin 2025, avis favorable de la Commission européenne sur le plan budgétaire à moyen terme (mai 2025), réforme des pensions et du chômage engagées, et une opération patrimoniale majeure — la lettre d'intention signée le 30 avril 2026 avec ENGIE en vue du rachat par l'État de l'ensemble des activités nucléaires, soit une renationalisation de fait du parc. Le MR affirme de son côté avoir « protégé le pouvoir d'achat et la compétitivité » dans l'accord budgétaire. L'appréciation de ce bilan reste un débat politique ouvert.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPITRE 2 ==================== -->
+<section id="ch2" style="background:var(--papier-2);border-top:1px solid var(--ligne);border-bottom:1px solid var(--ligne)">
+  <div class="wrap">
+    <div class="chap-head reveal">
+      <span class="chap-num">CHAPITRE II</span>
+      <div class="tricolore"><span class="n"></span><span class="j"></span><span class="r"></span></div>
+      <h2>Le laboratoire bruxellois</h2>
+      <p class="lede">À Bruxelles, un scandale de logement social est devenu le crash-test d'un gouvernement régional né après près de 600 jours de blocage — et le miroir grossissant des mœurs politiques belges.</p>
+    </div>
+
+    <p class="lettrine reveal">Tout part d'un reportage. Le magazine d'investigation flamand <em>Pano</em> (VRT), relayé par plusieurs enquêtes de presse francophone, documente des soupçons de clientélisme, de mauvaise gestion et d'ingérences politiques dans l'attribution de logements sociaux au Foyer anderlechtois. Au centre des accusations : son président, l'échevin socialiste d'Anderlecht Lotfi Mostefa — qui conteste les faits. Les témoignages dessinent, selon l'accusation politique, un système qui aurait transformé une société de logement social en instrument d'influence électorale.</p>
+
+    <p class="reveal">Le 8 juin 2026, le Parlement bruxellois ouvre une commission d'enquête parlementaire — la <strong>deuxième seulement de l'histoire de la Région</strong>, après le Samusocial en 2017. Sa création a failli faire sauter la toute jeune majorité de Boris Dilliès (MR) : le PS a pesé de tout son poids contre, Bouchez est intervenu personnellement pour l'imposer, et le compromis final porte la marque du génie belge du deal — une commission, oui, mais expresse : rapport à rendre pour le <strong>21 juillet</strong>. L'opposition a aussitôt dénoncé « un enterrement estival » (Bernard Clerfayt, DéFi).</p>
+
+    <div class="encadre alerte reveal">
+      <span class="kicker">Ce que la cadence produit</span>
+      <p>Auditions de 10 à 12 heures par jour, jusqu'à six jours par semaine, des dizaines de cartons de documents papier transmis tardivement par le Foyer, des témoins que certains commissaires disent « coachés ». Fin juin, la rapporteure Marie Cruysmans (Les Engagés) démissionne de sa fonction, jugeant « matériellement impossible de préparer sérieusement les auditions » ; début juillet, le rapporteur N-VA se désiste à son tour, refusant de cosigner « sous cette pression du temps inhumaine » un rapport que le PS pourrait brandir comme un brevet d'innocence. Un élu résume : « Tout est fait pour qu'on ne fasse pas la lumière. »</p>
+    </div>
+
+    <p class="reveal">Le dossier a en outre ouvert une fracture inédite <em>à l'intérieur</em> du MR. D'un côté, Bouchez refuse que les travaux s'arrêtent le 21 juillet « si toutes les responsabilités n'ont pas été établies » et veut pousser l'offensive contre le PS jusqu'au bout — « Bouchez ne laissera pas le PS noyer le poisson », confie une source libérale. De l'autre, le ministre-président Dilliès veut protéger un exécutif sorti de près de deux ans de crise, et a réservé Val Duchesse le <strong>16 juillet</strong> auprès de De Wever pour débloquer les dossiers qui s'empilent. Pour le PS d'Ahmed Laaouej, toute prolongation est une ligne rouge absolue, une « rupture de confiance » qui replongerait Bruxelles dans la paralysie.</p>
+
+    <p class="reveal">Le tout sur fond de finances régionales en dérive : selon des données du comité de monitoring révélées par <em>La Libre</em>, le déficit bruxellois replongerait vers 1,25 milliard d'euros fin 2026, soit un dérapage annoncé de 300 millions qui hypothèque le retour à l'équilibre.</p>
+
+    <blockquote class="reveal">
+      « La date du 21 juillet ne doit pas être un veau d'or. Je crains qu'au rythme où vont les choses, nous n'ayons pas le temps de rédiger un rapport de qualité. »
+      <footer>Un élu MR, cité par La Libre, juin 2026</footer>
+    </blockquote>
+
+    <p class="reveal">Pourquoi cette affaire régionale compte-t-elle au-delà d'Anderlecht ? Parce qu'elle condense, en un seul dossier, les traits que le chapitre suivant décrit à l'échelle du pays : un organe parapublic capté par un appareil partisan, un contrôle parlementaire dont le calendrier est négocié entre présidents de partis, et une majorité dont la survie prime sur la manifestation de la vérité. Le Foyer anderlechtois n'est pas une anomalie du système ; c'en est, selon de nombreux observateurs, un échantillon.</p>
+  </div>
+</section>
+
+<!-- ==================== CHAPITRE 3 (sombre) ==================== -->
+<section id="ch3" class="sombre">
+  <div class="wrap">
+    <div class="chap-head reveal">
+      <span class="chap-num">CHAPITRE III</span>
+      <div class="tricolore"><span class="n" style="background:#E8E9E4"></span><span class="j"></span><span class="r"></span></div>
+      <h2>La machine particratique</h2>
+      <p class="lede">Sous l'actualité, la structure. Quinze ans de rapports internationaux, d'arrêts européens et de travaux académiques convergent vers un même constat : en Belgique, le pouvoir réel s'exerce dans les partis, hors des enceintes que la Constitution a prévues.</p>
+    </div>
+
+    <p class="lettrine reveal">Trois chiffres suffisent à poser le décor. Le financement public direct des partis atteint <strong>108,7 millions d'euros par an</strong> — l'un des niveaux par habitant les plus élevés d'Europe. Cette dotation représente en moyenne <strong>87 % des revenus</strong> des formations traditionnelles : les partis ne dépendent plus de leurs membres, mais de l'État qu'ils dirigent. Et sur la période 1989–2026, avantages indirects compris, les estimations académiques chiffrent la captation totale à près de <strong>7 milliards d'euros</strong>.</p>
+
+    <div class="cachet-row reveal">
+      <div class="cachet"><span class="val">108,7 M€ / an</span><span class="lab">Financement public direct<br>des partis politiques</span></div>
+      <div class="cachet"><span class="val">87 %</span><span class="lab">Part moyenne de la dotation<br>dans les revenus des partis</span></div>
+      <div class="cachet"><span class="val">99,73 %</span><span class="lab">Taux de cohésion des votes<br>parlementaires (Wilmès II)</span></div>
+    </div>
+
+    <table class="tbl reveal">
+      <caption>Dépendance financière des principaux partis — exercice 2024</caption>
+      <thead><tr><th>Parti</th><th>Revenus totaux</th><th>Cotisations des membres</th><th>Contributions des mandataires</th></tr></thead>
+      <tbody>
+        <tr><td>N-VA</td><td class="num">14,5 M€</td><td class="num">2,1 %</td><td class="num">4,8 %</td></tr>
+        <tr><td>PTB</td><td class="num">13,6 M€</td><td class="num">17,8 %</td><td class="num">23,1 %</td></tr>
+        <tr><td>PS</td><td class="num">13,4 M€</td><td class="num">2,5 %</td><td class="num">15,5 %</td></tr>
+        <tr><td>MR</td><td class="num">11,3 M€</td><td class="num">3,9 %</td><td class="num">3,0 %</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="reveal">Le paradoxe des articles 33 et 42</h3>
+    <p class="reveal">La Constitution de 1831 affirme que « tous les pouvoirs émanent de la Nation » (art. 33) et que les parlementaires représentent la Nation entière, sans mandat impératif (art. 42). Les travaux juridiques critiques rassemblés dans notre corpus décrivent l'écart entre ce texte et la pratique : sélection des candidats verrouillée par les présidents de partis, décisions majeures prises au « kern » ou en conclave de présidents avant d'être entérinées par les assemblées, et une discipline de vote qui a atteint 99,73 % de cohésion sous Wilmès II. Certains y voient un « mandat impératif de fait », organisé en marge de la Constitution — jusque dans les clauses financières internes de certains partis, comme le « salaire d'ouvrier » que le PTB impose contractuellement à ses élus.</p>
+
+    <div class="encadre reveal">
+      <span class="kicker">Contrepoint nécessaire</span>
+      <p>L'honnêteté commande de le préciser : la discipline de vote élevée n'est pas une exception belge. Les études comparatives montrent des taux de cohésion partisane supérieurs à 95 % dans la plupart des parlements d'Europe occidentale — c'est la mécanique normale des régimes parlementaires de coalition, où la stabilité gouvernementale repose sur la prévisibilité des majorités. Ce qui singularise la Belgique, selon les organismes de suivi, n'est pas la discipline elle-même, mais la combinaison de trois verrous : le financement quasi intégralement public des appareils, l'absence de contrôle indépendant de ce financement, et la faiblesse des recours juridictionnels contre le système.</p>
+    </div>
+
+    <h3 class="reveal">GRECO : quinze ans de rappels à l'ordre</h3>
+    <p class="reveal">Ce n'est pas une thèse militante : c'est le constat répété du Groupe d'États contre la corruption du Conseil de l'Europe. Depuis 2009, le GRECO recommande à la Belgique un contrôle indépendant du financement des partis, des règles d'intégrité pour parlementaires et ministres, l'encadrement du lobbying et des cabinets ministériels. Faute de progrès, le pays a été placé <strong>à deux reprises en procédure de non-conformité</strong> (Règle 32) — une mesure exceptionnelle dans l'histoire de l'organisme. Le nœud du problème, régulièrement pointé : la Commission de contrôle des dépenses électorales est composée de parlementaires issus des partis qu'elle est censée auditer. Un système d'auto-jugement.</p>
+
+    <h3 class="reveal">Quand c'est Strasbourg qui corrige</h3>
+    <p class="reveal">Les verrous internes expliquent que les corrections viennent de l'extérieur. Dans <em>G.K. c. Belgique</em> (2019), la Cour européenne des droits de l'homme condamne la Belgique à propos d'une démission parlementaire arrachée sous pression d'appareil. Dans <em>Mugemangango c. Belgique</em> (Grande Chambre, 2020), elle censure le système où une assemblée valide elle-même ses propres élections. Deux arrêts, un même message : le mandat parlementaire n'appartient pas aux partis. Le gouvernement De Wever a entamé en 2025 une réforme du financement des partis ; sa portée réelle et sa conformité aux standards européens ne sont pas encore stabilisées.</p>
+
+    <blockquote class="reveal">
+      Le pouvoir le plus concentré du pays — la présidence de parti — n'a, en droit constitutionnel belge, aucune existence. Il n'existe que par sa caisse.
+      <footer>Synthèse du corpus documentaire · analyses CRISP &amp; doctrine constitutionnelle</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ==================== CHAPITRE 4 ==================== -->
+<section id="ch4">
+  <div class="wrap">
+    <div class="chap-head reveal">
+      <span class="chap-num">CHAPITRE IV</span>
+      <div class="tricolore"><span class="n"></span><span class="j"></span><span class="r"></span></div>
+      <h2>Ce que l'été va trancher</h2>
+      <p class="lede">Trois scénarios s'ouvrent d'ici la rentrée. Aucun n'est indolore.</p>
+    </div>
+
+    <h3 class="reveal">1 · Le double atterrissage</h3>
+    <p class="reveal">De Wever décroche son accord pluriannuel autour du 21 juillet, la commission bruxelloise rend un rapport dans les délais, et chacun revendique la victoire. C'est le scénario que privilégient les « stabilisateurs » — De Wever au fédéral, Dilliès à Bruxelles. Son coût : un rapport d'enquête que trois rapporteurs successifs ont refusé d'endosser, et un accord budgétaire dont l'expérience de novembre 2025 suggère qu'il rouvrira dès l'automne.</p>
+
+    <h3 class="reveal">2 · L'explosion bruxelloise</h3>
+    <p class="reveal">Bouchez obtient la prolongation de la commission ; le PS la vit comme une rupture du pacte et quitte la table. Le premier gouvernement bruxellois depuis 600 jours de vacance retombe en crise, avec un déficit régional filant vers 1,25 milliard. Le rendez-vous de Val Duchesse du 16 juillet, où Dilliès veut débloquer ses dossiers avec le fédéral, servira de test de température.</p>
+
+    <h3 class="reveal">3 · L'enlisement fédéral</h3>
+    <p class="reveal">Pas d'accord au 21 juillet : le conclave budgétaire glisse à l'automne, comme en 2025. La Belgique aborderait alors l'évaluation européenne avec une trajectoire non consolidée, une Cour des comptes déjà sceptique, et une coalition dont chaque report érode le crédit — pendant que, dans l'opposition, PS et PTB engrangent dans les sondages francophones.</p>
+
+    <div class="encadre reveal">
+      <span class="kicker">Ce que ce dossier ne dit pas</span>
+      <p>Ce grand format documente des faits, des chiffres et des positions ; il ne prédit pas l'avenir et ne distribue pas les vertus. La coalition Arizona gouverne dans des conditions objectivement difficiles — vieillissement, charge de la dette, réarmement européen — et le clientélisme documenté à Anderlecht relève de la justice, qui instruit, et de la présomption d'innocence, qui protège. Le fil conducteur est ailleurs : dans un pays où les rapports internationaux réclament depuis quinze ans les mêmes réformes de contrôle, la question de l'été 2026 n'est pas seulement « qui paiera 6,7 milliards ? », mais « qui contrôle ceux qui décident ? ».</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHRONO ==================== -->
+<section id="chrono" style="background:var(--papier-2);border-top:1px solid var(--ligne)">
+  <div class="wrap">
+    <div class="chap-head reveal">
+      <span class="chap-num">REPÈRES</span>
+      <div class="tricolore"><span class="n"></span><span class="j"></span><span class="r"></span></div>
+      <h2>Deux ans en dix dates</h2>
+    </div>
+    <ul class="timeline">
+      <li class="reveal"><span class="tdate">9 juin 2024</span><div class="tbody"><b>Élections fédérales.</b> La N-VA confirme sa première place, le MR devance le PS côté francophone, les écologistes s'effondrent.</div></li>
+      <li class="reveal"><span class="tdate">8 juillet 2024</span><div class="tbody"><b>Procédure de déficit excessif.</b> La Commission européenne épingle les finances belges.</div></li>
+      <li class="reveal jaune"><span class="tdate">3 février 2025</span><div class="tbody"><b>Serment du gouvernement De Wever</b> après 239 jours de négociations. Premier gouvernement fédéral dirigé par un nationaliste flamand. Polémique immédiate : aucun femme au kern.</div></li>
+      <li class="reveal"><span class="tdate">Février 2025</span><div class="tbody"><b>Grèves massives</b> contre le programme socio-économique de l'Arizona ; retour sur la sortie du nucléaire de 2003.</div></li>
+      <li class="reveal"><span class="tdate">Fin 2025</span><div class="tbody"><b>Cap OTAN atteint :</b> les dépenses de défense touchent 2 % du PIB, conformément à l'engagement pris à La Haye.</div></li>
+      <li class="reveal rouge"><span class="tdate">24 novembre 2025</span><div class="tbody"><b>Accord budgétaire 2026</b> in extremis — 9,2 milliards d'efforts d'ici 2029 — après la menace de démission de De Wever. Le Premier ministre parle d'un « deuxième accord de gouvernement ».</div></li>
+      <li class="reveal"><span class="tdate">30 avril 2026</span><div class="tbody"><b>Nucléaire :</b> lettre d'intention entre l'État belge et ENGIE en vue du rachat de l'intégralité des activités nucléaires du groupe.</div></li>
+      <li class="reveal rouge"><span class="tdate">8 juin 2026</span><div class="tbody"><b>Ouverture de la commission d'enquête</b> sur le Foyer anderlechtois — la deuxième de l'histoire de la Région bruxelloise — avec rapport exigé pour le 21 juillet.</div></li>
+      <li class="reveal"><span class="tdate">30 juin – 6 juillet 2026</span><div class="tbody"><b>La commission se fissure :</b> démission des rapporteurs Les Engagés puis N-VA ; Bouchez exige une prolongation, Dilliès et le PS s'y refusent.</div></li>
+      <li class="reveal jaune"><span class="tdate">16 – 21 juillet 2026</span><div class="tbody"><b>La double échéance :</b> sommet Val Duchesse fédéral–bruxellois le 16 ; le 21, date butoir simultanée du conclave budgétaire fédéral et du rapport d'enquête bruxellois.</div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== SOURCES ==================== -->
+<section class="sources">
+  <div class="wrap">
+    <h2>Sources &amp; méthodologie</h2>
+    <ol>
+      <li>Corpus documentaire du projet (120+ documents) : analyses du financement des partis, rapports GRECO, doctrine constitutionnelle (art. 33 et 42), travaux sur la particratie, la para-légalité et l'accountability en Belgique.</li>
+      <li>Cour des comptes — projections de dette publique (122,3 % du PIB en 2031) et avis sur la trajectoire budgétaire.</li>
+      <li>Bureau fédéral du Plan — catalogue de 264 mesures budgétaires remis au gouvernement (juin 2026) ; RTBF Info.</li>
+      <li>France Diplomatie — fiche Belgique : procédure de déficit excessif, accord budgétaire du 24 novembre 2025, dossier ENGIE, trajectoire OTAN.</li>
+      <li>La Libre, La DH, L'Avenir, BX1, 21News — couverture de la commission d'enquête sur le Foyer anderlechtois (juin–juillet 2026) et du budget bruxellois.</li>
+      <li>GRECO (Conseil de l'Europe) — cycles d'évaluation de la Belgique et procédures de non-conformité (Règle 32).</li>
+      <li>CEDH — <em>G.K. c. Belgique</em> (2019) ; <em>Mugemangango c. Belgique</em> (GC, 2020).</li>
+      <li>CRISP — travaux sur les partis politiques et la vie institutionnelle belge ; Maddens et al., <em>De kolonisten van de Wetstraat</em> (2024).</li>
+    </ol>
+    <p class="methodo"><strong>Méthode et limites.</strong> Ce dossier croise un corpus d'analyses critiques avec l'actualité de presse arrêtée au 7 juillet 2026. Les chiffres de financement des partis (108,7 M€/an, 87 %, ~7 Mds cumulés) proviennent d'estimations académiques et peuvent varier selon les périmètres retenus. Les faits relatifs au Foyer anderlechtois sont des allégations en cours d'examen parlementaire et judiciaire ; les personnes citées bénéficient de la présomption d'innocence. Les positions des partis sont restituées d'après leurs déclarations publiques.</p>
+  </div>
+</section>
+
+<footer class="fin">
+  <div class="wrap-wide">
+    <span>GRAND FORMAT · L'ÉTÉ DES DEUX 21 JUILLET</span>
+    <span>BRUXELLES · 7 JUILLET 2026</span>
+  </div>
+</footer>
+
+<script>
+  // barre de progression tricolore
+  var bar = document.querySelector('#progress .bar');
+  function maj(){
+    var h = document.documentElement;
+    var p = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = Math.min(100, Math.max(0, p)) + '%';
+  }
+  document.addEventListener('scroll', maj, {passive:true}); maj();
+
+  // reveal au scroll
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('vu'); io.unobserve(e.target);} });
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
